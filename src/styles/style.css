@@ -21,10 +21,19 @@ rgb(117, 117, 117) header {
   width: 100%;
 }
 
+.logoHeader {
+  color: red;
+  font-size: 30px;
+}
+
+.facebook {
+  height: 30px;
+}
+
 nav {
   font-size: smaller;
   background-color: #f1f1f1;
-  height: 60px;
+  height: 40px;
 }
 
 .nav-link {
