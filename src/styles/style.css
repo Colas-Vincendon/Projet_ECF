@@ -96,6 +96,25 @@ h2 {
   width: 295px;
 }
 
+.footer {
+  background-color: red;
+  color: #ffffff;
+  height: 130px;
+  width: 100%;
+}
+
+.bi-telephone-footer {
+  color: white;
+}
+
+.logo-proxi-cash {
+  height: 80px;
+}
+
+.p-footer {
+  margin-top: 10px;
+}
+
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
 
 @media screen and (max-width: 1400px) {
@@ -126,6 +145,11 @@ h2 {
     display: none;
   }
 }
+@media screen and (max-width: 768px) {
+  .footer {
+    height: 240px;
+  }
+}
 
 @media screen and (max-width: 648px) {
   .catalogue {
@@ -141,5 +165,10 @@ h2 {
 @media screen and (max-width: 358px) {
   .trait2 {
     width: 100px;
+  }
+}
+@media screen and (max-width: 346px) {
+  .footer {
+    height: 290px;
   }
 }
