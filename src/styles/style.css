@@ -14,16 +14,18 @@ body {
 .top-header label {
   color: #bbadad;
 }
-rgb(117, 117, 117) header {
-  margin: 0;
-  padding: 0;
-
-  width: 100%;
-}
 
 .logoHeader {
   color: red;
   font-size: 30px;
+}
+
+.tableContact {
+  width: 100%;
+}
+
+.contact {
+  float: right;
 }
 
 .facebook {
@@ -31,9 +33,9 @@ rgb(117, 117, 117) header {
 }
 
 nav {
-  font-size: smaller;
+  font-size: 1rem;
   background-color: #f1f1f1;
-  height: 40px;
+  height: 60px;
 }
 
 .nav-link {
@@ -50,8 +52,94 @@ nav {
   color: red;
 }
 
+.catalogue {
+  background-color: #f1f1f1;
+  border: 1px solid rgb(219, 219, 219);
+  width: 90%;
+  height: 35px;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.text-p {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.p-horaires {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.trait {
+  margin-left: 20px;
+  border: 1px solid red;
+  height: 1px;
+  width: 155px;
+}
+
+.trait2 {
+  margin-left: 20px;
+  border: 1px solid red;
+  height: 1px;
+  width: 295px;
+}
+
+/* -------------------------------- MEDIA QUERIES -------------------------------------- */
+
+@media screen and (max-width: 1400px) {
+  .logoCashback {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .toHide {
     display: none;
+  }
+  .navbar-toggler {
+    height: 40px;
+    background-color: red;
+    transform: translateY(-8px);
+  }
+  .navbar-collapse {
+    z-index: 1;
+  }
+  .nav-item {
+    background-color: #f1f1f1;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .top-header {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .catalogue {
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 377px) {
+  .catalogue {
+    height: 100px;
+  }
+}
+@media screen and (max-width: 358px) {
+  .trait2 {
+    width: 100px;
   }
 }
