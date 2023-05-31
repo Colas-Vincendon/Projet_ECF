@@ -1,14 +1,13 @@
 body {
   font-size: 1.1rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .toHide {
-  background-color: rgb(46, 46, 53);
+  background-color: #2f333e;
 }
 
 .top-header {
-  background-color: rgb(46, 46, 53);
+  background-color: #2f333e;
   color: #ffffff;
 }
 .top-header label {
@@ -39,6 +38,12 @@ nav {
   font-size: 15px;
 }
 
+.navbar {
+  height: 50px;
+  padding: 0;
+  margin-top: 20px;
+}
+
 .nav-link {
   color: rgb(31, 31, 31);
   margin-right: 20px;
@@ -54,7 +59,7 @@ nav {
 }
 
 .navbar-toggler {
-  margin-top: 15px;
+  margin-top: 13px;
 }
 
 .nav-link:focus {
@@ -172,7 +177,7 @@ h2 {
 }
 
 .row-bottom {
-  background-color: rgb(46, 46, 53);
+  background-color: #2f333e;
   height: 60px;
 }
 
