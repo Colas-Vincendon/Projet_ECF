@@ -98,7 +98,7 @@
               /></a>
             </header>
           </div>
-          <!-- --------------------------------- NAVBAR ------------------------------ -->
+          <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
               class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
@@ -126,9 +126,43 @@
                     <li class="nav-item">
                       <a class="nav-link" href="cashback.html">RACHAT CASH</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">NOS SERVICES</a>
+                    <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle pointer"
+                        class="navbar-toggler"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#services"
+                        aria-label="Toggle navigation"
+                        >NOS SERVICES<b class="caret"></b
+                      ></a>
+                      <ul id="services" class="dropdown-menu">
+                        <li>
+                          <a
+                            class="nav-link no-underline text-li-services"
+                            href="boschService.html"
+                            >ATELIER BOSCH CAR SERVICE</a
+                          >
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                          <a
+                            class="nav-link no-underline text-li-services"
+                            href="#"
+                            >SERVICE CARTE GRISE</a
+                          >
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                          <a
+                            class="nav-link no-underline text-li-services"
+                            href="#"
+                            >INFORMATIONS CONSOMMATEUR</a
+                          >
+                        </li>
+                      </ul>
                     </li>
+                    <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                     <li class="nav-item">
                       <a class="nav-link" href="#">QUI SOMMES-NOUS</a>
                     </li>
@@ -140,8 +174,9 @@
               </div>
             </nav>
           </div>
-          <!-- ------------------------------ FIN HEADER ------------------------------- -->
-          <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
+          <!-- ------------------------------ END NAVBAR ------------------------------- -->
+          <!-- ------------------------------ END HEADER ------------------------------- -->
+          <!-- ------------------------------ START MAIN ------------------------------- -->
           <div
             id="introCarousel"
             class="carousel slide"
@@ -352,6 +387,7 @@
         <div class="col-xl-1 col-xxl-2 toHide"></div>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
