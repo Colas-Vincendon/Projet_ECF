@@ -102,6 +102,11 @@ nav {
 
 /*----------------------------- END NAVBAR ---------------------------------*/
 
+#previous,
+#next {
+  transform: scale(2);
+}
+
 .catalogue {
   background-color: #f1f1f1;
   border: 1px solid rgb(219, 219, 219);
