@@ -101,7 +101,7 @@
           <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
-              class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
+              class="container navbar navbar-expand-lg navbar-dark col-sm-11"
             >
               <div class="container d-flex justify-content-start">
                 <button
@@ -121,9 +121,7 @@
                       <a class="nav-link" href="index.html">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="ourCars.html"
-                        >NOS VEHICULES</a
-                      >
+                      <a class="nav-link" href="ourCars.html">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -171,7 +169,7 @@
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact.html">CONTACT</a>
+                      <a class="nav-link nav-link-active" href="#">CONTACT</a>
                     </li>
                   </ul>
                 </div>
@@ -181,16 +179,170 @@
           <!-- ------------------------------ END NAVBAR ------------------------------- -->
           <!-- ------------------------------ END HEADER ------------------------------- -->
           <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-          <div class="container">
-            <div class="filtres my-3 text-center">
-              <p>
-                Filtres à réaliser en AJAX pour que la page ne se recharge pas
-              </p>
+          <section
+            class="section section-no-background section-no-border m-none p-none"
+          >
+            <div class="container margin_top_30">
+              <div class="row my-5">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                  <div class="panel-group col-md-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a
+                            class="accordion-toggle no-underline text-red-bold ms-3"
+                            data-toggle="collapse"
+                            href="#panel-cart-discount"
+                            aria-expanded="true"
+                          >
+                            Nous contacter
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+
+                  <form
+                    class="text-grey fs-6"
+                    id="contactForm"
+                    action="contacts.php"
+                    method="POST"
+                  >
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label>Votre nom *</label>
+                          <input
+                            value=""
+                            data-msg-required="Votre nom"
+                            maxlength="100"
+                            class="form-control"
+                            name="nom"
+                            id="nom"
+                            required="required"
+                            aria-required="true"
+                            type="text"
+                          />
+                        </div>
+                        <div class="col-md-12">
+                          <label>Votre email *</label>
+                          <input
+                            value=""
+                            data-msg-required="Votre email"
+                            data-msg-email="Adresse email non valide"
+                            maxlength="100"
+                            class="form-control"
+                            name="email"
+                            id="email"
+                            required="required"
+                            aria-required="true"
+                            type="email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label>Sujet</label>
+                          <input
+                            value=""
+                            data-msg-required="Sujet"
+                            maxlength="100"
+                            class="form-control"
+                            name="sujet"
+                            id="sujet"
+                            required="required"
+                            aria-required="true"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label>Message *</label>
+                          <textarea
+                            maxlength="5000"
+                            data-msg-required="Please enter your message."
+                            rows="10"
+                            class="form-control"
+                            name="message"
+                            id="message"
+                            required="required"
+                            aria-required="true"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin_bottom_20">
+                      <div class="col-md-12">
+                        <input
+                          value="1"
+                          name="rgpd"
+                          type="checkbox"
+                          required="required"
+                        />
+                        <span class="small"
+                          >En soumettant ce formulaire, j'accepte que les
+                          informations saisies soient exploitées dans le cadre
+                          de la relation commerciale qui peut en découler.
+                          <a
+                            href="/politique-de-confidentialite"
+                            target="_blank"
+                            >En savoir plus</a
+                          ></span
+                        >
+                      </div>
+                    </div>
+                    <div class="row my-4">
+                      <div class="col-md-12">
+                        <input
+                          value="Envoyer"
+                          name="envoimsg"
+                          class="btn btn-form btn-lg mb-xlg"
+                          data-loading-text="Loading..."
+                          type="submit"
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-5" style="height: 400px">
+                  <div class="panel-group col-md-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a
+                            class="accordion-toggle no-underline text-red-bold ms-3"
+                            data-toggle="collapse"
+                            href="#panel-cart-discount"
+                            aria-expanded="true"
+                          >
+                            Nous trouver
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                  <iframe
+                    id="G-maps"
+                    class="my-4"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
+                    width="400px"
+                    height="400px"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <div class="col-md-1"></div>
+              </div>
             </div>
-            <div class="vehicules my-3 text-center">
-              <p>Liste des véhicules provenant de la base de données JSON</p>
-            </div>
-          </div>
+          </section>
           <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
             <div class="container footer">

@@ -232,6 +232,17 @@ h1 {
   font-size: 14px;
 }
 
+.btn-form {
+  background-color: red;
+  color: white;
+  border-radius: 0;
+}
+
+.btn-form:hover {
+  background-color: #bbadad;
+  color: white;
+}
+
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
 
 @media screen and (max-width: 1400px) {
@@ -262,6 +273,12 @@ h1 {
     display: none;
   }
 }
+@media screen and (max-width: 880px) {
+  #G-maps {
+    width: 340px;
+    height: 340px;
+  }
+}
 @media screen and (max-width: 768px) {
   .footer {
     height: 240px;
@@ -279,6 +296,12 @@ h1 {
   }
 }
 
+@media screen and (max-width: 400px) {
+  #G-maps {
+    width: 300px;
+    height: 300px;
+  }
+}
 @media screen and (max-width: 377px) {
   .catalogue {
     height: 100px;
@@ -288,6 +311,12 @@ h1 {
 @media screen and (max-width: 375px) {
   .footer {
     height: 320px;
+  }
+}
+@media screen and (max-width: 360px) {
+  #G-maps {
+    width: 250px;
+    height: 250px;
   }
 }
 @media screen and (max-width: 325px) {
