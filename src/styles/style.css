@@ -228,6 +228,10 @@ h1 {
   width: 400px;
 }
 
+.font-14px {
+  font-size: 14px;
+}
+
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
 
 @media screen and (max-width: 1400px) {
