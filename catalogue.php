@@ -23,7 +23,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="http://localhost/style.css" />
   </head>
   <body>
     <!-- --------------------------- BODY ------------------------- -->
@@ -118,10 +118,12 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="#">ACCUEIL</a>
+                      <a class="nav-link" href="index.html">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
+                      <a class="nav-link nav-link-active" href="ourCars.html"
+                        >NOS VEHICULES</a
+                      >
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -178,95 +180,9 @@
           </div>
           <!-- ------------------------------ END NAVBAR ------------------------------- -->
           <!-- ------------------------------ END HEADER ------------------------------- -->
-          <!-- ------------------------------ START MAIN ------------------------------- -->
-          <div
-            id="introCarousel"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel1.jpg"
-                  alt="Image 1"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel2.jpg"
-                  alt="Image 2"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel3.jpg"
-                  alt="Image 3"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel4.jpg"
-                  alt="Image 4"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel5.jpg"
-                  alt="Image 5"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel7.jpg"
-                  alt="Image 6"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel8.jpg"
-                  alt="Image 7"
-                />
-              </div>
-              <div class="controlCarousel">
-                <a
-                  id="previous"
-                  class="carousel-control-prev"
-                  href="#introCarousel"
-                  role="button"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Previous</span>
-                </a>
-                <a
-                  id="next"
-                  class="carousel-control-next"
-                  href="#introCarousel"
-                  role="button"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Next</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- ------------------------------ FIN CAROUSEL ---------------------------- -->
+          <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
           <div class="row">
-            <div class="container catalogue text-center my-3">
+            <div class="container catalogue text-center">
               <p class="my-auto">
                 <a class="no-underline text-danger text-p" href="ourCars.html"
                   >Consultez notre catalogue jusqu'à 1500 véhicules
@@ -275,41 +191,63 @@
               </p>
             </div>
           </div>
-          <!-- -------------------- HORAIRES ET MAP ----------------------- -->
-          <div class="row">
-            <div class="col-xs-12 col-md-8">
-              <h2>NOS HORAIRES</h2>
-              <div class="trait"></div>
-              <p class="p-horaires">
-                Commerce Automobile <br />
-                Lundi au vendredi: 9h-12h / 14h-19h le samedi de 9h à 12h <br />
-                Atelier réparation et entretien véhicule : BOSCH CAR SERVICE
-                <br />
-                Lundi au vendredi : 8h-12h / 14h-18h <br />
-                <br />
-                FERMETURE EXCEPTIONNELLE LE 18 ET LE 20 MAI 2023
-              </p>
-              <h2>AVIS DE NOS CLIENTS</h2>
-              <div class="trait2"></div>
-              <p class="p-horaires">
-                Avis à intégrer en javascript.<br />Ces avis seront soumis par
-                les utilisateurs avant d'être validés par un employé.
+          <div class="container">
+            <div class="filtres my-3 text-center">
+              <p>
+                Filtres à réaliser en AJAX pour que la page ne se recharge pas
               </p>
             </div>
-            <div class="col-xs-12 col-md-4 my-3 d-flex justify-content-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
-                width="280"
-                height="280"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div class="vehicules my-3 text-center">
+            <?php
+        // Connexion à la base de données
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = "garageParrot";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Échec de la connexion à la base de données : " . $conn->connect_error);
+        }
+
+        // Récupération des données de la table "cars"
+        $sql = "SELECT * FROM cars";
+        $result = $conn->query($sql);
+        ?>
+            <style>
+                .containerCars {
+                    display: inline-block;
+                    width: 350px;
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                }
+                .containerCars h2 {
+                    margin-top: 0;
+                }
+            </style>
+            <h1>Liste des véhicules</h1>
+
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='containerCars'>";
+                    echo "<p><strong>Marque:</strong> " . $row["marque"] . "</p>";
+                    echo "<p><strong>Modèle:</strong> " . $row["modele"] . "</p>";
+                    echo "<p><strong>Année:</strong> " . $row["annee"] . "</p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p>Aucun véhicule trouvé.</p>";
+            }
+                ?>
+
+            <?php
+            // Fermeture de la connexion à la base de données
+            $conn->close();
+            ?>
             </div>
           </div>
-          <div class="row"></div>
-
           <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
             <div class="container footer">
