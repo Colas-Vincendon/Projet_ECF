@@ -32,15 +32,29 @@ if (!empty($annee)) {
 
 // Exécution de la requête SQL
 $result = $conn->query($sql);
+?>
+<style>
+              .containerCars {
+                display: inline-block;
+                max-width: 330px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin: 20px;
+              }
 
+              .containerCars h2 {
+                margin-top: 0;
+              }
+            </style>
+<?php
 // Affichage des résultats
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<p>ID : " . $row["id"] . "</p>";
+        echo "<div class='container-fluid containerCars'>";
         echo "<p>Marque : " . $row["marque"] . "</p>";
         echo "<p>Modèle : " . $row["modele"] . "</p>";
         echo "<p>Année : " . $row["annee"] . "</p>";
-        echo "<hr>";
+        echo "</div>";
     }
 } else {
     echo "<p>Aucun résultat trouvé.</p>";

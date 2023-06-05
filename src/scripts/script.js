@@ -6,7 +6,7 @@ $("li.dropdown").hover(
     $(this).find(".dropdown-menu").stop(true, true).delay(100).fadeOut(400);
   }
 );
-/*---------------------- FILTRES VEHICULES ---------------------*/
+/*---------------------- Filtres vehicules ---------------------*/
 
 document.getElementById("rechercher").addEventListener("click", function () {
   var marque = document.getElementById("marque").value;
@@ -30,4 +30,12 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
+});
+
+/*-------------------- simulation d'un click pour lancer la recherche-----------*/
+
+window.addEventListener("DOMContentLoaded", function () {
+  // Simuler un clic sur le bouton "Rechercher"
+  var boutonRechercher = document.getElementById("rechercher");
+  boutonRechercher.click();
 });

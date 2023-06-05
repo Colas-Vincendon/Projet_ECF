@@ -126,75 +126,8 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="row">
-          <div class="container catalogue text-center">
-            <p class="my-auto">
-              <a class="no-underline text-danger text-p" href="ourCars.html">Consultez notre catalogue jusqu'à 1500
-                véhicules
-                disponibles</a>
-            </p>
-          </div>
-        </div>
-        <div class="container">
-          <div class="filtres my-3 text-center">
-            <p>
-            <div class="row justify-content-center my-3">
-              <div class="col-6 col-md-3">
-                <label for="marque">Marque :</label>
-                <select id="marque">
-                  <option value="">Toutes</option>
-                  <option value="Peugeot">Peugeot</option>
-                  <option value="Renault">Renault</option>
-                  <option value="Citroën">Citroën</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Ford">Ford</option>
-                </select>
-              </div>
-
-              <div class="col-6 col-md-3">
-                <label for="modele">Modèle :</label>
-                <select id="modele">
-                  <option value="">Tous</option>
-                  <option value="Clio">Clio</option>
-                  <option value="308">308</option>
-                  <option value="C3">C3</option>
-                  <option value="Captur">Captur</option>
-                  <option value="208">208</option>
-                  <option value="Berlingo">Berlingo</option>
-                  <!-- Ajoutez ici d'autres options de modèles -->
-                </select>
-              </div>
-
-              <div class="col-6 col-md-3">
-                <label for="annee">Année :</label>
-                <select id="annee">
-                  <option value="">Toutes</option>
-                  <option value="2021">2021</option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2019">2018</option>
-                  <option value="2019">2017</option>
-                  <option value="2019">2016</option>
-                  <option value="2019">2015</option>
-                  <option value="2019">2014</option>
-                  <option value="2019">2013</option>
-                  <option value="2019">2012</option>
-                  <option value="2019">2011</option>
-                  <option value="2019">2010</option>
-                  <!-- Ajoutez ici d'autres options d'années -->
-                </select>
-              </div>
-            </div>
-
-              <div class="row justify-content-center my-3">
-                <button id="rechercher" class="btn btn-danger">Rechercher</button>
-              </div>
-
-            <div id="resultat"></div>
-            </p>
-          </div>
-        </div>
-        <!-- --------------------------- FOOTER --------------------------- -->
+        
+        <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
             <div class="row cols-3">

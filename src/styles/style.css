@@ -181,14 +181,16 @@ h2 {
   height: 60px;
 }
 
-.filtres {
+.filtres,
+.vehicules,
+.connect {
   background-color: #f1f1f1;
   border: 1px solid rgb(180, 180, 180);
 }
 
-.vehicules {
-  background-color: #f1f1f1;
-  border: 1px solid rgb(180, 180, 180);
+#rechercher {
+  margin-top: 20px;
+  width: 130px;
 }
 
 h1 {
