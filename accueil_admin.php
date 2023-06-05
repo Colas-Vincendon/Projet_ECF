@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projet ECF: Garage Parrot</title>
     <meta type="description" content="Entretien de votre véhicule et vente de véhicules d'occasion" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="./src/styles/style.css" />
@@ -56,7 +57,8 @@
                                             </td>
                                             <td>
                                                 <a href="#">
-                                                    <img class="facebook" src="./src/medias/facebook.png" alt="logo facebook" />
+                                                    <img class="facebook" src="./src/medias/facebook.png"
+                                                        alt="logo facebook" />
                                                 </a>
                                             </td>
                                         </tr>
@@ -70,14 +72,17 @@
 
                 <div class="row header">
                     <header class="my-3 px-3">
-                        <a href="index.html"><img class="img-fluid" src="./src/medias/banderole header.jpg" alt="Page d'accueil" /></a>
+                        <a href="index.html"><img class="img-fluid" src="./src/medias/banderole header.jpg"
+                                alt="Page d'accueil" /></a>
                     </header>
                 </div>
                 <!-- --------------------------------- START NAVBAR ------------------------------ -->
                 <div class="row">
                     <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
                         <div class="container d-flex justify-content-start">
-                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                                data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                                aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarText">
@@ -93,20 +98,25 @@
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
+                                        <a class="nav-link dropdown-toggle pointer" class="navbar-toggler"
+                                            data-bs-toggle="collapse" data-bs-target="#services"
+                                            aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                                         <ul id="services" class="dropdown-menu">
                                             <li>
-                                                <a class="nav-link no-underline text-li-services" href="boschService.html">ATELIER BOSCH CAR
+                                                <a class="nav-link no-underline text-li-services"
+                                                    href="boschService.html">ATELIER BOSCH CAR
                                                     SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a class="nav-link no-underline text-li-services" href="carRegistration.html">SERVICE CARTE
+                                                <a class="nav-link no-underline text-li-services"
+                                                    href="carRegistration.html">SERVICE CARTE
                                                     GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a class="nav-link no-underline text-li-services" href="infoConsumer.html">INFORMATIONS
+                                                <a class="nav-link no-underline text-li-services"
+                                                    href="infoConsumer.html">INFORMATIONS
                                                     CONSOMMATEUR</a>
                                             </li>
                                         </ul>
@@ -126,72 +136,22 @@
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-
-                <?php
-                // Vérifier si le formulaire a été soumis
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Récupérer les valeurs des champs
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
-
-                    // Connexion à la base de données
-                    $servername = 'localhost';
-                    $dbname = 'garageParrot';
-                    $usernameDB = 'root';
-                    $passwordDB = 'root';
-
-                    // Connexion à la base de données
-                    $conn = new mysqli($servername, $usernameDB, $passwordDB, $dbname);
-                    if ($conn->connect_error) {
-                        die('Erreur de connexion à la base de données : ' . $conn->connect_error);
-                    }
-
-                    // Requête pour vérifier les identifiants de l'employé
-                    $query = "SELECT * FROM employes WHERE email = '$email' AND password = '$password'";
-                    $result = $conn->query($query);
-
-                    if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
-                        // Redirection vers la page acceuil_admin.php
-                        header('Location: accueil_admin.php');
-                        exit();
-                    } else if ($result->num_rows > 0) {
-                        // Redirection vers la page employe.php
-                        header('Location: accueil_employe.php');
-                        exit();
-                    } else {
-                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-                    }
-
-                    $conn->close();
-                }
-                ?>
-
                 <div class="container text-center connect">
-                    <p class="text-red-bold my-4">Identification</p>
-                    <form method="POST">
-                        <div class="row justify-content-center my-4">
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <label for="email"><b>Adresse e-mail :</b></label><br>
-                                <input type="email" id="email" name="email" required>
-                            </div>
+
+                    <h2><b></b>Bienvenue Mr PARROT</b></h2> <br/>
+                    <h2 class="text-grey my-3">Ajouter un employé</h2>
+                    <form method="POST" action="add_employe.php">
+                        <div class="my-3">
+                            <label for="email">Email :</label> <br/>
+                            <input type="email" id="email" name="email" required>
                         </div>
-                        <div class="row justify-content-center my-4">
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <label for="password"><b>Mot de passe :</b></label><br>
-                                <input type="password" id="password" name="password" required>
-                            </div>
+                        <div class="my-3">
+                            <label for="password">Mot de passe :</label><br/>
+                            <input type="password" id="password" name="password" required>
                         </div>
-                        <div class="row justify-content-center my-4">
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <button class="btn btn-danger" type="submit" style="width: 130px;">Se
-                                    connecter</button>
-                            </div>
+                        <div class="my-3">
+                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un employé</button>
                         </div>
-                        <?php if (isset($errorMessage)) : ?>
-                            <div>
-                                <?php echo $errorMessage; ?>
-                            </div>
-                        <?php endif; ?>
                     </form>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
@@ -217,7 +177,8 @@
                                 <div class="row">
                                     <div class="d-flex justify-content-center">
                                         <a href="#">
-                                            <img class="facebook my-1" src="./src/medias/facebook.png" alt="logo facebook" />
+                                            <img class="facebook my-1" src="./src/medias/facebook.png"
+                                                alt="logo facebook" />
                                         </a>
                                     </div>
                                 </div>
@@ -233,7 +194,8 @@
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="d-flex justify-content-center">
-                                    <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png" alt="logo proxi auto cash" />
+                                    <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png"
+                                        alt="logo proxi auto cash" />
                                 </div>
                             </div>
                         </div>
@@ -264,8 +226,12 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
     <script src="./src/scripts/script.js"></script>
 </body>
 

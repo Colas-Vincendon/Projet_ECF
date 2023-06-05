@@ -126,7 +126,24 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        
+        <div class="container text-center connect">
+
+                    <h2><b></b>Bienvenue</b></h2> <br>
+                    <h2 class="text-grey">Ajouter un véhicule</h2>
+                    <form method="POST" action="ajouter_employe.php">
+                        <div>
+                            <label for="email">Email :</label> <br>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password">Mot de passe :</label><br>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un employé</button>
+                        </div>
+                    </form>
+                </div>
         <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
