@@ -184,7 +184,6 @@ h2 {
 .filtres {
   background-color: #f1f1f1;
   border: 1px solid rgb(180, 180, 180);
-  height: 120px;
 }
 
 .vehicules {
@@ -267,8 +266,11 @@ h1 {
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
   .top-header {
+    display: none;
+  }
+  #introCarousel {
     display: none;
   }
 }
