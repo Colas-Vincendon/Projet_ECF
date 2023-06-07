@@ -14,9 +14,10 @@ if ($conn->connect_error) {
 $marque = $_POST['marque'];
 $modele = $_POST['modele'];
 $annee = $_POST['annee'];
+$kilometrage = $_POST['kilometres'];
 
 // Insertion du véhicule dans la table "cars"
-$sql2 = "INSERT INTO cars (marque, modele, annee) VALUES ('$marque', '$modele', '$annee')";
+$sql2 = "INSERT INTO cars (marque, modele, annee, kilometres) VALUES ('$marque', '$modele', '$annee', '$kilometrage')";
 $conn->query($sql2);
 
 // Récupération de l'identifiant du véhicule inséré
@@ -32,27 +33,20 @@ if (!empty($images['name'][0])) {
     for ($i = 0; $i < $totalImages; $i++) {
         $tmpName = $images['tmp_name'][$i];
         $imageFile = $images['name'][$i];
-        $imagePath = "./src/imagesCars/" . $imageFile;
 
-        // Déplacement du fichier vers le dossier des images
-        move_uploaded_file($tmpName, $imagePath);
+        // Conversion de l'image en base64
+        $base64Image = base64_encode(file_get_contents($tmpName));
 
-        // Insertion de l'image dans la table "images"
-        $sql = "INSERT INTO images (car_id, image_url) VALUES ('$vehiculeId', '$imagePath')";
+        // Insertion de l'image en base64 dans la table "images"
+        $sql = "INSERT INTO images (car_id, image_base64) VALUES ('$vehiculeId', '$base64Image')";
         $conn->query($sql);
     }
-}
-
-// Exécuter la requête
-if (mysqli_query($conn, $sql)) {
-    // Redirection vers la page d'accueil de l'employe
-    header('Location: accueil_employe.php');
-    exit();
-} else {
-    echo "Erreur lors de l'ajout à la base de données";
 }
 
 // Fermeture de la connexion à la base de données
 $conn->close();
 
+// Redirection vers la page d'accueil de l'employé
+header("Location: accueil_employe.php");
+exit();
 ?>

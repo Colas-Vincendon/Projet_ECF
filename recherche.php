@@ -46,21 +46,23 @@ $result = $conn->query($sql);
 // Affichage des résultats
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='container-fluid containerCars'><a class='no-underline' href= 'detailed_car.php?id=" . $row["id"] . "' >";
-        // Récupération des images de la voiture
+        echo "<div class='container-fluid containerCars'><a class='no-underline text-black' href='detailed_car.php?id=" . $row["id"] . "'>";
+        // Récupération et décodage des images de la voiture
         $carId = $row["id"];
-        $sqlImages = "SELECT image_url FROM images WHERE car_id = '$carId' LIMIT 1";
+        $sqlImages = "SELECT image_base64 FROM images WHERE car_id = '$carId' LIMIT 1";
         $resultImages = $conn->query($sqlImages);
 
         if ($resultImages->num_rows > 0) {
             echo "<div class='car-images'>";
             while ($rowImage = $resultImages->fetch_assoc()) {
-                echo "<img id='img-car' style='width: 100%' src='" . $rowImage["image_url"] . "' alt='Image voiture'>";
+                $imageData = $rowImage["image_base64"];
+                echo "<img id='img-car' style='width: 100%' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
             }
-            echo "</div>";
+            echo "</div></br>";
         }
         echo "<p>Marque : " . $row["marque"] . "</p>";
         echo "<p>Modèle : " . $row["modele"] . "</p>";
+        echo "<p>Kilomêtrage : " . $row["kilometres"] . "</p>";
         echo "<p>Année : " . $row["annee"] . "</p>";
 
 
@@ -69,10 +71,20 @@ if ($result->num_rows > 0) {
 } else {
     echo "<p>Aucun résultat trouvé.</p>";
 }
-
 // Fermeture de la connexion à la base de données
 $conn->close();
 ?>
+
+
+<style>
+    #img-car {
+        transition: filter 0.3s;
+    }
+
+    #img-car:hover {
+        filter: brightness(70%);
+    }
+</style>
 
 
 <!-- 

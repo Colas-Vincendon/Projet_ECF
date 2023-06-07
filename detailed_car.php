@@ -86,7 +86,7 @@
                                         <a class="nav-link" href="index.html">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="ourCars.html">NOS VEHICULES</a>
+                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -127,86 +127,137 @@
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container text-center connect my-4">
-                    <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
-                    $dbname = "garageParrot";
+                <?php
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                        die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+}
 
-                    // Récupération de l'ID de la voiture depuis l'URL
-                    if (isset($_GET['id'])) {
-                        $idVoiture = $_GET['id'];
+// Récupération de l'ID de la voiture depuis l'URL
+if (isset($_GET['id'])) {
+    $idVoiture = $_GET['id'];
 
-                        // Requête SQL pour récupérer les détails de la voiture spécifique
-                        $sql = "SELECT * FROM cars WHERE id = '$idVoiture'";
-                        $result = $conn->query($sql);
+    // Requête SQL pour récupérer les détails de la voiture spécifique
+    $sql = "SELECT * FROM cars WHERE id = '$idVoiture'";
+    $result = $conn->query($sql);
 
-                        // Affichage des détails de la voiture
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                // Récupération des images de la voiture
-                                $carId = $row["id"];
-                                $sqlImages = "SELECT image_url FROM images WHERE car_id = '$carId'";
-                                $resultImages = $conn->query($sqlImages);
+    // Affichage des détails de la voiture
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Récupération des images de la voiture
+            $carId = $row["id"];
+            $sqlImages = "SELECT image_base64 FROM images WHERE car_id = '$carId'";
+            $resultImages = $conn->query($sqlImages);
 
-                                if ($resultImages->num_rows > 0) {
-                                    echo "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
-                                    echo "<ol class='carousel-indicators'>";
-                                    $i = 0;
-                                    while ($rowImage = $resultImages->fetch_assoc()) {
-                                        $active = ($i === 0) ? "active" : "";
-                                        echo "<li data-bs-target='#carouselExampleIndicators' data-bs-slide-to='$i' class='$active'></li>";
-                                        $i++;
-                                    }
-                                    echo "</ol>";
+            if ($resultImages->num_rows > 0) {
+                echo "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
+                echo "<ol class='carousel-indicators'>";
+                $i = 0;
+                while ($rowImage = $resultImages->fetch_assoc()) {
+                    $active = ($i === 0) ? "active" : "";
+                    echo "<li data-bs-target='#carouselExampleIndicators' data-bs-slide-to='$i' class='$active'></li>";
+                    $i++;
+                }
+                echo "</ol>";
 
-                                    echo "<div class='carousel-inner'>";
-                                    $j = 0;
-                                    $resultImages->data_seek(0); // Réinitialiser l'index de résultat pour récupérer les images à partir du début
-                                    while ($rowImage = $resultImages->fetch_assoc()) {
-                                        $active = ($j === 0) ? "active" : "";
-                                        echo "<div class='carousel-item $active'>";
-                                        echo "<img src='" . $rowImage["image_url"] . "' class='d-block w-100' alt='Image voiture'>";
-                                        echo "</div>";
-                                        $j++;
-                                    }
-                                    echo "</div>";
+                echo "<div class='carousel-inner my-3'>";
+                $j = 0;
+                $resultImages->data_seek(0); // Réinitialiser l'index de résultat pour récupérer les images à partir du début
+                while ($rowImage = $resultImages->fetch_assoc()) {
+                    $active = ($j === 0) ? "active" : "";
+                    echo "<div class='carousel-item $active'>";
+                    echo "<img src='data:image/jpeg;base64," . $rowImage["image_base64"] . "' class='d-block w-100' alt='Image voiture'>";
+                    echo "</div>";
+                    $j++;
+                }
+                echo "</div>";
 
-                                    echo "<a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-bs-slide='prev'>";
-                                    echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
-                                    echo "<span class='visually-hidden'>Précédent</span>";
-                                    echo "</a>";
-                                    echo "<a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-bs-slide='next'>";
-                                    echo "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
-                                    echo "<span class='visually-hidden'>Suivant</span>";
-                                    echo "</a>";
+                echo "<a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-bs-slide='prev'>";
+                echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
+                echo "<span class='visually-hidden'>Précédent</span>";
+                echo "</a>";
+                echo "<a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-bs-slide='next'>";
+                echo "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
+                echo "<span class='visually-hidden'>Suivant</span>";
+                echo "</a>";
 
-                                    echo "</div>";
-                                }
+                echo "</div>";
+            }
 
-                                echo "<p>Marque : " . $row["marque"] . "</p>";
-                                echo "<p>Modèle : " . $row["modele"] . "</p>";
-                                echo "<p>Année : " . $row["annee"] . "</p>";
-                                // Affichez d'autres détails spécifiques à la voiture si nécessaire
-                            }
-                        } else {
-                            echo "<p>Aucun résultat trouvé pour cette voiture.</p>";
-                        }
+            echo "<p>Marque : " . $row["marque"] . "</p>";
+            echo "<p>Modèle : " . $row["modele"] . "</p>";
+            echo "<p>Année : " . $row["annee"] . "</p>";
+            // Affichez d'autres détails spécifiques à la voiture si nécessaire
+        }
+    } else {
+        echo "<p>Aucun résultat trouvé pour cette voiture.</p>";
+    }
 
-                        // Fermeture de la connexion à la base de données
-                        $conn->close();
-                    } else {
-                        echo "<p>Identifiant de voiture non spécifié.</p>";
-                    }
-                    ?>
+    // Fermeture de la connexion à la base de données
+    $conn->close();
+} else {
+    echo "<p>Identifiant de voiture non spécifié.</p>";
+}
+?>
 
 
+                    <div class="row">
+                        <div class=" col col-md-2 col-xl-3"></div>
+                        <div class="col-12 col-md-8 col-xl-6">
+                            <h2>Une question ? Envoyer-nous un message</h2>
+                            <form class="text-grey fs-6" id="contactForm" action="contacts.php" method="POST">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Votre nom *</label>
+                                            <input value="" data-msg-required="Votre nom" maxlength="100" class="form-control" name="nom" id="nom" required="required" aria-required="true" type="text" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>Votre email *</label>
+                                            <input value="" data-msg-required="Votre email" data-msg-email="Adresse email non valide" maxlength="100" class="form-control" name="email" id="email" required="required" aria-required="true" type="email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Sujet</label>
+                                            <input value=" A compléter pour afficher le véhicule " data-msg-required="Sujet" maxlength="100" class="form-control" name="sujet" id="sujet" required="required" aria-required="true" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Message *</label>
+                                            <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message" required="required" aria-required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin_bottom_20">
+                                    <div class="col-md-12">
+                                        <input value="1" name="rgpd" type="checkbox" required="required" />
+                                        <span class="small">En soumettant ce formulaire, j'accepte que les
+                                            informations saisies soient exploitées dans le cadre
+                                            de la relation commerciale qui peut en découler.
+                                            <a href="/politique-de-confidentialite" target="_blank">En savoir plus</a></span>
+                                    </div>
+                                </div>
+                                <div class="row my-4">
+                                    <div class="col-md-12">
+                                        <input value="Envoyer" name="envoimsg" class="btn btn-form btn-lg mb-xlg" data-loading-text="Loading..." type="submit" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col col-md-2 col-xl-3"></div>
+                    </div>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
                 <div class="row">
@@ -259,7 +310,7 @@
                             <div class="text-center text-grey font-14px">
                                 <p class="p-footer">
                                     © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
-                                    <a class="no-underline text-grey" href="connect.html">Administration du site</a>
+                                    <a class="no-underline text-grey" href="connexion.php">Administration du site</a>
                                     -
                                     <a class="no-underline text-grey" href="mentions-legales.html">Mentions légales</a>
                                     -

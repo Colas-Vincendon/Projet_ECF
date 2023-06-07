@@ -91,7 +91,7 @@
                                         <a class="nav-link" href="index.html">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="ourCars.html">NOS VEHICULES</a>
+                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -207,7 +207,7 @@
                             <div class="text-center text-grey font-14px">
                                 <p class="p-footer">
                                     © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
-                                    <a class="no-underline text-grey" href="connect.html">Administration du site</a>
+                                    <a class="no-underline text-grey" href="connexion.php">Administration du site</a>
                                     -
                                     <a class="no-underline text-grey" href="mentions-legales.html">Mentions légales</a>
                                     -
