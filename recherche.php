@@ -34,27 +34,37 @@ if (!empty($annee)) {
 $result = $conn->query($sql);
 ?>
 <style>
-              .containerCars {
-                display: inline-block;
-                max-width: 330px;
-                border: 1px solid #ccc;
-                padding: 10px;
-                margin: 20px;
-              }
-
-              .containerCars h2 {
-                margin-top: 0;
-              }
-            </style>
+    .containerCars {
+        display: inline-block;
+        max-width: 330px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 20px;
+    }
+</style>
 <?php
 // Affichage des résultats
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='container-fluid containerCars'>";
+        echo "<div class='container-fluid containerCars'><a class='no-underline' href= 'detailed_car.php?id=" . $row["id"] . "' >";
+        // Récupération des images de la voiture
+        $carId = $row["id"];
+        $sqlImages = "SELECT image_url FROM images WHERE car_id = '$carId' LIMIT 1";
+        $resultImages = $conn->query($sqlImages);
+
+        if ($resultImages->num_rows > 0) {
+            echo "<div class='car-images'>";
+            while ($rowImage = $resultImages->fetch_assoc()) {
+                echo "<img id='img-car' style='width: 100%' src='" . $rowImage["image_url"] . "' alt='Image voiture'>";
+            }
+            echo "</div>";
+        }
         echo "<p>Marque : " . $row["marque"] . "</p>";
         echo "<p>Modèle : " . $row["modele"] . "</p>";
         echo "<p>Année : " . $row["annee"] . "</p>";
-        echo "</div>";
+
+
+        echo "</a></div>";
     }
 } else {
     echo "<p>Aucun résultat trouvé.</p>";
@@ -63,3 +73,8 @@ if ($result->num_rows > 0) {
 // Fermeture de la connexion à la base de données
 $conn->close();
 ?>
+
+
+<!-- 
+Créer une table images avec sql system primary et foreign key pour lier la tabke cars.
+Mettre dans chaque image l'id de la voiture plutôt, pour mettre plusieurs images par voiture -->

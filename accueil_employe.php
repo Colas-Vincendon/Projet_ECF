@@ -128,22 +128,25 @@
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
         <div class="container text-center connect">
 
-                    <h2><b></b>Bienvenue</b></h2> <br>
-                    <h2 class="text-grey">Ajouter un véhicule</h2>
-                    <form method="POST" action="ajouter_employe.php">
-                        <div>
-                            <label for="email">Email :</label> <br>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div>
-                            <label for="password">Mot de passe :</label><br>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un employé</button>
-                        </div>
-                    </form>
-                </div>
+          <h2><b>Bienvenue</b></h2> <br>
+          <h1>Ajouter un nouveau véhicule</h1>
+
+          <form action="add_vehicle.php" method="POST" enctype="multipart/form-data">
+            <label for="marque">Marque :</label>
+            <input type="text" name="marque" required><br><br>
+
+            <label for="modele">Modèle :</label>
+            <input type="text" name="modele" required><br><br>
+
+            <label for="annee">Année :</label>
+            <input type="text" name="annee" required><br><br>
+
+            <label for="images">Images :</label>
+            <input type="file" name="images[]" multiple><br><br>
+
+            <input type="submit" value="Ajouter le véhicule">
+          </form>
+        </div>
         <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
