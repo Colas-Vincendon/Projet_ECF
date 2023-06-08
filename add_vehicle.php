@@ -15,9 +15,12 @@ $marque = $_POST['marque'];
 $modele = $_POST['modele'];
 $annee = $_POST['annee'];
 $kilometrage = $_POST['kilometres'];
+$carburant = $_POST['carburant'];
+$boiteDeVitesse = $_POST['boite_de_vitesse'];
+$prix = $_POST['prix'];
 
 // Insertion du véhicule dans la table "cars"
-$sql2 = "INSERT INTO cars (marque, modele, annee, kilometres) VALUES ('$marque', '$modele', '$annee', '$kilometrage')";
+$sql2 = "INSERT INTO cars (marque, modele, annee, kilometres, carburant, boite_de_vitesse, Prix) VALUES ('$marque', '$modele', '$annee', '$kilometrage', '$carburant', '$boiteDeVitesse', '$prix')";
 $conn->query($sql2);
 
 // Récupération de l'identifiant du véhicule inséré

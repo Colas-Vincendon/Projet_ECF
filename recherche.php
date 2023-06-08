@@ -34,13 +34,7 @@ if (!empty($annee)) {
 $result = $conn->query($sql);
 ?>
 <style>
-    .containerCars {
-        display: inline-block;
-        max-width: 330px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 20px;
-    }
+   
 </style>
 <?php
 // Affichage des résultats
@@ -53,17 +47,18 @@ if ($result->num_rows > 0) {
         $resultImages = $conn->query($sqlImages);
 
         if ($resultImages->num_rows > 0) {
-            echo "<div class='car-images'>";
+            echo "<div class=' car-images'>";
             while ($rowImage = $resultImages->fetch_assoc()) {
                 $imageData = $rowImage["image_base64"];
-                echo "<img id='img-car' style='width: 100%' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
+                echo "<img class='img-fluid' id='img-car' style='width: 100%' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
             }
-            echo "</div></br>";
+            echo "</div>";
         }
-        echo "<p>Marque : " . $row["marque"] . "</p>";
-        echo "<p>Modèle : " . $row["modele"] . "</p>";
-        echo "<p>Kilomêtrage : " . $row["kilometres"] . "</p>";
-        echo "<p>Année : " . $row["annee"] . "</p>";
+        echo "<div class='detailsCar text-start py-2 px-4 fs-6'><p><FONT color='grey'>Marque : </FONT><b> " . $row["marque"] . "</b></p>";
+        echo "<p><FONT color='grey'>Modèle : </FONT><b> " . $row["modele"] . "</b></p>";
+        echo "<p><FONT color='grey'>Kilomêtrage : </FONT><b> " . $row["kilometres"] .' km'. "</b></p>";
+        echo "<p><FONT color='grey'>Année : </FONT><b> " . $row["annee"] . "</b></p>";
+        echo "<p><FONT color='grey'>Prix : </FONT><b> " . $row["Prix"] . "</b></p></div>";
 
 
         echo "</a></div>";
@@ -82,7 +77,7 @@ $conn->close();
     }
 
     #img-car:hover {
-        filter: brightness(70%);
+        filter: brightness(55%);
     }
 </style>
 

@@ -39,3 +39,17 @@ window.addEventListener("DOMContentLoaded", function () {
   var boutonRechercher = document.getElementById("rechercher");
   boutonRechercher.click();
 });
+
+$(document).ready(function () {
+  $(".carousel").carousel({
+    interval: 2000, // Réglez ici la vitesse souhaitée en millisecondes
+  });
+});
+
+/*----------- boutojn pour réinitialiser les filtres ---------------*/
+
+document
+  .getElementById("reinitialiserLesFiltres")
+  .addEventListener("click", function () {
+    location.reload();
+  });

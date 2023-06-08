@@ -83,13 +83,13 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarText">
+              <div class="collapse navbar-collapse" id="navbarText" style="z-index: 1">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.php">ACCUEIL</a>
+                    <a class="nav-link nav-link-active" href="index.php">ACCUEIL</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
+                    <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="cashback.php">RACHAT CASH</a>
@@ -129,135 +129,121 @@
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
-        <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "garageParrot";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Échec de la connexion à la base de données : " . $conn->connect_error);
-        }
-
-        // Récupération des marques de voitures depuis la base de données
-        $sql = "SELECT DISTINCT marque FROM cars";
-        $result = $conn->query($sql);
-
-        // Création des options du select en utilisant les marques de voitures
-        $options = '<option value="">Toutes</option>';
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-            $marque = $row['marque'];
-            $options .= "<option value=\"$marque\">$marque</option>";
-          }
-        }
-
-
-        // Fermeture de la connexion à la base de données
-        $conn->close();
-        ?>
-        <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-
+        <!-- ------------------------------ START MAIN ------------------------------- -->
+        <div id="introCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel1.jpg" alt="Image 1" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel2.jpg" alt="Image 2" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel3.jpg" alt="Image 3" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel4.jpg" alt="Image 4" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel5.jpg" alt="Image 5" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel7.jpg" alt="Image 6" />
+            </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="./src/medias/introCarousel/carousel8.jpg" alt="Image 7" />
+            </div>
+            <div class="controlCarousel">
+              <a id="previous" class="carousel-control-prev" href="#introCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a id="next" class="carousel-control-next" href="#introCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------ FIN CAROUSEL ---------------------------- -->
         <div class="row">
-          <div class="container catalogue text-center">
+          <div class="container catalogue text-center my-3">
             <p class="my-auto">
-              <a class="no-underline text-danger text-p" href="ourCars.html">Consultez notre catalogue jusqu'à 1500
+              <a class="no-underline text-danger text-p" href="catalogue.php">Consultez notre catalogue jusqu'à 1500
                 véhicules
                 disponibles</a>
             </p>
           </div>
         </div>
-        <div class="container">
-          <div class="filtres my-3 text-center">
-            <p>
-            <div class="row  my-3">
-              <div class="col-12">
-                <label for="marque">Marque :</label>
-                <select id="marque" name="marque">
-                  <?php echo $options; ?>
-                </select>
-              </div>
+        <!-- -------------------- HORAIRES ET MAP ----------------------- -->
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
+            
+            <h2 class="mx-5">AVIS DE NOS CLIENTS</h2>
+            <div class="trait2 mx-5"></div>
+            <p class="p-horaires">
 
-              <div class="col-12">
-                <label for="modele">Modèle :</label>
-                <select id="modele">
-                  <option value="">Tous</option>
-                  <option value="Clio">Clio</option>
-                  <option value="308">308</option>
-                  <option value="C3">C3</option>
-                  <option value="Captur">Captur</option>
-                  <option value="208">208</option>
-                  <option value="Berlingo">Berlingo</option>
-                </select>
-              </div>
+              <?php
+              // Connexion à la base de données
+              $servername = "localhost";
+              $username = "root";
+              $password = "root";
+              $dbname = "garageParrot";
 
-              <div class="col-12">
-                <label for="annee">Année :</label>
-                <select id="annee">
-                  <option value="">Toutes</option>
-                  <option value="2021">2021</option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                  <option value="2014">2014</option>
-                  <option value="2013">2013</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                  <option value="2009">2009</option>
-                  <option value="2008">2008</option>
-                  <option value="2007">2007</option>
-                  <option value="2006">2006</option>
-                  <option value="2005">2005</option>
-                  <option value="2004">2004</option>
-                  <option value="2003">2003</option>
-                  <option value="2002">2002</option>
-                  <option value="2001">2001</option>
-                  <option value="2000">2000</option>
-                </select>
-              </div>
+              $conn = new mysqli($servername, $username, $password, $dbname);
+              if ($conn->connect_error) {
+                die("Échec de la connexion à la base de données : " . $conn->connect_error);
+              }
 
-              <div class="col-12">
-                <label for="carburant">Carburant :</label>
-                <select id="carburant">
-                  <option value="">Tous</option>
-                  <option value="Essence">Essence</option>
-                  <option value="Diesel">Diesel</option>
-                  <option value="Electrique">Electrique</option>
-                  <option value="Hybride">Hybride</option>
-                  <option value="GPL">GPL</option>
-                 
-                </select>
-              </div>
+              // Récupérer les avis approuvés de la table "avis"
+              $sql = "SELECT * FROM avis WHERE approuve = 1";
+              $result = $conn->query($sql);
 
-              <div class="col-12">
-                <label for="Boîte de vitesse">Boîte de vitesse :</label>
-                <select id="Boîte de vitesse">
-                  <option value="">Tous</option>
-                  <option value="Manuelle">Manuelle</option>
-                  <option value="Automatique">Automatique</option>
-                </select>
-              </div>
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $nom = $row['nom'];
+                    $commentaire = $row['commentaire'];
+                    $note = $row['note'];
+            
+                    // Afficher les informations de l'avis
+                    echo "<div class='avis mx-5 my-3'>";
+                    
+                    // Générer les étoiles en fonction de la note
+                    for ($i = 1; $i <= $note; $i++) {
+                        echo "★";
+                    }
+                    
+                    echo "</p>";
+                    echo "<p><i>$commentaire</i></p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "Aucun avis approuvé pour le moment.";
+            }
+            
 
-            </div>
+              // Fermer la connexion à la base de données
+              $conn->close();
+              ?>
 
-            <div class="row justify-content-center my-3">
-              <button id="rechercher" class="btn btn-danger">Rechercher</button>
-            </div>
-
-            <div class="row justify-content-center my-3">
-              <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
-            </div>
-
-            <div id="resultat"></div>
             </p>
+            <div class="comment mx-auto my-5 justify-content-center align-items-center d-flex ">
+              <p class="text-center my-auto"><a class="no-underline text-white" href="addComment.php">Donnez nous votre
+                  Avis</a></p><br>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-md-4 px-0">
+          <h2>NOUS TROUVER</h2>
+            <div class="trait3"></div><br>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
+              width="280" height="280" style="border: 0" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
+        <div class="row"></div>
+
         <!-- --------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
@@ -288,7 +274,7 @@
               </div>
               <div class="col-6 col-md-3">
                 <div class="d-flex justify-content-center text-center my-3">
-                <p class="horairesFooter">
+                  <p class="horairesFooter">
                     NOS HORAIRES <br />
                     <?php
                     // Connexion à la base de données
@@ -324,6 +310,7 @@
                     <?php echo $samedi; ?>
                   </p>
                 </div>
+
               </div>
               <div class="col-6 col-md-3">
                 <div class="d-flex justify-content-center">
@@ -362,7 +349,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
-  <script src="./src/scripts/script.js"></script>
+  <script src="src/scripts/script.js"></script>
 </body>
 
 </html>

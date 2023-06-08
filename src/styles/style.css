@@ -44,6 +44,11 @@ nav {
   margin-top: 20px;
 }
 
+.navbar-nav {
+  border: 1px solid rgb(201, 201, 201);
+  text-align: center;
+}
+
 .nav-link {
   color: rgb(31, 31, 31);
   margin-right: 20px;
@@ -156,6 +161,12 @@ h2 {
   height: 1px;
   width: 200px;
 }
+.trait3 {
+  margin-left: 20px;
+  border: 1px solid red;
+  height: 1px;
+  width: 150px;
+}
 
 .footer {
   background-color: red;
@@ -185,12 +196,31 @@ h2 {
 .vehicules,
 .connect {
   background-color: #f1f1f1;
+  border: 1px solid rgb(219, 219, 219);
+}
+
+.containerCars {
+  background-color: #ffffff;
+  display: inline-block;
+  max-width: 350px;
   border: 1px solid rgb(180, 180, 180);
+  padding: 10px;
+  margin: 20px;
+}
+
+.detailsCar {
+  background-color: rgb(212, 212, 212);
+  color: #5e5e5e;
+  font-weight: bold;
+  border: 1px solid rgb(177, 177, 177);
 }
 
 #rechercher {
-  margin-top: 20px;
   width: 130px;
+}
+
+#reinitialiserLesFiltres {
+  width: 190px;
 }
 
 h1 {
@@ -224,7 +254,7 @@ h1 {
 .certificate {
   margin-top: 50px;
   background-color: #f1f1f1;
-  border: 1px solid rgb(180, 180, 180);
+  border: 1px solid rgb(231, 231, 231);
   width: 400px;
 }
 
@@ -243,7 +273,25 @@ h1 {
   color: white;
 }
 
+.detailsCar {
+  background-color: #fafafa;
+  color: #5e5e5e;
+  font-weight: bold;
+  border: 1px solid rgb(197, 197, 197);
+}
+
+.comment {
+  text-decoration: none;
+  color: #fafafa;
+  background-color: rgb(255, 0, 0);
+  width: 230px;
+  border-radius: 10px;
+}
+
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
+/*--------------------------------------------------------------------------------------*/
+
+/*----------------------------------- MAX WIDTH ------------------------------------*/
 
 @media screen and (max-width: 1400px) {
   .logoCashback {
@@ -299,6 +347,12 @@ h1 {
   }
 }
 
+@media screen and (max-width: 440px) {
+  .containerCars {
+    margin: 0;
+    margin-top: 10px;
+  }
+}
 @media screen and (max-width: 400px) {
   #G-maps {
     width: 300px;
@@ -325,5 +379,13 @@ h1 {
 @media screen and (max-width: 325px) {
   .footer {
     height: 340px;
+  }
+}
+
+/*---------------------------------  MIN WIDTH  ----------------------------------*/
+
+@media screen and (min-width: 991px) {
+  .navbar-nav {
+    border: none;
   }
 }

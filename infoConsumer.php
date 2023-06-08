@@ -101,7 +101,7 @@
           <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
-              class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
+              class="container navbar navbar-expand-lg navbar-dark col-sm-11"
             >
               <div class="container d-flex justify-content-start">
                 <button
@@ -115,27 +115,21 @@
                 >
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div
-                  class="collapse navbar-collapse"
-                  id="navbarText"
-                  style="z-index: 1"
-                >
+                <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="index.html"
-                        >ACCUEIL</a
-                      >
+                      <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="cashback.html">RACHAT CASH</a>
+                      <a class="nav-link" href="cashback.php">RACHAT CASH</a>
                     </li>
                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                     <li class="nav-item dropdown">
                       <a
-                        class="nav-link dropdown-toggle pointer"
+                        class="nav-link nav-link-active dropdown-toggle pointer"
                         class="navbar-toggler"
                         data-bs-toggle="collapse"
                         data-bs-target="#services"
@@ -146,7 +140,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="boschService.html"
+                            href="boschService.php"
                             >ATELIER BOSCH CAR SERVICE</a
                           >
                         </li>
@@ -154,7 +148,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="carRegistration.html"
+                            href="carRegistration.php"
                             >SERVICE CARTE GRISE</a
                           >
                         </li>
@@ -162,7 +156,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="infoConsumer.html"
+                            href="infoConsumer.php"
                             >INFORMATIONS CONSOMMATEUR</a
                           >
                         </li>
@@ -170,12 +164,12 @@
                     </li>
                     <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                     <li class="nav-item">
-                      <a class="nav-link" href="whoWeAre.html"
+                      <a class="nav-link" href="whoWeAre.php"
                         >QUI SOMMES-NOUS</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact.html">CONTACT</a>
+                      <a class="nav-link" href="contact.php">CONTACT</a>
                     </li>
                   </ul>
                 </div>
@@ -184,137 +178,85 @@
           </div>
           <!-- ------------------------------ END NAVBAR ------------------------------- -->
           <!-- ------------------------------ END HEADER ------------------------------- -->
-          <!-- ------------------------------ START MAIN ------------------------------- -->
-          <div
-            id="introCarousel"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel1.jpg"
-                  alt="Image 1"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel2.jpg"
-                  alt="Image 2"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel3.jpg"
-                  alt="Image 3"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel4.jpg"
-                  alt="Image 4"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel5.jpg"
-                  alt="Image 5"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel7.jpg"
-                  alt="Image 6"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="img-fluid"
-                  src="./src/medias/introCarousel/carousel8.jpg"
-                  alt="Image 7"
-                />
-              </div>
-              <div class="controlCarousel">
-                <a
-                  id="previous"
-                  class="carousel-control-prev"
-                  href="#introCarousel"
-                  role="button"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Previous</span>
-                </a>
-                <a
-                  id="next"
-                  class="carousel-control-next"
-                  href="#introCarousel"
-                  role="button"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Next</span>
-                </a>
+          <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
+          <div class="container-fluid text-center">
+            <div class="row mb-xl">
+              <div class="panel-group col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title mx-auto">
+                      <a
+                        class="accordion-toggle no-underline text-danger"
+                        data-toggle="collapse"
+                        href="#"
+                        aria-expanded="true"
+                      >
+                        <b>INFORMATIONS CONSOMMATEURS</b>
+                      </a>
+                    </h4>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- ------------------------------ FIN CAROUSEL ---------------------------- -->
-          <div class="row">
-            <div class="container catalogue text-center my-3">
-              <p class="my-auto">
-                <a class="no-underline text-danger text-p" href="catalogue.php"
-                  >Consultez notre catalogue jusqu'à 1500 véhicules
-                  disponibles</a
+          <div class="col-md-10 mx-auto">
+            <p style="text-align: center">
+              <span
+                class="my-5"
+                style="
+                  font-size: 36px;
+                  font-family: tahoma, geneva, sans-serif;
+                  font-weight: bold;
+                  color: #ff0000;
+                "
+                >INFORMATION</span
+              >
+            </p>
+            <div class="text-grey my-5">
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Tout Consommateur a le droit de recourir gratuitement à un
+                    médiateur de la consommation si sa tentative de résolution
+                    amiable de son différend avec le professionnel a
+                    échoué.</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Le Médiateur peut être saisi par voie électronique sur le
+                    site www.mediateur.fna.fr ou bien courrier simple à
+                    l'adresse suivante :</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Le Médiateur FNA - Immeuble Axe Nord - 9&amp;11 avenue
+                    Michelet 93583 Saint Ouen Cedex</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >En cas d'action en justice, le consommateur peut saisir,
+                    soit l'une des juridictions territorialement compétentes en
+                    vertu du code de procédure civile, soit la juridiction du
+                    lieu où il demeurait au moment de la conclusion du contrat
+                    ou de la survenance du fait dommageable (Article R631-3 du
+                    Code de la Consommation.</span
+                  ></span
                 >
               </p>
             </div>
           </div>
-          <!-- -------------------- HORAIRES ET MAP ----------------------- -->
-          <div class="row">
-            <div class="col-xs-12 col-md-8">
-              <h2>NOS HORAIRES</h2>
-              <div class="trait"></div>
-              <p class="p-horaires">
-                Commerce Automobile <br />
-                Lundi au vendredi: 9h-12h / 14h-19h le samedi de 9h à 12h <br />
-                Atelier réparation et entretien véhicule : BOSCH CAR SERVICE
-                <br />
-                Lundi au vendredi : 8h-12h / 14h-18h <br />
-                <br />
-                FERMETURE EXCEPTIONNELLE LE 18 ET LE 20 MAI 2023
-              </p>
-              <h2>AVIS DE NOS CLIENTS</h2>
-              <div class="trait2"></div>
-              <p class="p-horaires">
-                Avis à intégrer en javascript.<br />Ces avis seront soumis par
-                les utilisateurs avant d'être validés par un employé.
-              </p>
-            </div>
-            <div class="col-xs-12 col-md-4 my-3 d-flex justify-content-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
-                width="280"
-                height="280"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-          <div class="row"></div>
 
           <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
@@ -354,11 +296,41 @@
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="d-flex justify-content-center text-center my-3">
-                    <p class="horairesFooter">
-                      NOS HORAIRES <br />
-                      Lundi au vendredi: 9h-12h / 14h-19h <br />
-                      le samedi de 9h à 12h
-                    </p>
+                  <p class="horairesFooter">
+                    NOS HORAIRES <br />
+                    <?php
+                    // Connexion à la base de données
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "root";
+                    $dbname = "garageParrot";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
+                    }
+
+                    // Récupérer les horaires à partir de la base de données
+                    $sql = "SELECT * FROM horaires";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      $row = $result->fetch_assoc();
+                      $lundiVendredi = $row['lundi_vendredi'];
+                      $samedi = $row['samedi'];
+                    } else {
+                      $lundiVendredi = "9h-12h / 14h-19h";
+                      $samedi = "9h à 12h";
+                    }
+
+                    // Fermer la connexion à la base de données
+                    $conn->close();
+                    ?>
+
+                    Lundi au vendredi:
+                    <?php echo $lundiVendredi; ?> <br />
+                    le samedi de
+                    <?php echo $samedi; ?>
+                  </p>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -385,11 +357,11 @@
                     -
                     <a
                       class="no-underline text-grey"
-                      href="mentions-legales.html"
+                      href="mentions-legales.php"
                       >Mentions légales</a
                     >
                     -
-                    <a class="no-underline text-grey" href="politic.html"
+                    <a class="no-underline text-grey" href="politic.php"
                       >Politique de confidentialité</a
                     >
                   </p>

@@ -118,13 +118,13 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="index.html">ACCUEIL</a>
+                      <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="cashback.html">RACHAT CASH</a>
+                      <a class="nav-link" href="cashback.php">RACHAT CASH</a>
                     </li>
                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                     <li class="nav-item dropdown">
@@ -140,7 +140,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="boschService.html"
+                            href="boschService.php"
                             >ATELIER BOSCH CAR SERVICE</a
                           >
                         </li>
@@ -148,7 +148,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="carRegistration.html"
+                            href="carRegistration.php"
                             >SERVICE CARTE GRISE</a
                           >
                         </li>
@@ -156,7 +156,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="infoConsumer.html"
+                            href="infoConsumer.php"
                             >INFORMATIONS CONSOMMATEUR</a
                           >
                         </li>
@@ -164,12 +164,12 @@
                     </li>
                     <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="whoWeAre.html"
+                      <a class="nav-link nav-link-active" href="whoWeAre.php"
                         >QUI SOMMES-NOUS</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact.html">CONTACT</a>
+                      <a class="nav-link" href="contact.php">CONTACT</a>
                     </li>
                   </ul>
                 </div>
@@ -744,11 +744,41 @@
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="d-flex justify-content-center text-center my-3">
-                    <p class="horairesFooter">
-                      NOS HORAIRES <br />
-                      Lundi au vendredi: 9h-12h / 14h-19h <br />
-                      le samedi de 9h à 12h
-                    </p>
+                  <p class="horairesFooter">
+                    NOS HORAIRES <br />
+                    <?php
+                    // Connexion à la base de données
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "root";
+                    $dbname = "garageParrot";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
+                    }
+
+                    // Récupérer les horaires à partir de la base de données
+                    $sql = "SELECT * FROM horaires";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      $row = $result->fetch_assoc();
+                      $lundiVendredi = $row['lundi_vendredi'];
+                      $samedi = $row['samedi'];
+                    } else {
+                      $lundiVendredi = "9h-12h / 14h-19h";
+                      $samedi = "9h à 12h";
+                    }
+
+                    // Fermer la connexion à la base de données
+                    $conn->close();
+                    ?>
+
+                    Lundi au vendredi:
+                    <?php echo $lundiVendredi; ?> <br />
+                    le samedi de
+                    <?php echo $samedi; ?>
+                  </p>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -775,11 +805,11 @@
                     -
                     <a
                       class="no-underline text-grey"
-                      href="mentions-legales.html"
+                      href="mentions-legales.php"
                       >Mentions légales</a
                     >
                     -
-                    <a class="no-underline text-grey" href="politic.html"
+                    <a class="no-underline text-grey" href="politic.php"
                       >Politique de confidentialité</a
                     >
                   </p>

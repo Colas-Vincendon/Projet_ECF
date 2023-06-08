@@ -101,7 +101,7 @@
           <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
-              class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
+              class="container navbar navbar-expand-lg navbar-dark col-sm-11"
             >
               <div class="container d-flex justify-content-start">
                 <button
@@ -118,20 +118,18 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="index.html">ACCUEIL</a>
+                      <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="ourCars.html"
-                        >NOS VEHICULES</a
-                      >
+                      <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="cashback.html">RACHAT CASH</a>
+                      <a class="nav-link" href="cashback.php">RACHAT CASH</a>
                     </li>
                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                     <li class="nav-item dropdown">
                       <a
-                        class="nav-link dropdown-toggle pointer"
+                        class="nav-link nav-link-active dropdown-toggle pointer"
                         class="navbar-toggler"
                         data-bs-toggle="collapse"
                         data-bs-target="#services"
@@ -142,7 +140,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="boschService.html"
+                            href="boschService.php"
                             >ATELIER BOSCH CAR SERVICE</a
                           >
                         </li>
@@ -150,7 +148,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="carRegistration.html"
+                            href="carRegistration.php"
                             >SERVICE CARTE GRISE</a
                           >
                         </li>
@@ -158,7 +156,7 @@
                         <li>
                           <a
                             class="nav-link no-underline text-li-services"
-                            href="infoConsumer.html"
+                            href="infoConsumer.php"
                             >INFORMATIONS CONSOMMATEUR</a
                           >
                         </li>
@@ -166,12 +164,12 @@
                     </li>
                     <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                     <li class="nav-item">
-                      <a class="nav-link" href="whoWeAre.html"
+                      <a class="nav-link" href="whoWeAre.php"
                         >QUI SOMMES-NOUS</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact.html">CONTACT</a>
+                      <a class="nav-link" href="contact.php">CONTACT</a>
                     </li>
                   </ul>
                 </div>
@@ -181,24 +179,127 @@
           <!-- ------------------------------ END NAVBAR ------------------------------- -->
           <!-- ------------------------------ END HEADER ------------------------------- -->
           <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-          <div class="row">
-            <div class="container catalogue text-center">
-              <p class="my-auto">
-                <a class="no-underline text-danger text-p" href="ourCars.html"
-                  >Consultez notre catalogue jusqu'à 1500 véhicules
-                  disponibles</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="container">
-            <div class="filtres my-3 text-center">
-              <p>
-                Filtres à réaliser en AJAX pour que la page ne se recharge pas
-              </p>
-            </div>
-            <div class="vehicules my-3 text-center">
-              <p>Liste des véhicules provenant de la base de données JSON</p>
+          <div class="container-fluid text-center">
+            <div class="row mb-xl">
+              <div class="panel-group col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title mx-auto">
+                      <a
+                        class="accordion-toggle no-underline text-danger"
+                        data-toggle="collapse"
+                        href="#"
+                        aria-expanded="true"
+                      >
+                        <b> ATELIER BOSCH CAR SERVICE</b>
+                      </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 my-5">
+                <p style="text-align: center">
+                  <span style="font-size: 28px" class="text-grey"
+                    ><strong
+                      >Vous nous faites confiance pour l'achat de votre
+                      véhicule,</strong
+                    ></span
+                  >
+                </p>
+
+                <p style="text-align: center" class="text-grey">
+                  <span style="font-size: 28px"
+                    ><strong
+                      >faites nous confiance pour son entretien.</strong
+                    ></span
+                  >
+                </p>
+
+                <p style="text-align: center">
+                  <span class="text-grey"
+                    ><span style="font-size: 20px"
+                      ><strong
+                        >«&nbsp;L'efficacité ne dépend pas de la taille de
+                        l'entreprise, mais des Hommes qui la
+                        composent&nbsp;»</strong
+                      ></span
+                    ></span
+                  >
+                </p>
+
+                <p class="my-5">
+                  <img
+                    class="mx-5"
+                    alt=""
+                    src="./src/medias/logoGarage.jpg"
+                    style="height: 150px; width: 300px"
+                  /><img
+                    class="mx-5"
+                    alt=""
+                    src="./src/medias/boschServiceLogo.jpg"
+                    style="height: 149px; width: 148px"
+                  />
+                </p>
+                <div class="text-grey" style="font-size: 1.2rem">
+                  <p>
+                    La garantie constructeur préservée signifie que vous avez la
+                    possibilité de faire entretenir ou réparer votre véhicule
+                    hors du réseau agréé par le constructeur sans perte de
+                    garantie.
+                  </p>
+
+                  <p>
+                    Selon les nouvelles règles, les consommateurs ont le droit
+                    de s’adresser à tout atelier de réparation pour du travail
+                    non garanti, à la fois pendant la période de garantie légale
+                    (2 ans dans la plupart des États membres de l’Union
+                    Européenne) et pendant toute période d’extension de
+                    garantie.
+                  </p>
+
+                  <p>
+                    Si vous désirez conserver votre véhicule en bon état de
+                    fonctionnement pour le plus longtemps possible, l'entretien
+                    régulier est indispensable. Il peut aller d'un simple
+                    contrôle visuel du véhicule à un diagnostic approfondi.
+                  </p>
+
+                  <p>
+                    Ces deux méthodes permettent de dévoiler d'éventuels
+                    problèmes et d'y remédier avant qu'ils ne deviennent trop
+                    importants et risquent d'immobiliser le véhicule.
+                  </p>
+
+                  <p>
+                    Nos experts Bosch Car Service feront plus qu'entretenir
+                    votre véhicule, ils suivront son évolution et vous aideront
+                    à le conserver le plus longtemps possible!;
+                  </p>
+                  <p>
+                    La meilleure façon de prévenir une panne est sans aucun
+                    doute l'entretien régulier de votre véhicule par des experts
+                    de l'automobile : <br />
+                  </p>
+                  <p style="line-height: 40px" class="text-start justify-left">
+                    - Entretiens multimarques <br />
+                    - Contrôle complet <br />
+                    - Détail des points à surveiller <br />
+                    - Équipement de diagnostic de qualité Bosch <br />
+                    - Optimisation de votre moteur <br />
+                    - Diagnostic pour toutes les marques de véhicules <br />
+                    - Expertise Bosch
+                  </p>
+
+                  <p
+                    style="text-align: center; font-size: 1.5rem"
+                    class="text-dark-grey-bold my-5"
+                  >
+                    Fourniture, montage et équilibrage de pneus : demander votre
+                    devis
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <!-- --------------------------- FOOTER --------------------------- -->
@@ -239,11 +340,41 @@
                 </div>
                 <div class="col-6 col-md-3">
                   <div class="d-flex justify-content-center text-center my-3">
-                    <p class="horairesFooter">
-                      NOS HORAIRES <br />
-                      Lundi au vendredi: 9h-12h / 14h-19h <br />
-                      le samedi de 9h à 12h
-                    </p>
+                  <p class="horairesFooter">
+                    NOS HORAIRES <br />
+                    <?php
+                    // Connexion à la base de données
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "root";
+                    $dbname = "garageParrot";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
+                    }
+
+                    // Récupérer les horaires à partir de la base de données
+                    $sql = "SELECT * FROM horaires";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      $row = $result->fetch_assoc();
+                      $lundiVendredi = $row['lundi_vendredi'];
+                      $samedi = $row['samedi'];
+                    } else {
+                      $lundiVendredi = "9h-12h / 14h-19h";
+                      $samedi = "9h à 12h";
+                    }
+
+                    // Fermer la connexion à la base de données
+                    $conn->close();
+                    ?>
+
+                    Lundi au vendredi:
+                    <?php echo $lundiVendredi; ?> <br />
+                    le samedi de
+                    <?php echo $samedi; ?>
+                  </p>
                   </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -264,17 +395,17 @@
                 <div class="text-center text-grey font-14px">
                   <p class="p-footer">
                     © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
-                    <a class="no-underline text-grey" href="connect.html"
+                    <a class="no-underline text-grey" href="connexion.php"
                       >Administration du site</a
                     >
                     -
                     <a
                       class="no-underline text-grey"
-                      href="mentions-legales.html"
+                      href="mentions-legales.php"
                       >Mentions légales</a
                     >
                     -
-                    <a class="no-underline text-grey" href="politic.html"
+                    <a class="no-underline text-grey" href="politic.php"
                       >Politique de confidentialité</a
                     >
                   </p>

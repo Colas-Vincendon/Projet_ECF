@@ -129,136 +129,32 @@
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
-        <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "garageParrot";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Échec de la connexion à la base de données : " . $conn->connect_error);
-        }
-
-        // Récupération des marques de voitures depuis la base de données
-        $sql = "SELECT DISTINCT marque FROM cars";
-        $result = $conn->query($sql);
-
-        // Création des options du select en utilisant les marques de voitures
-        $options = '<option value="">Toutes</option>';
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-            $marque = $row['marque'];
-            $options .= "<option value=\"$marque\">$marque</option>";
-          }
-        }
-
-
-        // Fermeture de la connexion à la base de données
-        $conn->close();
-        ?>
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-
-        <div class="row">
-          <div class="container catalogue text-center">
-            <p class="my-auto">
-              <a class="no-underline text-danger text-p" href="ourCars.html">Consultez notre catalogue jusqu'à 1500
-                véhicules
-                disponibles</a>
-            </p>
-          </div>
-        </div>
         <div class="container">
-          <div class="filtres my-3 text-center">
-            <p>
-            <div class="row  my-3">
-              <div class="col-12">
-                <label for="marque">Marque :</label>
-                <select id="marque" name="marque">
-                  <?php echo $options; ?>
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label for="modele">Modèle :</label>
-                <select id="modele">
-                  <option value="">Tous</option>
-                  <option value="Clio">Clio</option>
-                  <option value="308">308</option>
-                  <option value="C3">C3</option>
-                  <option value="Captur">Captur</option>
-                  <option value="208">208</option>
-                  <option value="Berlingo">Berlingo</option>
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label for="annee">Année :</label>
-                <select id="annee">
-                  <option value="">Toutes</option>
-                  <option value="2021">2021</option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                  <option value="2014">2014</option>
-                  <option value="2013">2013</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                  <option value="2009">2009</option>
-                  <option value="2008">2008</option>
-                  <option value="2007">2007</option>
-                  <option value="2006">2006</option>
-                  <option value="2005">2005</option>
-                  <option value="2004">2004</option>
-                  <option value="2003">2003</option>
-                  <option value="2002">2002</option>
-                  <option value="2001">2001</option>
-                  <option value="2000">2000</option>
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label for="carburant">Carburant :</label>
-                <select id="carburant">
-                  <option value="">Tous</option>
-                  <option value="Essence">Essence</option>
-                  <option value="Diesel">Diesel</option>
-                  <option value="Electrique">Electrique</option>
-                  <option value="Hybride">Hybride</option>
-                  <option value="GPL">GPL</option>
-                 
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label for="Boîte de vitesse">Boîte de vitesse :</label>
-                <select id="Boîte de vitesse">
-                  <option value="">Tous</option>
-                  <option value="Manuelle">Manuelle</option>
-                  <option value="Automatique">Automatique</option>
-                </select>
-              </div>
-
+          <form action="add_review.php" method="POST">
+            <div class="form-group">
+              <label for="nom">Nom :</label>
+              <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
-
-            <div class="row justify-content-center my-3">
-              <button id="rechercher" class="btn btn-danger">Rechercher</button>
+            <div class="form-group">
+              <label for="commentaire">Commentaire :</label>
+              <textarea class="form-control" id="commentaire" name="commentaire" required></textarea>
             </div>
-
-            <div class="row justify-content-center my-3">
-              <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
+            <div class="form-group">
+              <label for="note">Note :</label>
+              <select class="form-control" id="note" name="note" required>
+                <option value="1">1 étoile</option>
+                <option value="2">2 étoiles</option>
+                <option value="3">3 étoiles</option>
+                <option value="4">4 étoiles</option>
+                <option value="5">5 étoiles</option>
+              </select>
             </div>
+            <button type="submit" class="btn btn-primary">Ajouter un avis</button>
+          </form>
 
-            <div id="resultat"></div>
-            </p>
-          </div>
         </div>
-        <!-- --------------------------- FOOTER --------------------------- -->
+        <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
             <div class="row cols-3">
@@ -288,7 +184,7 @@
               </div>
               <div class="col-6 col-md-3">
                 <div class="d-flex justify-content-center text-center my-3">
-                <p class="horairesFooter">
+                  <p class="horairesFooter">
                     NOS HORAIRES <br />
                     <?php
                     // Connexion à la base de données

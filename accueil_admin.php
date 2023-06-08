@@ -88,13 +88,13 @@
                             <div class="collapse navbar-collapse" id="navbarText">
                                 <ul class="navbar-nav mx-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">ACCUEIL</a>
+                                        <a class="nav-link" href="index.php">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cashback.html">RACHAT CASH</a>
+                                        <a class="nav-link" href="cashback.php">RACHAT CASH</a>
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
@@ -104,29 +104,29 @@
                                         <ul id="services" class="dropdown-menu">
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.html">ATELIER BOSCH CAR
+                                                    href="boschService.php">ATELIER BOSCH CAR
                                                     SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.html">SERVICE CARTE
+                                                    href="carRegistration.php">SERVICE CARTE
                                                     GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.html">INFORMATIONS
+                                                    href="infoConsumer.php">INFORMATIONS
                                                     CONSOMMATEUR</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="whoWeAre.html">QUI SOMMES-NOUS</a>
+                                        <a class="nav-link" href="whoWeAre.php">QUI SOMMES-NOUS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.html">CONTACT</a>
+                                        <a class="nav-link" href="contact.php">CONTACT</a>
                                     </li>
                                 </ul>
                             </div>
@@ -138,19 +138,36 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container text-center connect">
 
-                    <h2><b></b>Bienvenue Mr PARROT</b></h2> <br/>
-                    <h2 class="text-grey my-3">Ajouter un employé</h2>
+                    <h1 class="ml-0 mt-3"><b></b>Bienvenue Mr PARROT</b></h1> <br />
+                    <h1 class="ml-0 text-grey my-3">Ajouter un employé</h1>
                     <form method="POST" action="add_employe.php">
                         <div class="my-3">
-                            <label for="email">Email :</label> <br/>
+                            <label for="email">Email :</label> <br />
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="my-3">
-                            <label for="password">Mot de passe :</label><br/>
+                            <label for="password">Mot de passe :</label><br />
                             <input type="password" id="password" name="password" required>
                         </div>
                         <div class="my-3">
-                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un employé</button>
+                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un
+                                employé</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="container text-center connect">
+                <h1 class="ml-0 text-grey my-3">Modifier les horaires d'ouverture</h1>
+                    <form action="modifier_horaires.php" method="POST">
+                        <div class="my-3">
+                            <label for="lundi_vendredi">Lundi au vendredi :</label><br>
+                            <input type="text" id="lundi_vendredi" name="lundi_vendredi">
+                        </div>
+                        <div class="my-3">
+                            <label for="samedi">Samedi :</label><br>
+                            <input type="text" id="samedi" name="samedi">
+                        </div>
+                        <div class="my-3">
+                        <button type="submit" class="btn btn-danger">Enregistrer les nouveaux horaires</button>
                         </div>
                     </form>
                 </div>
@@ -187,8 +204,38 @@
                                 <div class="d-flex justify-content-center text-center my-3">
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
-                                        Lundi au vendredi: 9h-12h / 14h-19h <br />
-                                        le samedi de 9h à 12h
+                                        <?php
+                                        // Connexion à la base de données
+                                        $servername = "localhost";
+                                        $username = "root";
+                                        $password = "root";
+                                        $dbname = "garageParrot";
+
+                                        $conn = new mysqli($servername, $username, $password, $dbname);
+                                        if ($conn->connect_error) {
+                                            die("Échec de la connexion à la base de données : " . $conn->connect_error);
+                                        }
+
+                                        // Récupérer les horaires à partir de la base de données
+                                        $sql = "SELECT * FROM horaires";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            $row = $result->fetch_assoc();
+                                            $lundiVendredi = $row['lundi_vendredi'];
+                                            $samedi = $row['samedi'];
+                                        } else {
+                                            $lundiVendredi = "9h-12h / 14h-19h";
+                                            $samedi = "9h à 12h";
+                                        }
+
+                                        // Fermer la connexion à la base de données
+                                        $conn->close();
+                                        ?>
+
+                                        Lundi au vendredi:
+                                        <?php echo $lundiVendredi; ?> <br />
+                                        le samedi de
+                                        <?php echo $samedi; ?>
                                     </p>
                                 </div>
                             </div>
@@ -209,9 +256,9 @@
                                     © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
                                     <a class="no-underline text-grey" href="connexion.php">Administration du site</a>
                                     -
-                                    <a class="no-underline text-grey" href="mentions-legales.html">Mentions légales</a>
+                                    <a class="no-underline text-grey" href="mentions-legales.php">Mentions légales</a>
                                     -
-                                    <a class="no-underline text-grey" href="politic.html">Politique de
+                                    <a class="no-underline text-grey" href="politic.php">Politique de
                                         confidentialité</a>
                                 </p>
                             </div>
