@@ -71,7 +71,7 @@
 
         <div class="row header">
           <header class="my-3 px-3">
-            <a href="index.html"><img class="img-fluid" src="./src/medias/banderole header.jpg"
+            <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
         </div>
@@ -99,6 +99,10 @@
                     <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse"
                       data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                     <ul id="services" class="dropdown-menu">
+                      <li>
+                        <a class="nav-link no-underline text-li-services" href="allServices.php">TOUS NOS SERVICES</a>
+                      </li>
+                      <li class="divider"></li>
                       <li>
                         <a class="nav-link no-underline text-li-services" href="boschService.php">ATELIER BOSCH CAR
                           SERVICE</a>
@@ -130,19 +134,19 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="container">
+        <div class="container my-4">
           <form action="add_review.php" method="POST">
-            <div class="form-group">
+            <div class="my-3">
               <label for="nom">Nom :</label>
-              <input type="text" class="form-control" id="nom" name="nom" required>
+              <input type="text" class="my-3 form-control" id="nomAddComment" name="nom" required>
             </div>
-            <div class="form-group">
+            <div class="my-3">
               <label for="commentaire">Commentaire :</label>
-              <textarea class="form-control" id="commentaire" name="commentaire" required></textarea>
+              <textarea class="my-3 form-control" id="commentaireAddComment" name="commentaire" required></textarea>
             </div>
-            <div class="form-group">
+            <div class="my-3">
               <label for="note">Note :</label>
-              <select class="form-control" id="note" name="note" required>
+              <select class="my-3" id="noteAddComment" name="note" required>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
                 <option value="3">3 étoiles</option>
@@ -150,9 +154,10 @@
                 <option value="5">5 étoiles</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter un avis</button>
+            <div class="text-center">
+              <button type="submit" class=" my-5 btn btn-danger">Ajouter un avis</button>
+            </div>
           </form>
-
         </div>
         <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">

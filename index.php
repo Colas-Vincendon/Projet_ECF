@@ -71,7 +71,7 @@
 
         <div class="row header">
           <header class="my-3 px-3">
-            <a href="index.html"><img class="img-fluid" src="./src/medias/banderole header.jpg"
+            <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
         </div>
@@ -99,6 +99,10 @@
                     <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse"
                       data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                     <ul id="services" class="dropdown-menu">
+                      <li>
+                        <a class="nav-link no-underline text-li-services" href="allServices.php">TOUS NOS SERVICES</a>
+                      </li>
+                      <li class="divider"></li>
                       <li>
                         <a class="nav-link no-underline text-li-services" href="boschService.php">ATELIER BOSCH CAR
                           SERVICE</a>
@@ -243,7 +247,7 @@
           </div>
         </div>
         <div class="row"></div>
-
+        
         <!-- --------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">

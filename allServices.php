@@ -78,7 +78,7 @@
                 </div>
                 <!-- --------------------------------- START NAVBAR ------------------------------ -->
                 <div class="row">
-                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
+                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11">
                         <div class="container d-flex justify-content-start">
                             <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
@@ -91,15 +91,15 @@
                                         <a class="nav-link" href="index.php">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
+                                        <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.php">RACHAT CASH</a>
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle pointer" class="navbar-toggler"
-                                            data-bs-toggle="collapse" data-bs-target="#services"
+                                        <a class="nav-link nav-link-active dropdown-toggle pointer"
+                                            class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#services"
                                             aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                                         <ul id="services" class="dropdown-menu">
                                             <li>
@@ -109,20 +109,17 @@
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.php">ATELIER BOSCH CAR
-                                                    SERVICE</a>
+                                                    href="boschService.php">ATELIER BOSCH CAR SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.php">SERVICE CARTE
-                                                    GRISE</a>
+                                                    href="carRegistration.php">SERVICE CARTE GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.php">INFORMATIONS
-                                                    CONSOMMATEUR</a>
+                                                    href="infoConsumer.php">INFORMATIONS CONSOMMATEUR</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -141,103 +138,56 @@
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container text-center connect">
+                <div class="container-fluid text-center">
+                    <div class="row">
+                        
+                        <?php
+                        // Connexion à la base de données
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "root";
+                        $dbname = "garageParrot";
 
-                    <h1 class="ml-0 mt-3"><b></b>Bienvenue Mr PARROT</b></h1> <br />
-                    <h1 class="ml-0 text-grey my-3">Ajouter un employé</h1>
-                    <form method="POST" action="add_employe.php">
-                        <div class="my-3">
-                            <label for="email">Email :</label> <br />
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="my-3">
-                            <label for="password">Mot de passe :</label><br />
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="my-3">
-                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un
-                                employé</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="container text-center connect">
-                    <h1 class="ml-0 text-grey my-3">Modifier les horaires d'ouverture</h1>
-                    <form action="modifier_horaires.php" method="POST">
-                        <div class="my-3">
-                            <label for="lundi_vendredi">Lundi au vendredi :</label><br>
-                            <input type="text" id="lundi_vendredi" name="lundi_vendredi">
-                        </div>
-                        <div class="my-3">
-                            <label for="samedi">Samedi :</label><br>
-                            <input type="text" id="samedi" name="samedi">
-                        </div>
-                        <div class="my-3">
-                            <button type="submit" class="btn btn-danger">Enregistrer les nouveaux horaires</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="container text-center connect">
-                <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
-                    <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
-                    $dbname = "garageParrot";
-
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                        die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
-
-                    // Récupérer la liste des services existants
-                    $sql = "SELECT * FROM services";
-                    $result = $conn->query($sql);
-
-                    // Afficher la liste des services
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $serviceId = $row['id'];
-                            $titre = $row['titre'];
-                            $paragraphe = $row['paragraphe'];
-
-                            echo "<div class='service'>";
-                            echo "<h3>$titre</h3>";
-                            echo "<p>$paragraphe</p>";
-                            echo "<form action='supprimer_service.php' method='POST'>";
-                            echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                            echo "<button type='submit'>Supprimer</button>";
-                            echo "</form>";
-                            echo "</div>";
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        if ($conn->connect_error) {
+                            die("Échec de la connexion à la base de données : " . $conn->connect_error);
                         }
-                    } else {
-                        echo "Aucun service existant.";
-                    }?>
 
-                    <h1 class="ml-0 text-grey my-3">Ajouter un nouveau service</h1>
-                    <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
-                    <div>
-                    <label for='titre'>Titre :</label>
-                    <input type='text' id='titre' name='titre' required>
-                    </div>
-                    <div>
-                    <label for='paragraphe'>Paragraphe :</label>
-                    <textarea id='paragraphe' name='paragraphe' required></textarea>
-                    </div>
-                    <div>
-                    <label for='image'>Image :</label>
-                    <input type='file' id='image' name='image' required>
-                    </div>
-                    <button type='submit'>Ajouter</button>
-                    </form>
+                        // Récupérer les services et leurs images associées depuis la base de données
+                        $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
+                         FROM services s
+                         LEFT JOIN imageService i ON s.id = i.service_id";
+                        $result = $conn->query($sql);
 
-                    <?php
-                    // Fermer la connexion à la base de données
-                    $conn->close();
-                    ?>
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $serviceId = $row['id'];
+                                $titre = $row['titre'];
+                                $paragraphe = $row['paragraphe'];
+                                $imageBase64 = $row['image_base64'];
 
+                                // Afficher les informations du service
+                                echo "<div class='col-12 col-md-6 col-xl-4'><div class='container containerAllServices my-5'>";
+                                if (!empty($imageBase64)) {
+                                    echo "<img style='width: 300px; height: 300px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'>";
+                                }
+                                echo "<h3 class='my-4'>$titre</h3>";
+                                echo "<div class='allServices-p'><p>$paragraphe</p></div>";
+
+                                // Afficher l'image du service s'il y en a une
+                                echo "</div></div>";
+                            }
+                        } else {
+                            echo "Aucun service n'est disponible.";
+                        }
+
+                        // Fermer la connexion à la base de données
+                        $conn->close();
+                        ?>
+
+                    </div>
                 </div>
-                <!-- --------------------------------- FOOTER --------------------------- -->
+                <!-- --------------------------- FOOTER --------------------------- -->
                 <div class="row">
                     <div class="container footer">
                         <div class="row cols-3">
@@ -333,8 +283,6 @@
                 </div>
                 <div class="row row-bottom"></div>
             </div>
-
-
             <div class="col-xl-1 col-xxl-2 toHide"></div>
         </div>
     </div>
@@ -345,7 +293,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-    <script src="./src/scripts/script.js"></script>
+    <script src="src/scripts/script.js"></script>
 </body>
 
 </html>

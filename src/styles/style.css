@@ -76,9 +76,8 @@ nav {
 }
 
 .dropdown-menu {
-  border-top: red;
   font-size: 1rem;
-  height: 140px;
+  height: 180px;
   width: 300px;
   border-radius: 0;
 }
@@ -286,6 +285,32 @@ h1 {
   background-color: rgb(255, 0, 0);
   width: 230px;
   border-radius: 10px;
+}
+
+#nomAddComment {
+  max-width: 400px;
+}
+
+#noteAddComment {
+  width: 100px;
+}
+
+#commentaireAddComment {
+  height: 200px;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.allServices-p {
+  max-width: 300px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.containerAllServices {
+  background-color: #f1f1f1;
 }
 
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
