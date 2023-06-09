@@ -5,51 +5,54 @@ $username = "root";
 $password = "root";
 $dbname = "garageParrot";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
-}
+try {
+    // Connexion à la base de données en utilisant PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Récupération des valeurs du formulaire
-$marque = $_POST['marque'];
-$modele = $_POST['modele'];
-$annee = $_POST['annee'];
-$kilometrage = $_POST['kilometres'];
-$carburant = $_POST['carburant'];
-$boiteDeVitesse = $_POST['boite_de_vitesse'];
-$prix = $_POST['prix'];
+    // Récupération des valeurs du formulaire
+    $marque = $_POST['marque'];
+    $modele = $_POST['modele'];
+    $annee = $_POST['annee'];
+    $kilometrage = $_POST['kilometres'];
+    $carburant = $_POST['carburant'];
+    $boiteDeVitesse = $_POST['boite_de_vitesse'];
+    $prix = $_POST['prix'];
 
-// Insertion du véhicule dans la table "cars"
-$sql2 = "INSERT INTO cars (marque, modele, annee, kilometres, carburant, boite_de_vitesse, Prix) VALUES ('$marque', '$modele', '$annee', '$kilometrage', '$carburant', '$boiteDeVitesse', '$prix')";
-$conn->query($sql2);
+    // Insertion du véhicule dans la table "cars" en utilisant une requête préparée
+    $stmt = $conn->prepare("INSERT INTO cars (marque, modele, annee, kilometres, carburant, boite_de_vitesse, Prix) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$marque, $modele, $annee, $kilometrage, $carburant, $boiteDeVitesse, $prix]);
 
-// Récupération de l'identifiant du véhicule inséré
-$vehiculeId = $conn->insert_id;
+    // Récupération de l'identifiant du véhicule inséré
+    $vehiculeId = $conn->lastInsertId();
 
-// Traitement des images
-$images = $_FILES['images'];
+    // Traitement des images
+    $images = $_FILES['images'];
 
-// Vérification si des images ont été sélectionnées
-if (!empty($images['name'][0])) {
-    $totalImages = count($images['name']);
+    // Vérification si des images ont été sélectionnées
+    if (!empty($images['name'][0])) {
+        $totalImages = count($images['name']);
 
-    for ($i = 0; $i < $totalImages; $i++) {
-        $tmpName = $images['tmp_name'][$i];
-        $imageFile = $images['name'][$i];
+        for ($i = 0; $i < $totalImages; $i++) {
+            $tmpName = $images['tmp_name'][$i];
+            $imageFile = $images['name'][$i];
 
-        // Conversion de l'image en base64
-        $base64Image = base64_encode(file_get_contents($tmpName));
+            // Conversion de l'image en base64
+            $base64Image = base64_encode(file_get_contents($tmpName));
 
-        // Insertion de l'image en base64 dans la table "images"
-        $sql = "INSERT INTO images (car_id, image_base64) VALUES ('$vehiculeId', '$base64Image')";
-        $conn->query($sql);
+            // Insertion de l'image en base64 dans la table "images" en utilisant une requête préparée
+            $stmt = $conn->prepare("INSERT INTO images (car_id, image_base64) VALUES (?, ?)");
+            $stmt->execute([$vehiculeId, $base64Image]);
+        }
     }
+
+    // Fermeture de la connexion à la base de données
+    $conn = null;
+
+    // Redirection vers la page d'accueil de l'employé
+    header("Location: accueil_employe.php");
+    exit();
+} catch (PDOException $e) {
+    die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-
-// Fermeture de la connexion à la base de données
-$conn->close();
-
-// Redirection vers la page d'accueil de l'employé
-header("Location: accueil_employe.php");
-exit();
 ?>

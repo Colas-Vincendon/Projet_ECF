@@ -1,42 +1,41 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
-    $nom = validateInput($_POST['nom']);
-    $email = validateInput($_POST['email']);
-    $sujet = validateInput($_POST['sujet']);
-    $message = validateInput($_POST['message']);
+<?php 
+    require_once(__DIR__ . '/vendor/autoload.php');
+    use \Mailjet\Resources;
+    define('API_PUBLIC_KEY', '9403075ff6c0369f3006a01335ccd51b');
+    define('API_PRIVATE_KEY', '22d8768a1f5ad67893ff3b072a3839dd');
+    $mj = new \Mailjet\Client(API_PUBLIC_KEY, API_PRIVATE_KEY,true,['version' => 'v3.1']);
 
-    if (empty($nom) || empty($email) || empty($message)) {
-        echo "Veuillez remplir tous les champs obligatoires.";
-        exit;
+if (!empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['message'])) {
+    $nom = htmlspecialchars($_POST['nom']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+    
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $body = [                'Messages' => [
+                   [
+                    'From' => [
+                        'Email' => "colasvincendon@gmail.com",
+                        'Name' => "colas"
+                    ],                        'To' => [
+                          [
+                            'Email' => "colasvincendon@gmail.com",
+                            'Name' => "colas"
+                        ]
+                    ],
+                    'Subject' => "Demande de renseignement",
+                        'TextPart' => "$email, $message ",
+                ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        $response->success();
+        echo "Email envoyé avec succès !";
+    }
+    else{
+        echo "Email non valide";
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Adresse email non valide.";
-        exit;
-    }
-
-    $to = "colasvincendon@gmail.com";
-    $subject = "Nouveau message de contact - $sujet";
-    $messageContent = "Nom: $nom\n";
-    $messageContent .= "Email: $email\n";
-    $messageContent .= "Message:\n$message";
-
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-    if (mail($to, $subject, $messageContent, $headers)) {
-        echo "Merci pour votre message. Nous vous contacterons bientôt.";
-    } else {
-        echo "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.";
-    }
+} else {
+    header('Location: index.php');
+    die();
 }
-
-function validateInput($input) {
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
-}
-?>

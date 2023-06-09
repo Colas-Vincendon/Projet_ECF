@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
@@ -177,7 +177,7 @@
                     </form>
                 </div>
                 <div class="container text-center connect">
-                <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
+                    <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
                     <?php
                     // Connexion à la base de données
                     $servername = "localhost";
@@ -185,56 +185,61 @@
                     $password = "root";
                     $dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                        die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+                    try {
+                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Récupérer la liste des services existants
-                    $sql = "SELECT * FROM services";
-                    $result = $conn->query($sql);
+                        // Récupérer la liste des services existants
+                        $sql = "SELECT * FROM services";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
 
-                    // Afficher la liste des services
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $serviceId = $row['id'];
-                            $titre = $row['titre'];
-                            $paragraphe = $row['paragraphe'];
+                        // Afficher la liste des services
+                        if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $serviceId = $row['id'];
+                                $titre = $row['titre'];
+                                $paragraphe = $row['paragraphe'];
 
-                            echo "<div class='service'>";
-                            echo "<h3>$titre</h3>";
-                            echo "<p>$paragraphe</p>";
-                            echo "<form action='supprimer_service.php' method='POST'>";
-                            echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                            echo "<button type='submit'>Supprimer</button>";
-                            echo "</form>";
-                            echo "</div>";
+                                echo "<div class='service'>";
+                                echo "<h3>$titre</h3>";
+                                echo "<p>$paragraphe</p>";
+                                echo "<form action='supprimer_service.php' method='POST'>";
+                                echo "<input type='hidden' name='service_id' value='$serviceId'>";
+                                echo "<button type='submit'>Supprimer</button>";
+                                echo "</form>";
+                                echo "</div>";
+                            }
+                        } else {
+                            echo "Aucun service existant.";
                         }
-                    } else {
-                        echo "Aucun service existant.";
-                    }?>
+                        ?>
+                    </div>
+                    <div class="container text-center connect">
+                        <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
+                        <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
+                            <div>
+                                <label for='titre'>Titre :</label>
+                                <input type='text' id='titre' name='titre' required>
+                            </div>
+                            <div>
+                                <label for='paragraphe'>Paragraphe :</label>
+                                <textarea id='paragraphe' name='paragraphe' required></textarea>
+                            </div>
+                            <div>
+                                <label for='image'>Image :</label>
+                                <input type='file' id='image' name='image' required>
+                            </div>
+                            <button type='submit'>Ajouter</button>
+                        </form>
 
-                    <h1 class="ml-0 text-grey my-3">Ajouter un nouveau service</h1>
-                    <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
-                    <div>
-                    <label for='titre'>Titre :</label>
-                    <input type='text' id='titre' name='titre' required>
-                    </div>
-                    <div>
-                    <label for='paragraphe'>Paragraphe :</label>
-                    <textarea id='paragraphe' name='paragraphe' required></textarea>
-                    </div>
-                    <div>
-                    <label for='image'>Image :</label>
-                    <input type='file' id='image' name='image' required>
-                    </div>
-                    <button type='submit'>Ajouter</button>
-                    </form>
-
-                    <?php
-                    // Fermer la connexion à la base de données
-                    $conn->close();
+                        <?php
+                        $conn = null;
+                    } catch (PDOException $e) {
+                        die("Échec de la connexion à la base de données : " . $e->getMessage());
+                    }
                     ?>
+
 
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
@@ -277,31 +282,34 @@
                                         $password = "root";
                                         $dbname = "garageParrot";
 
-                                        $conn = new mysqli($servername, $username, $password, $dbname);
-                                        if ($conn->connect_error) {
-                                            die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                                        }
+                                        try {
+                                            // Connexion à la base de données en utilisant PDO
+                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                                        // Récupérer les horaires à partir de la base de données
-                                        $sql = "SELECT * FROM horaires";
-                                        $result = $conn->query($sql);
-                                        if ($result->num_rows > 0) {
-                                            $row = $result->fetch_assoc();
-                                            $lundiVendredi = $row['lundi_vendredi'];
-                                            $samedi = $row['samedi'];
-                                        } else {
-                                            $lundiVendredi = "9h-12h / 14h-19h";
-                                            $samedi = "9h à 12h";
+                                            // Récupérer les horaires à partir de la base de données
+                                            $stmt = $conn->query("SELECT * FROM horaires");
+                                            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                            if ($stmt->rowCount() > 0) {
+                                                $lundiVendredi = $row['lundi_vendredi'];
+                                                $samedi = $row['samedi'];
+                                            } else {
+                                                $lundiVendredi = "9h-12h / 14h-19h";
+                                                $samedi = "9h à 12h";
+                                            }
+                                        } catch (PDOException $e) {
+                                            die("Échec de la connexion à la base de données : " . $e->getMessage());
                                         }
 
                                         // Fermer la connexion à la base de données
-                                        $conn->close();
+                                        $conn = null;
                                         ?>
 
                                         Lundi au vendredi:
                                         <?php echo $lundiVendredi; ?> <br />
                                         le samedi de
                                         <?php echo $samedi; ?>
+
                                     </p>
                                 </div>
                             </div>

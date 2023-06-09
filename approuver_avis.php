@@ -1,4 +1,3 @@
-
 <?php
 // Connexion à la base de données
 $servername = "localhost";
@@ -6,21 +5,26 @@ $username = "root";
 $password = "root";
 $dbname = "garageParrot";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Vérifier si le formulaire a été soumis
+    if (isset($_POST['approuver'])) {
+        $avisId = $_POST['avis_id'];
+
+        // Mettre à jour le champ 'approuve' de l'avis dans la base de données
+        $stmt = $conn->prepare("UPDATE avis SET approuve = 1 WHERE id = :avisId");
+        $stmt->bindParam(':avisId', $avisId);
+        $stmt->execute();
+    }
+
+    // Rediriger vers la page d'interface Employé
+    header("Location: accueil_employe.php");
+    exit();
+} catch (PDOException $e) {
+    echo "Échec de la connexion à la base de données : " . $e->getMessage();
 }
 
-// Vérifier si le formulaire a été soumis
-if (isset($_POST['approuver'])) {
-    $avisId = $_POST['avis_id'];
-
-    // Mettre à jour le champ 'approuve' de l'avis dans la base de données
-    $sql = "UPDATE avis SET approuve = 1 WHERE id = $avisId";
-    $conn->query($sql);
-}
-
-// Rediriger vers la page d'interface Employé
-header("Location: accueil_employe.php");
-exit();
+$conn = null;
 ?>

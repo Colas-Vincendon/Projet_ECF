@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -99,7 +99,7 @@
                     <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse"
                       data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                     <ul id="services" class="dropdown-menu">
-                    <li>
+                      <li>
                         <a class="nav-link no-underline text-li-services" href="allServices.php">TOUS NOS SERVICES</a>
                       </li>
                       <li class="divider"></li>
@@ -134,10 +134,18 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
+        <div class="container text-center connect my-4">
+          <h2><b>Bienvenue</b></h2> <br>
+        </div>
+          <div class="container text-center connect">
+          <h2>Les messages clients</h2>
+          <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
+              <p class="text-center btn btn-success my-auto"><a class="no-underline text-white" href="messagesPlace.php">Consulter</a></p><br>
+            </div>
+        </div>
         <div class="container text-center connect">
 
-          <h2><b>Bienvenue</b></h2> <br>
-          <h1>Ajouter un nouveau véhicule</h1>
+          <h2>Ajouter un nouveau véhicule</h2>
 
           <form action="add_vehicle.php" method="POST" enctype="multipart/form-data">
             <label for="marque">Marque :</label>
@@ -173,7 +181,7 @@
             <label for="images">Images :</label>
             <input type="file" name="images[]" multiple><br><br>
 
-            <input type="submit" value="Ajouter le véhicule">
+            <input class="btn btn-success my-4" type="submit" value="Ajouter le véhicule">
           </form>
         </div>
         <div class="container text-center connect">
@@ -185,19 +193,24 @@
           $password = "root";
           $dbname = "garageParrot";
 
-          $conn = new mysqli($servername, $username, $password, $dbname);
-          if ($conn->connect_error) {
-            die("Échec de la connexion à la base de données : " . $conn->connect_error);
+          try {
+            // Connexion à la base de données en utilisant PDO
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Récupérer tous les nouveaux avis non approuvés de la table "avis"
+            $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = 0");
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          } catch (PDOException $e) {
+            die("Échec de la connexion à la base de données : " . $e->getMessage());
           }
 
-          // Récupérer tous les nouveaux avis non approuvés de la table "avis"
-          $sql = "SELECT * FROM avis WHERE approuve = 0";
-          $result = $conn->query($sql);
           ?>
           <h2>Nouveaux Avis</h2>
           <?php
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+          if ($stmt->rowCount() > 0) {
+            foreach ($rows as $row) {
               $avisId = $row['id'];
               $nom = $row['nom'];
               $commentaire = $row['commentaire'];
@@ -213,14 +226,21 @@
                 <p><strong>Note:</strong>
                   <?php echo $note; ?>/5
                 </p>
-                <form action="approuver_avis.php" method="POST">
-                  <input type="hidden" name="avis_id" value="<?php echo $avisId; ?>">
-                  <button type="submit" name="approuver">Approuver</button>
-                </form>
-                <form action="supprimer_avis.php" method="POST">
-                  <input type="hidden" name="avis_id" value="<?php echo $avisId; ?>">
-                  <button type="submit" name="supprimer">Supprimer</button>
-                </form>
+                <div class="row">
+                  <div class="col-6">
+
+                    <form action="approuver_avis.php" method="POST">
+                      <input type="hidden" name="avis_id" value="<?php echo $avisId; ?>">
+                      <button class="btn btn-success my-4" type="submit" name="approuver">Approuver</button>
+                    </form>
+                  </div>
+                  <div class="col-6">
+                    <form action="supprimer_avis.php" method="POST">
+                      <input type="hidden" name="avis_id" value="<?php echo $avisId; ?>">
+                      <button class="btn btn-danger my-4" type="submit" name="supprimer">Supprimer</button>
+                    </form>
+                  </div>
+                </div>
               </div>
               <hr>
               <?php
@@ -228,13 +248,36 @@
           } else {
             echo "<p>Aucun nouvel avis.</p>";
           }
-          ?>
 
-          <?php
           // Fermer la connexion à la base de données
-          $conn->close();
+          $conn = null;
           ?>
-
+        </div>
+        <div class="container text-center connect">
+          <h2>Ajouter un témoignage client</h2>
+          <form action="add_review.php" method="POST">
+            <div class="my-3">
+              <label for="nom">Nom du client :</label>
+              <input type="text" class="mx-auto my-3 form-control" id="nomAddComment" name="nom" required>
+            </div>
+            <div class="my-3">
+              <label for="commentaire">Commentaire du client :</label>
+              <textarea class="my-3 form-control" id="commentaireAddComment" name="commentaire" required></textarea>
+            </div>
+            <div class="my-3">
+              <label for="note">Note du client :</label>
+              <select class="my-3" id="noteAddComment" name="note" required>
+                <option value="1">1 étoile</option>
+                <option value="2">2 étoiles</option>
+                <option value="3">3 étoiles</option>
+                <option value="4">4 étoiles</option>
+                <option value="5">5 étoiles</option>
+              </select>
+            </div>
+            <div class="text-center">
+              <button type="submit" class=" my-5 btn btn-success">Ajouter un avis</button>
+            </div>
+          </form>
         </div>
         <!-- --------------------------------- FOOTER --------------------------- -->
         <div class="row">
@@ -275,31 +318,34 @@
                     $password = "root";
                     $dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+                    try {
+                      // Connexion à la base de données en utilisant PDO
+                      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Récupérer les horaires à partir de la base de données
-                    $sql = "SELECT * FROM horaires";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                      $row = $result->fetch_assoc();
-                      $lundiVendredi = $row['lundi_vendredi'];
-                      $samedi = $row['samedi'];
-                    } else {
-                      $lundiVendredi = "9h-12h / 14h-19h";
-                      $samedi = "9h à 12h";
+                      // Récupérer les horaires à partir de la base de données
+                      $stmt = $conn->query("SELECT * FROM horaires");
+                      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                      if ($stmt->rowCount() > 0) {
+                        $lundiVendredi = $row['lundi_vendredi'];
+                        $samedi = $row['samedi'];
+                      } else {
+                        $lundiVendredi = "9h-12h / 14h-19h";
+                        $samedi = "9h à 12h";
+                      }
+                    } catch (PDOException $e) {
+                      die("Échec de la connexion à la base de données : " . $e->getMessage());
                     }
 
                     // Fermer la connexion à la base de données
-                    $conn->close();
+                    $conn = null;
                     ?>
 
                     Lundi au vendredi:
                     <?php echo $lundiVendredi; ?> <br />
                     le samedi de
                     <?php echo $samedi; ?>
+
                   </p>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -99,7 +99,7 @@
                     <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse"
                       data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                     <ul id="services" class="dropdown-menu">
-                    <li>
+                      <li>
                         <a class="nav-link no-underline text-li-services" href="allServices.php">TOUS NOS SERVICES</a>
                       </li>
                       <li class="divider"></li>
@@ -140,43 +140,44 @@
         $password = "root";
         $dbname = "garageParrot";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-          die("Échec de la connexion à la base de données : " . $conn->connect_error);
-        }
+        try {
+          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Récupération des marques de voitures depuis la base de données
-        $sql = "SELECT DISTINCT marque FROM cars";
-        $result = $conn->query($sql);
+          // Récupération des marques de voitures depuis la base de données
+          $sql = "SELECT DISTINCT marque FROM cars";
+          $stmt = $conn->prepare($sql);
+          $stmt->execute();
 
-        // Création des options du select en utilisant les marques de voitures
-        $options = '<option value="">Toutes</option>';
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
+          // Création des options du select en utilisant les marques de voitures
+          $options = '<option value="">Toutes</option>';
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($result as $row) {
             $marque = $row['marque'];
             $options .= "<option value=\"$marque\">$marque</option>";
           }
+
+          // Fermeture de la connexion à la base de données
+          $conn = null;
+        } catch (PDOException $e) {
+          die("Échec de la connexion à la base de données : " . $e->getMessage());
         }
-
-
-        // Fermeture de la connexion à la base de données
-        $conn->close();
         ?>
+
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
         <div class="row">
           <div class="container catalogue text-center">
             <p class="my-auto">
               <a class="no-underline text-danger text-p" href="ourCars.html">Consultez notre catalogue jusqu'à 1500
-                véhicules
-                disponibles</a>
+                véhicules disponibles</a>
             </p>
           </div>
         </div>
         <div class="container">
           <div class="filtres my-3 text-center">
             <p>
-            <div class="row  my-3">
+            <div class="row my-3">
               <div class="col-12">
                 <label for="marque">Marque :</label>
                 <select id="marque" name="marque">
@@ -235,7 +236,7 @@
                   <option value="Electrique">Electrique</option>
                   <option value="Hybride">Hybride</option>
                   <option value="GPL">GPL</option>
-                 
+
                 </select>
               </div>
 
@@ -292,7 +293,7 @@
               </div>
               <div class="col-6 col-md-3">
                 <div class="d-flex justify-content-center text-center my-3">
-                <p class="horairesFooter">
+                  <p class="horairesFooter">
                     NOS HORAIRES <br />
                     <?php
                     // Connexion à la base de données
@@ -301,31 +302,34 @@
                     $password = "root";
                     $dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+                    try {
+                      // Connexion à la base de données en utilisant PDO
+                      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Récupérer les horaires à partir de la base de données
-                    $sql = "SELECT * FROM horaires";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                      $row = $result->fetch_assoc();
-                      $lundiVendredi = $row['lundi_vendredi'];
-                      $samedi = $row['samedi'];
-                    } else {
-                      $lundiVendredi = "9h-12h / 14h-19h";
-                      $samedi = "9h à 12h";
+                      // Récupérer les horaires à partir de la base de données
+                      $stmt = $conn->query("SELECT * FROM horaires");
+                      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                      if ($stmt->rowCount() > 0) {
+                        $lundiVendredi = $row['lundi_vendredi'];
+                        $samedi = $row['samedi'];
+                      } else {
+                        $lundiVendredi = "9h-12h / 14h-19h";
+                        $samedi = "9h à 12h";
+                      }
+                    } catch (PDOException $e) {
+                      die("Échec de la connexion à la base de données : " . $e->getMessage());
                     }
 
                     // Fermer la connexion à la base de données
-                    $conn->close();
+                    $conn = null;
                     ?>
 
                     Lundi au vendredi:
                     <?php echo $lundiVendredi; ?> <br />
                     le samedi de
                     <?php echo $samedi; ?>
+
                   </p>
                 </div>
               </div>

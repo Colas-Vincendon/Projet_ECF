@@ -5,23 +5,27 @@ $username = "root";
 $password = "root";
 $dbname = "garageParrot";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+try {
+    /*-------------- Connexion à la base de données en utilisant PDO ---------------*/
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    /*-------------- Récupérer les valeurs du formulaire ---------------*/
+    $nom = $_POST['nom'];
+    $commentaire = $_POST['commentaire'];
+    $note = $_POST['note'];
+
+    /*-------------- Insertion du témoignage dans la table "avis" en utilisant une requête préparée --------------*/
+    $stmt = $conn->prepare("INSERT INTO avis (nom, commentaire, note) VALUES (?, ?, ?)");
+    $stmt->execute([$nom, $commentaire, $note]);
+
+    /*-------------- Fermer la connexion à la base de données ----------------*/
+    $conn = null;
+
+    /*-------------- Redirection vers la page index.php ou une autre page de confirmation ----------------*/
+    header("Location: index.php");
+    exit();
+} catch (PDOException $e) {
+    die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-
-/*--------------- Récupérer les valeurs du formulaire ---------------*/
-$nom = $_POST['nom'];
-$commentaire = $_POST['commentaire'];
-$note = $_POST['note'];
-
-/*-------------- Insertion du témoignage dans la table "avis" --------------*/
-$sql = "INSERT INTO avis (nom, commentaire, note) VALUES ('$nom', '$commentaire', '$note')";
-$conn->query($sql);
-
-/*---------------- Fermer la connexion à la base de données ----------------*/
-$conn->close();
-
-header("Location: index.php");
-exit();
 ?>

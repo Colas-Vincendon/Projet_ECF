@@ -98,7 +98,7 @@
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link nav-link-active dropdown-toggle pointer"
+                                        <a class="nav-link dropdown-toggle pointer"
                                             class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#services"
                                             aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                                         <ul id="services" class="dropdown-menu">
@@ -140,7 +140,6 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container-fluid text-center">
                     <div class="row">
-
                         <?php
                         // Connexion à la base de données
                         $servername = "localhost";
@@ -152,42 +151,39 @@
                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            // Récupérer les services et leurs images associées depuis la base de données
-                            $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
-            FROM services s
-            LEFT JOIN imageService i ON s.id = i.service_id";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
-                            $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            // Récupérer tous les messages de la table "messages"
+                            $sql = "SELECT * FROM messages";
+                            $stmt = $conn->query($sql);
 
-                            if (!empty($services)) {
-                                foreach ($services as $service) {
-                                    $serviceId = $service['id'];
-                                    $titre = $service['titre'];
-                                    $paragraphe = $service['paragraphe'];
-                                    $imageBase64 = $service['image_base64'];
+                            if ($stmt->rowCount() > 0) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    $messageId = $row['id'];
+                                    $prenom = $row['prenom'];
+                                    $nom = $row['nom'];
+                                    $email = $row['email'];
+                                    $sujet = $row['sujet'];
+                                    $message = $row['message'];
 
-                                    // Afficher les informations du service
-                                    echo "<div class='col-12 col-md-6 col-xl-4'><div class='container containerAllServices my-5'>";
-                                    if (!empty($imageBase64)) {
-                                        echo "<img style='width: 300px; height: 300px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'>";
-                                    }
-                                    echo "<h3 class='my-4'>$titre</h3>";
-                                    echo "<div class='allServices-p'><p>$paragraphe</p></div>";
-
-                                    // Afficher l'image du service s'il y en a une
-                                    echo "</div></div>";
+                                    echo "<div class='container my-3 connect'>";
+                                    echo "<h3>$sujet</h3>";
+                                    echo "<p><strong>De :</strong> $prenom $nom</p>";
+                                    echo "<p><strong>Email :</strong> $email</p>";
+                                    echo "<p>$message</p>";
+                                    echo "<form action='supprimer_message.php' method='POST'>";
+                                    echo "<input type='hidden' name='message_id' value='$messageId'>";
+                                    echo "<button type='submit'>Supprimer</button>";
+                                    echo "</form>";
+                                    echo "</div>";
                                 }
                             } else {
-                                echo "Aucun service n'est disponible.";
+                                echo "Aucun message trouvé.";
                             }
+
+                            $conn = null;
                         } catch (PDOException $e) {
                             echo "Échec de la connexion à la base de données : " . $e->getMessage();
                         }
-
-                        $conn = null;
                         ?>
-
 
                     </div>
                 </div>

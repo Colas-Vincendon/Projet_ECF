@@ -29,7 +29,7 @@ try {
             // Convertir l'image en format Base64
             $imageBase64 = base64_encode($imageData);
 
-            // Insérer le nouveau service dans la table "services"
+            // Insérer le nouveau service dans la table "services" en utilisant une requête préparée
             $stmt = $conn->prepare("INSERT INTO services (titre, paragraphe) VALUES (:titre, :paragraphe)");
             $stmt->bindParam(':titre', $titre);
             $stmt->bindParam(':paragraphe', $paragraphe);
@@ -38,7 +38,7 @@ try {
             // Récupérer l'identifiant du dernier service inséré
             $serviceId = $conn->lastInsertId();
 
-            // Insérer l'image dans la table "imageService"
+            // Insérer l'image dans la table "imageService" en utilisant une requête préparée
             $stmt = $conn->prepare("INSERT INTO imageService (service_id, image_base64) VALUES (:serviceId, :imageBase64)");
             $stmt->bindParam(':serviceId', $serviceId);
             $stmt->bindParam(':imageBase64', $imageBase64);

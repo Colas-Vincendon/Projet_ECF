@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -198,31 +198,34 @@
                     $password = "root";
                     $dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+                    try {
+                      // Connexion à la base de données en utilisant PDO
+                      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Récupérer les horaires à partir de la base de données
-                    $sql = "SELECT * FROM horaires";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                      $row = $result->fetch_assoc();
-                      $lundiVendredi = $row['lundi_vendredi'];
-                      $samedi = $row['samedi'];
-                    } else {
-                      $lundiVendredi = "9h-12h / 14h-19h";
-                      $samedi = "9h à 12h";
+                      // Récupérer les horaires à partir de la base de données
+                      $stmt = $conn->query("SELECT * FROM horaires");
+                      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                      if ($stmt->rowCount() > 0) {
+                        $lundiVendredi = $row['lundi_vendredi'];
+                        $samedi = $row['samedi'];
+                      } else {
+                        $lundiVendredi = "9h-12h / 14h-19h";
+                        $samedi = "9h à 12h";
+                      }
+                    } catch (PDOException $e) {
+                      die("Échec de la connexion à la base de données : " . $e->getMessage());
                     }
 
                     // Fermer la connexion à la base de données
-                    $conn->close();
+                    $conn = null;
                     ?>
 
                     Lundi au vendredi:
                     <?php echo $lundiVendredi; ?> <br />
                     le samedi de
                     <?php echo $samedi; ?>
+
                   </p>
                 </div>
               </div>

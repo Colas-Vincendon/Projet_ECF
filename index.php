@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -182,7 +182,7 @@
         <!-- -------------------- HORAIRES ET MAP ----------------------- -->
         <div class="row">
           <div class="col-xs-12 col-md-8">
-            
+
             <h2 class="mx-5">AVIS DE NOS CLIENTS</h2>
             <div class="trait2 mx-5"></div>
             <p class="p-horaires">
@@ -194,41 +194,45 @@
               $password = "root";
               $dbname = "garageParrot";
 
-              $conn = new mysqli($servername, $username, $password, $dbname);
-              if ($conn->connect_error) {
-                die("Échec de la connexion à la base de données : " . $conn->connect_error);
-              }
+              try {
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-              // Récupérer les avis approuvés de la table "avis"
-              $sql = "SELECT * FROM avis WHERE approuve = 1";
-              $result = $conn->query($sql);
+                // Récupérer les avis approuvés de la table "avis"
+                $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
+                $approuve = 1; // Seuls les avis approuvés
+                $stmt->bindParam(':approuve', $approuve);
+                $stmt->execute();
 
-              if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $nom = $row['nom'];
                     $commentaire = $row['commentaire'];
                     $note = $row['note'];
-            
+
                     // Afficher les informations de l'avis
                     echo "<div class='avis mx-5 my-3'>";
-                    
+
                     // Générer les étoiles en fonction de la note
                     for ($i = 1; $i <= $note; $i++) {
-                        echo "★";
+                      echo "★";
                     }
-                    
+
                     echo "</p>";
                     echo "<p><i>$commentaire</i></p>";
                     echo "</div>";
+                  }
+                } else {
+                  echo "Aucun avis approuvé pour le moment.";
                 }
-            } else {
-                echo "Aucun avis approuvé pour le moment.";
-            }
-            
 
-              // Fermer la connexion à la base de données
-              $conn->close();
+                // Fermer la connexion à la base de données
+                $conn = null;
+              } catch (PDOException $e) {
+                echo "Échec de la connexion à la base de données : " . $e->getMessage();
+              }
               ?>
+
 
             </p>
             <div class="comment mx-auto my-5 justify-content-center align-items-center d-flex ">
@@ -238,7 +242,7 @@
 
           </div>
           <div class="col-xs-12 col-md-4 px-0">
-          <h2>NOUS TROUVER</h2>
+            <h2>NOUS TROUVER</h2>
             <div class="trait3"></div><br>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
@@ -247,7 +251,7 @@
           </div>
         </div>
         <div class="row"></div>
-        
+
         <!-- --------------------------- FOOTER --------------------------- -->
         <div class="row">
           <div class="container footer">
@@ -287,31 +291,34 @@
                     $password = "root";
                     $dbname = "garageParrot";
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) {
-                      die("Échec de la connexion à la base de données : " . $conn->connect_error);
-                    }
+                    try {
+                      // Connexion à la base de données en utilisant PDO
+                      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Récupérer les horaires à partir de la base de données
-                    $sql = "SELECT * FROM horaires";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                      $row = $result->fetch_assoc();
-                      $lundiVendredi = $row['lundi_vendredi'];
-                      $samedi = $row['samedi'];
-                    } else {
-                      $lundiVendredi = "9h-12h / 14h-19h";
-                      $samedi = "9h à 12h";
+                      // Récupérer les horaires à partir de la base de données
+                      $stmt = $conn->query("SELECT * FROM horaires");
+                      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                      if ($stmt->rowCount() > 0) {
+                        $lundiVendredi = $row['lundi_vendredi'];
+                        $samedi = $row['samedi'];
+                      } else {
+                        $lundiVendredi = "les horaires";
+                        $samedi = "les horaires";
+                      }
+                    } catch (PDOException $e) {
+                      die("Échec de la connexion à la base de données : " . $e->getMessage());
                     }
 
                     // Fermer la connexion à la base de données
-                    $conn->close();
+                    $conn = null;
                     ?>
 
                     Lundi au vendredi:
                     <?php echo $lundiVendredi; ?> <br />
                     le samedi de
                     <?php echo $samedi; ?>
+
                   </p>
                 </div>
 

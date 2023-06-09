@@ -8,28 +8,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connexion à la base de données
     $servername = 'localhost';
     $dbname = 'garageParrot';
+    $username = 'root';
+    $password2 = 'root';
 
-    // Créer la connexion à la base de données
-    $conn = mysqli_connect($servername, 'root', 'root', $dbname);
+    try {
+        // Connexion à la base de données en utilisant PDO
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password2);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Vérifier la connexion
-    if (!$conn) {
-        die("Erreur de connexion : " . mysqli_connect_error());
-    }
+        // Requête d'insertion de l'employé avec des paramètres préparés
+        $query = "INSERT INTO employes (email, password) VALUES (:email, :password)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
 
-    // Requête d'insertion de l'employé
-    $query = "INSERT INTO employes (email, password) VALUE ('$email', '$password')";
-
-    // Exécuter la requête
-    if (mysqli_query($conn, $query)) {
-        // Redirection vers la page d'accueil de l'administrateur
-        header('Location: accueil_admin.php');
-        exit();
-    } else {
-        echo "Erreur lors de l'ajout à la base de données";
+        // Exécuter la requête
+        if ($stmt->execute()) {
+            // Redirection vers la page d'accueil de l'administrateur
+            header('Location: accueil_admin.php');
+            exit();
+        } else {
+            echo "Erreur lors de l'ajout à la base de données";
+        }
+    } catch (PDOException $e) {
+        die("Erreur de connexion à la base de données : " . $e->getMessage());
     }
 
     // Fermer la connexion à la base de données
-    mysqli_close($conn);
+    $conn = null;
 }
 ?>
