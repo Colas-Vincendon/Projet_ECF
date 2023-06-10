@@ -33,15 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
         $stmt->bindParam(':message', $message);
         $stmt->execute();
 
-        echo "Merci pour votre message. Nous vous contacterons bientôt.";
 
         $conn = null;
+        header("Location: messageSent.php");
+        exit();
     } catch (PDOException $e) {
         echo "Échec de la connexion à la base de données : " . $e->getMessage();
     }
 }
 
-function validateInput($input) {
+function validateInput($input)
+{
     $input = trim($input);
     $input = stripslashes($input);
     $input = htmlspecialchars($input);

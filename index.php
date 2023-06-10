@@ -134,38 +134,40 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ START MAIN ------------------------------- -->
-        <div id="introCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel1.jpg" alt="Image 1" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel2.jpg" alt="Image 2" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel3.jpg" alt="Image 3" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel4.jpg" alt="Image 4" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel5.jpg" alt="Image 5" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel7.jpg" alt="Image 6" />
-            </div>
-            <div class="carousel-item">
-              <img class="img-fluid" src="./src/medias/introCarousel/carousel8.jpg" alt="Image 7" />
-            </div>
-            <div class="controlCarousel">
-              <a id="previous" class="carousel-control-prev" href="#introCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </a>
-              <a id="next" class="carousel-control-next" href="#introCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </a>
+        <div class="container-fluid d-flex justify-content-center">
+          <div id="introCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel1.jpg" alt="Image 1" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel2.jpg" alt="Image 2" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel3.jpg" alt="Image 3" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel4.jpg" alt="Image 4" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel5.jpg" alt="Image 5" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel7.jpg" alt="Image 6" />
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid" src="./src/medias/introCarousel/carousel8.jpg" alt="Image 7" />
+              </div>
+              <div class="controlCarousel">
+                <a id="previous" class="carousel-control-prev" href="#introCarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a id="next" class="carousel-control-next" href="#introCarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
