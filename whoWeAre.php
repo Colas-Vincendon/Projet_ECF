@@ -134,315 +134,201 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="container my-5">
+        <div class="container my-5 whoWeAre">
           <div class="row mb-xl">
-            <div class="col-md-12 font-14px text-center">
-              <p>
-                <span style="color: #000000"><span>La passion de l’automobile et du sport mécanique sont les
-                    leitmotivs de </span><strong>Vincent et Carole PARROT</strong><span>, qui ont ouvert leur société de
-                    vente d’automobiles, </span><strong>neuf et occasion</strong><span>, </span><strong>toutes
-                    marques</strong><span>, en mars 2021. <br /><br />
-                    Vincent, fort de ses années d’expérience dans la vente de
-                    véhicule en concession, a été pilote de rallye et pilote
-                    d’essai pour la compétition dans différentes marques
-                    automobile. Son intérêt est d’acquérir votre </span><strong>confiance </strong><span>pour la
-                    recherche de votre futur véhicule neuf ou
-                    d’occasion toutes marques conventionnelles, sportives ou
-                    bien vintage.</span></span>
-              </p>
-
-              <p><br /></p>
-
-              <p style="text-align: center">
-                <img class="img-fluid" alt="" src="./src/medias/photoCustomer.jpg" style="
-                      color: rgb(0, 0, 0);
-                      font-family: arial, helvetica, sans-serif;
-                      width: 45%;
-                    " />&nbsp; &nbsp;<span style="font-family: arial, helvetica, sans-serif"><img class="img-fluid"
-                    alt="" src="./src/medias/photoMecanic.jpg" style="width: 20%" /></span>
-              </p>
-
-              <p>&nbsp;</p>
-
-              <p>
-                <span style="color: #000000"><span
-                    style="font-family: arial, helvetica, sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                      style="font-size: 16px">&nbsp;<span style="font-size: 14px">
-                        Chaque voiture vendue profite d’un suivi au sein de
-                        l’établissement grâce à un atelier pour l’entretien
-                        des véhicules client ou de la vérification minutieuse
-                        des véhicules en attente de trouver leur propriétaire.
-                        <br />
-                        L’entreprise choisit soigneusement ses véhicules
-                        d’occasion toutes marques, tous sont révisés et
-                        profitent d’une garantie de 3 à 60 mois, avec la
-                        possibilité de reprise de votre ancien véhicules et
-                        l'élaboration de votre carte grise, même si vous
-                        n’êtes pas client chez eux, ou encore étudier pour
-                        vous un plan de financement...</span></span></span></span>
-              </p>
-
-              <p style="text-align: center">&nbsp;</p>
-
-              <h2 style="text-align: center">
-                <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><strong><em>"Le
-                        meilleur service et un conseil performant pour
-                        votre satisfaction."</em></strong></span></span>
-              </h2>
-
-              <p>&nbsp;</p>
-
-              <p>
-                <span style="color: #000000"><span
-                    style="font-family: arial, helvetica, sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                      style="font-size: 14px">
-                      Pour la recherche de votre prochain véhicule, consultez
-                      Vincent PARROT Automobiles, ils mettront tout en œuvre
-                      pour trouver le véhicule en adéquation avec vos
-                      attentes, sans limite de budget ou d’ancienneté.</span></span></span>
-              </p>
-
-              <p>&nbsp;</p>
-
-              <p style="text-align: center">
-                <img alt="" src="./src/medias/showroom.jpg" style="width: 50%" />
-              </p>
-
-              <p style="text-align: center">&nbsp;</p>
-
-              <p>
-                <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><span
-                      style="background-color: transparent; font-size: 11pt">—-------------------------------------------</span></span></span>
-              </p>
-
-              <div>&nbsp;</div>
-
-              <h1>
-                <span style="color: #ed2024"><span style="font-family: arial, helvetica, sans-serif"><strong>Votre
-                      GARAGE VINCENT PARROT AUTOMOBILES</strong></span></span>
-              </h1>
-
-              <p>
-                <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><em>à
-                      <strong>TOULOUSE </strong>(31)</em></span></span>
-              </p>
-
+            <div class="col-md-12 text-center">
               <div>
-                <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><em>Votre
-                    </em><em>garage
-                      <strong>VINCENT PARROT AUTOMOBILES</strong>&nbsp;&nbsp;</em><em>à Toulouse
-                      (31)</em><em>&nbsp;</em><em>vous propose tout au long de l’année un</em><em>
-                    </em></span></span><span style="font-family: arial, helvetica, sans-serif"><em><a
-                      href="ourCars.html" target="_blank" title="Catalogue de véhicules"><span
-                        style="color: #ed2024">large catalogue de véhicules multimarques
-                        d'occasions</span></a></em></span><span style="color: #000000"><span
-                    style="font-family: arial, helvetica, sans-serif"><em>, ainsi qu’un large panel de </em><em>services
-                      automobiles</em><em>
-                      : Expertise Bosch- Entretien multimarques&nbsp;-
-                      Contrôle complet&nbsp;…</em></span></span>
+                <p>La passion de l’automobile et du sport mécanique sont les
+                  leitmotivs de <strong>Vincent et Carole PARROT</strong>, qui ont ouvert leur société de
+                  vente d’automobiles, <strong>neuf et occasion</strong>, <strong>toutes
+                    marques</strong>, en mars 2021. <br /><br />
+                  Vincent, fort de ses années d’expérience dans la vente de
+                  véhicule en concession, a été pilote de rallye et pilote
+                  d’essai pour la compétition dans différentes marques
+                  automobile. Son intérêt est d’acquérir votre <strong>confiance </strong>pour la
+                  recherche de votre futur véhicule neuf ou
+                  d’occasion toutes marques conventionnelles, sportives ou
+                  bien vintage.</p>
               </div>
-
-              <div>&nbsp;</div>
-
-              <div>&nbsp;</div>
-
-              <div style="text-align: center">
-                <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><em><img alt=""
-                        src="./src/medias/showroom2.jpg" style="width: 50%" /></em></span></span>
+              <div class="my-5">
+                <img class="img-fluid" alt="commercial" src="./src/medias/photoCustomer.jpg" style="
+                      width: 45%;
+                    " />
+                <img class="img-fluid" alt="mécanicien" src="./src/medias/photoMecanic.jpg" style="width: 20%" />
               </div>
-
-              <p>&nbsp;</p>
-
+              <div class="my-5">
+                <p>
+                  Chaque voiture vendue profite d’un suivi au sein de
+                  l’établissement grâce à un atelier pour l’entretien
+                  des véhicules client ou de la vérification minutieuse
+                  des véhicules en attente de trouver leur propriétaire.
+                  <br />
+                  L’entreprise choisit soigneusement ses véhicules
+                  d’occasion toutes marques, tous sont révisés et
+                  profitent d’une garantie de 3 à 60 mois, avec la
+                  possibilité de reprise de votre ancien véhicules et
+                  l'élaboration de votre carte grise, même si vous
+                  n’êtes pas client chez eux, ou encore étudier pour
+                  vous un plan de financement...
+                </p>
+              </div>
+              <div>
+                <h2 style="text-align: center">
+                  <p><strong><em>"Le
+                        meilleur service et un conseil performant pour
+                        votre satisfaction."</em></strong></p>
+                </h2>
+              </div>
               <div>
                 <p>
-                  <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><span
-                        style="background-color: transparent; font-size: 11pt">—-------------------------------------------</span></span></span>
-                </p>
+                  Pour la recherche de votre prochain véhicule, consultez
+                  Vincent PARROT Automobiles, ils mettront tout en œuvre
+                  pour trouver le véhicule en adéquation avec vos
+                  attentes, sans limite de budget ou d’ancienneté.</p>
+              </div>
+              <div class="my-5">
+                <img alt="showroom" src="./src/medias/showroom.jpg" style="width: 50%" />
+              </div>
+              <div>
+                <p>
+                  —-------------------------------------------</p>
+              </div>
+              <div>
+                <h1 class="my-5">
+                  <span style="color: #ed2024"><strong>Votre
+                      GARAGE VINCENT PARROT AUTOMOBILES</strong></span>
+                </h1>
+              </div>
+              <div>
+                <p><em>à
+                    <strong>TOULOUSE </strong>(31)</em></p>
+              </div>
+              <div>
+                <p><em>Votre garage
+                    <strong>VINCENT PARROT AUTOMOBILES</strong>à Toulouse
+                    (31) vous propose tout au long de l’année un
+                  </em></p>
+                <p><em><a href="catalogue.php" target="_blank" title="Catalogue de véhicules"><span
+                        style="color: #ed2024">large catalogue de véhicules
+                        multimarques
+                        d'occasions</span></a></em></p>
+                <p><em>, ainsi qu’un large panel de services
+                    automobiles
+                    : Expertise Bosch- Entretien multimarques -
+                    Contrôle complet…</em></p>
+              </div>
+
+              <div class="my-5">
+                <img alt="showroom" src="./src/medias/showroom2.jpg" style="width: 50%" />
+              </div>
+              <div>
+                <p>
+                  —-------------------------------------------</p>
+                <h2>
+                  <p class="my-3" style="font-size: 24px; color: #ed2024"><strong>Votre
+                      garage est membre du réseau
+                      PROXI AUTO
+                      CASH</strong></p>
+                </h2>
+                <div>
+                  <span>Le plus grand
+                    réseau de
+                  </span>
+                  <span style="color: #ed2024">rachat cash</span>
+                  <span>
+                    de France</span>
+                </div>
 
                 <div>
-                  <div>
-                    <h2>
-                      <span style="font-size: 22px"><span style="color: #ed2024"><span
-                            style="font-family: arial, helvetica, sans-serif"><strong>Votre garage est membre du réseau
-                              PROXI AUTO
-                              CASH</strong></span></span></span>
-                    </h2>
-
-                    <p>
-                      <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif">Le plus grand
-                          réseau de
-                        </span></span><span style="color: #ed2024"><span
-                          style="font-family: arial, helvetica, sans-serif">rachat cash</span></span><span
-                        style="color: #000000"><span style="font-family: arial, helvetica, sans-serif">
-                          de France</span></span>
-                    </p>
-
-                    <p>&nbsp;</p>
-                    <p>
-                      <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><em><img
-                              class="img-fluid" src="./src/medias/Icône  carte de france rouge PAC.png" style="
-                                  margin-left: 0px;
-                                  margin-top: 0px;
-                                  min-width: 200px;
-                                " /></em></span></span>
-                    </p>
-                    <div class="text-center" style="margin-left: 0pt">
-                      <table style="border-collapse: collapse; border: none">
-                        <tbody>
-                          <tr>
-                            <td style="vertical-align: top">
-                              <h4>
-                                <span style="font-size: 22px"><span style="color: #000000"><span style="
-                                          font-family: arial, helvetica,
-                                            sans-serif;
-                                        "><strong>PROXI AUTO CASH : un concept
-                                        innovant</strong></span></span></span>
-                              </h4>
-                              &nbsp;
-
-                              <p>
-                                <span style="color: #000000"><span style="
-                                        font-family: arial, helvetica,
-                                          sans-serif;
-                                      "><span style="
-                                          background-color: transparent;
-                                          font-size: 10pt;
-                                        ">PROXI AUTO CASH la marque de
-                                      <strong>Rachat Cash </strong>présente
-                                      partout en France compte
-                                      <strong>250 partenaires</strong>, tous
-                                      professionnels de
-                                      l’automobile.&nbsp;</span></span></span>
-                              </p>
-                              <span style="color: #000000">&nbsp;</span>
-
-                              <p>
-                                <span style="color: #000000"><span style="
-                                        font-family: arial, helvetica,
-                                          sans-serif;
-                                      "><span style="
-                                          background-color: transparent;
-                                          font-size: 10pt;
-                                        "><strong>PROXI AUTO CASH </strong>c’est
-                                      :</span></span></span>
-                              </p>
-
-                              <p>
-                                <span style="color: #000000"><span style="
-                                        font-family: arial, helvetica,
-                                          sans-serif;
-                                      "><strong>La proximité</strong><span style="
-                                          background-color: transparent;
-                                          font-size: 10pt;
-                                        ">
-                                      : il y a forcément un garage partenaire
-                                      Proxi Auto Cash
-                                      <strong>près de chez vous</strong></span></span></span>
-                              </p>
-
-                              <p>
-                                <span style="color: #000000"><span style="
-                                        font-family: arial, helvetica,
-                                          sans-serif;
-                                      "><strong>L’accompagnement </strong><span style="
-                                          background-color: transparent;
-                                          font-size: 10pt;
-                                        ">: nos équipes vous accompagnent pour
-                                      que vous obteniez un
-                                      <strong>prix de rachat juste et
-                                        fiable</strong></span></span></span>
-                              </p>
-
-                              <p>
-                                <span style="color: #000000"><span style="
-                                        font-family: arial, helvetica,
-                                          sans-serif;
-                                      "><strong>Le professionnalisme</strong><span style="
-                                          background-color: transparent;
-                                          font-size: 10pt;
-                                        ">
-                                      : faire reprendre votre véhicule par un
-                                      partenaire Proxi Auto Cash c'est faire
-                                      travailler votre garage de proximité,
-                                      celui en qui vous avez confiance, qui
-                                      répare et entretient votre véhicule
-                                      depuis toujours,<strong>
-                                        gage de confiance et de
-                                        qualité.&nbsp;</strong></span></span></span>
-                              </p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <p>&nbsp;</p>
-
-                    <p>
-                      <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif"><span style="
-                                background-color: transparent;
-                                font-size: 11pt;
-                              ">—-------------------------------------------</span></span></span>
-                    </p>
-
-                    <div>
-                      <h2>
-                        <span style="font-size: 22px"><span style="color: #ed2024"><span style="
-                                  font-family: arial, helvetica, sans-serif;
-                                "><strong>Contacter notre équipe</strong></span></span></span>
-                      </h2>
-
-                      <p>
-                        <span style="color: #000000"><span style="font-family: arial, helvetica, sans-serif">VINCENT
-                            PARROT AUTOMOBILES continue à vous servir
-                            en toute sécurité. Votre santé, celles de notre
-                            équipe et votre satisfaction sont nos priorités.
-                            Nous sommes pleinement mobilisés pour poursuivre
-                            notre activité avec le plus grand
-                            professionnalisme. Toute l'équipe reste à votre
-                            disposition. N'hésitez pas à nous contacter pour
-                            toutes vos demandes.</span></span>
-                      </p>
-
-                      <p>
-                        <span style="color: #000000"><span class="fs-5"
-                            style="font-family: arial, helvetica, sans-serif"><strong>Vincent Parrot
-                              Automobiles</strong>.</span></span>
-                      </p>
-
-                      <div class="container fw-bold fs-6">
-                        <div class="col-12">
-                          <img class="my-3" src="./src/medias/logoPhone.png" style="
+                  <img class="img-fluid" src="./src/medias/Icône  carte de france rouge PAC.png" />
+                </div>
+                <div class="text-center" style="margin-left: 0pt">
+                  <h4>
+                    <p style="font-size: 22px"><strong>PROXI AUTO CASH : un concept
+                        innovant</strong></p>
+                  </h4><br>
+                  <p>PROXI AUTO CASH la marque de
+                    <strong>Rachat Cash </strong>présente
+                    partout en France compte
+                    <strong>250 partenaires</strong>, tous
+                    professionnels de
+                    l’automobile.
+                  </p>
+                  <p>
+                    <strong>PROXI AUTO CASH </strong>c’est :
+                  </p>
+                  <p>
+                    <span><strong>La proximité</strong> : il y a forcément un garage partenaire Proxi Auto Cash
+                      <strong>près de chez vous</strong></span>
+                  </p>
+                  <p>
+                    <span><strong>L’accompagnement </strong> : nos équipes vous accompagnent pour que vous
+                      obteniez un <strong>prix de rachat juste et fiable</strong></span>
+                  </p>
+                  <p>
+                    <span><strong>Le professionnalisme</strong>
+                      : faire reprendre votre véhicule par un
+                      partenaire Proxi Auto Cash c'est faire
+                      travailler votre garage de proximité,
+                      celui en qui vous avez confiance, qui
+                      répare et entretient votre véhicule
+                      depuis toujours,<strong>
+                        gage de confiance et de
+                        qualité.</strong></span>
+                  </p>
+                </div>
+                <br>
+                <p>
+                  <span class="my-3" style="font-size: 11pt;
+                              ">—-------------------------------------------</span>
+                </p>
+                <div>
+                  <h2>
+                    <span style="font-size: 24px; color: #ed2024"><strong>Contacter notre équipe</strong></span>
+                  </h2>
+                  <p class="my-4">VINCENT
+                    PARROT AUTOMOBILES continue à vous servir
+                    en toute sécurité. Votre santé, celles de notre
+                    équipe et votre satisfaction sont nos priorités.
+                    Nous sommes pleinement mobilisés pour poursuivre
+                    notre activité avec le plus grand
+                    professionnalisme. Toute l'équipe reste à votre
+                    disposition. N'hésitez pas à nous contacter pour
+                    toutes vos demandes.
+                  </p>
+                  <p>
+                    <span class="fs-5"><strong>Vincent Parrot
+                        Automobiles</strong></span>
+                  </p>
+                  <div class="container fw-bold fs-6">
+                    <div class="col-12">
+                      <img class="my-3" src="./src/medias/logoPhone.png" style="
                                 height: 26px;
                                 margin-left: 0px;
                                 margin-top: 0px;
                                 width: 26px;
                               " />
-                          <p>01 23 45 67 89 - 06 12 34 56 78</p>
-                          <img src="./src/medias/facebook.png" style="
+                      <p>01 23 45 67 89 - 06 12 34 56 78</p>
+                      <img src="./src/medias/facebook.png" style="
                                 height: 28px;
                                 margin-left: 0px;
                                 margin-top: 0px;
                                 width: 28px;
                               " />
 
-                          <p>Facebook : @Garage Parrot Automobiles</p>
-                          <img class="my-3" src="./src/medias/logoGoogleMaps.png" style="
+                      <p>Facebook : @Garage Parrot Automobiles</p>
+                      <img class="my-3" src="./src/medias/logoGoogleMaps.png" style="
                                 height: 31px;
                                 margin-left: 0px;
                                 margin-top: 0px;
                                 width: 30px;
                               " />
-                          <p>
-                            Créez votre itinéraire Google
-                            <a href="https://goo.gl/maps/tKcQdGJdXdauig368?coh=178572&entry=tt" target="_blank"
-                              title="Itinéraire"><span style="color: #ed2024"><strong>ici</strong></span></a>
-                            vers le 1 rue de l'Aqueduc, 31500, Toulouse
-                          </p>
-                        </div>
-                      </div>
-
-                      <p>&nbsp;</p>
+                      <p>
+                        Créez votre itinéraire Google
+                        <a href="https://goo.gl/maps/tKcQdGJdXdauig368?coh=178572&entry=tt" target="_blank"
+                          title="Itinéraire"><span style="color: #ed2024"><strong>ici</strong></span></a>
+                        vers le 1 rue de l'Aqueduc, 31500, Toulouse
+                      </p>
                     </div>
                   </div>
                 </div>

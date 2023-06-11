@@ -12,6 +12,8 @@ document.getElementById("rechercher").addEventListener("click", function () {
   var marque = document.getElementById("marque").value;
   var modele = document.getElementById("modele").value;
   var annee = document.getElementById("annee").value;
+  var carburant = document.getElementById("carburant").value;
+  var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
@@ -26,7 +28,11 @@ document.getElementById("rechercher").addEventListener("click", function () {
     "&modele=" +
     encodeURIComponent(modele) +
     "&annee=" +
-    encodeURIComponent(annee);
+    encodeURIComponent(annee) +
+    "&carburant=" +
+    encodeURIComponent(carburant) +
+    "&boite_de_vitesse=" +
+    encodeURIComponent(boite_de_vitesse);
   xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);

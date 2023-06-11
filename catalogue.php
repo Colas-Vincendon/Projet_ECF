@@ -200,7 +200,7 @@
 
               <div class="col-12">
                 <label for="annee">Année :</label>
-                <select id="annee">
+                <select id="annee" name="annee">
                   <option value="">Toutes</option>
                   <option value="2021">2021</option>
                   <option value="2020">2020</option>
@@ -229,7 +229,7 @@
 
               <div class="col-12">
                 <label for="carburant">Carburant :</label>
-                <select id="carburant">
+                <select id="carburant" name="carburant">
                   <option value="">Tous</option>
                   <option value="Essence">Essence</option>
                   <option value="Diesel">Diesel</option>
@@ -241,8 +241,8 @@
               </div>
 
               <div class="col-12">
-                <label for="Boîte de vitesse">Boîte de vitesse :</label>
-                <select id="Boîte de vitesse">
+                <label for="boite_de_vitesse">Boîte de vitesse :</label>
+                <select id="boite_de_vitesse" name="boite_de_vitesse">
                   <option value="">Tous</option>
                   <option value="Manuelle">Manuelle</option>
                   <option value="Automatique">Automatique</option>

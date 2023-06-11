@@ -16,16 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password2);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // Hachage du mot de passe
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         // Requête d'insertion de l'employé avec des paramètres préparés
         $query = "INSERT INTO employes (email, password) VALUES (:email, :password)";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', $hashedPassword);
 
         // Exécuter la requête
         if ($stmt->execute()) {
             // Redirection vers la page d'accueil de l'administrateur
-            header('Location: accueil_admin.php');
+            header('Location: newEmployeAdded.php');
             exit();
         } else {
             echo "Erreur lors de l'ajout à la base de données";

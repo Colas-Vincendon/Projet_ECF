@@ -143,47 +143,51 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
-                // Vérifier si le formulaire a été soumis
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Récupérer les valeurs des champs
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupérer les valeurs des champs
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-                    // Connexion à la base de données
-                    $servername = 'localhost';
-                    $dbname = 'garageParrot';
-                    $usernameDB = 'root';
-                    $passwordDB = 'root';
+    // Connexion à la base de données
+    $servername = 'localhost';
+    $dbname = 'garageParrot';
+    $usernameDB = 'root';
+    $passwordDB = 'root';
 
-                    try {
-                        // Connexion à la base de données en utilisant PDO
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        // Connexion à la base de données en utilisant PDO
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        // Requête pour vérifier les identifiants de l'employé
-                        $stmt = $conn->prepare("SELECT * FROM employes WHERE email = :email AND password = :password");
-                        $stmt->bindParam(':email', $email);
-                        $stmt->bindParam(':password', $password);
-                        $stmt->execute();
+        // Requête pour récupérer le hash du mot de passe enregistré
+        $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $hash = $stmt->fetchColumn();
 
-                        if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
-                            // Redirection vers la page acceuil_admin.php
-                            header('Location: accueil_admin.php');
-                            exit();
-                        } else if ($stmt->rowCount() > 0) {
-                            // Redirection vers la page employe.php
-                            header('Location: accueil_employe.php');
-                            exit();
-                        } else {
-                            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-                        }
-                    } catch (PDOException $e) {
-                        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
-                    }
+        if (password_verify($password, $hash)) {
+            // Mot de passe correct, redirection vers la page appropriée
+            if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
+                // Redirection vers la page accueil_admin.php
+                header('Location: accueil_admin.php');
+                exit();
+            } else {
+                // Redirection vers la page employe.php
+                header('Location: accueil_employe.php');
+                exit();
+            }
+        } else {
+            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+        }
+    } catch (PDOException $e) {
+        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+    }
 
-                    $conn = null;
-                }
-                ?>
+    $conn = null;
+}
+?>
+
 
                 <div class="container text-center connect">
                     <p class="text-red-bold my-4">Identification</p>

@@ -27,7 +27,7 @@ try {
 
     $conn = null;
     // Rediriger vers la page index.php ou une autre page de confirmation
-    header("Location: index.php");
+    header("Location: commentSent.php");
     exit();
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());

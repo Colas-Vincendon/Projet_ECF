@@ -174,6 +174,11 @@
                           maxlength="100" class="form-control" name="email" id="email" required="required"
                           aria-required="true" type="email" />
                       </div>
+                      <div class="col-md-12">
+                          <label>Téléphone *</label>
+                          <input value="" data-msg-required="Votre telephone" maxlength="100" class="form-control" name="telephone"
+                          id="telephone" required="required" aria-required="true" type="text" />
+                        </div>
                     </div>
                   </div>
                   <div class="row">
@@ -201,7 +206,7 @@
                       <span class="small">En soumettant ce formulaire, j'accepte que les
                         informations saisies soient exploitées dans le cadre
                         de la relation commerciale qui peut en découler.
-                        <a href="/politique-de-confidentialite" target="_blank">En savoir plus</a></span>
+                        <a href="politic.php" target="_blank">En savoir plus</a></span>
                     </div>
                   </div>
                   <div class="row my-4">

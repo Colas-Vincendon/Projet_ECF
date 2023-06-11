@@ -141,9 +141,11 @@
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container text-center connect">
+                <div class="container d-flex align-items-center justify-content-center connect my-2">
 
-                    <h1 class="ml-0 mt-3"><b></b>Bienvenue Mr PARROT</b></h1> <br />
+                    <h1 class="titleAdmin my-3"><b></b>Espace Administrateur</b></h1>
+                </div>
+                <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Ajouter un employé</h1>
                     <form method="POST" action="add_employe.php">
                         <div class="my-3">
@@ -155,12 +157,12 @@
                             <input type="password" id="password" name="password" required>
                         </div>
                         <div class="my-3">
-                            <button type="submit" class="btn btn-danger" style="width: 200px">Ajouter un
+                            <button type="submit" class="btn btn-success my-4" style="width: 200px">Ajouter un
                                 employé</button>
                         </div>
                     </form>
                 </div>
-                <div class="container text-center connect">
+                <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Modifier les horaires d'ouverture</h1>
                     <form action="modifier_horaires.php" method="POST">
                         <div class="my-3">
@@ -172,11 +174,12 @@
                             <input type="text" id="samedi" name="samedi">
                         </div>
                         <div class="my-3">
-                            <button type="submit" class="btn btn-danger">Enregistrer les nouveaux horaires</button>
+                            <button type="submit" class="btn btn-success my-4">Enregistrer les nouveaux
+                                horaires</button>
                         </div>
                     </form>
                 </div>
-                <div class="container text-center connect">
+                <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
                     <?php
                     // Connexion à la base de données
@@ -201,12 +204,12 @@
                                 $titre = $row['titre'];
                                 $paragraphe = $row['paragraphe'];
 
-                                echo "<div class='service'>";
+                                echo "<div class='my-5'>";
                                 echo "<h3>$titre</h3>";
                                 echo "<p>$paragraphe</p>";
                                 echo "<form action='supprimer_service.php' method='POST'>";
                                 echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                                echo "<button type='submit'>Supprimer</button>";
+                                echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
                                 echo "</form>";
                                 echo "</div>";
                             }
@@ -215,22 +218,23 @@
                         }
                         ?>
                     </div>
-                    <div class="container text-center connect">
+                    <div class="container text-center connect my-2">
                         <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
                         <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
                             <div>
-                                <label for='titre'>Titre :</label>
+                                <label class="my-2" for='titre'>Titre :</label></br>
                                 <input type='text' id='titre' name='titre' required>
                             </div>
-                            <div>
-                                <label for='paragraphe'>Paragraphe :</label>
-                                <textarea id='paragraphe' name='paragraphe' required></textarea>
+                            <div class='my-3'>
+                                <label class="my-2" for='paragraphe'>Paragraphe :</label></br>
+                                <textarea style="width: 50vw; height: 20vh; resize: none" id='paragraphe' name='paragraphe'
+                                    required></textarea>
                             </div>
-                            <div>
-                                <label for='image'>Image :</label>
-                                <input type='file' id='image' name='image' required>
+                            <div class='my-3'>
+                                <label class="my-2" for='image'>Image :</label></br>
+                                <input class="btn btn-primary" type='file' id='image' name='image' required>
                             </div>
-                            <button type='submit'>Ajouter</button>
+                            <button class="btn btn-success my-5" type='submit'>Ajouter</button>
                         </form>
 
                         <?php

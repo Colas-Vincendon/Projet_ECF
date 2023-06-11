@@ -13,6 +13,8 @@ try {
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
     $annee = $_POST['annee'];
+    $carburant = $_POST['carburant'];
+    $boite_de_vitesse = $_POST['boite_de_vitesse'];
 
     // Construction de la requête SQL
     $sql = "SELECT * FROM cars WHERE 1=1";
@@ -32,6 +34,16 @@ try {
     if (!empty($annee)) {
         $sql .= " AND annee = :annee";
         $params['annee'] = $annee;
+    }
+
+    if (!empty($carburant)) {
+        $sql .= " AND carburant = :carburant";
+        $params['carburant'] = $carburant;
+    }
+
+    if (!empty($boite_de_vitesse)) {
+        $sql .= " AND boite_de_vitesse = :boite_de_vitesse";
+        $params['boite_de_vitesse'] = $boite_de_vitesse;
     }
 
     // Préparation de la requête SQL
@@ -61,7 +73,9 @@ try {
             echo "<p><FONT color='grey'>Modèle : </FONT><b> " . $row["modele"] . "</b></p>";
             echo "<p><FONT color='grey'>Kilomêtrage : </FONT><b> " . $row["kilometres"] .' km'. "</b></p>";
             echo "<p><FONT color='grey'>Année : </FONT><b> " . $row["annee"] . "</b></p>";
-            echo "<p><FONT color='grey'>Prix : </FONT><b> " . $row["Prix"] . "</b></p></div>";
+            echo "<p><FONT color='grey'>Carburant : </FONT><b> " . $row["carburant"] . "</b></p>";
+            echo "<p><FONT color='grey'>Boîte de vitesse : </FONT><b> " . $row["boite_de_vitesse"] . "</b></p>";
+            echo "<p><FONT color='grey'>Prix : </FONT><b> " . $row["Prix"] .' €'. "</b></p></div>";
 
             echo "</a></div>";
         }
@@ -75,6 +89,7 @@ try {
     die("Échec de la connexion à la base de données : " . $e->getMessage());
 }
 ?>
+
 
 
 

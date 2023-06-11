@@ -78,7 +78,7 @@
                 </div>
                 <!-- --------------------------------- START NAVBAR ------------------------------ -->
                 <div class="row">
-                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
+                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11">
                         <div class="container d-flex justify-content-start">
                             <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
@@ -91,7 +91,7 @@
                                         <a class="nav-link" href="index.php">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
+                                        <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.php">RACHAT CASH</a>
@@ -109,20 +109,17 @@
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.php">ATELIER BOSCH CAR
-                                                    SERVICE</a>
+                                                    href="boschService.php">ATELIER BOSCH CAR SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.php">SERVICE CARTE
-                                                    GRISE</a>
+                                                    href="carRegistration.php">SERVICE CARTE GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.php">INFORMATIONS
-                                                    CONSOMMATEUR</a>
+                                                    href="infoConsumer.php">INFORMATIONS CONSOMMATEUR</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -141,183 +138,96 @@
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container text-center connect my-4">
-                    <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
-                    $dbname = "garageParrot";
-
-                    try {
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                        // Récupération de l'ID de la voiture depuis l'URL
-                        if (isset($_GET['id'])) {
-                            $idVoiture = $_GET['id'];
-
-                            // Requête préparée pour récupérer les détails de la voiture spécifique
-                            $stmt = $conn->prepare("SELECT * FROM cars WHERE id = :idVoiture");
-                            $stmt->bindParam(':idVoiture', $idVoiture);
-                            $stmt->execute();
-
-                            // Affichage des détails de la voiture
-                            if ($stmt->rowCount() > 0) {
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    // Récupération des images de la voiture
-                                    $carId = $row["id"];
-
-                                    // Requête préparée pour récupérer les images de la voiture
-                                    $stmtImages = $conn->prepare("SELECT image_base64 FROM images WHERE car_id = :carId");
-                                    $stmtImages->bindParam(':carId', $carId);
-                                    $stmtImages->execute();
-
-                                    $images = $stmtImages->fetchAll(PDO::FETCH_ASSOC);
-
-                                    if (!empty($images)) {
-                                        echo "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
-                                        echo "<ol class='carousel-indicators'>";
-                                        $i = 0;
-                                        foreach ($images as $index => $image) {
-                                            $active = ($index === 0) ? "active" : "";
-                                            echo "<li data-bs-target='#carouselExampleIndicators' data-bs-slide-to='$index' class='$active'></li>";
-                                        }
-                                        echo "</ol>";
-
-                                        echo "<div class='carousel-inner my-3'>";
-                                        foreach ($images as $index => $image) {
-                                            $active = ($index === 0) ? "active" : "";
-                                            echo "<div class='carousel-item $active'>";
-                                            echo "<img src='data:image/jpeg;base64," . $image["image_base64"] . "' class='d-block w-100' alt='Image voiture'>";
-                                            echo "</div>";
-                                        }
-                                        echo "</div>";
-
-                                        echo "<a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-bs-slide='prev'>";
-                                        echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
-                                        echo "<span class='visually-hidden'>Précédent</span>";
-                                        echo "</a>";
-                                        echo "<a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-bs-slide='next'>";
-                                        echo "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
-                                        echo "<span class='visually-hidden'>Suivant</span>";
-                                        echo "</a>";
-
-                                        echo "</div>";
-                                    }
-
-                                    // Affichage des autres détails de la voiture
-                                    echo "<div class='container'>";
-                                    echo "<div class='row detailsCar my-4'>";
-                                    echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p>Marque : " . $row["marque"] . "</p>";
-                                    echo "<p>Modèle : " . $row["modele"] . "</p>";
-                                    echo "<p>Année : " . $row["annee"] . "</p>";
-                                    echo "</div>";
-                                    echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p>Kilometrage : " . $row["kilometres"] . 'km' . "</p>";
-                                    echo "<p>Carburant : " . $row["carburant"] . "</p>";
-                                    echo "<p>Boîte de vitesse : " . $row["boîte de vitesse"] . "</p>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                }
-                            } else {
-                                echo "<p>Aucun résultat trouvé pour cette voiture.</p>";
-                            }
-                        } else {
-                            echo "<p>Identifiant de voiture non spécifié.</p>";
-                        }
-
-                        // Fermeture de la connexion à la base de données
-                        $conn = null;
-                    } catch (PDOException $e) {
-                        echo "Échec de la connexion à la base de données : " . $e->getMessage();
-                    }
-                    ?>
-
-
-
+                <div class="container text-start">
                     <div class="row">
-                        <div class=" col col-md-2 col-xl-3"></div>
-                        <div class="col-12 col-md-8 col-xl-6">
-                            <h2 class="my-4">Une question ? Envoyer-nous un message</h2>
-                            <form class="text-grey fs-6" id="contactForm" action="leaveMessage.php" method="POST">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <label>Nom *</label>
-                                                <input value="" data-msg-required="Votre nom" maxlength="100"
-                                                    class="form-control" name="nom" id="nom" required="required"
-                                                    aria-required="true" type="text" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Prénom *</label>
-                                                <input value="" data-msg-required="Votre prénom" maxlength="100"
-                                                    class="form-control" name="prenom" id="prenom" required="required"
-                                                    aria-required="true" type="text" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Email *</label>
-                                            <input value="" data-msg-required="Votre email"
-                                                data-msg-email="Adresse email non valide" maxlength="100"
-                                                class="form-control" name="email" id="email" required="required"
-                                                aria-required="true" type="email" />
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Téléphone *</label>
-                                            <input value="" data-msg-required="Votre telephone" maxlength="100"
-                                                class="form-control" name="telephone" id="telephone" required="required"
-                                                aria-required="true" type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Sujet</label>
-                                            <input value=" A compléter pour afficher le véhicule "
-                                                data-msg-required="Sujet" maxlength="100" class="form-control"
-                                                name="sujet" id="sujet" required="required" aria-required="true"
-                                                type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Message *</label>
-                                            <textarea maxlength="5000" data-msg-required="Please enter your message."
-                                                rows="10" class="form-control" name="message" id="message"
-                                                required="required" aria-required="true"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row margin_bottom_20">
-                                    <div class="col-md-12">
-                                        <input value="1" name="rgpd" type="checkbox" required="required" />
-                                        <span class="small">En soumettant ce formulaire, j'accepte que les
-                                            informations saisies soient exploitées dans le cadre
-                                            de la relation commerciale qui peut en découler.
-                                            <a href="politic.php" target="_blank">En savoir
-                                                plus</a></span>
-                                    </div>
-                                </div>
-                                <div class="row my-4">
-                                    <div class="col-md-12">
-                                        <input value="Envoyer" name="envoimsg" class="btn btn-form btn-lg mb-xlg"
-                                            data-loading-text="Loading..." type="submit" />
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="mx-2 my-5 fs-6">
+                            <div class="text-center">
+                                <h1 class="fs-2 mb-5 text-red-bold">
+                                    Politique de confidentialité
+                                </h1>
+                            </div>
+                            <p>
+                                Nous accordons une grande importance à la protection de vos données personnelles.</br>
+                                Cette
+                                politique de confidentialité vise à vous informer de la manière dont nous collectons,
+                                utilisons, divulguons et protégeons vos informations personnelles lorsque vous utilisez
+                                notre site internet.
+                            </p>
+                            <h4 class="my-4">Collecte d'informations personnelles :</h4>
+                            <p>Lorsque vous visitez notre site internet, nous pouvons collecter certaines informations
+                                personnelles vous concernant, telles que votre nom, votre adresse e-mail, votre numéro
+                                de téléphone, etc.</br> Ces informations sont collectées de manière volontaire lorsque
+                                vous
+                                les fournissez via nos formulaires de contact ou d'inscription.
+                            </p>
+                            <h4 class="my-4">
+                                Utilisation des informations personnelles :
+                            </h4>
+                            <p>
+                                Les informations personnelles que nous collectons sont utilisées dans le but de répondre
+                                à vos demandes, de vous fournir les services que vous avez sollicités, de personnaliser
+                                votre expérience sur notre site internet et de vous informer des nouveautés, offres
+                                spéciales ou événements pertinents.</br> Nous ne vendons, louons ou partageons vos
+                                informations personnelles avec des tiers à des fins de marketing sans votre consentement
+                                explicite.
+                            </p>
+                            <h4 class="my-4">
+                                Protection des informations personnelles :
+                            </h4>
+                            <p>
+                                Nous mettons en place des mesures de sécurité appropriées pour protéger vos informations
+                                personnelles contre tout accès non autorisé, toute divulgation, altération ou
+                                destruction.</br> Cependant, veuillez noter qu'aucune méthode de transmission ou de
+                                stockage
+                                de données n'est totalement sécurisée.</br> Nous ne pouvons donc garantir la sécurité
+                                absolue
+                                de vos informations personnelles.
+                            </p>
+                            <h4 class="my-4">
+                                Cookies et technologies similaires :
+                            </h4>
+                            <p>
+                                Notre site internet utilise des cookies et des technologies similaires pour améliorer
+                                votre expérience utilisateur, analyser les tendances, administrer le site et collecter
+                                des informations démographiques sur nos utilisateurs.</br> Vous pouvez contrôler
+                                l'utilisation des cookies via les paramètres de votre navigateur.
+                            </p>
+                            <h4 class="my-4">
+                                Liens vers des sites tiers :
+                            </h4>
+                            <p>
+                                Notre site internet peut contenir des liens vers des sites tiers. Nous ne sommes pas
+                                responsables des pratiques de confidentialité ou du contenu de ces sites.</br> Nous vous
+                                encourageons à consulter les politiques de confidentialité de ces sites avant de fournir
+                                vos informations personnelles.
+                            </p>
+                            <h4 class="my-4">
+                                Conservation des données :
+                            </h4>
+                            <p>
+                                Nous conservons vos informations personnelles aussi longtemps que nécessaire pour
+                                atteindre les finalités pour lesquelles elles ont été collectées, sauf si la loi l'exige
+                                autrement.
+                            </p>
+                            <h4 class="my-4">
+                                Vos droits :
+                            </h4>
+                            <p>
+                                Vous avez le droit d'accéder, de rectifier, de mettre à jour ou de supprimer vos
+                                informations personnelles.</br> Vous pouvez également vous opposer au traitement de vos
+                                données personnelles ou demander leur portabilité. Pour exercer ces droits, veuillez
+                                nous contacter à l'adresse indiquée ci-dessous.
+                                </br></br>
+                                Nous nous réservons le droit de modifier cette politique de confidentialité à tout
+                                moment. Les mises à jour seront publiées sur cette page.
+                                </br></br>
+                                Pour toute question concernant notre politique de confidentialité, veuillez nous
+                                contacter à l'adresse suivante : [Adresse de contact].
+                            </p>
                         </div>
-                        <div class="col col-md-2 col-xl-3"></div>
                     </div>
                 </div>
-                <!-- --------------------------------- FOOTER --------------------------- -->
+                <!-- --------------------------- FOOTER --------------------------- -->
                 <div class="row">
                     <div class="container footer">
                         <div class="row cols-3">
@@ -426,7 +336,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-    <script src="./src/scripts/script.js"></script>
+    <script src="src/scripts/script.js"></script>
 </body>
 
 </html>

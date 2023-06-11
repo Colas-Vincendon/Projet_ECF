@@ -161,6 +161,7 @@
                                     $prenom = $row['prenom'];
                                     $nom = $row['nom'];
                                     $email = $row['email'];
+                                    $telephone = $row['telephone'];
                                     $sujet = $row['sujet'];
                                     $message = $row['message'];
                                     $date_creation = $row['date_creation'];
@@ -173,7 +174,8 @@
                                                     echo "<h6><strong>Date : </strong>$formatted_date</h6>";
                                                     echo "<h6><strong>Sujet : </strong>$sujet</h6>";
                                                     echo "<h6><strong>De :</strong> $prenom $nom</h6>";
-                                                    echo "<h6><strong>Email :</strong> $email</h6>
+                                                    echo "<h6><strong>Email :</strong> $email</h6>";
+                                                    echo "<h6><strong>Telephone :</strong> $telephone</h6>
                                                 </div>";
                                             echo "<div class='col-12 col-md-5 connect d-flex align-items-center'>";
                                                 echo "<p class='my-auto'>$message</p>";

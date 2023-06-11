@@ -134,18 +134,19 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="container text-center connect my-4">
-          <h2><b>Bienvenue</b></h2> <br>
+        <div class="container d-flex align-items-center justify-content-center connect my-2">
+          <h1 class="titleAdmin my-3"><b>Espace Employés</b></h1> <br>
         </div>
-          <div class="container text-center connect">
-          <h2>Les messages clients</h2>
+        <div class="container text-center connect my-2">
+          <h1 class="text-grey my-4">Les messages clients</h1>
           <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
-              <p class="text-center btn btn-success my-auto"><a class="no-underline text-white" href="messagesPlace.php">Consulter</a></p><br>
-            </div>
+            <p class="text-center btn btn-success my-3"><a class="no-underline text-white"
+                href="messagesPlace.php">Consulter</a></p><br>
+          </div>
         </div>
-        <div class="container text-center connect">
+        <div class="container text-center connect my-2">
 
-          <h2>Ajouter un nouveau véhicule</h2>
+          <h1 class="text-grey my-4">Ajouter un nouveau véhicule</h1>
 
           <form action="add_vehicle.php" method="POST" enctype="multipart/form-data">
             <label for="marque">Marque :</label>
@@ -179,13 +180,13 @@
             <input type="text" name="prix" required><br><br>
 
             <label for="images">Images :</label>
-            <input type="file" name="images[]" multiple><br><br>
+            <input class="btn btn-primary" type="file" name="images[]" multiple><br><br>
 
-            <input class="btn btn-success my-4" type="submit" value="Ajouter le véhicule">
+            <input class="btn btn-success my-5" type="submit" value="Ajouter le véhicule">
           </form>
         </div>
-        <div class="container text-center connect">
-          <h2>Valider les témoignages clients</h2>
+        <div class="container text-center connect my-2">
+          <h1 class="text-grey my-4">Valider les témoignages clients</h1>
           <?php
           // Connexion à la base de données
           $servername = "localhost";
@@ -253,8 +254,8 @@
           $conn = null;
           ?>
         </div>
-        <div class="container text-center connect">
-          <h2>Ajouter un témoignage client</h2>
+        <div class="container text-center connect my-2">
+          <h1 class="text-grey my-4">Ajouter un témoignage client</h1>
           <form action="add_review.php" method="POST">
             <div class="my-3">
               <label for="nom">Nom du client :</label>

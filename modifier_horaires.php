@@ -23,7 +23,7 @@ try {
     $conn = null;
 
     // Rediriger vers la page accueil_admin.php ou une autre page de confirmation
-    header("Location: accueil_admin.php");
+    header("Location: newHorairesAdded.php");
     exit();
 } catch (PDOException $e) {
     die("Échec de la connexion à la base de données : " . $e->getMessage());

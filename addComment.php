@@ -134,7 +134,7 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="container my-4">
+        <div class="container connect my-3">
           <form action="add_review.php" method="POST">
             <div class="my-3">
               <label for="nom">Nom :</label>
