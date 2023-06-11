@@ -1,8 +1,8 @@
 <?php
 // Connexion à la base de données
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "Colas";
+$password = "Vincendon89450";
 $dbname = "garageParrot";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message_id'])) {

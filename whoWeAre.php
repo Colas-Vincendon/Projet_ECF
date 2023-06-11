@@ -371,8 +371,8 @@
                     <?php
                     // Connexion à la base de données
                     $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
+                    $username = "Colas";
+                    $password = "Vincendon89450";
                     $dbname = "garageParrot";
 
                     try {

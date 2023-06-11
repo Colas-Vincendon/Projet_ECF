@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
     }
 
     $servername = "localhost";
-    $username = "root";
-    $password = "root";
+    $username = "Colas";
+    $password = "Vincendon89450";
     $dbname = "garageParrot";
 
     try {

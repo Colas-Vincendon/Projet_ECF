@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connexion à la base de données
     $servername = 'localhost';
     $dbname = 'garageParrot';
-    $username = 'root';
-    $password2 = 'root';
+    $username = 'Colas';
+    $password2 = 'Vincendon89450';
 
     try {
         // Connexion à la base de données en utilisant PDO

@@ -152,8 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connexion à la base de données
     $servername = 'localhost';
     $dbname = 'garageParrot';
-    $usernameDB = 'root';
-    $passwordDB = 'root';
+    $usernameDB = 'Colas';
+    $passwordDB = 'Vincendon89450';
 
     try {
         // Connexion à la base de données en utilisant PDO
@@ -254,8 +254,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <?php
                                         // Connexion à la base de données
                                         $servername = "localhost";
-                                        $username = "root";
-                                        $password = "root";
+                                        $username = "Colas";
+                                        $password = "Vincendon89450";
                                         $dbname = "garageParrot";
 
                                         try {

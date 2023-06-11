@@ -136,8 +136,8 @@
         <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
         <?php
         $servername = "localhost";
-        $username = "root";
-        $password = "root";
+        $username = "Colas";
+        $password = "Vincendon89450";
         $dbname = "garageParrot";
 
         try {
@@ -178,17 +178,16 @@
           <div class="filtres my-3 text-center">
             <p>
             <div class="row my-3">
-              <div class="col-12">
-                <label for="marque">Marque :</label>
-                <select id="marque" name="marque">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="marque" name="marque" style="width: 200px;" class="mx-auto">
+                <option value="">Marque</option>
                   <?php echo $options; ?>
                 </select>
               </div>
 
-              <div class="col-12">
-                <label for="modele">Modèle :</label>
-                <select id="modele">
-                  <option value="">Tous</option>
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="modele" style="width: 200px;" class="mx-auto">
+                  <option value="">Modèle</option>
                   <option value="Clio">Clio</option>
                   <option value="308">308</option>
                   <option value="C3">C3</option>
@@ -198,10 +197,34 @@
                 </select>
               </div>
 
-              <div class="col-12">
-                <label for="annee">Année :</label>
-                <select id="annee" name="annee">
-                  <option value="">Toutes</option>
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="prix" style="width: 200px;" class="mx-auto">
+                  <option value="">Prix</option>
+                  <option value="de 0 à 10.000 €">de 0 à 10.000 €</option>
+                  <option value="de 10.000 à 20.000 €">de 10.000 à 20.000 €</option>
+                  <option value="de 20.000 à 30.000 €">de 20.000 à 30.000 €</option>
+                  <option value="de 30.000 à 40.000 €">de 30.000 à 40.000 €</option>
+                  <option value="de 40.000 à 50.000 €">de 40.000 à 50.000 €</option>
+                  <option value="de 50.000 à 75.000 €">de 50.000 à 75.000 €</option>
+                  <option value="de 75.000 à 100.000 €">de 75.000 à 100.000 €</option>
+                  <option value="+ de 100.000 €">+ de 100.000 €</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="kilometres" style="width: 200px;" class="mx-auto">
+                  <option value="">Kilométrage</option>
+                  <option value="de 0 à 50.000km">0-50.000km</option>
+                  <option value="de 50.000 à 100.000 km">50.000-100.000km</option>
+                  <option value="de 100.000 à 150.000 km">100.000-150.000km</option>
+                  <option value="de 150.000 à 200.000 km">150.000-200.000km</option>
+                  <option value="+ de 200.000 km">+ de 200.000km</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="annee" name="annee" style="width: 200px;" class="mx-auto">
+                  <option value="">Année</option>
                   <option value="2021">2021</option>
                   <option value="2020">2020</option>
                   <option value="2019">2019</option>
@@ -227,10 +250,9 @@
                 </select>
               </div>
 
-              <div class="col-12">
-                <label for="carburant">Carburant :</label>
-                <select id="carburant" name="carburant">
-                  <option value="">Tous</option>
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="carburant" name="carburant" style="width: 200px;" class="mx-auto">
+                  <option value="">Carburant</option>
                   <option value="Essence">Essence</option>
                   <option value="Diesel">Diesel</option>
                   <option value="Electrique">Electrique</option>
@@ -240,10 +262,9 @@
                 </select>
               </div>
 
-              <div class="col-12">
-                <label for="boite_de_vitesse">Boîte de vitesse :</label>
-                <select id="boite_de_vitesse" name="boite_de_vitesse">
-                  <option value="">Tous</option>
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+                <select id="boite_de_vitesse" name="boite_de_vitesse" style="width: 200px;" class="mx-auto">
+                  <option value="">Transmission</option>
                   <option value="Manuelle">Manuelle</option>
                   <option value="Automatique">Automatique</option>
                 </select>
@@ -296,12 +317,6 @@
                   <p class="horairesFooter">
                     NOS HORAIRES <br />
                     <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
-                    $dbname = "garageParrot";
-
                     try {
                       // Connexion à la base de données en utilisant PDO
                       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

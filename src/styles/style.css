@@ -322,6 +322,14 @@ h1 {
   font-size: 15px;
 }
 
+#img-car {
+  transition: filter 0.3s;
+}
+
+#img-car:hover {
+  filter: brightness(55%);
+}
+
 /* -------------------------------- MEDIA QUERIES -------------------------------------- */
 /*--------------------------------------------------------------------------------------*/
 
@@ -352,6 +360,9 @@ h1 {
 
 @media screen and (max-width: 991px) {
   .top-header {
+    display: none;
+  }
+  .row-bottom {
     display: none;
   }
   #introCarousel {

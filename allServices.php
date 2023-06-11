@@ -144,8 +144,8 @@
                         <?php
                         // Connexion à la base de données
                         $servername = "localhost";
-                        $username = "root";
-                        $password = "root";
+                        $username = "Colas";
+                        $password = "Vincendon89450";
                         $dbname = "garageParrot";
 
                         try {
@@ -168,9 +168,9 @@
                                     $imageBase64 = $service['image_base64'];
 
                                     // Afficher les informations du service
-                                    echo "<div class='col-12 col-md-6 col-xl-4'><div class='container containerAllServices my-5'>";
+                                    echo "<div class='col-12 col-md-6 col-xl-4'><div class='container-fluid containerAllServices my-5 p-0'>";
                                     if (!empty($imageBase64)) {
-                                        echo "<img style='width: 300px; height: 300px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'>";
+                                        echo "<div class='container-fluid p-0'><img style='width: 100%; height: 300px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
                                     }
                                     echo "<h3 class='my-4'>$titre</h3>";
                                     echo "<div class='allServices-p'><p>$paragraphe</p></div>";
@@ -225,12 +225,6 @@
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
-                                        // Connexion à la base de données
-                                        $servername = "localhost";
-                                        $username = "root";
-                                        $password = "root";
-                                        $dbname = "garageParrot";
-
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

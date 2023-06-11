@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="./src/styles/style.css">
 <?php
 // Connexion à la base de données
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "Colas";
+$password = "Vincendon89450";
 $dbname = "garageParrot";
 
 try {
@@ -15,6 +16,8 @@ try {
     $annee = $_POST['annee'];
     $carburant = $_POST['carburant'];
     $boite_de_vitesse = $_POST['boite_de_vitesse'];
+    $kilometres = $_POST['kilometres'];
+    $prix = $_POST['prix'];
 
     // Construction de la requête SQL
     $sql = "SELECT * FROM cars WHERE 1=1";
@@ -46,6 +49,55 @@ try {
         $params['boite_de_vitesse'] = $boite_de_vitesse;
     }
 
+    if (!empty($kilometres)) {
+        switch ($kilometres) {
+            case 'de 0 à 50.000km':
+                $sql .= " AND kilometres BETWEEN 0 AND 50000";
+                break;
+            case 'de 50.000 à 100.000 km':
+                $sql .= " AND kilometres BETWEEN 50000 AND 100000";
+                break;
+            case 'de 100.000 à 150.000 km':
+                $sql .= " AND kilometres BETWEEN 100000 AND 150000";
+                break;
+            case 'de 150.000 à 200.000 km':
+                $sql .= " AND kilometres BETWEEN 150000 AND 200000";
+                break;
+            case '+ de 200.000 km':
+                $sql .= " AND kilometres > 200000";
+                break;
+        }
+    }
+
+    if (!empty($prix)) {
+        switch ($prix) {
+            case 'de 0 à 10.000 €':
+                $sql .= " AND prix BETWEEN 0 AND 10000";
+                break;
+            case 'de 10.000 à 20.000 €':
+                $sql .= " AND prix BETWEEN 10000 AND 20000";
+                break;
+            case 'de 20.000 à 30.000 €':
+                $sql .= " AND prix BETWEEN 20000 AND 30000";
+                break;
+            case 'de 30.000 à 40.000 €':
+                $sql .= " AND prix BETWEEN 30000 AND 40000";
+                break;
+            case 'de 40.000 à 50.000 €':
+                $sql .= " AND prix BETWEEN 40000 AND 50000";
+                break;
+            case 'de 50.000 à 75.000 €':
+                $sql .= " AND prix BETWEEN 50000 AND 75000";
+                break;
+            case 'de 75.000 à 100.000 €':
+                $sql .= " AND prix BETWEEN 75000 AND 100000";
+                break;
+            case '+ de 100.000 €':
+                $sql .= " AND prix > 100000";
+                break;
+        }
+    }
+
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
 
@@ -69,13 +121,16 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div class='detailsCar text-start py-2 px-4 fs-6'><p><FONT color='grey'>Marque : </FONT><b> " . $row["marque"] . "</b></p>";
-            echo "<p><FONT color='grey'>Modèle : </FONT><b> " . $row["modele"] . "</b></p>";
-            echo "<p><FONT color='grey'>Kilomêtrage : </FONT><b> " . $row["kilometres"] .' km'. "</b></p>";
-            echo "<p><FONT color='grey'>Année : </FONT><b> " . $row["annee"] . "</b></p>";
-            echo "<p><FONT color='grey'>Carburant : </FONT><b> " . $row["carburant"] . "</b></p>";
-            echo "<p><FONT color='grey'>Boîte de vitesse : </FONT><b> " . $row["boite_de_vitesse"] . "</b></p>";
-            echo "<p><FONT color='grey'>Prix : </FONT><b> " . $row["Prix"] .' €'. "</b></p></div>";
+            echo "<div class='detailsCar text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<p class='text-secondary m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<p class='text-secondary m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div>";
 
             echo "</a></div>";
         }
@@ -89,16 +144,3 @@ try {
     die("Échec de la connexion à la base de données : " . $e->getMessage());
 }
 ?>
-
-
-
-
-<style>
-    #img-car {
-        transition: filter 0.3s;
-    }
-
-    #img-car:hover {
-        filter: brightness(55%);
-    }
-</style>

@@ -143,8 +143,8 @@
                         <?php
                         // Connexion à la base de données
                         $servername = "localhost";
-                        $username = "root";
-                        $password = "root";
+                        $username = "Colas";
+                        $password = "Vincendon89450";
                         $dbname = "garageParrot";
 
                         try {
@@ -234,12 +234,6 @@
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
-                                        // Connexion à la base de données
-                                        $servername = "localhost";
-                                        $username = "root";
-                                        $password = "root";
-                                        $dbname = "garageParrot";
-
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

@@ -145,8 +145,8 @@
                     <?php
                     // Connexion à la base de données
                     $servername = "localhost";
-                    $username = "root";
-                    $password = "root";
+                    $username = "Colas";
+                    $password = "Vincendon89450";
                     $dbname = "garageParrot";
 
                     try {
@@ -210,14 +210,14 @@
                                     echo "<div class='container'>";
                                     echo "<div class='row detailsCar my-4'>";
                                     echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p>Marque : " . $row["marque"] . "</p>";
-                                    echo "<p>Modèle : " . $row["modele"] . "</p>";
-                                    echo "<p>Année : " . $row["annee"] . "</p>";
+                                    echo "<p><span class='text-grey'>Marque : </span>" . $row["marque"] . "</p>";
+                                    echo "<p><span class='text-grey'>Modèle : </span>" . $row["modele"] . "</p>";
+                                    echo "<p><span class='text-grey'>Année : </span>" . $row["annee"] . "</p>";
                                     echo "</div>";
                                     echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p>Kilometrage : " . $row["kilometres"] . 'km' . "</p>";
-                                    echo "<p>Carburant : " . $row["carburant"] . "</p>";
-                                    echo "<p>Boîte de vitesse : " . $row["boîte de vitesse"] . "</p>";
+                                    echo "<p><span class='text-grey'>Kilometrage : </span>" . $row["kilometres"] . ' km' . "</p>";
+                                    echo "<p><span class='text-grey'>Carburant : </span>" . $row["carburant"] . "</p>";
+                                    echo "<p><span class='text-grey'>Boîte de vitesse : </span>" . $row["boite_de_vitesse"] . "</p>";
                                     echo "</div>";
                                     echo "</div>";
                                     echo "</div>";
@@ -235,9 +235,6 @@
                         echo "Échec de la connexion à la base de données : " . $e->getMessage();
                     }
                     ?>
-
-
-
                     <div class="row">
                         <div class=" col col-md-2 col-xl-3"></div>
                         <div class="col-12 col-md-8 col-xl-6">
@@ -279,7 +276,7 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <label>Sujet</label>
-                                            <input value=" A compléter pour afficher le véhicule "
+                                            <input value="<?php echo '$row[`marque`]' . ' ' . '$row[`modele`];' ?>"
                                                 data-msg-required="Sujet" maxlength="100" class="form-control"
                                                 name="sujet" id="sujet" required="required" aria-required="true"
                                                 type="text" />
@@ -351,12 +348,6 @@
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
-                                        // Connexion à la base de données
-                                        $servername = "localhost";
-                                        $username = "root";
-                                        $password = "root";
-                                        $dbname = "garageParrot";
-
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
