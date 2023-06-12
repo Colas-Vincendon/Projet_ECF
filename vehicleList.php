@@ -78,7 +78,7 @@
                 </div>
                 <!-- --------------------------------- START NAVBAR ------------------------------ -->
                 <div class="row">
-                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
+                    <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11">
                         <div class="container d-flex justify-content-start">
                             <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
@@ -91,7 +91,7 @@
                                         <a class="nav-link" href="index.php">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
+                                        <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.php">RACHAT CASH</a>
@@ -109,20 +109,17 @@
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.php">ATELIER BOSCH CAR
-                                                    SERVICE</a>
+                                                    href="boschService.php">ATELIER BOSCH CAR SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.php">SERVICE CARTE
-                                                    GRISE</a>
+                                                    href="carRegistration.php">SERVICE CARTE GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.php">INFORMATIONS
-                                                    CONSOMMATEUR</a>
+                                                    href="infoConsumer.php">INFORMATIONS CONSOMMATEUR</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -141,186 +138,68 @@
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container text-center connect my-4">
-                    <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "Colas";
-                    $password = "Vincendon89450";
-                    $dbname = "garageParrot";
+                <div class="container-fluid text-center">
+                    <div class="row my-5">
+                        <?php
+                        $servername = "localhost";
+                        $username = "Colas";
+                        $password = "Vincendon89450";
+                        $dbname = "garageParrot";
 
-                    try {
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        try {
+                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        // Récupération de l'ID de la voiture depuis l'URL
-                        if (isset($_GET['id'])) {
-                            $idVoiture = $_GET['id'];
-
-                            // Requête préparée pour récupérer les détails de la voiture spécifique
-                            $stmt = $conn->prepare("SELECT * FROM cars WHERE id = :idVoiture");
-                            $stmt->bindParam(':idVoiture', $idVoiture);
+                            // Sélectionner tous les véhicules
+                            $sql = "SELECT * FROM cars";
+                            $stmt = $conn->prepare($sql);
                             $stmt->execute();
 
-                            // Affichage des détails de la voiture
+                            // Afficher les véhicules
                             if ($stmt->rowCount() > 0) {
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    // Récupération des images de la voiture
                                     $carId = $row["id"];
+                                    $sqlImages = "SELECT image_base64 FROM images WHERE car_id = '$carId' LIMIT 1";
+                                    $resultImages = $conn->query($sqlImages);
 
-                                    // Requête préparée pour récupérer les images de la voiture
-                                    $stmtImages = $conn->prepare("SELECT image_base64 FROM images WHERE car_id = :carId");
-                                    $stmtImages->bindParam(':carId', $carId);
-                                    $stmtImages->execute();
+                                    if ($resultImages->rowCount() > 0) {
 
-                                    $images = $stmtImages->fetchAll(PDO::FETCH_ASSOC);
-
-                                    if (!empty($images)) {
-                                        echo "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
-                                        echo "<ol class='carousel-indicators'>";
-                                        $i = 0;
-                                        foreach ($images as $index => $image) {
-                                            $active = ($index === 0) ? "active" : "";
-                                            echo "<li data-bs-target='#carouselExampleIndicators' data-bs-slide-to='$index' class='$active'></li>";
+                                        echo "<div class='col-6 col-md-3 col-lg-2 connect fs-6'>";
+                                        echo "<div class=' car-images'>";
+                                        while ($rowImage = $resultImages->fetch(PDO::FETCH_ASSOC)) {
+                                            $imageData = $rowImage["image_base64"];
+                                            echo "<img class='img-fluid' id='img-car' style='width: 100%' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
                                         }
-                                        echo "</ol>";
-
-                                        echo "<div class='carousel-inner my-3'>";
-                                        foreach ($images as $index => $image) {
-                                            $active = ($index === 0) ? "active" : "";
-                                            echo "<div class='carousel-item $active'>";
-                                            echo "<img src='data:image/jpeg;base64," . $image["image_base64"] . "' class='d-block w-100' alt='Image voiture'>";
-                                            echo "</div>";
-                                        }
-                                        echo "</div>";
-
-                                        echo "<a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-bs-slide='prev'>";
-                                        echo "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
-                                        echo "<span class='visually-hidden'>Précédent</span>";
-                                        echo "</a>";
-                                        echo "<a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-bs-slide='next'>";
-                                        echo "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
-                                        echo "<span class='visually-hidden'>Suivant</span>";
-                                        echo "</a>";
-
                                         echo "</div>";
                                     }
-
-                                    // Affichage des autres détails de la voiture
-                                    echo "<div class='container'>";
-                                    echo "<div class='row detailsCar my-4'>";
-                                    echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p><span class='text-grey'>Marque : </span>" . $marque = $row["marque"];
-                                    echo "</p>";
-                                    echo "<p><span class='text-grey'>Modèle : </span>" . $modele = $row["modele"];
-                                    echo "</p>";
-                                    echo "<p><span class='text-grey'>Année : </span>" . $annee = $row["annee"];
-                                    echo "</p>";
-                                    echo "</div>";
-                                    echo "<div class='col-12 col-lg-6 py-3 border border-secondary'>";
-                                    echo "<p><span class='text-grey'>Kilometrage : </span>" . $kilometres = $row["kilometres"] . ' km' ;
-                                    echo "</p>";
-                                    echo "<p><span class='text-grey'>Carburant : </span>" . $carburant = $row["carburant"];
-                                    echo "</p>";
-                                    echo "<p><span class='text-grey'>Boîte de vitesse : </span>" . $transmission = $row["boite_de_vitesse"];
-                                    echo "</p>";
-                                    echo "</div>";
-                                    echo "</div>";
+                                    // Afficher les détails du véhicule
+                                    echo "<p class='mb-0'><b>Marque :</b> " . $row['marque'] . "</p>";
+                                    echo "<p class='mb-0'><b>Modèle :</b> " . $row['modele'] . "</p>";
+                                    echo "<p class='mb-0'><b>Année :</b> " . $row['annee'] . "</p>";
+                                    echo "<p class='mb-0'><b>Kilometres :</b> " . $row['kilometres'] . "</p>";
+                                    echo "<p class='mb-0'><b>Carburant :</b> " . $row['carburant'] . "</p>";
+                                    echo "<p class='mb-0'><b>Boite_de_vitesse :</b> " . $row['boite_de_vitesse'] . "</p>";
+                                    echo "<p class='mb-0'><b>Prix :</b> " . $row['prix'] . "</p>";
+                                    echo "<form action='deleteVehicle.php' method='POST'>";
+                                    echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
+                                    echo "<input class='btn btn-danger' type='submit' onclick='return confirmDeleteCar()' value='Supprimer' />";
+                                    echo "</form>";
                                     echo "</div>";
                                 }
                             } else {
-                                echo "<p>Aucun résultat trouvé pour cette voiture.</p>";
+                                echo "Aucun véhicule trouvé.";
                             }
-                        } else {
-                            echo "<p>Identifiant de voiture non spécifié.</p>";
+
+                            // Fermeture de la connexion à la base de données
+                            $conn = null;
+                        } catch (PDOException $e) {
+                            die("Échec de la connexion à la base de données : " . $e->getMessage());
                         }
+                        ?>
 
-                        // Fermeture de la connexion à la base de données
-                        $conn = null;
-                    } catch (PDOException $e) {
-                        echo "Échec de la connexion à la base de données : " . $e->getMessage();
-                    }
-                    ?>
-                    <div class="row">
-                        <div class=" col col-md-2 col-xl-3"></div>
-                        <div class="col-12 col-md-8 col-xl-6">
-                            <h2 class="my-4">Une question ? Envoyer-nous un message</h2>
-                            <form class="text-grey fs-6" id="contactForm" action="leaveMessage.php" method="POST">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <label>Nom *</label>
-                                                <input value="" data-msg-required="Votre nom" maxlength="100"
-                                                    class="form-control" name="nom" id="nom" required="required"
-                                                    aria-required="true" type="text" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Prénom *</label>
-                                                <input value="" data-msg-required="Votre prénom" maxlength="100"
-                                                    class="form-control" name="prenom" id="prenom" required="required"
-                                                    aria-required="true" type="text" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Email *</label>
-                                            <input value="" data-msg-required="Votre email"
-                                                data-msg-email="Adresse email non valide" maxlength="100"
-                                                class="form-control" name="email" id="email" required="required"
-                                                aria-required="true" type="email" />
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Téléphone *</label>
-                                            <input value="" data-msg-required="Votre telephone" maxlength="100"
-                                                class="form-control" name="telephone" id="telephone" required="required"
-                                                aria-required="true" type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Sujet</label>
-                                            <input value="<?php echo $marque .' '.$modele .' '. $annee . ' ' . $kilometres . ' ' . $carburant . ' ' . $transmission; ?>"
-                                                data-msg-required="Sujet" maxlength="100" class="form-control"
-                                                name="sujet" id="sujet" required="required" aria-required="true"
-                                                type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Message *</label>
-                                            <textarea maxlength="5000" data-msg-required="Please enter your message."
-                                                rows="10" class="form-control" name="message" id="message"
-                                                required="required" aria-required="true"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row margin_bottom_20">
-                                    <div class="col-md-12">
-                                        <input value="1" name="rgpd" type="checkbox" required="required" />
-                                        <span class="small">En soumettant ce formulaire, j'accepte que les
-                                            informations saisies soient exploitées dans le cadre
-                                            de la relation commerciale qui peut en découler.
-                                            <a href="politic.php" target="_blank">En savoir
-                                                plus</a></span>
-                                    </div>
-                                </div>
-                                <div class="row my-4">
-                                    <div class="col-md-12">
-                                        <input value="Envoyer" name="envoimsg" class="btn btn-form btn-lg mb-xlg"
-                                            data-loading-text="Loading..." type="submit" />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col col-md-2 col-xl-3"></div>
                     </div>
                 </div>
-                <!-- --------------------------------- FOOTER --------------------------- -->
+                <!-- --------------------------- FOOTER --------------------------- -->
                 <div class="row">
                     <div class="container footer">
                         <div class="row cols-3">
@@ -354,6 +233,12 @@
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
+                                        // Connexion à la base de données
+                                        $servername = "localhost";
+                                        $username = "Colas";
+                                        $password = "Vincendon89450";
+                                        $dbname = "garageParrot";
+
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -423,7 +308,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-    <script src="./src/scripts/script.js"></script>
+    <script src="src/scripts/script.js"></script>
 </body>
 
 </html>

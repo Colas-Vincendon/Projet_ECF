@@ -275,10 +275,22 @@
             <div class="row justify-content-center my-3">
               <button id="rechercher" class="btn btn-danger">Rechercher</button>
             </div>
-
+            
             <div class="row justify-content-center my-3">
               <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
             </div>
+            
+            <div class="row justify-content-center my-3">
+              <select id="tri" style="width: 200px;" class="mx-auto">
+                <option value="">Trier par</option>
+                <option value="prix_asc">Prix croissant</option>
+                <option value="prix_desc">Prix décroissant</option>
+                <option value="kilometres_asc">KM croissant</option>
+                <option value="kilometres_desc">KM décroissant</option>
+              </select>
+            </div>
+         
+            
 
             <div id="resultat"></div>
             </p>

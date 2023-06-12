@@ -146,7 +146,52 @@
                     <h1 class="titleAdmin my-3"><b></b>Espace Administrateur</b></h1>
                 </div>
                 <div class="container text-center connect my-2">
-                    <h1 class="ml-0 text-grey my-3">Ajouter un employé</h1>
+                    <h1 class="ml-0 text-grey my-3">Supprimer un compte employé</h1>
+                    <div class="row">
+
+
+                        <?php
+                        $servername = "localhost";
+                        $username = "Colas";
+                        $password = "Vincendon89450";
+                        $dbname = "garageParrot";
+
+                        try {
+                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            // Sélectionner tous les employés sauf l'admin
+                            $sql = "SELECT * FROM employes WHERE email != 'Vparrot@gmail.com'";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+
+                            // Afficher les employés
+                            if ($stmt->rowCount() > 0) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    // Afficher les détails de l'employé
+                        
+                                    echo "<div class='col-6 col-md-4 col-lg-3 col-xl-2 connect'>";
+                                    echo "<p><b>Email : </b>" . $row['email'] . "</p>";
+                                    echo "<form action='delete_employe.php' method='POST'>";
+                                    echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
+                                    echo "<input class='btn btn-danger mb-3' type='submit' onclick='return confirmDeleteEmploye()'  value='Supprimer' />";
+                                    echo "</form></div>";
+                                }
+                            } else {
+                                echo "Aucun employé trouvé.";
+                            }
+                            // Fermeture de la connexion à la base de données
+                            $conn = null;
+                        } catch (PDOException $e) {
+                            die("Échec de la connexion à la base de données : " . $e->getMessage());
+                        }
+
+                        ?>
+
+                    </div>
+                </div>
+                <div class="container text-center connect my-2">
+                    <h1 class="ml-0 text-grey my-3">Ajouter un compte employé</h1>
                     <form method="POST" action="add_employe.php">
                         <div class="my-3">
                             <label for="email">Email :</label> <br />
@@ -181,42 +226,52 @@
                 </div>
                 <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
-                    <?php
-                    // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "Colas";
-                    $password = "Vincendon89450";
-                    $dbname = "garageParrot";
+                    <div class="row">
 
-                    try {
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        <?php
+                        // Connexion à la base de données
+                        $servername = "localhost";
+                        $username = "Colas";
+                        $password = "Vincendon89450";
+                        $dbname = "garageParrot";
 
-                        // Récupérer la liste des services existants
-                        $sql = "SELECT * FROM services";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->execute();
+                        try {
+                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        // Afficher la liste des services
-                        if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                $serviceId = $row['id'];
-                                $titre = $row['titre'];
-                                $paragraphe = $row['paragraphe'];
+                            // Récupérer les services et leurs images associées depuis la base de données
+                            $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
+                         FROM services s
+                         LEFT JOIN imageService i ON s.id = i.service_id";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                                echo "<div class='my-5'>";
-                                echo "<h3>$titre</h3>";
-                                echo "<p>$paragraphe</p>";
-                                echo "<form action='supprimer_service.php' method='POST'>";
-                                echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                                echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
-                                echo "</form>";
-                                echo "</div>";
+                            if (!empty($services)) {
+                                foreach ($services as $service) {
+                                    $serviceId = $service['id'];
+                                    $titre = $service['titre'];
+                                    $paragraphe = $service['paragraphe'];
+                                    $imageBase64 = $service['image_base64'];
+
+                                    // Afficher les informations du service
+                                    echo "<div class='col-6 col-md-4 col-lg-3 col-xl-2 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
+                                    if (!empty($imageBase64)) {
+                                        echo "<div class='container-fluid p-0'><img style='width: 100%; height: 200px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
+                                    }
+                                    echo "<h3>$titre</h3>";
+                                    echo "<p>$paragraphe</p>";
+                                    echo "<form action='supprimer_service.php' method='POST'>";
+                                    echo "<input type='hidden' name='service_id' value='$serviceId'>";
+                                    echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
+                                    echo "</form>";
+                                    echo "</div></div>";
+                                }
+                            } else {
+                                echo "Aucun service existant.";
                             }
-                        } else {
-                            echo "Aucun service existant.";
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
                     <div class="container text-center connect my-2">
                         <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
@@ -239,10 +294,10 @@
 
                         <?php
                         $conn = null;
-                    } catch (PDOException $e) {
-                        die("Échec de la connexion à la base de données : " . $e->getMessage());
-                    }
-                    ?>
+                        } catch (PDOException $e) {
+                            die("Échec de la connexion à la base de données : " . $e->getMessage());
+                        }
+                        ?>
 
 
                 </div>

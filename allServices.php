@@ -154,8 +154,8 @@
 
                             // Récupérer les services et leurs images associées depuis la base de données
                             $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
-            FROM services s
-            LEFT JOIN imageService i ON s.id = i.service_id";
+                            FROM services s
+                            LEFT JOIN imageService i ON s.id = i.service_id";
                             $stmt = $conn->prepare($sql);
                             $stmt->execute();
                             $services = $stmt->fetchAll(PDO::FETCH_ASSOC);

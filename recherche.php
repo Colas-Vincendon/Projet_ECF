@@ -18,6 +18,7 @@ try {
     $boite_de_vitesse = $_POST['boite_de_vitesse'];
     $kilometres = $_POST['kilometres'];
     $prix = $_POST['prix'];
+    $tri = $_POST['tri'];
 
     // Construction de la requête SQL
     $sql = "SELECT * FROM cars WHERE 1=1";
@@ -96,6 +97,17 @@ try {
                 $sql .= " AND prix > 100000";
                 break;
         }
+    }
+
+    // Construire la requête SQL en fonction du tri sélectionné
+    if ($tri === "kilometres_asc") {
+        $sql .= " ORDER BY kilometres ASC";
+    } elseif ($tri === "kilometres_desc") {
+        $sql .= " ORDER BY kilometres DESC";
+    } elseif ($tri === "prix_asc") {
+        $sql .= " ORDER BY prix ASC";
+    } elseif ($tri === "prix_desc") {
+        $sql .= " ORDER BY prix DESC";
     }
 
     // Préparation de la requête SQL

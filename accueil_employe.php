@@ -186,6 +186,13 @@
           </form>
         </div>
         <div class="container text-center connect my-2">
+          <h1 class="text-grey my-4">Supprimer un véhicule</h1>
+          <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
+            <p class="text-center btn btn-success my-3"><a class="no-underline text-white"
+                href="vehicleList.php">Liste des véhicules</a></p><br>
+          </div>
+        </div>
+        <div class="container text-center connect my-2">
           <h1 class="text-grey my-4">Valider les témoignages clients</h1>
           <?php
           // Connexion à la base de données

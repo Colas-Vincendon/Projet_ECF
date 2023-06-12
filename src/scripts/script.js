@@ -6,44 +6,6 @@ $("li.dropdown").hover(
     $(this).find(".dropdown-menu").stop(true, true).delay(100).fadeOut(400);
   }
 );
-/*---------------------- Filtres vehicules ---------------------*/
-
-document.getElementById("rechercher").addEventListener("click", function () {
-  var marque = document.getElementById("marque").value;
-  var modele = document.getElementById("modele").value;
-  var annee = document.getElementById("annee").value;
-  var carburant = document.getElementById("carburant").value;
-  var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
-  var kilometres = document.getElementById("kilometres").value;
-  var prix = document.getElementById("prix").value; // Ajout de la variable prix
-
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      document.getElementById("resultat").innerHTML = xhr.responseText;
-    }
-  };
-
-  var data =
-    "marque=" +
-    encodeURIComponent(marque) +
-    "&modele=" +
-    encodeURIComponent(modele) +
-    "&annee=" +
-    encodeURIComponent(annee) +
-    "&carburant=" +
-    encodeURIComponent(carburant) +
-    "&boite_de_vitesse=" +
-    encodeURIComponent(boite_de_vitesse) +
-    "&kilometres=" +
-    encodeURIComponent(kilometres) +
-    "&prix=" +
-    encodeURIComponent(prix);
-
-  xhr.open("POST", "recherche.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(data);
-});
 
 /*----------------------filtres les modèles de la marque sélectionnéeé ----------*/
 
@@ -87,6 +49,8 @@ window.addEventListener("DOMContentLoaded", function () {
   boutonRechercher.click();
 });
 
+/*------------------- réglages du carousel ----------------------*/
+
 $(document).ready(function () {
   $(".carousel").carousel({
     interval: 2000, // Réglez ici la vitesse souhaitée en millisecondes
@@ -100,3 +64,57 @@ document
   .addEventListener("click", function () {
     location.reload();
   });
+
+/*-------------- alerte sécurité avant suppression -----------------*/
+
+function confirmDelete() {
+  return confirm("Voulez-vous vraiment supprimer ce service ?");
+}
+function confirmDeleteEmploye() {
+  return confirm("Voulez-vous vraiment supprimer le compte cet employé ?");
+}
+function confirmDeleteCar() {
+  return confirm("Voulez-vous vraiment supprimer ce véhicule ?");
+}
+
+/*---------------------- Filtres vehicules ---------------------*/
+
+document.getElementById("rechercher").addEventListener("click", function () {
+  var marque = document.getElementById("marque").value;
+  var modele = document.getElementById("modele").value;
+  var annee = document.getElementById("annee").value;
+  var carburant = document.getElementById("carburant").value;
+  var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
+  var kilometres = document.getElementById("kilometres").value;
+  var prix = document.getElementById("prix").value;
+  var tri = document.getElementById("tri").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      document.getElementById("resultat").innerHTML = xhr.responseText;
+    }
+  };
+
+  var data =
+    "marque=" +
+    encodeURIComponent(marque) +
+    "&modele=" +
+    encodeURIComponent(modele) +
+    "&annee=" +
+    encodeURIComponent(annee) +
+    "&carburant=" +
+    encodeURIComponent(carburant) +
+    "&boite_de_vitesse=" +
+    encodeURIComponent(boite_de_vitesse) +
+    "&kilometres=" +
+    encodeURIComponent(kilometres) +
+    "&prix=" +
+    encodeURIComponent(prix) +
+    "&tri=" +
+    encodeURIComponent(tri);
+
+  xhr.open("POST", "recherche.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(data);
+});
