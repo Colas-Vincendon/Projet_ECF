@@ -119,29 +119,29 @@ try {
     // Affichage des résultats
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div class='container-fluid containerCars'><a class='no-underline text-black' href='detailed_car.php?id=" . $row["id"] . "'>";
+            echo "<div style=' border-radius: 20px 20px 20px 20px' class='container-fluid p-0 shadow containerCars'><a class='no-underline text-black' href='detailed_car.php?id=" . $row["id"] . "'>";
             // Récupération et décodage des images de la voiture
             $carId = $row["id"];
             $sqlImages = "SELECT image_base64 FROM images WHERE car_id = '$carId' LIMIT 1";
             $resultImages = $conn->query($sqlImages);
 
             if ($resultImages->rowCount() > 0) {
-                echo "<div class=' car-images'>";
+                echo "<div>";
                 while ($rowImage = $resultImages->fetch(PDO::FETCH_ASSOC)) {
                     $imageData = $rowImage["image_base64"];
-                    echo "<img class='img-fluid' id='img-car' style='width: 100%' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
+                    echo "<img class='img-fluid border-bottom' id='img-car' style='max-height: 200px; width: 348px; object-fit: cover; border-radius: 20px 20px 0 0' src='data:image/jpeg;base64," . $imageData . "' alt='Image voiture'>";
                 }
                 echo "</div>";
             }
-            echo "<div class='detailsCar text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey''>   </div>";
+            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div>";
 
             echo "</a></div>";

@@ -1,3 +1,5 @@
+/*---------------------- dérouler menu navbar --------------------------*/
+
 $("li.dropdown").hover(
   function () {
     $(this).find(".dropdown-menu").stop(true, true).delay(100).fadeIn(400);
@@ -53,7 +55,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 $(document).ready(function () {
   $(".carousel").carousel({
-    interval: 2000, // Réglez ici la vitesse souhaitée en millisecondes
+    interval: 2000,
   });
 });
 

@@ -70,7 +70,7 @@
         <!-- ------------------------------ HEADER ------------------------------- -->
 
         <div class="row header">
-          <header class="my-3 px-3">
+          <header class="marginHeader paddingHeader">
             <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
@@ -132,6 +132,10 @@
           </nav>
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
+        <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
         <div class="container my-5 whoWeAre">
@@ -205,7 +209,7 @@
               </div>
               <div>
                 <p><em>Votre garage
-                    <strong>VINCENT PARROT AUTOMOBILES</strong>à Toulouse
+                    <strong>VINCENT PARROT AUTOMOBILES </strong>à Toulouse
                     (31) vous propose tout au long de l’année un
                   </em></p>
                 <p><em><a href="catalogue.php" target="_blank" title="Catalogue de véhicules"><span
@@ -309,7 +313,7 @@
                                 width: 26px;
                               " />
                       <p>01 23 45 67 89 - 06 12 34 56 78</p>
-                      <img src="./src/medias/facebook.png" style="
+                      <img class="my-3 pointer" src="./src/medias/facebook.png" style="
                                 height: 28px;
                                 margin-left: 0px;
                                 margin-top: 0px;
@@ -444,6 +448,7 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
   <script src="src/scripts/script.js"></script>
+  <script src="src/scripts/scroll.js"></script>
 </body>
 
 </html>

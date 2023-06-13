@@ -70,7 +70,7 @@
         <!-- ------------------------------ HEADER ------------------------------- -->
 
         <div class="row header">
-          <header class="my-3 px-3">
+          <header class="marginHeader paddingHeader">
             <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
@@ -133,6 +133,10 @@
           </nav>
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
+        <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
         <div class="container-fluid text-center">
@@ -140,8 +144,8 @@
             <div class="panel-group col-md-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title mx-auto">
-                    <a class="accordion-toggle no-underline text-danger" data-toggle="collapse" href="#"
+                  <h4 class="panel-title panelCustomHeightBosch mx-auto">
+                    <a class="accordion-toggle no-underline text-danger mx-2" data-toggle="collapse" href="#"
                       aria-expanded="true">
                       <b> ATELIER BOSCH CAR SERVICE</b>
                     </a>
@@ -168,8 +172,8 @@
               </p>
 
               <p class="my-5">
-                <img class="mx-5" alt="" src="./src/medias/logoGarage.jpg" style="height: 150px; width: 300px" /><img
-                  class="mx-5" alt="" src="./src/medias/boschServiceLogo.jpg" style="height: 149px; width: 148px" />
+                <img class="marginLogoGarage img-fluid" alt="" src="./src/medias/logoGarage.jpg" style="max-height: 150px; width: 300px" /><img
+                  class="mx-5 img-fluid" alt="" src="./src/medias/boschServiceLogo.jpg" style="max-height: 149px; width: 148px" />
               </p>
               <div class="text-grey" style="font-size: 1.2rem">
                 <p>
@@ -337,6 +341,7 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
   <script src="src/scripts/script.js"></script>
+  <script src="src/scripts/scroll.js"></script>
 </body>
 
 </html>

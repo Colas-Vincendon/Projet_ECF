@@ -71,7 +71,7 @@
                 <!-- ------------------------------ HEADER ------------------------------- -->
 
                 <div class="row header">
-                    <header class="my-3 px-3">
+                    <header class="marginHeader paddingHeader">
                         <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                                 alt="Page d'accueil" /></a>
                     </header>
@@ -136,6 +136,10 @@
                     </nav>
                 </div>
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
+                <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container-fluid text-center">
@@ -168,12 +172,12 @@
                                     $imageBase64 = $service['image_base64'];
 
                                     // Afficher les informations du service
-                                    echo "<div class='col-12 col-md-6 col-xl-4'><div class='container-fluid containerAllServices my-5 p-0'>";
+                                    echo "<div class='col-12 col-md-6 col-xl-4'><div class='container-fluid containerAllServices border shadow my-5 p-0'>";
                                     if (!empty($imageBase64)) {
-                                        echo "<div class='container-fluid p-0'><img style='width: 100%; height: 300px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
+                                        echo "<div class='container-fluid p-0'><img class='img-fluid imgServices cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
                                     }
-                                    echo "<h3 class='my-4'>$titre</h3>";
-                                    echo "<div class='allServices-p'><p>$paragraphe</p></div>";
+                                    echo "<h3 class='my-4 px-2'>$titre</h3>";
+                                    echo "<div class='allServices-p px-2'><p>$paragraphe</p></div>";
 
                                     // Afficher l'image du service s'il y en a une
                                     echo "</div></div>";
@@ -295,6 +299,7 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
     <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/scroll.js"></script>
 </body>
 
 </html>

@@ -70,7 +70,7 @@
         <!-- ------------------------------ HEADER ------------------------------- -->
 
         <div class="row header">
-          <header class="my-3 px-3">
+          <header class="marginHeader paddingHeader">
             <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
@@ -132,6 +132,10 @@
           </nav>
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
+        <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
         <div class="container connect my-3">

@@ -70,14 +70,14 @@
         <!-- ------------------------------ HEADER ------------------------------- -->
 
         <div class="row header">
-          <header class="my-3 px-3">
+          <header class="marginHeader paddingHeader">
             <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
         </div>
         <!-- --------------------------------- START NAVBAR ------------------------------ -->
         <div class="row">
-          <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
+          <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11">
             <div class="container d-flex justify-content-start">
               <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,6 +132,10 @@
           </nav>
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
+        <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ START MAIN ------------------------------- -->
         <div class="container-fluid d-flex justify-content-center">
@@ -244,9 +248,9 @@
 
           </div>
           <div class="col-xs-12 col-md-4 px-0">
-            <h2>NOUS TROUVER</h2>
-            <div class="trait3"></div><br>
-            <iframe
+            <h2 class="findUsIndex">NOUS TROUVER</h2>
+            <div class="trait3 findUsIndex"></div><br>
+            <iframe id="G-mapsIndex" class=""
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2807.0408949540347!2d1.4565806397916736!3d43.60043122187372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc91eee39de5%3A0x65af583ce587c93e!2s1%20Rue%20de%20l&#39;Aqueduc%2C%2031500%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685465874382!5m2!1sfr!2sfr"
               width="280" height="280" style="border: 0" allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -357,6 +361,7 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
   <script src="src/scripts/script.js"></script>
+  <script src="src/scripts/scroll.js"></script>
 </body>
 
 </html>

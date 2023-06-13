@@ -70,7 +70,7 @@
         <!-- ------------------------------ HEADER ------------------------------- -->
 
         <div class="row header">
-          <header class="my-3 px-3">
+          <header class="marginHeader paddingHeader">
             <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
@@ -132,6 +132,10 @@
           </nav>
         </div>
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
+        <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
+        <div>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+        </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
         <?php
@@ -169,23 +173,23 @@
         <div class="row">
           <div class="container catalogue text-center">
             <p class="my-auto">
-              <a class="no-underline text-danger text-p" href="ourCars.html">Consultez notre catalogue jusqu'à 1500
+              <a class="no-underline text-danger text-p" href="catalogue.php">Consultez notre catalogue jusqu'à 1500
                 véhicules disponibles</a>
             </p>
           </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
           <div class="filtres my-3 text-center">
             <p>
             <div class="row my-3">
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="marque" name="marque" style="width: 200px;" class="mx-auto">
                 <option value="">Marque</option>
                   <?php echo $options; ?>
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="modele" style="width: 200px;" class="mx-auto">
                   <option value="">Modèle</option>
                   <option value="Clio">Clio</option>
@@ -197,7 +201,7 @@
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="prix" style="width: 200px;" class="mx-auto">
                   <option value="">Prix</option>
                   <option value="de 0 à 10.000 €">de 0 à 10.000 €</option>
@@ -211,7 +215,7 @@
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="kilometres" style="width: 200px;" class="mx-auto">
                   <option value="">Kilométrage</option>
                   <option value="de 0 à 50.000km">0-50.000km</option>
@@ -222,7 +226,7 @@
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="annee" name="annee" style="width: 200px;" class="mx-auto">
                   <option value="">Année</option>
                   <option value="2021">2021</option>
@@ -250,7 +254,7 @@
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="carburant" name="carburant" style="width: 200px;" class="mx-auto">
                   <option value="">Carburant</option>
                   <option value="Essence">Essence</option>
@@ -262,14 +266,23 @@
                 </select>
               </div>
 
-              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column">
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="boite_de_vitesse" name="boite_de_vitesse" style="width: 200px;" class="mx-auto">
                   <option value="">Transmission</option>
                   <option value="Manuelle">Manuelle</option>
                   <option value="Automatique">Automatique</option>
                 </select>
               </div>
-
+              
+              <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
+                <select id="tri" style="width: 200px;" class="mx-auto">
+                  <option value="">Trier par</option>
+                  <option value="prix_asc">Prix croissant</option>
+                  <option value="prix_desc">Prix décroissant</option>
+                  <option value="kilometres_asc">KM croissant</option>
+                  <option value="kilometres_desc">KM décroissant</option>
+                </select>
+              </div>
             </div>
 
             <div class="row justify-content-center my-3">
@@ -280,15 +293,6 @@
               <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
             </div>
             
-            <div class="row justify-content-center my-3">
-              <select id="tri" style="width: 200px;" class="mx-auto">
-                <option value="">Trier par</option>
-                <option value="prix_asc">Prix croissant</option>
-                <option value="prix_desc">Prix décroissant</option>
-                <option value="kilometres_asc">KM croissant</option>
-                <option value="kilometres_desc">KM décroissant</option>
-              </select>
-            </div>
          
             
 
@@ -398,6 +402,7 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
   <script src="./src/scripts/script.js"></script>
+  <script src="src/scripts/scroll.js"></script>
 </body>
 
 </html>
