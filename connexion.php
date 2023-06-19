@@ -140,57 +140,58 @@
                 </div>
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
-        <div>
-          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
-        </div>
+                <div>
+                    <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
+                                src="./src/medias/upArrow.png" alt=""></a></button>
+                </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
-// Vérifier si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les valeurs des champs
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+                // Vérifier si le formulaire a été soumis
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // Récupérer les valeurs des champs
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
 
-    // Connexion à la base de données
-    $servername = 'eu-cdbr-west-03.cleardb.net';
-    $dbname = 'heroku_c7028cd7013430b';
-    $usernameDB = 'bc900b6840b350';
-    $passwordDB = 'c7c21297';
+                    // Connexion à la base de données
+                    $servername = "eu-cdbr-west-03.cleardb.net";
+                    $usernameDB = "bc900b6840b350";
+                    $passwordDB = "c7c21297";
+                    $dbname = "heroku_c7028cd7013430b";
 
-    try {
-        // Connexion à la base de données en utilisant PDO
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    try {
+                        // Connexion à la base de données en utilisant PDO
+                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Requête pour récupérer le hash du mot de passe enregistré
-        $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $hash = $stmt->fetchColumn();
+                        // Requête pour récupérer le hash du mot de passe enregistré
+                        $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
+                        $stmt->bindParam(':email', $email);
+                        $stmt->execute();
+                        $hash = $stmt->fetchColumn();
 
-        if (password_verify($password, $hash)) {
-            // Mot de passe correct, redirection vers la page appropriée
-            if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
-                // Redirection vers la page accueil_admin.php
-                header('Location: accueil_admin.php');
-                exit();
-            } else {
-                // Redirection vers la page employe.php
-                header('Location: accueil_employe.php');
-                exit();
-            }
-        } else {
-            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-        }
-    } catch (PDOException $e) {
-        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
-    }
+                        if (password_verify($password, $hash)) {
+                            // Mot de passe correct, redirection vers la page appropriée
+                            if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
+                                // Redirection vers la page accueil_admin.php
+                                header('Location: accueil_admin.php');
+                                exit();
+                            } else {
+                                // Redirection vers la page employe.php
+                                header('Location: accueil_employe.php');
+                                exit();
+                            }
+                        } else {
+                            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                        }
+                    } catch (PDOException $e) {
+                        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+                    }
 
-    $conn = null;
-}
-?>
+                    $conn = null;
+                }
+                ?>
 
 
                 <div class="container text-center connect">
@@ -256,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
-                                        
+
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
