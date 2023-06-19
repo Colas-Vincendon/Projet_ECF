@@ -154,10 +154,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Connexion à la base de données
-    $servername = 'localhost';
-    $dbname = 'garageParrot';
-    $usernameDB = 'Colas';
-    $passwordDB = 'Vincendon89450';
+    $servername = 'eu-cdbr-west-03.cleardb.net';
+    $dbname = 'heroku_c7028cd7013430b';
+    $usernameDB = 'bc900b6840b350';
+    $passwordDB = 'c7c21297';
 
     try {
         // Connexion à la base de données en utilisant PDO
@@ -256,12 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
-                                        // Connexion à la base de données
-                                        $servername = "localhost";
-                                        $username = "Colas";
-                                        $password = "Vincendon89450";
-                                        $dbname = "garageParrot";
-
+                                        
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

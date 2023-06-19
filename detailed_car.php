@@ -148,10 +148,10 @@
                 <div class="container text-center connect my-4">
                     <?php
                     // Connexion à la base de données
-                    $servername = "localhost";
-                    $username = "Colas";
-                    $password = "Vincendon89450";
-                    $dbname = "garageParrot";
+                    $servername = "eu-cdbr-west-03.cleardb.net";
+                    $username = "bc900b6840b350";
+                    $password = "c7c21297";
+                    $dbname = "heroku_c7028cd7013430b";
 
                     try {
                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

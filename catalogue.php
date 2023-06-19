@@ -139,10 +139,10 @@
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
         <?php
-        $servername = "localhost";
-        $username = "Colas";
-        $password = "Vincendon89450";
-        $dbname = "garageParrot";
+        $servername = "eu-cdbr-west-03.cleardb.net";
+        $username = "bc900b6840b350";
+        $password = "c7c21297";
+        $dbname = "heroku_c7028cd7013430b";
 
         try {
           $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

@@ -6,10 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Connexion à la base de données
-    $servername = 'localhost';
-    $dbname = 'garageParrot';
-    $username = 'Colas';
-    $password2 = 'Vincendon89450';
+    $servername = 'eu-cdbr-west-03.cleardb.net';
+    $dbname = 'heroku_c7028cd7013430b';
+    $username = 'bc900b6840b350';
+    $password2 = 'c7c21297';
 
     try {
         // Connexion à la base de données en utilisant PDO
