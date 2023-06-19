@@ -179,7 +179,7 @@
           </div>
         </div>
         <div class="container-fluid">
-          <div class="filtres my-3 text-center">
+          <div class="filtres my-3 px-2 text-center">
             <p>
             <div class="row my-3">
               <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
@@ -192,12 +192,7 @@
               <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="modele" style="width: 200px;" class="mx-auto">
                   <option value="">Modèle</option>
-                  <option value="Clio">Clio</option>
-                  <option value="308">308</option>
-                  <option value="C3">C3</option>
-                  <option value="Captur">Captur</option>
-                  <option value="208">208</option>
-                  <option value="Berlingo">Berlingo</option>
+                  
                 </select>
               </div>
 

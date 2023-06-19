@@ -138,7 +138,7 @@
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ START MAIN ------------------------------- -->
-        <div class="container-fluid d-flex justify-content-center">
+        <div class="container-fluid d-flex justify-content-center px-4">
           <div id="introCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">

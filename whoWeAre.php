@@ -138,7 +138,7 @@
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        <div class="container my-5 whoWeAre">
+        <div class="container my-2 whoWeAre py-5">
           <div class="row mb-xl">
             <div class="col-md-12 text-center">
               <div>
@@ -191,7 +191,7 @@
                   attentes, sans limite de budget ou d’ancienneté.</p>
               </div>
               <div class="my-5">
-                <img alt="showroom" src="./src/medias/showroom.jpg" style="width: 50%" />
+                <img alt="showroom" src="./src/medias/showroom.jpg" style="width: 65%" />
               </div>
               <div>
                 <p>
@@ -223,7 +223,7 @@
               </div>
 
               <div class="my-5">
-                <img alt="showroom" src="./src/medias/showroom2.jpg" style="width: 50%" />
+                <img alt="showroom" src="./src/medias/showroom2.jpg" style="width: 65%" />
               </div>
               <div>
                 <p>

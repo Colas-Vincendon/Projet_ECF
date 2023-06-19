@@ -192,7 +192,7 @@
             <div class="col-12 col-md-4 d-flex justify-content-center">
               <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                  <img class="img-fluid logo-cachback" src="./src/medias/icone_presdechezvous.png"
+                  <img class="img-fluid logo-cashback" src="./src/medias/icone_presdechezvous.png"
                     alt="logo près de chez vous" />
                 </div>
                 <p class="text-center my-3">
@@ -204,7 +204,7 @@
             <div class="col-12 col-md-4 d-flex justify-content-center">
               <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                  <img class="img-fluid logo-cachback" src="./src/medias/icone_reprise.png" alt="logo reprise" />
+                  <img class="img-fluid logo-cashback" src="./src/medias/icone_reprise.png" alt="logo reprise" />
                 </div>
                 <p class="text-center my-3">
                   Prix de reprise
@@ -215,7 +215,7 @@
             <div class="col-12 col-md-4 d-flex justify-content-center">
               <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                  <img class="img-fluid logo-cachback" src="./src/medias/icone_paiement.png" alt="logo paiement" />
+                  <img class="img-fluid logo-cashback" src="./src/medias/icone_paiement.png" alt="logo paiement" />
                 </div>
                 <p class="text-center my-3">
                   Paiement
