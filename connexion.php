@@ -148,8 +148,6 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
-                // Vérifier si le formulaire a été soumis
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Récupérer les valeurs des champs
                     $email = $_POST['email'];
                     $password = $_POST['password'];
@@ -190,7 +188,7 @@
                     }
 
                     $conn = null;
-                }
+                
                 ?>
 
 
