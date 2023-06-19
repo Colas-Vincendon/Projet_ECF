@@ -149,6 +149,7 @@
 
                 <?php
                 // Vérifier si le formulaire a été soumis
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Récupérer les valeurs des champs
                     $email = $_POST['email'];
                     $password = $_POST['password'];
@@ -189,7 +190,7 @@
                     }
 
                     $conn = null;
-                
+                }
                 ?>
 
 
@@ -259,7 +260,7 @@
 
                                         try {
                                             // Connexion à la base de données en utilisant PDO
-                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
                                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                                             // Récupérer les horaires à partir de la base de données
