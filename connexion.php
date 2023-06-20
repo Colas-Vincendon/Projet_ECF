@@ -168,12 +168,12 @@
                         $stmt->bindParam(':email', $email);
                         $stmt->execute();
                         $hash = $stmt->fetchColumn();
+                        header('Location: accueil_admin.php');
 
                         if (password_verify($password, $hash)) {
                             // Mot de passe correct, redirection vers la page appropriée
                             if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
                                 // Redirection vers la page accueil_admin.php
-                                header('Location: accueil_admin.php');
                                 exit();
                             } else {
                                 // Redirection vers la page employe.php
