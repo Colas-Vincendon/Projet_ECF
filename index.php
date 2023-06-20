@@ -226,6 +226,7 @@
 
                     echo "</p>";
                     echo "<p><i>$commentaire</i></p>";
+                    echo strip_tags($commentaire);
                     echo "</div>";
                   }
                 } else {
