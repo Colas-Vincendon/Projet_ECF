@@ -148,51 +148,53 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
-                    // Récupérer les valeurs des champs
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
+                // Récupérer les valeurs des champs
+                $email = $_POST['email'];
+                $password = $_POST['password'];
 
-                    // Connexion à la base de données
-                    $servername = "eu-cdbr-west-03.cleardb.net";
-                    $usernameDB = "b3b93f93ef4872";
-                    $passwordDB = "21163a70";
-                    $dbname = "heroku_a9b8c2ad4d5e1ab";
+                // Connexion à la base de données
+                $servername = "eu-cdbr-west-03.cleardb.net";
+                $usernameDB = "b3b93f93ef4872";
+                $passwordDB = "21163a70";
+                $dbname = "heroku_a9b8c2ad4d5e1ab";
 
-                    try {
-                        // Connexion à la base de données en utilisant PDO
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                try {
+                    // Connexion à la base de données en utilisant PDO
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        // Requête pour récupérer le hash du mot de passe enregistré
-                        $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
-                        $stmt->bindParam(':email', $email);
-                        $stmt->execute();
-                        $hash = $stmt->fetchColumn();
-
-                        // ATTENTION !!!
-                        // à remplacer par isAdmin
-                        // ATTENTION !!!
-
-                        if (password_verify($password, $hash)) {
-                            // Mot de passe correct, redirection vers la page appropriée
-                            if ($email === 'Vparrot@gmail.com' && $password === 'Vparrot31500') {
-                                // Redirection vers la page accueil_admin.php
-                                header('Location: accueil_admin.php');
-                                exit();
-                            } else {
-                                // Redirection vers la page employe.php
-                                header('Location: accueil_employe.php');
-                                exit();
-                            }
-                        } else {
-                            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-                        }
-                    } catch (PDOException $e) {
-                        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
-                    }
-
-                    $conn = null;
+                    // Requête pour récupérer le hash du mot de passe enregistré
+                    $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $hash = $stmt->fetchColumn();
+                    
+                    // Requête pour récupérer la valeur de la colonne "isAdmin" en fonction de l'e-mail
+                    $stmt = $conn->prepare("SELECT isAdmin FROM employes WHERE email = :email");
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $isAdmin = $stmt->fetchColumn();
                 
+                    if (password_verify($password, $hash)) {
+                        // Mot de passe correct, redirection vers la page appropriée
+                        if ($isAdmin == 1) {
+                            // Redirection vers la page accueil_admin.php
+                            header('Location: accueil_admin.php');
+                            exit();
+                        } else {
+                            // Redirection vers la page accueil_employe.php
+                            header('Location: accueil_employe.php');
+                            exit();
+                        }
+                    } else {
+                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                    }
+                } catch (PDOException $e) {
+                    echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+                }
+
+                $conn = null;
+
                 ?>
 
 
