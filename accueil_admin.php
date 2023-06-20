@@ -156,9 +156,9 @@
 
                         <?php
                         $servername = "eu-cdbr-west-03.cleardb.net";
-                        $username = "bc900b6840b350";
-                        $password = "c7c21297";
-                        $dbname = "heroku_c7028cd7013430b";
+                        $username = "b3b93f93ef4872";
+                        $password = "21163a70";
+                        $dbname = "heroku_a9b8c2ad4d5e1ab";
 
                         try {
                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

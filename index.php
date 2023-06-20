@@ -196,9 +196,9 @@
               <?php
               // Connexion à la base de données
               $servername = "eu-cdbr-west-03.cleardb.net";
-              $username = "b411b8aa845bbf";
-              $password = "33f7f3b0";
-              $dbname = "heroku_b14619bb8cdc4a8";
+              $username = "b3b93f93ef4872";
+              $password = "21163a70";
+              $dbname = "heroku_a9b8c2ad4d5e1ab";
 
               try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
