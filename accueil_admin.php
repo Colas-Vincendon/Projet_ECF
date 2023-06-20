@@ -175,7 +175,7 @@
                                     // Afficher les détails de l'employé
                         
                                     echo "<div class='col-6 col-md-4 col-xl-3 connect'>";
-                                    echo "<p><b>Email : </b>" . $row['email'] . "</p>";
+                                    echo "<p><b>Email : </b></br>" . $row['email'] . "</p>";
                                     echo "<form action='delete_employe.php' method='POST'>";
                                     echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
                                     echo "<input class='btn btn-danger mb-3' type='submit' onclick='return confirmDeleteEmploye()'  value='Supprimer' />";
