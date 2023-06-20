@@ -225,7 +225,7 @@
                     }
 
                     echo "</p>";
-                    echo "<p><i>utf8_decode($commentaire)</i></p>";
+                    echo "<p><i>htmlspecialchars_decode($commentaire, ENT_HTML5)</i></p>";
                     echo "</div>";
                   }
                 } else {
