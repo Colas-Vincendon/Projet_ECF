@@ -226,7 +226,7 @@
 
                     echo "</p>";
                     echo "<p><i>$commentaire</i></p>";
-                    echo strip_tags($commentaire);
+                    echo htmlspecialchars($commentaire, ENT_QUOTES);
                     echo "</div>";
                   }
                 } else {
