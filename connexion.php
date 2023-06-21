@@ -177,13 +177,12 @@
                 
                     if (password_verify($password, $hash)) {
                         // Mot de passe correct, redirection vers la page appropriée
-                        if ($isAdmin == 1) {
-                            // Redirection vers la page accueil_admin.php
-                            header('Location: accueil_admin.php');
-                            exit();
-                        } else {
-                            // Redirection vers la page accueil_employe.php
-                            header('Location: accueil_employe.php');
+                        if (password_verify($password, $hash)) {
+                            // Mot de passe correct, définition de la page de redirection
+                            $redirectPage = ($isAdmin == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
+                    
+                            // Redirection vers la page appropriée
+                            header("Location: $redirectPage");
                             exit();
                         }
                     } else {
