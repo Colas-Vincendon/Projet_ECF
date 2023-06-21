@@ -260,6 +260,11 @@
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
                                         <?php
+                                        // Connexion à la base de données
+                                        $servername = "eu-cdbr-west-03.cleardb.net";
+                                        $usernameDB = "b3b93f93ef4872";
+                                        $passwordDB = "21163a70";
+                                        $dbname = "heroku_a9b8c2ad4d5e1ab";
 
                                         try {
                                             // Connexion à la base de données en utilisant PDO
