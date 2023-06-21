@@ -190,7 +190,7 @@ session_start();
                         setcookie($cookieName, $cookieValue, $cookieExpire, '/');
 
                         // Redirection vers la page appropriée
-                        header('Location: ' . $redirectPage);
+                        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                         exit();
                     } else {
                         $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
