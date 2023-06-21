@@ -202,7 +202,7 @@
 
               try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                $dbh = new PDO('mysql:charset=utf8mb4');
+                $conn = new PDO('mysql:charset=utf8mb4');
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Récupérer les avis approuvés de la table "avis"
