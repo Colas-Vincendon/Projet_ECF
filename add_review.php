@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 <?php
 // Connexion à la base de données
 $servername = "eu-cdbr-west-03.cleardb.net";
@@ -11,8 +20,8 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Récupérer les valeurs du formulaire
-    $nom = $_POST['nom'];
-    $commentaire = $_POST['commentaire'];
+    $nom = utf8_encode($_POST['nom']);
+    $commentaire = utf8_encode($_POST['commentaire']);
     $note = $_POST['note'];
 
     // Préparer la requête SQL avec des paramètres préparés
@@ -37,3 +46,5 @@ try {
 
 
 ?>
+</body>
+</html>
