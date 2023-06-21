@@ -244,7 +244,9 @@ if (isset($_POST['logout'])) {
           }
 
           ?>
+
           <h2>Nouveaux Avis</h2>
+          
           <?php
           if ($stmt->rowCount() > 0) {
             foreach ($rows as $row) {
