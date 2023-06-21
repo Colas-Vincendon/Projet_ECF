@@ -174,7 +174,7 @@
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     // Afficher les détails de l'employé
                         
-                                    echo "<div class='col-6 col-md-4 col-xl-3 connect'>";
+                                    echo "<div class='col-12 col-md- col-xl-4 connect'>";
                                     echo "<p><b>Email : </b></br>" . $row['email'] . "</p>";
                                     echo "<form action='delete_employe.php' method='POST'>";
                                     echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
