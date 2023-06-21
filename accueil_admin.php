@@ -167,12 +167,14 @@ if (isset($_POST['logout'])) {
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
-
                     <h1 class="my-3"><b></b>Espace Administrateur</b></h1><br>
+                    <div class="row"></div>
                     <br>
-                    <form method="post">
-                        <button class="btn btn-danger my-3" type="submit" name="logout">Se déconnecter</button>
-                    </form>
+                    <div class="row">
+                        <form method="post">
+                            <button class="btn btn-danger my-3" type="submit" name="logout">Se déconnecter</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Supprimer un compte employé</h1>
