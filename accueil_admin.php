@@ -254,7 +254,7 @@
                                     $imageBase64 = $service['image_base64'];
 
                                     // Afficher les informations du service
-                                    echo "<div class='col-6 col-md-4 col-lg-3 col-xl-2 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
+                                    echo "<div class='col-12 col-md-6 col-xl-3 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
                                     if (!empty($imageBase64)) {
                                         echo "<div class='container-fluid p-0'><img style='width: 100%; height: 200px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
                                     }
