@@ -201,8 +201,8 @@
               $dbname = "heroku_a9b8c2ad4d5e1ab";
 
               try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 $conn = new PDO('mysql:charset=utf8mb4');
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Récupérer les avis approuvés de la table "avis"
