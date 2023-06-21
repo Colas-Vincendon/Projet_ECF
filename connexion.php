@@ -1,15 +1,5 @@
 <?php
-session_start(); // Démarrer la session
-
-// Vérifier si l'utilisateur est déjà connecté, auquel cas le rediriger vers la page appropriée
-if (isset($_SESSION['email'])) {
-    if ($_SESSION['isAdmin'] == 1) {
-        header('Location: accueil_admin.php');
-    } else {
-        header('Location: accueil_employe.php');
-    }
-    exit();
-}
+session_start();
 ?>
 
 <!DOCTYPE html>
