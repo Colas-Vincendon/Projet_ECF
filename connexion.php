@@ -183,6 +183,8 @@ session_start();
                         // Définition de la page de redirection
                         $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
 
+                        setcookie('user', 'admin', time() + 30, '/');
+
                         // Redirection vers la page appropriée
                         echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                         exit();
