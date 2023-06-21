@@ -189,7 +189,7 @@
                             exit();
                         }
                     } else {
-                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                        echo 'Adresse e-mail ou mot de passe incorrect.';
                     }
                 } catch (PDOException $e) {
                     echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
@@ -221,11 +221,6 @@
                                     connecter</button>
                             </div>
                         </div>
-                        <?php if (isset($errorMessage)): ?>
-                            <div>
-                                <?php echo $errorMessage; ?>
-                            </div>
-                        <?php endif; ?>
                     </form>
                 </div>
 
