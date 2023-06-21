@@ -160,8 +160,6 @@
                     $passwordDB = "21163a70";
                     $dbname = "heroku_a9b8c2ad4d5e1ab";
 
-                    $errorMessage = '';
-
                     try {
                         // Connexion à la base de données en utilisant PDO
                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
@@ -191,7 +189,7 @@
                                 exit();
                             }
                         } else {
-                            $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                            echo 'Adresse e-mail ou mot de passe incorrect.';
                         }
                     } catch (PDOException $e) {
                         echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
