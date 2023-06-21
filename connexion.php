@@ -168,12 +168,14 @@
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $hash = $stmt->fetchColumn();
-                    
+
                     // Requête pour récupérer la valeur de la colonne "isAdmin" en fonction de l'e-mail
                     $stmt = $conn->prepare("SELECT isAdmin FROM employes WHERE email = :email");
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $isAdmin = $stmt->fetchColumn();
+
+                    $errorMessage = '';
                 
                     if (password_verify($password, $hash)) {
                         // Mot de passe correct, redirection vers la page appropriée

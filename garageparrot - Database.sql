@@ -33,7 +33,8 @@ CREATE TABLE
     employes (
         id INT PRIMARY KEY AUTO_INCREMENT,
         email VARCHAR(80),
-        password LONGTEXT
+        password LONGTEXT,
+        isAdmin TINYINT(1)
     );
 
 CREATE TABLE
