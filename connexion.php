@@ -183,12 +183,6 @@ session_start();
                         // Définition de la page de redirection
                         $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
 
-                        // Définition du cookie avec une durée de validité de 1 heure
-                        $cookieName = 'session_id';
-                        $cookieValue = session_id();
-                        $cookieExpire = time() + 3600; // 1 heure
-                        setcookie($cookieName, $cookieValue, $cookieExpire, '/');
-
                         // Redirection vers la page appropriée
                         echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                         exit();
