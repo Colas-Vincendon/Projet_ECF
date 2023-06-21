@@ -3,8 +3,17 @@ session_start();
 
 // Vérifier si l'utilisateur est connecté et s'il n'est pas administrateur, sinon le rediriger vers la page de connexion
 if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 0) {
-    header('Location: connexion.php');
-    exit();
+  header('Location: connexion.php');
+  exit();
+}
+if (isset($_POST['logout'])) {
+  // Déconnexion : Supprimer les informations de session et le cookie
+  session_unset();
+  session_destroy();
+
+  // Redirection vers la page de connexion
+  header('Location: connexion.php');
+  exit();
 }
 ?>
 
@@ -151,7 +160,11 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 0) {
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
         <div class="container d-flex align-items-center justify-content-center connect my-2">
-          <h1 class="titleAdmin my-3"><b>Espace Employés</b></h1> <br>
+          <h1 class="titleAdmin my-3 mx-3"><b>Espace Employés</b></h1> <br>
+          <br>
+          <form method="post">
+            <button class="btn btn-danger my-3 mx-3" type="submit" name="logout">Se déconnecter</button>
+          </form>
         </div>
         <div class="container text-center connect my-2">
           <h1 class="text-grey my-4">Les messages clients</h1>
