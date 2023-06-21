@@ -168,7 +168,7 @@
 
                                     if ($resultImages->rowCount() > 0) {
 
-                                        echo "<div class='col-6 col-md-3 col-lg-2 my-2 mx-2 connect fs-6'>";
+                                        echo "<div class='col-6 col-md-3 col-lg-2 my-2 connect fs-6'>";
                                         echo "<div class=' car-images'>";
                                         while ($rowImage = $resultImages->fetch(PDO::FETCH_ASSOC)) {
                                             $imageData = $rowImage["image_base64"];
