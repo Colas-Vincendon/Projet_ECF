@@ -169,8 +169,9 @@ if (isset($_POST['logout'])) {
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
 
                     <h1 class="my-3"><b></b>Espace Administrateur</b></h1>
+                    <br>
                     <form method="post">
-                        <button class="btn-btn-danger" type="submit" name="logout">Se déconnecter</button>
+                        <button class="btn btn-danger my-3" type="submit" name="logout">Se déconnecter</button>
                     </form>
                 </div>
                 <div class="container text-center connect my-2">
