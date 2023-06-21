@@ -162,13 +162,13 @@
                     // Connexion à la base de données en utilisant PDO
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+                
                     // Requête pour récupérer le hash du mot de passe enregistré
                     $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $hash = $stmt->fetchColumn();
-                    
+                
                     // Requête pour récupérer la valeur de la colonne "isAdmin" en fonction de l'e-mail
                     $stmt = $conn->prepare("SELECT isAdmin FROM employes WHERE email = :email");
                     $stmt->bindParam(':email', $email);
@@ -176,15 +176,12 @@
                     $isAdmin = $stmt->fetchColumn();
                 
                     if (password_verify($password, $hash)) {
-                        // Mot de passe correct, redirection vers la page appropriée
-                        if (password_verify($password, $hash)) {
-                            // Mot de passe correct, définition de la page de redirection
-                            $redirectPage = ($isAdmin == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
-                    
-                            // Redirection vers la page appropriée
-                            header("Location: $redirectPage");
-                            exit();
-                        }
+                        // Mot de passe correct, définition de la page de redirection
+                        $redirectPage = ($isAdmin == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
+                
+                        // Utilisation de JavaScript pour la redirection
+                        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
+                        exit();
                     } else {
                         $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
                     }
