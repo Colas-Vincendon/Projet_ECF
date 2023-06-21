@@ -186,7 +186,7 @@
                                     echo "<p class='mb-0'><b>Prix :</b> " . $row['prix'] . "</p>";
                                     echo "<form action='deleteVehicle.php' method='POST'>";
                                     echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
-                                    echo "<input class='btn btn-danger' type='submit' onclick='return confirmDeleteCar()' value='Supprimer' />";
+                                    echo "<input class='btn btn-danger my-3' type='submit' onclick='return confirmDeleteCar()' value='Supprimer' />";
                                     echo "</form>";
                                     echo "</div>";
                                 }
