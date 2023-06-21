@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur est connecté, s'il a les autorisations appropriées et si le cookie de session est défini, sinon le rediriger vers la page de connexion
+if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1 || !isset($_COOKIE['session_id']) || $_COOKIE['session_id'] !== session_id()) {
+    header('Location: connexion.php');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 

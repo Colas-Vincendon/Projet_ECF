@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur est connecté, s'il a les autorisations appropriées et si le cookie de session est défini, sinon le rediriger vers la page de connexion
+if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 0 || !isset($_COOKIE['session_id']) || $_COOKIE['session_id'] !== session_id()) {
+  header('Location: connexion.php');
+  exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -134,7 +145,8 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
         <div>
-          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
+                src="./src/medias/upArrow.png" alt=""></a></button>
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
@@ -192,8 +204,8 @@
         <div class="container text-center connect my-2">
           <h1 class="text-grey my-4">Supprimer un véhicule</h1>
           <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
-            <p class="text-center btn btn-success my-3"><a class="no-underline text-white"
-                href="vehicleList.php">Liste des véhicules</a></p><br>
+            <p class="text-center btn btn-success my-3"><a class="no-underline text-white" href="vehicleList.php">Liste
+                des véhicules</a></p><br>
           </div>
         </div>
         <div class="container text-center connect my-2">

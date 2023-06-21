@@ -1,3 +1,17 @@
+<?php
+session_start(); // Démarrer la session
+
+// Vérifier si l'utilisateur est déjà connecté, auquel cas le rediriger vers la page appropriée
+if (isset($_SESSION['email'])) {
+    if ($_SESSION['isAdmin'] == 1) {
+        header('Location: accueil_admin.php');
+    } else {
+        header('Location: accueil_employe.php');
+    }
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -148,6 +162,8 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
+
+
                 // Récupérer les valeurs des champs
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -162,25 +178,29 @@
                     // Connexion à la base de données en utilisant PDO
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
+
                     // Requête pour récupérer le hash du mot de passe enregistré
-                    $stmt = $conn->prepare("SELECT password FROM employes WHERE email = :email");
+                    $stmt = $conn->prepare("SELECT password, isAdmin FROM employes WHERE email = :email");
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
-                    $hash = $stmt->fetchColumn();
-                
-                    // Requête pour récupérer la valeur de la colonne "isAdmin" en fonction de l'e-mail
-                    $stmt = $conn->prepare("SELECT isAdmin FROM employes WHERE email = :email");
-                    $stmt->bindParam(':email', $email);
-                    $stmt->execute();
-                    $isAdmin = $stmt->fetchColumn();
-                
-                    if (password_verify($password, $hash)) {
-                        // Mot de passe correct, définition de la page de redirection
-                        $redirectPage = ($isAdmin == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
-                
-                        // Utilisation de JavaScript pour la redirection
-                        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($row && password_verify($password, $row['password'])) {
+                        // Mot de passe correct, définir les informations de session
+                        $_SESSION['email'] = $email;
+                        $_SESSION['isAdmin'] = $row['isAdmin'];
+
+                        // Définition de la page de redirection
+                        $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
+
+                        // Définition du cookie avec une durée de validité de 1 heure
+                        $cookieName = 'session_id';
+                        $cookieValue = session_id();
+                        $cookieExpire = time() + 3600; // 1 heure
+                        setcookie($cookieName, $cookieValue, $cookieExpire, '/');
+
+                        // Redirection vers la page appropriée
+                        header('Location: ' . $redirectPage);
                         exit();
                     } else {
                         $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
@@ -190,7 +210,6 @@
                 }
 
                 $conn = null;
-
                 ?>
 
 
