@@ -158,6 +158,8 @@
                 $passwordDB = "21163a70";
                 $dbname = "heroku_a9b8c2ad4d5e1ab";
 
+                $errorMessage = '';
+
                 try {
                     // Connexion à la base de données en utilisant PDO
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
@@ -174,8 +176,6 @@
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $isAdmin = $stmt->fetchColumn();
-
-                    $errorMessage = '';
                 
                     if (password_verify($password, $hash)) {
                         // Mot de passe correct, redirection vers la page appropriée
