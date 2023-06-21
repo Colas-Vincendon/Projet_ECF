@@ -6,6 +6,15 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
     header('Location: connexion.php');
     exit();
 }
+if (isset($_POST['logout'])) {
+    // Déconnexion : Supprimer les informations de session et le cookie
+    session_unset();
+    session_destroy();
+
+    // Redirection vers la page de connexion
+    header('Location: connexion.php');
+    exit();
+}
 ?>
 
 
@@ -151,14 +160,18 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
                 </div>
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
-        <div>
-          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
-        </div>
+                <div>
+                    <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
+                                src="./src/medias/upArrow.png" alt=""></a></button>
+                </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
 
                     <h1 class="my-3"><b></b>Espace Administrateur</b></h1>
+                    <form method="post">
+                        <button class="btn-btn-danger" type="submit" name="logout">Se déconnecter</button>
+                    </form>
                 </div>
                 <div class="container text-center connect my-2">
                     <h1 class="ml-0 text-grey my-3">Supprimer un compte employé</h1>

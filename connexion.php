@@ -1,48 +1,5 @@
 <?php
 session_start();
-
-// Récupérer les valeurs des champs
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-// Connexion à la base de données
-$servername = "eu-cdbr-west-03.cleardb.net";
-$usernameDB = "b3b93f93ef4872";
-$passwordDB = "21163a70";
-$dbname = "heroku_a9b8c2ad4d5e1ab";
-
-try {
-    // Connexion à la base de données en utilisant PDO
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Requête pour récupérer le hash du mot de passe enregistré
-    $stmt = $conn->prepare("SELECT password, isAdmin FROM employes WHERE email = :email");
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($row && password_verify($password, $row['password'])) {
-        // Mot de passe correct, définir les informations de session
-        $_SESSION['email'] = $email;
-        $_SESSION['isAdmin'] = $row['isAdmin'];
-
-        // Définition de la page de redirection
-        $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
-
-        setcookie('user', 'admin', time()+30, '/');
-
-        // Redirection vers la page appropriée
-        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
-        exit();
-    } else {
-        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-    }
-} catch (PDOException $e) {
-    echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
-}
-
-$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -194,7 +151,54 @@ $conn = null;
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
-                 <div class="container text-center connect">
+                <?php
+
+                // Récupérer les valeurs des champs
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+
+                // Connexion à la base de données
+                $servername = "eu-cdbr-west-03.cleardb.net";
+                $usernameDB = "b3b93f93ef4872";
+                $passwordDB = "21163a70";
+                $dbname = "heroku_a9b8c2ad4d5e1ab";
+
+                try {
+                    // Connexion à la base de données en utilisant PDO
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Requête pour récupérer le hash du mot de passe enregistré
+                    $stmt = $conn->prepare("SELECT password, isAdmin FROM employes WHERE email = :email");
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($row && password_verify($password, $row['password'])) {
+                        // Mot de passe correct, définir les informations de session
+                        $_SESSION['email'] = $email;
+                        $_SESSION['isAdmin'] = $row['isAdmin'];
+
+                        // Définition de la page de redirection
+                        $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
+
+                        setcookie('user', 'admin', time()+30, '/');
+
+                        // Redirection vers la page appropriée
+                        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
+                        exit();
+                    } else {
+                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                    }
+                } catch (PDOException $e) {
+                    echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+                }
+
+                $conn = null;
+                ?>
+
+
+                <div class="container text-center connect">
                     <p class="text-red-bold my-4">Identification</p>
                     <form method="POST">
                         <div class="row justify-content-center my-4">
