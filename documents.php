@@ -173,7 +173,7 @@ if (isset($_POST['logout'])) {
                 <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="my-3 mx-3"><b></b>Wireframes</b></h1><br>
-                        <img class="mb-3" style="width: 80%" src="./src/medias/Wireframes Projet_ECF.png"
+                        <img class="mb-3" src="./src/medias/Wireframes Projet_ECF.jpg"
                             alt="wireframes">
                         <br>
                     </div>
@@ -181,15 +181,15 @@ if (isset($_POST['logout'])) {
                 <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
-                        <img class="mb-3" style="width: 80%" src="./src/medias/Diagramme de classe Projet_ECF.jpg"
+                        <img class="mb-3"  src="./src/medias/Diagramme de classe Projet_ECF.jpg"
                             alt="diagramme de classe">
                         <br>
                     </div>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
                         <h1 class="my-3 mx-3"><b></b>Script SQL</b></h1><br>
-                        <img class="mb-3" style="width: 80%" src="./src/medias/Script SQL.jpg" alt="script SQL">
+                        <img class="mb-3" style="width: 60%" src="./src/medias/Script SQL.jpg" alt="script SQL">
                         <br>
                     </div>
                 </div>
