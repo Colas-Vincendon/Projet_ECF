@@ -166,12 +166,12 @@ if (isset($_POST['logout'])) {
                 </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container d-flex align-items-center text-center justify-content-center connect my-3">
+                <div class="container-fluid d-flex align-items-center text-center justify-content-center connect my-3">
                     <div class="row">
 
                         <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
                         <br>
-                        <p class="my-3 mx-3">
+                        <p class="mb-3 mx-3">
                             Je suis bien conscient que ces documents ne devraient jamais figurer sur l'application, je
                             les retirerai évidemment dès que mon proket-ECF aura été évalué.
                             De cette manière, concernant le rendu pour évaluation, je ne transmettrai qu'un document
@@ -181,14 +181,14 @@ if (isset($_POST['logout'])) {
                         </p>
                     </div>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
+                <div class="container-fluid d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="ml-0 text-grey my-3 mx-3"><b></b>Wireframes</b></h1><br>
                         <img class="mb-3" src="./src/medias/Wireframes Projet_ECF.jpg" alt="wireframes">
                         <br>
                     </div>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
+                <div class="container-fluid d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="ml-0 text-grey my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
                         <img class="mb-3" src="./src/medias/Diagramme de classe Projet_ECF.jpg"
