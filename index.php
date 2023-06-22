@@ -134,7 +134,8 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
         <div>
-          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
+                src="./src/medias/upArrow.png" alt=""></a></button>
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ------------------------------ START MAIN ------------------------------- -->
@@ -194,49 +195,40 @@
             <p class="p-horaires">
 
               <?php
-              // Connexion à la base de données
-              $servername = "eu-cdbr-west-03.cleardb.net";
-              $username = "b3b93f93ef4872";
-              $password = "21163a70";
-              $dbname = "heroku_a9b8c2ad4d5e1ab";
 
-              try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-                // Récupérer les avis approuvés de la table "avis"
-                $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
-                $approuve = 1; // Seuls les avis approuvés
-                $stmt->bindParam(':approuve', $approuve);
-                $stmt->execute();
-            
-                if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $nom = utf8_decode($row['nom']);
-                        $commentaire = utf8_decode($row['commentaire']);
-                        $note = $row['note'];
-            
-                        // Afficher les informations de l'avis
-                        echo "<div class='avis mx-5 my-3'>";
-            
-                        // Générer les étoiles en fonction de la note
-                        for ($i = 1; $i <= $note; $i++) {
-                            echo "★";
-                        }
-            
-                        echo "</p>";
-                        echo "<p><i>$commentaire</i></p>";
-                        echo "</div>";
-                    }
-                } else {
-                    echo "Aucun avis approuvé pour le moment.";
+              require_once 'database.php';
+
+              // Récupérer les avis approuvés de la table "avis"
+              $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
+              $approuve = 1; // Seuls les avis approuvés
+              $stmt->bindParam(':approuve', $approuve);
+              $stmt->execute();
+
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  $nom = utf8_decode($row['nom']);
+                  $commentaire = utf8_decode($row['commentaire']);
+                  $note = $row['note'];
+
+                  // Afficher les informations de l'avis
+                  echo "<div class='avis mx-5 my-3'>";
+
+                  // Générer les étoiles en fonction de la note
+                  for ($i = 1; $i <= $note; $i++) {
+                    echo "★";
+                  }
+
+                  echo "</p>";
+                  echo "<p><i>$commentaire</i></p>";
+                  echo "</div>";
                 }
-            
-                // Fermer la connexion à la base de données
-                $conn = null;
-            } catch (PDOException $e) {
-                echo "Échec de la connexion à la base de données : " . $e->getMessage();
-            }
+              } else {
+                echo "Aucun avis approuvé pour le moment.";
+              }
+
+              // Fermer la connexion à la base de données
+              $conn = null;
+
               ?>
 
 
