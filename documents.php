@@ -246,7 +246,6 @@ if (isset($_POST['logout'])) {
                                         NOS HORAIRES <br />
 
                                         <?php
-
                                         $servername = "eu-cdbr-west-03.cleardb.net";
                                         $username = "b3b93f93ef4872";
                                         $password = "21163a70";
