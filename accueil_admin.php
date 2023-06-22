@@ -323,7 +323,6 @@ if (isset($_POST['logout'])) {
                         }
                         ?>
 
-
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
 
