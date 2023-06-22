@@ -95,7 +95,7 @@ session_start();
                                         <a class="nav-link" href="index.php">ACCUEIL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link nav-link-active" href="catalogue.php">NOS VEHICULES</a>
+                                        <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="cashback.php">RACHAT CASH</a>
