@@ -166,9 +166,15 @@ if (isset($_POST['logout'])) {
                 </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container d-flex align-items-center justify-content-center connect my-3">
+                <div class="container d-flex align-items-center text-center justify-content-center connect my-3">
                     <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
                     <br>
+                    <p>
+                    Je suis bien conscient que ces documents ne devraient jamais figurer sur l'application, je les retirerai évidemment dès que mon proket-ECF aura été évalué.
+                    De cette manière, concernant le rendu pour évaluation, je ne transmettrai qu'un document word comportant mon GIT ainsi sue le lien de l'application déployé.
+                    Le correcteur disposera ainsi facilement de tous les éléments de mon projet.
+                    Merci de votre compréhension.
+                    </p>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
