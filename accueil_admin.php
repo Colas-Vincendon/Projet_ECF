@@ -330,7 +330,7 @@ if (isset($_POST['logout'])) {
                     <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
                     <br>
                     <form method="post">
-                        <button class="btn btn-primary my-3 mx-3" type="submit" name="documents"><a href="./documents.php">Consulter</a></button>
+                        <button class="btn btn-primary my-3 mx-3" type="submit" name="documents"><a class="no-underline text-white" href="./documents.php">Consulter</a></button>
                     </form>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
