@@ -170,25 +170,26 @@ if (isset($_POST['logout'])) {
                     <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
                     <br>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="my-3 mx-3"><b></b>Wireframes</b></h1><br>
-                        <img style="width: 80%" src="./src/medias/Wireframes Projet_ECF.png" alt="wireframes">
+                        <img class="mb-3" style="width: 80%" src="./src/medias/Wireframes Projet_ECF.png"
+                            alt="wireframes">
                         <br>
                     </div>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
-                        <img style="width: 80%" src="./src/medias/Diagramme de classe Projet_ECF.jpg"
+                        <img class="mb-3" style="width: 80%" src="./src/medias/Diagramme de classe Projet_ECF.jpg"
                             alt="diagramme de classe">
                         <br>
                     </div>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
                     <div class="row">
                         <h1 class="my-3 mx-3"><b></b>Script SQL</b></h1><br>
-                        <img style="width: 80%" src="./src/medias/Script SQL.jpg" alt="script SQL">
+                        <img class="mb-3" style="width: 80%" src="./src/medias/Script SQL.jpg" alt="script SQL">
                         <br>
                     </div>
                 </div>
