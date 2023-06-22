@@ -171,11 +171,11 @@ if (isset($_POST['logout'])) {
 
                         <h1 class="ml-0 mr-0 my-3 mx-3"><b></b>Documents création application</b></h1><br>
                         <br>
-                        <p class="ml-0 mr-0 mb-3 mx-3">
+                        <p class="mb-3 px-5">
                             Je suis bien conscient que ces documents ne devraient jamais figurer sur l'application, je
-                            les retirerai évidemment dès que mon proket-ECF aura été évalué.
+                            les retirerai évidemment dès que mon projet-ECF aura été évalué.
                             De cette manière, concernant le rendu pour évaluation, je ne transmettrai qu'un document
-                            word comportant mon GIT ainsi sue le lien de l'application déployé.
+                            word comportant mon GIT et que le lien de l'application déployé.
                             Le correcteur disposera ainsi facilement de tous les éléments de mon projet.
                             Merci de votre compréhension.
                         </p>
