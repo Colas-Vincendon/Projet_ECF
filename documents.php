@@ -166,172 +166,24 @@ if (isset($_POST['logout'])) {
                 </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-                <div class="container d-flex align-items-center justify-content-center connect my-2">
-
-                    <h1 class="my-3 mx-3"><b></b>Espace Administrateur</b></h1><br>
-                    <br>
-                    <form method="post">
-                        <button class="btn btn-danger my-3 mx-3" type="submit" name="logout">Se déconnecter</button>
-                    </form>
-                </div>
-                <div class="container text-center connect my-2">
-                    <h1 class="ml-0 text-grey my-3">Supprimer un compte employé</h1>
-                    <div class="row">
-
-
-                        <?php
-                        $servername = "eu-cdbr-west-03.cleardb.net";
-                        $username = "b3b93f93ef4872";
-                        $password = "21163a70";
-                        $dbname = "heroku_a9b8c2ad4d5e1ab";
-
-                        try {
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                            // Sélectionner tous les employés sauf l'admin
-                            $sql = "SELECT * FROM employes WHERE email != 'Vparrot@gmail.com'";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
-
-                            // Afficher les employés
-                            if ($stmt->rowCount() > 0) {
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    // Afficher les détails de l'employé
-                        
-                                    echo "<div class='col-12 col-md- col-xl-4 connect'>";
-                                    echo "<p><b>Email : </b></br>" . $row['email'] . "</p>";
-                                    echo "<form action='delete_employe.php' method='POST'>";
-                                    echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
-                                    echo "<input class='btn btn-danger mb-3' type='submit' onclick='return confirmDeleteEmploye()'  value='Supprimer' />";
-                                    echo "</form></div>";
-                                }
-                            } else {
-                                echo "Aucun employé trouvé.";
-                            }
-                            // Fermeture de la connexion à la base de données
-                            $conn = null;
-                        } catch (PDOException $e) {
-                            die("Échec de la connexion à la base de données : " . $e->getMessage());
-                        }
-
-                        ?>
-
-                    </div>
-                </div>
-                <div class="container text-center connect my-2">
-                    <h1 class="ml-0 text-grey my-3">Ajouter un compte employé</h1>
-                    <form method="POST" action="add_employe.php">
-                        <div class="my-3">
-                            <label for="email">Email :</label> <br />
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="my-3">
-                            <label for="password">Mot de passe :</label><br />
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="my-3">
-                            <button type="submit" class="btn btn-success my-4" style="width: 200px">Ajouter un
-                                employé</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="container text-center connect my-2">
-                    <h1 class="ml-0 text-grey my-3">Modifier les horaires d'ouverture</h1>
-                    <form action="modifier_horaires.php" method="POST">
-                        <div class="my-3">
-                            <label for="lundi_vendredi">Lundi au vendredi :</label><br>
-                            <input type="text" id="lundi_vendredi" name="lundi_vendredi">
-                        </div>
-                        <div class="my-3">
-                            <label for="samedi">Samedi :</label><br>
-                            <input type="text" id="samedi" name="samedi">
-                        </div>
-                        <div class="my-3">
-                            <button type="submit" class="btn btn-success my-4">Enregistrer les nouveaux
-                                horaires</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="container text-center connect my-2">
-                    <h1 class="ml-0 text-grey my-3">Supprimer un service existant</h1>
-                    <div class="row">
-
-                        <?php
-
-                        try {
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                            // Récupérer les services et leurs images associées depuis la base de données
-                            $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
-                         FROM services s
-                         LEFT JOIN imageService i ON s.id = i.service_id";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
-                            $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                            if (!empty($services)) {
-                                foreach ($services as $service) {
-                                    $serviceId = $service['id'];
-                                    $titre = $service['titre'];
-                                    $paragraphe = $service['paragraphe'];
-                                    $imageBase64 = $service['image_base64'];
-
-                                    // Afficher les informations du service
-                                    echo "<div class='col-12 col-md-6 col-xl-4 col-xxl-3 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
-                                    if (!empty($imageBase64)) {
-                                        echo "<div class='container-fluid p-0'><img style='width: 100%; height: 200px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
-                                    }
-                                    echo "<h3>$titre</h3>";
-                                    echo "<p>$paragraphe</p>";
-                                    echo "<form action='supprimer_service.php' method='POST'>";
-                                    echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                                    echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
-                                    echo "</form>";
-                                    echo "</div></div>";
-                                }
-                            } else {
-                                echo "Aucun service existant.";
-                            }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="container text-center connect my-2">
-                        <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
-                        <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
-                            <div>
-                                <label class="my-2" for='titre'>Titre :</label></br>
-                                <input type='text' id='titre' name='titre' required>
-                            </div>
-                            <div class='my-3'>
-                                <label class="my-2" for='paragraphe'>Paragraphe :</label></br>
-                                <textarea style="width: 50vw; height: 20vh; resize: none" id='paragraphe' name='paragraphe'
-                                    required></textarea>
-                            </div>
-                            <div class='my-3'>
-                                <label class="my-2" for='image'>Image :</label></br>
-                                <input class="btn btn-primary" type='file' id='image' name='image' required>
-                            </div>
-                            <button class="btn btn-success my-5" type='submit'>Ajouter</button>
-                        </form>
-
-                        <?php
-                        $conn = null;
-                        } catch (PDOException $e) {
-                            die("Échec de la connexion à la base de données : " . $e->getMessage());
-                        }
-                        ?>
-
-
-                </div>
-                <div class="container d-flex align-items-center justify-content-center connect my-2">
-
+                <div class="container d-flex align-items-center justify-content-center connect my-3">
                     <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
                     <br>
-                    <form method="post">
-                        <button class="btn btn-primary my-3 mx-3" type="submit" name="documents"><a href="./documents.php">Consulter</a></button>
-                    </form>
+                </div>
+                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                    <h1 class="my-3 mx-3"><b></b>Wireframes</b></h1><br>
+                    <img src="./src/medias/Wireframes Projet_ECF.png" alt="wireframes">
+                    <br>
+                </div>
+                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                    <h1 class="my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
+                    <img src="./src/medias/Diagramme de classe Projet_ECF.jpg" alt="diagramme de classe" >
+                    <br>
+                </div>
+                <div class="container d-flex align-items-center justify-content-center connect my-2">
+                    <h1 class="my-3 mx-3"><b></b>Script SLQ</b></h1><br>
+                    <img src="./src/medias/Script SQL.jpg" alt="script SQL" >
+                    <br>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
                 <div class="row">
@@ -366,7 +218,14 @@ if (isset($_POST['logout'])) {
                                 <div class="d-flex justify-content-center text-center my-3">
                                     <p class="horairesFooter">
                                         NOS HORAIRES <br />
+
                                         <?php
+
+                                        $servername = "eu-cdbr-west-03.cleardb.net";
+                                        $username = "b3b93f93ef4872";
+                                        $password = "21163a70";
+                                        $dbname = "heroku_a9b8c2ad4d5e1ab";
+
                                         try {
                                             // Connexion à la base de données en utilisant PDO
                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
