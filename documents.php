@@ -173,9 +173,9 @@ if (isset($_POST['logout'])) {
                         <br>
                         <p class="mb-3 px-5">
                             Je suis bien conscient que ces documents ne devraient jamais figurer sur l'application, je
-                            les retirerai évidemment dès que mon projet-ECF aura été évalué.
+                            les retirerai évidemment dès que mon projet-ECF aura été évalué.</br>
                             De cette manière, concernant le rendu pour évaluation, je ne transmettrai qu'un document
-                            word comportant mon GIT et que le lien de l'application déployé.
+                            word comportant mon GIT et que le lien de l'application déployé.</br>
                             Le correcteur disposera ainsi facilement de tous les éléments de mon projet.
                             Merci de votre compréhension.
                         </p>
