@@ -99,31 +99,24 @@ try {
         }
     }
 
-    // Construire la requête SQL en fonction du tri sélectionné
-    if ($tri === "kilometres_asc") {
-        $sql .= " ORDER BY kilometres ASC";
-    } elseif ($tri === "kilometres_desc") {
-        $sql .= " ORDER BY kilometres DESC";
-    } elseif ($tri === "prix_asc") {
-        $sql .= " ORDER BY prix ASC";
-    } elseif ($tri === "prix_desc") {
-        $sql .= " ORDER BY prix DESC";
-    }
+    // Compter le nombre total de résultats
+    $stmtCount = $conn->prepare($sql);
+    $stmtCount->execute($params);
+    $totalResults = $stmtCount->rowCount();
 
-    // Nombre de résultats à afficher par page
+    // Pagination
     $resultsPerPage = 20;
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($currentPage - 1) * $resultsPerPage;
 
-    // Page actuelle (par défaut : première page)
-    $currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-    // Calcul de l'offset pour la requête SQL
-    $offset = ($currentpage - 1) * $resultsPerPage;
-
-    // Ajout de la limitation du nombre de résultats par page et de l'offset
+    // Ajouter la limitation et l'offset à la requête SQL
     $sql .= " LIMIT :offset, :resultsPerPage";
+    $params['offset'] = $offset;
+    $params['resultsPerPage'] = $resultsPerPage;
+
+    // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->bindValue(':resultsPerPage', $resultsPerPage, PDO::PARAM_INT);
 
     // Exécution de la requête SQL avec les paramètres
     $stmt->execute($params);
@@ -145,42 +138,43 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
-            echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km</b></p>';
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
-            echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
-            echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div>";
-
-            echo "</a></div>";
+            echo "<p class='text-secondary m-0'>Prix : <b> " . number_format($row["prix"], 0, ',', ' ') . " €</b></p></div></a></div>";
         }
-
-        // Requête pour compter le nombre total de résultats
-        $countSql = "SELECT COUNT(*) AS total FROM cars WHERE 1=1";
-        $countStmt = $conn->prepare($countSql);
-        $countStmt->execute($params);
-        $totalResults = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
-
-        // Calcul du nombre total de pages
-        $totalPages = ceil($totalResults / $resultsPerPage);
-
-        // Affichage des liens de pagination
-        echo "<div class='pagination'>";
-        for ($page = 1; $page <= $totalPages; $page++) {
-            echo "<a href='recherche.php?page=$page'>$page</a>";
-        }
-        echo "</div>";
     } else {
-        echo "<p>Aucun résultat trouvé.</p>";
+        echo "Aucun résultat trouvé.";
     }
 
-    // Fermeture de la connexion à la base de données
-    $conn = null;
+    // Affichage de la pagination
+    echo "<div class='pagination'>";
+
+    if ($totalPages > 1) {
+        if ($currentPage > 1) {
+            echo "<a href='index.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
+        }
+
+        for ($i = 1; $i <= $totalPages; $i++) {
+            if ($i == $currentPage) {
+                echo "<span class='current-page'>" . $i . "</span>";
+            } else {
+                echo "<a href='index.php?page=" . $i . "'>" . $i . "</a>";
+            }
+        }
+
+        if ($currentPage < $totalPages) {
+            echo "<a href='index.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
+        }
+    }
+
+    echo "</div>";
+
 } catch (PDOException $e) {
-    die("Échec de la connexion à la base de données : " . $e->getMessage());
+    echo "Échec de la connexion à la base de données : " . $e->getMessage();
 }
+
+$conn = null;
 ?>
