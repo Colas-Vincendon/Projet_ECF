@@ -110,8 +110,20 @@ try {
         $sql .= " ORDER BY prix DESC";
     }
 
-    // Préparation de la requête SQL
+    // Nombre de résultats à afficher par page
+    $resultsPerPage = 20;
+
+    // Page actuelle (par défaut : première page)
+    $currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+    // Calcul de l'offset pour la requête SQL
+    $offset = ($currentpage - 1) * $resultsPerPage;
+
+    // Ajout de la limitation du nombre de résultats par page et de l'offset
+    $sql .= " LIMIT :offset, :resultsPerPage";
     $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->bindValue(':resultsPerPage', $resultsPerPage, PDO::PARAM_INT);
 
     // Exécution de la requête SQL avec les paramètres
     $stmt->execute($params);
@@ -133,7 +145,7 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
@@ -146,6 +158,22 @@ try {
 
             echo "</a></div>";
         }
+
+        // Requête pour compter le nombre total de résultats
+        $countSql = "SELECT COUNT(*) AS total FROM cars WHERE 1=1";
+        $countStmt = $conn->prepare($countSql);
+        $countStmt->execute($params);
+        $totalResults = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
+
+        // Calcul du nombre total de pages
+        $totalPages = ceil($totalResults / $resultsPerPage);
+
+        // Affichage des liens de pagination
+        echo "<div class='pagination'>";
+        for ($page = 1; $page <= $totalPages; $page++) {
+            echo "<a href='recherche.php?page=$page'>$page</a>";
+        }
+        echo "</div>";
     } else {
         echo "<p>Aucun résultat trouvé.</p>";
     }
