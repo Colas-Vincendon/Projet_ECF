@@ -171,19 +171,26 @@ if (isset($_POST['logout'])) {
                     <br>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
-                    <h1 class="my-3 mx-3"><b></b>Wireframes</b></h1><br>
-                    <img style="width: 80%" src="./src/medias/Wireframes Projet_ECF.png" alt="wireframes">
-                    <br>
+                    <div class="row">
+                        <h1 class="my-3 mx-3"><b></b>Wireframes</b></h1><br>
+                        <img style="width: 80%" src="./src/medias/Wireframes Projet_ECF.png" alt="wireframes">
+                        <br>
+                    </div>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
-                    <h1 class="my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
-                    <img style="width: 80%"  src="./src/medias/Diagramme de classe Projet_ECF.jpg" alt="diagramme de classe" >
-                    <br>
+                    <div class="row">
+                        <h1 class="my-3 mx-3"><b></b>Diagramme de classe</b></h1><br>
+                        <img style="width: 80%" src="./src/medias/Diagramme de classe Projet_ECF.jpg"
+                            alt="diagramme de classe">
+                        <br>
+                    </div>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
-                    <h1 class="my-3 mx-3"><b></b>Script SLQ</b></h1><br>
-                    <img style="width: 80%"  src="./src/medias/Script SQL.jpg" alt="script SQL" >
-                    <br>
+                    <div class="row">
+                        <h1 class="my-3 mx-3"><b></b>Script SQL</b></h1><br>
+                        <img style="width: 80%" src="./src/medias/Script SQL.jpg" alt="script SQL">
+                        <br>
+                    </div>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
                 <div class="row">

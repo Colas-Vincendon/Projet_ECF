@@ -327,10 +327,10 @@ if (isset($_POST['logout'])) {
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
 
-                    <h1 class="my-3 mx-3"><b></b>Documents création application</b></h1><br>
+                    <h1 class="ml-0 text-grey my-3"><b></b>Documents création application</b></h1><br>
                     <br>
                     <form method="post">
-                        <button class="btn btn-primary my-3 mx-3" type="submit" name="documents"><a class="no-underline text-white" href="./documents.php">Consulter</a></button>
+                        <button class="btn btn-success my-3 mx-3" type="submit" name="documents"><a class="no-underline text-white" href="./documents.php">Consulter</a></button>
                     </form>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->

@@ -37,6 +37,9 @@ CREATE TABLE
         isAdmin TINYINT(1)
     );
 
+INSERT INTO employes (id, email, password, isAdmin)
+VALUES (0, 'Vparrot@gmail.com', 'Vparrot31500', 1);
+
 CREATE TABLE
     horaires (
         id INT PRIMARY KEY AUTO_INCREMENT,
