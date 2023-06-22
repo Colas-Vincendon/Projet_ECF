@@ -196,6 +196,21 @@ if (isset($_POST['logout'])) {
                         <br>
                     </div>
                 </div>
+                <div class="container-fluid d-flex align-items-center justify-content-center text-center connect my-3">
+                    <div class="row">
+                        <h1 class="ml-0 mr-0  text-grey my-3 mx-3"><b></b>Diagramme de séquence</b></h1><br>
+                        <img class="mb-3" src="./src/medias/Diagramme séquence projet ECF.jpeg" alt="Diagramme de séquence">
+                        <br>
+                    </div>
+                </div>
+                <div class="container-fluid d-flex align-items-center justify-content-center text-center connect my-3">
+                    <div class="row">
+                        <h1 class="ml-0 mr-0  text-grey my-3 mx-3"><b></b>Diagramme de cas d'utilisation</b></h1><br>
+                        <img class="mb-3" src="./src/medias/Diagramme de cas d'utilisation.jpeg"
+                            alt="Diagramme de cas d'utilisation">
+                        <br>
+                    </div>
+                </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
                 <div class="row">
                     <div class="container footer">
