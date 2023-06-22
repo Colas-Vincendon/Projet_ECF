@@ -186,13 +186,6 @@ if (isset($_POST['logout'])) {
                         <br>
                     </div>
                 </div>
-                <div class="container d-flex align-items-center justify-content-center text-center connect my-3">
-                    <div class="row d-flex justify-content-center">
-                        <h1 class="ml-0 text-grey my-3 mx-3"><b></b>Script SQL</b></h1><br>
-                        <img class="mb-3" style="width: 60%" src="./src/medias/Script SQL.jpg" alt="script SQL">
-                        <br>
-                    </div>
-                </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
                 <div class="row">
                     <div class="container footer">
