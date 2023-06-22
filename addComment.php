@@ -159,7 +159,7 @@
               </select>
             </div>
             <div class="text-center">
-              <button type="submit" class=" my-5 btn btn-danger">Ajouter un avis</button>
+              <button type="submit" name="envoiReview" class=" my-5 btn btn-danger">Ajouter un avis</button>
             </div>
           </form>
         </div>

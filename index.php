@@ -194,10 +194,10 @@
             <div class="trait2 mx-5"></div>
             <p class="p-horaires">
 
+              
               <?php
-
-              require_once 'database.php';
-
+              require_once 'databaseConnexion.php';
+              
               // Récupérer les avis approuvés de la table "avis"
               $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
               $approuve = 1; // Seuls les avis approuvés

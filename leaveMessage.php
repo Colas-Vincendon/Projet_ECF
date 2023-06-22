@@ -1,4 +1,13 @@
 <?php
+
+function validateInput($input)
+{
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input);
+    return $input;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
     $prenom = validateInput($_POST['prenom']);
     $nom = validateInput($_POST['nom']);
@@ -44,11 +53,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
     }
 }
 
-function validateInput($input)
-{
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input);
-    return $input;
-}
 ?>

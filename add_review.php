@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
 <?php
+
+function validateInput($input)
+{
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input);
+    return $input;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoiReview'])) {
+    $nom = validateInput($_POST['nom']);
+    $commentaire = validateInput($_POST['commentaire']);
+    $note = validateInput($_POST['note']);
+
+    if (empty($nom) || empty($commentaire) || empty($note)) {
+        echo "Veuillez remplir tous les champs obligatoires.";
+        exit;
+    }
+}
+
 // Connexion à la base de données
 $servername = "eu-cdbr-west-03.cleardb.net";
 $username = "b3b93f93ef4872";
@@ -46,5 +57,3 @@ try {
 
 
 ?>
-</body>
-</html>
