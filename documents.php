@@ -176,7 +176,7 @@ if (isset($_POST['logout'])) {
                             les retirerai évidemment dès que mon projet-ECF aura été évalué.</br>
                             De cette manière, concernant le rendu pour évaluation, je ne transmettrai qu'un document
                             word comportant mon GIT et que le lien de l'application déployé.</br>
-                            Le correcteur disposera ainsi facilement de tous les éléments de mon projet.
+                            Le correcteur disposera ainsi facilement de tous les éléments de mon projet.</br>
                             Merci de votre compréhension.
                         </p>
                     </div>
