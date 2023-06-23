@@ -116,7 +116,7 @@ document.getElementById("rechercher").addEventListener("click", function () {
     "&tri=" +
     encodeURIComponent(tri);
 
-  xhr.open("POST", "catalogue.php", true);
+  xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
 });
