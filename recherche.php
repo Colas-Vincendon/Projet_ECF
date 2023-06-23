@@ -122,9 +122,7 @@ try {
     $offset = ($currentPage - 1) * $resultsPerPage;
 
     // Ajouter la limitation et l'offset à la requête SQL
-    $sql .= " LIMIT :offset, :resultsPerPage";
-    $params['offset'] = (int)$offset;
-    $params['resultsPerPage'] = (int)$resultsPerPage;
+    $sql .= " LIMIT $offset, $resultsPerPage";
 
 
     // Préparation de la requête SQL
