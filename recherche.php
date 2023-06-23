@@ -33,7 +33,7 @@ try {
     $offset = ($currentPage - 1) * $resultsPerPage;
 
     // Construction de la requête SQL
-    $sql = "SELECT * FROM cars WHERE 1=1 LIMIT $offset,$resultsPerPage";
+    $sql = "SELECT * FROM cars WHERE 1=1 LIMIT $resultsPerPage OFFSET $offset";
 
     $params = array();
 
