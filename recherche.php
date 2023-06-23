@@ -20,8 +20,20 @@ try {
     $prix = $_POST['prix'];
     $tri = $_POST['tri'];
 
+    // Compter le nombre total de résultats
+    $stmtCount = $conn->prepare($sql);
+    $stmtCount->execute($params);
+    $totalResults = $stmtCount->rowCount();
+    echo $totalResults;
+
+    // Pagination
+    $resultsPerPage = 20;
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = 1;
+    $offset = ($currentPage - 1) * $resultsPerPage;
+
     // Construction de la requête SQL
-    $sql = "SELECT * FROM cars WHERE 1=1";
+    $sql = "SELECT * FROM cars WHERE 1=1 LIMIT $offset,$resultsPerPage";
 
     $params = array();
 
@@ -133,7 +145,7 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
@@ -148,6 +160,14 @@ try {
         }
     } else {
         echo "<p>Aucun résultat trouvé.</p>";
+    }
+
+    // pagination
+    echo "<div class='pagination'>";
+    if ($totalPages > 1) {
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo "<a href='recherche.php?page=$i/'>$i/</a>";
+        }
     }
 
     // Fermeture de la connexion à la base de données
