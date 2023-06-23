@@ -123,8 +123,8 @@ try {
 
     // Ajouter la limitation et l'offset à la requête SQL
     $sql .= " LIMIT :offset, :resultsPerPage";
-    $params['offset'] = $offset;
-    $params['resultsPerPage'] = $resultsPerPage;
+    $params['offset'] = (int)$offset;
+    $params['resultsPerPage'] = (int)$resultsPerPage;
 
 
     // Préparation de la requête SQL
