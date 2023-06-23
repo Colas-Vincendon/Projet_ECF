@@ -21,7 +21,7 @@ try {
     $tri = $_POST['tri'];
 
     // Compter le nombre total de résultats
-    $stmtCount = $conn->prepare($sql);
+    $stmtCount = $conn->prepare($sql2);
     $stmtCount->execute($params);
     $totalResults = $stmtCount->rowCount();
     echo $totalResults;
