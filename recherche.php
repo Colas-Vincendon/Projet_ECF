@@ -21,7 +21,7 @@ try {
     $tri = $_POST['tri'];
 
     // Compter le nombre total de résultats
-    $stmtCount = $conn->prepare($sql2);
+    $stmtCount = $conn->prepare($sql);
     $stmtCount->execute($params);
     $totalResults = $stmtCount->rowCount();
     echo $totalResults;
@@ -122,7 +122,10 @@ try {
         $sql .= " ORDER BY prix DESC";
     }
 
-    $sql = "LIMIT $resultsPerPage OFFSET $offset";
+// Ajouter la limitation et l'offset à la requête SQL
+$sql .= " LIMIT :offset, :resultsPerPage";
+$params['offset'] = (int)$offset;
+$params['resultsPerPage'] = (int)$resultsPerPage;
 
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
