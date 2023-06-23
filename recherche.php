@@ -33,7 +33,7 @@ try {
     $offset = ($currentPage - 1) * $resultsPerPage;
 
     // Construction de la requête SQL
-    $sql = "SELECT * FROM cars WHERE 1=1 LIMIT $resultsPerPage OFFSET $offset";
+    $sql = "SELECT * FROM cars WHERE 1=1";
 
     $params = array();
 
@@ -121,6 +121,8 @@ try {
     } elseif ($tri === "prix_desc") {
         $sql .= " ORDER BY prix DESC";
     }
+
+    $sql = "LIMIT $resultsPerPage OFFSET $offset";
 
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
