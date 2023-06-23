@@ -21,8 +21,8 @@ try {
     $tri = $_POST['tri'];
 
 
-    $sqltest = "SELECT COUNT(id) FROM cars";
-    echo $sqltest;
+    $sql = "SELECT COUNT(id) FROM cars";
+    echo $sql;
 
 
     // Construction de la requête SQL
