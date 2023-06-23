@@ -20,6 +20,11 @@ try {
     $prix = $_POST['prix'];
     $tri = $_POST['tri'];
 
+
+    $sqltest = "SELECT COUNT(id) FROM cars";
+    echo $sqltest;
+
+
     // Construction de la requête SQL
     $sql = "SELECT * FROM cars WHERE 1=1";
 
