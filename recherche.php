@@ -110,6 +110,23 @@ try {
         $sql .= " ORDER BY prix DESC";
     }
 
+    // Compter le nombre total de résultats
+    $stmtCount = $conn->prepare($sql);
+    $stmtCount->execute($params);
+    $totalResults = $stmtCount->rowCount();
+
+    // Pagination
+    $resultsPerPage = 20;
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($currentPage - 1) * $resultsPerPage;
+
+    // Ajouter la limitation et l'offset à la requête SQL
+    $sql .= " LIMIT :offset, :resultsPerPage";
+    $params['offset'] = $offset;
+    $params['resultsPerPage'] = $resultsPerPage;
+
+
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
 
@@ -133,7 +150,7 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
