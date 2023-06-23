@@ -24,6 +24,11 @@ try {
     $sql = "SELECT COUNT(id) FROM cars";
     echo $sql;
 
+    $stmt = $conn->prepare($sql);
+
+    // Exécution de la requête SQL avec les paramètres
+    $stmt->execute($params);
+
 
     // Construction de la requête SQL
     $sql = "SELECT * FROM cars WHERE 1=1";
