@@ -120,3 +120,21 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
 });
+//  Pagination des résultats
+$(document).on("click", ".pagination a", function (e) {
+  e.preventDefault();
+
+  // Récupérer le numéro de page à charger
+  var page = $(this).attr("href").split("page=")[1];
+
+  // Effectuer la requête AJAX vers le script PHP
+  $.ajax({
+    url: "recherche.php",
+    method: "GET",
+    data: { page: page },
+    success: function (response) {
+      // Mettre à jour la liste des résultats avec la réponse AJAX
+      $("#results").html(response);
+    },
+  });
+});
