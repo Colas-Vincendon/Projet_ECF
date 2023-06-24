@@ -110,6 +110,20 @@ try {
         $sql .= " ORDER BY prix DESC";
     }
 
+    // Compter le nombre total de résultats
+    $stmtCount = $conn->prepare($sql);
+    $stmtCount->execute($params);
+    $totalResults = $stmtCount->rowCount();
+
+    // Pagination
+    $resultsPerPage = 20;
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($currentPage - 1) * $resultsPerPage;
+
+    // Ajouter la limitation et l'offset à la requête SQL
+    $sql .= " LIMIT $offset, $resultsPerPage";
+
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
 
@@ -149,6 +163,29 @@ try {
     } else {
         echo "<p>Aucun résultat trouvé.</p>";
     }
+
+    // Affichage de la pagination
+    echo "<div class='pagination'>";
+
+    if ($totalPages > 1) {
+        if ($currentPage > 1) {
+            echo "<a href='catalogue.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
+        }
+
+        for ($i = 1; $i <= $totalPages; $i++) {
+            if ($i == $currentPage) {
+                echo "<span class='current-page'>" . $i . "</span>";
+            } else {
+                echo "<a href='catalogue.php?page=" . $i . "'>" . $i . "</a>";
+            }
+        }
+
+        if ($currentPage < $totalPages) {
+            echo "<a href='catalogue.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
+        }
+    }
+
+    echo "</div>";
 
     // Fermeture de la connexion à la base de données
     $conn = null;
