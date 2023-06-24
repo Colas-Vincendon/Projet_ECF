@@ -474,19 +474,19 @@
 
                                 if ($totalPages > 1) {
                                     if ($currentPage > 1) {
-                                        echo "<a href='index.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
+                                        echo "<a href='recherche.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
                                     }
 
                                     for ($i = 1; $i <= $totalPages; $i++) {
                                         if ($i == $currentPage) {
                                             echo "<span class='current-page'>" . $i . "</span>";
                                         } else {
-                                            echo "<a href='index.php?page=" . $i . "'>" . $i . "</a>";
+                                            echo "<a href='recherche.php?page=" . $i . "'>" . $i . "</a>";
                                         }
                                     }
 
                                     if ($currentPage < $totalPages) {
-                                        echo "<a href='index.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
+                                        echo "<a href='recherche.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
                                     }
                                 }
 
