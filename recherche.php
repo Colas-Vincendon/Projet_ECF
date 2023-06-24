@@ -176,12 +176,12 @@ try {
             if ($i == $currentPage) {
                 echo "<span class='current-page'>" . $i . "</span>";
             } else {
-                echo "<a href='catalogue.php?page=" . $i . "'>" . $i . "</a>";
+                echo "<a href='recherche.php?page=" . $i . "'>" . $i . "</a>";
             }
         }
 
         if ($currentPage < $totalPages) {
-            echo "<a href='catalogue.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
+            echo "<a href='recherche.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
         }
     }
 
