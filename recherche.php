@@ -105,7 +105,7 @@ try {
     $totalResults = $stmtCount->rowCount();
 
     // Pagination
-    $resultsPerPage = 20;
+    $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
@@ -118,6 +118,16 @@ try {
 
     // Exécution de la requête SQL avec les paramètres
     $stmt->execute($params);
+
+    // Récupérer les résultats de la requête SQL
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Convertir les résultats en JSON
+    $jsonResults = json_encode($results);
+
+    // Renvoyer les résultats en tant que réponse AJAX
+    header('Content-Type: application/json');
+    echo $jsonResults;
 
     // Affichage des résultats
     if ($stmt->rowCount() > 0) {
@@ -136,7 +146,7 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km</b></p>';
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
             echo "<p class='text-secondary m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
