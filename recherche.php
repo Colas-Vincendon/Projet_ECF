@@ -105,7 +105,7 @@ try {
     $totalResults = $stmtCount->rowCount();
 
     // Pagination
-    $resultsPerPage = 20;
+    $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
