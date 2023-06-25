@@ -6,6 +6,26 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
     header('Location: connexion.php');
     exit();
 }
+
+
+if (!isset($_COOKIE['connexion_time'])) {
+    // Le cookie n'existe pas, procédez à l'authentification
+} else {
+    // Le cookie existe, vérifiez s'il est expiré
+    $currentTime = time();
+    $cookieTime = $_COOKIE['connexion_time'];
+    $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
+
+    if ($currentTime <= $expirationTime) {
+        // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
+        exit;
+    } else {
+        // Le cookie est expiré, procédez à l'authentification
+    }
+}
+
+setcookie('connexion_time', time(), time() + 30);
+
 if (isset($_POST['logout'])) {
     // Déconnexion : Supprimer les informations de session et le cookie
     session_unset();
