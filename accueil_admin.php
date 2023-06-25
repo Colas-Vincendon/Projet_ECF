@@ -7,7 +7,6 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
     exit();
 }
 
-
 if (!isset($_COOKIE['connexion_time'])) {
     // Le cookie n'existe pas, procédez à l'authentification
 } else {
