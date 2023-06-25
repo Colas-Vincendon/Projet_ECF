@@ -1,5 +1,25 @@
 <?php
 session_start();
+
+if (!isset($_COOKIE['connexion_time'])) {
+    // Le cookie n'existe pas, procédez à l'authentification
+} else {
+    // Le cookie existe, vérifiez s'il est expiré
+    $currentTime = time();
+    $cookieTime = $_COOKIE['connexion_time'];
+    $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
+
+    if ($currentTime <= $expirationTime) {
+        // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
+        header('Location: connexion.php'); // Exemple de redirection vers une page protégée
+        exit;
+    } else {
+        // Le cookie est expiré, procédez à l'authentification
+    }
+}
+
+setcookie('connexion_time', time(), time() + 30);
+
 ?>
 
 <!DOCTYPE html>
@@ -181,8 +201,6 @@ session_start();
 
                         // Définition de la page de redirection
                         $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
-
-                        setcookie('user', 'admin', time()+30, '/');
 
                         // Redirection vers la page appropriée
                         echo '<script>window.location.href = "' . $redirectPage . '";</script>';
