@@ -1,24 +1,6 @@
 <?php
+
 session_start();
-
-if (!isset($_COOKIE['connexion_time'])) {
-    // Le cookie n'existe pas, procédez à l'authentification
-} else {
-    // Le cookie existe, vérifiez s'il est expiré
-    $currentTime = time();
-    $cookieTime = $_COOKIE['connexion_time'];
-    $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
-
-    if ($currentTime <= $expirationTime) {
-        // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
-        header('Location: connexion.php'); // Exemple de redirection vers une page protégée
-        exit;
-    } else {
-        // Le cookie est expiré, procédez à l'authentification
-    }
-}
-
-setcookie('connexion_time', time(), time() + 30);
 
 ?>
 
