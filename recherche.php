@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="./src/styles/style.css">
 <?php
+
+require_once 'style.css';
+
 // Connexion à la base de données
 $servername = "eu-cdbr-west-03.cleardb.net";
 $username = "b3b93f93ef4872";
