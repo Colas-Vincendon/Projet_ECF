@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./src/styles/style.css">
 <?php
 
-require_once 'style.css';
+require_once './src/styles/style.css';
 
 // Connexion à la base de données
 $servername = "eu-cdbr-west-03.cleardb.net";
