@@ -154,7 +154,7 @@ try {
     }
 
     // Affichage de la pagination
-    echo "<div class='pagination'>";
+    echo "<div class='d-flex justify-content-center'>";
 
     if ($totalPages > 1) {
         if ($currentPage > 1) {
