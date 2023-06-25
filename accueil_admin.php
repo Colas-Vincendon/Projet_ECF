@@ -13,7 +13,7 @@ if (!isset($_COOKIE['connexion_time'])) {
     // Le cookie existe, vérifiez s'il est expiré
     $currentTime = time();
     $cookieTime = $_COOKIE['connexion_time'];
-    $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
+    $expirationTime = $cookieTime + 3600; // 30 secondes d'expiration
 
     if ($currentTime <= $expirationTime) {
         // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
@@ -24,7 +24,7 @@ if (!isset($_COOKIE['connexion_time'])) {
     }
 }
 
-setcookie('connexion_time', time(), time() + 30);
+setcookie('connexion_time', time(), time() + 3600);
 
 if (isset($_POST['logout'])) {
     // Déconnexion : Supprimer les informations de session et le cookie
