@@ -141,10 +141,9 @@ function performSearch() {
     url: "recherche.php",
     type: "GET",
     success: function (response) {
+      hideLoading(); // Masque l'animation de chargement
       // La requête a réussi, mettre à jour le contenu de la page
       $("#resultat").html(response);
-
-      hideLoading(); // Masque l'animation de chargement
     },
     error: function () {
       // Gérer les erreurs de la requête
