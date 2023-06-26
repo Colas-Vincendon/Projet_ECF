@@ -109,7 +109,7 @@ if (isset($_POST['logout'])) {
 
         <div class="row header">
           <header class="marginHeader paddingHeader">
-            <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
+            <a href="index.html"><img class="img-fluid" src="./src/medias/banderole header.jpg"
                 alt="Page d'accueil" /></a>
           </header>
         </div>
@@ -124,7 +124,7 @@ if (isset($_POST['logout'])) {
               <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.php">ACCUEIL</a>
+                    <a class="nav-link" href="index.html">ACCUEIL</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
