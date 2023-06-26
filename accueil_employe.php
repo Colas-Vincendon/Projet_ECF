@@ -188,7 +188,7 @@ if (isset($_POST['logout'])) {
           <h1 class="text-grey my-4">Les messages clients</h1>
           <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
             <p class="text-center btn btn-success my-3"><a class="no-underline text-white"
-                href="messagesPlace.php">Consulter</a></p><br>
+                href="messagesPlace.html">Consulter</a></p><br>
           </div>
         </div>
         <div class="container text-center connect my-2">
