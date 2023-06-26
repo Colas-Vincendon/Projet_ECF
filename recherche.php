@@ -126,6 +126,9 @@ try {
             $resultImages = $conn->query($sqlImages);
 
             if ($resultImages->rowCount() > 0) {
+                echo "<div id='loading' class='loading'>
+                <div class='loading-animation'></div>
+              </div>";
                 echo "<div>";
                 while ($rowImage = $resultImages->fetch(PDO::FETCH_ASSOC)) {
                     $imageData = $rowImage["image_base64"];
@@ -156,3 +159,13 @@ try {
     die("Échec de la connexion à la base de données : " . $e->getMessage());
 }
 ?>
+<script>// Afficher l'animation de chargement lors du chargement initial de la page
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("loading").style.display = "block";
+});
+
+// Masquer l'animation de chargement une fois que les véhicules sont chargés
+window.addEventListener("load", function() {
+  document.getElementById("loading").style.display = "none";
+});
+</script>
