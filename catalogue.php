@@ -144,7 +144,14 @@
         </div>
 
         <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-        
+        <div class="row justify-content-center my-3">
+                <button id="rechercher" class="btn btn-danger">Rechercher</button>
+            </div>
+
+            <div class="row justify-content-center my-3">
+                <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
+            </div>
+            <div id="resultat"></div>
     <!-- --------------------------- FOOTER --------------------------- -->
     <div class="row">
       <div class="container footer">
