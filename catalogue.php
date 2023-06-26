@@ -293,6 +293,10 @@
               <div class="loading-animation"></div>
             </div>
 
+            <div id="loading" class="loading">
+              <div class="loading-animation"></div>
+            </div>
+
             <div id="resultat"></div>
             </p>
           </div>

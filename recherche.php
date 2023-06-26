@@ -1,10 +1,5 @@
 <link rel="stylesheet" href="./src/styles/style.css">
 <?php
-
-echo '<div id="loading" class="loading">
-<div class="loading-animation"></div>
-</div>';
-
 // Connexion à la base de données
 $servername = "eu-cdbr-west-03.cleardb.net";
 $username = "b3b93f93ef4872";
