@@ -120,10 +120,3 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
 });
-
-/*------------- chargement des horaires du footer ---------------------*/
-
-$(document).ready(function () {
-  // Charger le contenu du footer
-  $("#footerSchedules").load("schedules.php #Schedules");
-});
