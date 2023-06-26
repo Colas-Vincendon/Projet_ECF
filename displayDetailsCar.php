@@ -2,14 +2,7 @@
 
     <?php
                     // Connexion à la base de données
-                    $servername = "eu-cdbr-west-03.cleardb.net";
-                    $username = "b3b93f93ef4872";
-                    $password = "21163a70";
-                    $dbname = "heroku_a9b8c2ad4d5e1ab";
-
-                    try {
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    require_once 'databaseConnexion.php';
 
                         // Récupération de l'ID de la voiture depuis l'URL
                         if (isset($_GET['id'])) {
@@ -95,8 +88,5 @@
 
                         // Fermeture de la connexion à la base de données
                         $conn = null;
-                    } catch (PDOException $e) {
-                        echo "Échec de la connexion à la base de données : " . $e->getMessage();
-                    }
                     ?>
                         </div>
