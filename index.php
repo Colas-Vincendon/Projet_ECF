@@ -193,12 +193,12 @@
             <h2 class="mx-5">AVIS DE NOS CLIENTS</h2>
             <div class="trait2 mx-5"></div>
             <p class="p-horaires">
+            <div id="displayReviews">
 
-              
               <?php
 
               require_once 'databaseConnexion.php';
-              
+
               // Récupérer les avis approuvés de la table "avis"
               $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
               $approuve = 1; // Seuls les avis approuvés
@@ -232,7 +232,7 @@
 
               ?>
 
-
+            </div>
             </p>
             <div class="comment mx-auto my-5 justify-content-center align-items-center d-flex ">
               <p class="text-center my-auto"><a class="no-underline text-white" href="addComment.html">Donnez nous votre
@@ -282,7 +282,7 @@
               <div class="col-6 col-md-3">
                 <!-------- chargement des horaires du footer ------->
                 <div id="footerSchedules">
-                 
+
                 </div>
 
               </div>
