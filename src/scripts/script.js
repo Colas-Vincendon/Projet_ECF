@@ -139,7 +139,7 @@ function performSearch() {
   // Exemple avec jQuery :
   $.ajax({
     url: "recherche.php",
-    type: "GET",
+    type: "POST",
     success: function (response) {
       hideLoading(); // Masque l'animation de chargement
       // La requête a réussi, mettre à jour le contenu de la page
