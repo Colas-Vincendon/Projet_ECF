@@ -145,142 +145,91 @@
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
                 <div class="container-fluid text-center">
                     <div class="row">
-                        <?php
-                        
-                        require_once 'databaseConnexion.php';
-
-                            // Récupérer tous les messages de la table "messages"
-                            $sql = "SELECT * FROM messages";
-                            $stmt = $conn->query($sql);
-
-                            if ($stmt->rowCount() > 0) {
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    $messageId = $row['id'];
-                                    $prenom = $row['prenom'];
-                                    $nom = $row['nom'];
-                                    $email = $row['email'];
-                                    $telephone = $row['telephone'];
-                                    $sujet = $row['sujet'];
-                                    $message = $row['message'];
-                                    $date_creation = $row['date_creation'];
-
-                                    $formatted_date = date("d/m/Y H:i:s", strtotime($date_creation));
-                                    ?>
-                                    <div class='container my-2 connect'>
-                                        <div class='row'>
-                                            <div class='col-12 col-md-5 connect'>
-                                                <?php
-                                                echo "<h6><strong>Date : </strong>$formatted_date</h6>";
-                                                echo "<h6><strong>Sujet : </strong>$sujet</h6>";
-                                                echo "<h6><strong>De :</strong> $prenom $nom</h6>";
-                                                echo "<h6><strong>Email :</strong> $email</h6>";
-                                                echo "<h6><strong>Telephone :</strong> $telephone</h6>
-                                                </div>";
-                                                ?>
-                                                <div class='col-12 col-md-5 connect d-flex align-items-center'>
-                                                    <?php
-                                                    echo "<p class='my-auto'>$message</p>";
-                                                    echo "<form action='supprimer_message.php' method='POST'>";
-                                                    echo "<input type='hidden' name='message_id' value='$messageId'>
-                                                </div>";
-                                                    ?>
-                                                    <div
-                                                        class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
-                                                        <button class='btn btn-danger my-4' type='submit'>Supprimer</button>
-                                                    </div>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                            <?php
-                                }
-                            } else {
-                                echo "<div class='col-12 text-center my-5'>Aucun message trouvé.</div>";
-                            }
-
-                            $conn = null;
-                        ?>
-
-                            </div>
+                        <div id="displayMessagesEmployes">
+                            <!-- affichage des messages avec bouton 'supprimer' (displayMessagesForEmployes.php) -->
                         </div>
-                        <!-- --------------------------- FOOTER --------------------------- -->
-                        <div class="row">
-                            <div class="container footer">
-                                <div class="row cols-3">
-                                    <div class="col-6 col-md-3">
-                                        <div class="row">
-                                            <div class="d-flex justify-content-center my-3">
-                                                <label>Nous trouver <br />
-                                                    <strong>
-                                                        1 rue de l'Aqueduc <br />
-                                                        31500 TOULOUSE
-                                                    </strong></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3 px-0">
-                                        <div class="d-flex justify-content-center my-3">
-                                            <label>Nous contacter <br />
-                                                <strong>01.23.45.67.89</strong></label>
-                                        </div>
-                                        <div class="row">
-                                            <div class="d-flex justify-content-center">
-                                                <a href="#">
-                                                    <img class="facebook my-1" src="./src/medias/facebook.png"
-                                                        alt="logo facebook" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <!-------- chargement des horaires du footer ------->
-                                        <div id="footerSchedules">
 
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png"
-                                                alt="logo proxi auto cash" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer-copyright">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="text-center text-grey font-14px">
-                                        <p class="p-footer">
-                                            © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
-                                            <a class="no-underline text-grey" href="connexion.php">Administration du
-                                                site</a>
-                                            -
-                                            <a class="no-underline text-grey" href="mentions-legales.html">Mentions
-                                                légales</a>
-                                            -
-                                            <a class="no-underline text-grey" href="politic.html">Politique de
-                                                confidentialité</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-bottom"></div>
                     </div>
-                    <div class="col-xl-1 col-xxl-2 toHide"></div>
                 </div>
+                <!-- --------------------------- FOOTER --------------------------- -->
+                <div class="row">
+                    <div class="container footer">
+                        <div class="row cols-3">
+                            <div class="col-6 col-md-3">
+                                <div class="row">
+                                    <div class="d-flex justify-content-center my-3">
+                                        <label>Nous trouver <br />
+                                            <strong>
+                                                1 rue de l'Aqueduc <br />
+                                                31500 TOULOUSE
+                                            </strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 px-0">
+                                <div class="d-flex justify-content-center my-3">
+                                    <label>Nous contacter <br />
+                                        <strong>01.23.45.67.89</strong></label>
+                                </div>
+                                <div class="row">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="#">
+                                            <img class="facebook my-1" src="./src/medias/facebook.png"
+                                                alt="logo facebook" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <!-------- chargement des horaires du footer ------->
+                                <div id="footerSchedules">
+
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="d-flex justify-content-center">
+                                    <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png"
+                                        alt="logo proxi auto cash" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="text-center text-grey font-14px">
+                                <p class="p-footer">
+                                    © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
+                                    <a class="no-underline text-grey" href="connexion.php">Administration du
+                                        site</a>
+                                    -
+                                    <a class="no-underline text-grey" href="mentions-legales.html">Mentions
+                                        légales</a>
+                                    -
+                                    <a class="no-underline text-grey" href="politic.html">Politique de
+                                        confidentialité</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-bottom"></div>
             </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-                integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-                crossorigin="anonymous"></script>
-            <script src="src/scripts/script.js"></script>
-            <script src="src/scripts/scroll.js"></script>
-            <script src="src/scripts/schedules.js"></script>
+            <div class="col-xl-1 col-xxl-2 toHide"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/scroll.js"></script>
+    <script src="src/scripts/schedules.js"></script>
+    <script src="src/scripts/messagesEmployes.js"></script>
 </body>
 
 </html>
