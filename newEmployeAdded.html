@@ -102,7 +102,7 @@
           <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
-              class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
+              class="container navbar navbar-expand-lg navbar-dark col-sm-11"
             >
               <div class="container d-flex justify-content-start">
                 <button
@@ -122,9 +122,7 @@
                       <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="catalogue.php"
-                        >NOS VEHICULES</a
-                      >
+                      <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -198,49 +196,20 @@
           </div>
           <!-- ------------------------------ END HEADER ------------------------------- -->
           <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-          <div class="container connect my-3">
-            <form action="add_review.php" method="POST">
-              <div class="my-3">
-                <label for="nom">Nom :</label>
-                <input
-                  type="text"
-                  class="my-3 form-control"
-                  id="nomAddComment"
-                  name="nom"
-                  required
-                />
-              </div>
-              <div class="my-3">
-                <label for="commentaire">Commentaire :</label>
-                <textarea
-                  class="my-3 form-control"
-                  id="commentaireAddComment"
-                  name="commentaire"
-                  required
-                ></textarea>
-              </div>
-              <div class="my-3">
-                <label for="note">Note :</label>
-                <select class="my-3" id="noteAddComment" name="note" required>
-                  <option value="1">1 étoile</option>
-                  <option value="2">2 étoiles</option>
-                  <option value="3">3 étoiles</option>
-                  <option value="4">4 étoiles</option>
-                  <option value="5">5 étoiles</option>
-                </select>
-              </div>
-              <div class="text-center">
-                <button
-                  type="submit"
-                  name="envoiReview"
-                  class="my-5 btn btn-danger"
+          <div class="container-fluid text-center">
+            <div class="row my-5">
+              <p>Le nouvel employé a bien été ajouté.</p>
+              <button
+                style="width: 150px"
+                class="btn btn-danger mx-auto my-4 text-white no-underline"
+              >
+                <a class="text-white no-underline" href="accueil_admin.php"
+                  >Retour à l'accueil administrateur</a
                 >
-                  Ajouter un avis
-                </button>
-              </div>
-            </form>
+              </button>
+            </div>
           </div>
-          <!-- --------------------------------- FOOTER --------------------------- -->
+          <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
             <div class="container footer">
               <div class="row cols-3">
@@ -332,7 +301,8 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <script src="./src/scripts/script.js"></script>
-    <script src="./src/scripts/schedules.js"></script>
+    <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/scroll.js"></script>
+    <script src="src/scripts/schedules.js"></script>
   </body>
 </html>

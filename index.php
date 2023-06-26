@@ -92,7 +92,7 @@
                     <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="cashback.php">RACHAT CASH</a>
+                    <a class="nav-link" href="cashback.html">RACHAT CASH</a>
                   </li>
                   <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                   <li class="nav-item dropdown">
@@ -104,27 +104,27 @@
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a class="nav-link no-underline text-li-services" href="boschService.php">ATELIER BOSCH CAR
+                        <a class="nav-link no-underline text-li-services" href="boschService.html">ATELIER BOSCH CAR
                           SERVICE</a>
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a class="nav-link no-underline text-li-services" href="carRegistration.php">SERVICE CARTE
+                        <a class="nav-link no-underline text-li-services" href="carRegistration.html">SERVICE CARTE
                           GRISE</a>
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a class="nav-link no-underline text-li-services" href="infoConsumer.php">INFORMATIONS
+                        <a class="nav-link no-underline text-li-services" href="infoConsumer.html">INFORMATIONS
                           CONSOMMATEUR</a>
                       </li>
                     </ul>
                   </li>
                   <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                   <li class="nav-item">
-                    <a class="nav-link" href="whoWeAre.php">QUI SOMMES-NOUS</a>
+                    <a class="nav-link" href="whoWeAre.html">QUI SOMMES-NOUS</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.php">CONTACT</a>
+                    <a class="nav-link" href="contact.html">CONTACT</a>
                   </li>
                 </ul>
               </div>
@@ -196,6 +196,7 @@
 
               
               <?php
+
               require_once 'databaseConnexion.php';
               
               // Récupérer les avis approuvés de la table "avis"

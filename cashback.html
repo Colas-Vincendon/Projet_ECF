@@ -122,12 +122,12 @@
                       <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="catalogue.php"
-                        >NOS VEHICULES</a
-                      >
+                      <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="cashback.html">RACHAT CASH</a>
+                      <a class="nav-link nav-link-active" href="cashback.html"
+                        >RACHAT CASH</a
+                      >
                     </li>
                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                     <li class="nav-item dropdown">
@@ -198,49 +198,126 @@
           </div>
           <!-- ------------------------------ END HEADER ------------------------------- -->
           <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-          <div class="container connect my-3">
-            <form action="add_review.php" method="POST">
-              <div class="my-3">
-                <label for="nom">Nom :</label>
-                <input
-                  type="text"
-                  class="my-3 form-control"
-                  id="nomAddComment"
-                  name="nom"
-                  required
+          <h1 class="text-center my-3">NOTRE CONCEPT DE REPRISE</h1>
+          <div class="container">
+            <div class="row cols-2">
+              <div class="col-12 col-md-5">
+                <img
+                  class="img-fluid"
+                  src="./src/medias/carte_notre_concept.png"
+                  alt=""
                 />
               </div>
-              <div class="my-3">
-                <label for="commentaire">Commentaire :</label>
-                <textarea
-                  class="my-3 form-control"
-                  id="commentaireAddComment"
-                  name="commentaire"
-                  required
-                ></textarea>
+              <div class="col-12 col-md-7 text-center my-3">
+                <h2>PROXI AUTO CASH : Un concept innovant</h2>
+                <p class="text-start text-grey my-3">
+                  Notre garage, depuis sa création en 2021, est partenaire du
+                  réseau PROXI AUTO CASH, la marque de Rachat Cash présente
+                  partout en France qui compte plus de 250 partenaires, tous
+                  professionnels de l’automobile.
+                  <br /><br />
+                  PROXI AUTO CASH c’est : <br />
+                  <span class="text-red-bold">L'accompagnement : </span> une
+                  équipe de conseillers experts vous accompagne dans votre
+                  démarche de reprise de véhicule <br />
+                  <span class="text-red-bold">La transparence : </span> un prix
+                  de rachat juste, fiable et en adéquation avec les prix du
+                  marché actuel <br />
+                  <span class="text-red-bold"
+                    >La proximité et le professionnalisme :
+                  </span>
+                  faire reprendre votre véhicule par un partenaire Proxi Auto
+                  Cash c'est faire travailler votre garage de proximité, celui
+                  en qui vous avez confiance, qui répare et entretient votre
+                  véhicule depuis toujours, gage de confiance et de qualité.
+                </p>
               </div>
-              <div class="my-3">
-                <label for="note">Note :</label>
-                <select class="my-3" id="noteAddComment" name="note" required>
-                  <option value="1">1 étoile</option>
-                  <option value="2">2 étoiles</option>
-                  <option value="3">3 étoiles</option>
-                  <option value="4">4 étoiles</option>
-                  <option value="5">5 étoiles</option>
-                </select>
+            </div>
+            <div class="container text-center my-5">
+              <div class="row">
+                <div class="col-2"></div>
+                <div class="col-12 col-md-8">
+                  <h1><b> VINCENT PARROT AUTOMOBILES S'OCCUPE DE TOUT </b></h1>
+                  <p class="text-grey">
+                    Vendre sa voiture n'est pas toujours facile. Vous ne voulez
+                    pas perdre de temps à ajouter votre véhicule sur des sites
+                    d'annonces, recevoir des quantités de mails, appels,
+                    visites, qui ne se concrétisent pas par la vente de votre
+                    véhicule...
+                  </p>
+                  <p class="text-red-bold">
+                    Offre de reprise ferme et fiable | Sans obligation d'achat |
+                    Sans contraintes administratives
+                  </p>
+                </div>
+                <div class="col-2"></div>
               </div>
-              <div class="text-center">
-                <button
-                  type="submit"
-                  name="envoiReview"
-                  class="my-5 btn btn-danger"
-                >
-                  Ajouter un avis
-                </button>
+            </div>
+            <div class="row my-5">
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center">
+                    <img
+                      class="img-fluid logo-cashback"
+                      src="./src/medias/icone_presdechezvous.png"
+                      alt="logo près de chez vous"
+                    />
+                  </div>
+                  <p class="text-center my-3">
+                    Vendre votre véhicule <br />
+                    <span class="text-red-bold">Près de chez vous</span>
+                  </p>
+                </div>
               </div>
-            </form>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center">
+                    <img
+                      class="img-fluid logo-cashback"
+                      src="./src/medias/icone_reprise.png"
+                      alt="logo reprise"
+                    />
+                  </div>
+                  <p class="text-center my-3">
+                    Prix de reprise
+                    <span class="text-red-bold"
+                      >ferme, sans obligation d'achat</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center">
+                    <img
+                      class="img-fluid logo-cashback"
+                      src="./src/medias/icone_paiement.png"
+                      alt="logo paiement"
+                    />
+                  </div>
+                  <p class="text-center my-3">
+                    Paiement
+                    <span class="text-red-bold">
+                      immédiat, garanti et sécurisé</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- --------------------------------- FOOTER --------------------------- -->
+          <div class="row text-center my-5">
+            <a
+              target="_blank"
+              href="https://proxiautocash.com/"
+              class="a_sans_surlignage"
+              ><button
+                class="btn btn-lg btn-danger rounded margin_top_30 margin_bottom_20"
+              >
+                Obtenir mon prix de reprise
+              </button></a
+            >
+          </div>
+          <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
             <div class="container footer">
               <div class="row cols-3">
@@ -332,7 +409,8 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <script src="./src/scripts/script.js"></script>
-    <script src="./src/scripts/schedules.js"></script>
+    <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/scroll.js"></script>
+    <script src="src/scripts/schedules.js"></script>
   </body>
 </html>

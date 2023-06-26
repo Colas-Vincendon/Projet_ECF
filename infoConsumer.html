@@ -102,7 +102,7 @@
           <!-- --------------------------------- START NAVBAR ------------------------------ -->
           <div class="row">
             <nav
-              class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3"
+              class="container navbar navbar-expand-lg navbar-dark col-sm-11"
             >
               <div class="container d-flex justify-content-start">
                 <button
@@ -122,9 +122,7 @@
                       <a class="nav-link" href="index.php">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link nav-link-active" href="catalogue.php"
-                        >NOS VEHICULES</a
-                      >
+                      <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="cashback.html">RACHAT CASH</a>
@@ -132,7 +130,7 @@
                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                     <li class="nav-item dropdown">
                       <a
-                        class="nav-link dropdown-toggle pointer"
+                        class="nav-link nav-link-active dropdown-toggle pointer"
                         class="navbar-toggler"
                         data-bs-toggle="collapse"
                         data-bs-target="#services"
@@ -198,49 +196,86 @@
           </div>
           <!-- ------------------------------ END HEADER ------------------------------- -->
           <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
-          <div class="container connect my-3">
-            <form action="add_review.php" method="POST">
-              <div class="my-3">
-                <label for="nom">Nom :</label>
-                <input
-                  type="text"
-                  class="my-3 form-control"
-                  id="nomAddComment"
-                  name="nom"
-                  required
-                />
+          <div class="container-fluid text-center">
+            <div class="row mb-xl">
+              <div class="panel-group col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title panelCustomHeight mx-auto">
+                      <a
+                        class="accordion-toggle no-underline text-danger mx-2"
+                        data-toggle="collapse"
+                        href="#"
+                        aria-expanded="true"
+                      >
+                        <b>INFORMATIONS CONSOMMATEURS</b>
+                      </a>
+                    </h4>
+                  </div>
+                </div>
               </div>
-              <div class="my-3">
-                <label for="commentaire">Commentaire :</label>
-                <textarea
-                  class="my-3 form-control"
-                  id="commentaireAddComment"
-                  name="commentaire"
-                  required
-                ></textarea>
-              </div>
-              <div class="my-3">
-                <label for="note">Note :</label>
-                <select class="my-3" id="noteAddComment" name="note" required>
-                  <option value="1">1 étoile</option>
-                  <option value="2">2 étoiles</option>
-                  <option value="3">3 étoiles</option>
-                  <option value="4">4 étoiles</option>
-                  <option value="5">5 étoiles</option>
-                </select>
-              </div>
-              <div class="text-center">
-                <button
-                  type="submit"
-                  name="envoiReview"
-                  class="my-5 btn btn-danger"
-                >
-                  Ajouter un avis
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
-          <!-- --------------------------------- FOOTER --------------------------- -->
+          <div class="col-md-10 mx-auto">
+            <p style="text-align: center">
+              <span
+                class="my-5"
+                style="
+                  font-size: 36px;
+                  font-family: tahoma, geneva, sans-serif;
+                  font-weight: bold;
+                  color: #ff0000;
+                "
+                >INFORMATION</span
+              >
+            </p>
+            <div class="text-grey my-5">
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Tout Consommateur a le droit de recourir gratuitement à un
+                    médiateur de la consommation si sa tentative de résolution
+                    amiable de son différend avec le professionnel a
+                    échoué.</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Le Médiateur peut être saisi par voie électronique sur le
+                    site www.mediateur.fna.fr ou bien courrier simple à
+                    l'adresse suivante :</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >Le Médiateur FNA - Immeuble Axe Nord - 9&amp;11 avenue
+                    Michelet 93583 Saint Ouen Cedex</span
+                  ></span
+                >
+              </p>
+
+              <p class="my-5">
+                <span style="font-family: arial, helvetica, sans-serif"
+                  ><span style="font-size: 20px"
+                    >En cas d'action en justice, le consommateur peut saisir,
+                    soit l'une des juridictions territorialement compétentes en
+                    vertu du code de procédure civile, soit la juridiction du
+                    lieu où il demeurait au moment de la conclusion du contrat
+                    ou de la survenance du fait dommageable (Article R631-3 du
+                    Code de la Consommation.</span
+                  ></span
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- --------------------------- FOOTER --------------------------- -->
           <div class="row">
             <div class="container footer">
               <div class="row cols-3">
@@ -332,7 +367,8 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <script src="./src/scripts/script.js"></script>
-    <script src="./src/scripts/schedules.js"></script>
+    <script src="src/scripts/script.js"></script>
+    <script src="src/scripts/scroll.js"></script>
+    <script src="src/scripts/schedules.js"></script>
   </body>
 </html>

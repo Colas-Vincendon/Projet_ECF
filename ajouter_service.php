@@ -57,6 +57,6 @@ try {
 
 $conn = null;
 
-header("Location: newServiceAdded.php");
+header("Location: newServiceAdded.html");
 exit();
 ?>

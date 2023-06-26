@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Exécuter la requête
         if ($stmt->execute()) {
             // Redirection vers la page d'accueil de l'administrateur
-            header('Location: newEmployeAdded.php');
+            header('Location: newEmployeAdded.html');
             exit();
         } else {
             echo "Erreur lors de l'ajout à la base de données";

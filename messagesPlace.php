@@ -94,7 +94,7 @@
                                         <a class="nav-link" href="catalogue.php">NOS VEHICULES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cashback.php">RACHAT CASH</a>
+                                        <a class="nav-link" href="cashback.html">RACHAT CASH</a>
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
@@ -109,26 +109,26 @@
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.php">ATELIER BOSCH CAR SERVICE</a>
+                                                    href="boschService.html">ATELIER BOSCH CAR SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.php">SERVICE CARTE GRISE</a>
+                                                    href="carRegistration.html">SERVICE CARTE GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.php">INFORMATIONS CONSOMMATEUR</a>
+                                                    href="infoConsumer.html">INFORMATIONS CONSOMMATEUR</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <!-- --------- END NAV DROPDOWN SERVICES ----------- -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="whoWeAre.php">QUI SOMMES-NOUS</a>
+                                        <a class="nav-link" href="whoWeAre.html">QUI SOMMES-NOUS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.php">CONTACT</a>
+                                        <a class="nav-link" href="contact.html">CONTACT</a>
                                     </li>
                                 </ul>
                             </div>
@@ -234,40 +234,10 @@
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
-                                <div class="d-flex justify-content-center text-center my-3">
-                                    <p class="horairesFooter">
-                                        NOS HORAIRES <br />
-                                        <?php
-                                        try {
-                                            // Connexion à la base de données en utilisant PDO
-                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                                            // Récupérer les horaires à partir de la base de données
-                                            $stmt = $conn->query("SELECT * FROM horaires");
-                                            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                            if ($stmt->rowCount() > 0) {
-                                                $lundiVendredi = $row['lundi_vendredi'];
-                                                $samedi = $row['samedi'];
-                                            } else {
-                                                $lundiVendredi = "9h-12h / 14h-19h";
-                                                $samedi = "9h à 12h";
-                                            }
-                                        } catch (PDOException $e) {
-                                            die("Échec de la connexion à la base de données : " . $e->getMessage());
-                                        }
-
-                                        // Fermer la connexion à la base de données
-                                        $conn = null;
-                                        ?>
-
-                                        Lundi au vendredi:
-                                        <?php echo $lundiVendredi; ?> <br />
-                                        le samedi de
-                                        <?php echo $samedi; ?>
-
-                                    </p>
-                                </div>
+                               <!-------- chargement des horaires du footer ------->
+                <div id="footerSchedules">
+                 
+                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="d-flex justify-content-center">
@@ -309,6 +279,7 @@
         crossorigin="anonymous"></script>
     <script src="src/scripts/script.js"></script>
     <script src="src/scripts/scroll.js"></script>
+    <script src="src/scripts/schedules.js"></script>
 </body>
 
 </html>

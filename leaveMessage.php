@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
 
 
         $conn = null;
-        header("Location: messageSent.php");
+        header("Location: messageSent.html");
         exit();
     } catch (PDOException $e) {
         echo "Échec de la connexion à la base de données : " . $e->getMessage();
