@@ -234,7 +234,7 @@
 
             </p>
             <div class="comment mx-auto my-5 justify-content-center align-items-center d-flex ">
-              <p class="text-center my-auto"><a class="no-underline text-white" href="addComment.php">Donnez nous votre
+              <p class="text-center my-auto"><a class="no-underline text-white" href="addComment.html">Donnez nous votre
                   Avis</a></p><br>
             </div>
 
