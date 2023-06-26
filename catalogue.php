@@ -223,9 +223,9 @@
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
     <script src="src/scripts/filtersBrand.js"></script>
-    <script src="./src/scripts/script.js"></script>
     <script src="src/scripts/scroll.js"></script>
     <script src="src/scripts/schedules.js"></script>
+    <script src="src/scripts/script.js"></script>
 </body>
 
 </html>
