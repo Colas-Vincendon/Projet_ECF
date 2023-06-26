@@ -142,7 +142,7 @@ function performSearch() {
     type: "GET",
     success: function (response) {
       // La requête a réussi, mettre à jour le contenu de la page
-      $("#vehicules").html(response);
+      $("#resultat").html(response);
 
       hideLoading(); // Masque l'animation de chargement
     },
