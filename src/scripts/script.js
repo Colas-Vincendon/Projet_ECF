@@ -121,13 +121,34 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.send(data);
 });
 
-//-------------- ANIMATION TEMPS DE CHARGEMENT -------------
-// Afficher l'animation de chargement lors du chargement initial de la page
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("loading").style.display = "block";
-});
+// ------- ANIMATION TEMPS DE CHARGEMENT DES VEHICULES ----------
 
-// Masquer l'animation de chargement une fois que les véhicules sont chargés
-window.addEventListener("load", function () {
+function showLoading() {
+  document.getElementById("loading").style.display = "block";
+}
+
+function hideLoading() {
   document.getElementById("loading").style.display = "none";
-});
+}
+function performSearch() {
+  showLoading(); // Affiche l'animation de chargement
+
+  // Effectuer la requête AJAX vers recherche.php
+  // Utilisez une bibliothèque AJAX comme jQuery ou fetch API
+
+  // Exemple avec jQuery :
+  $.ajax({
+    url: "recherche.php",
+    type: "GET",
+    success: function (response) {
+      // La requête a réussi, mettre à jour le contenu de la page
+      $("#vehicules").html(response);
+
+      hideLoading(); // Masque l'animation de chargement
+    },
+    error: function () {
+      // Gérer les erreurs de la requête
+      hideLoading(); // Masque l'animation de chargement en cas d'erreur
+    },
+  });
+}

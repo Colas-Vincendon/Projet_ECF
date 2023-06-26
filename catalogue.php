@@ -282,15 +282,11 @@
             </div>
 
             <div class="row justify-content-center my-3">
-              <button id="rechercher" class="btn btn-danger">Rechercher</button>
+              <button id="rechercher" onclick="performSearch()" class="btn btn-danger">Rechercher</button>
             </div>
 
             <div class="row justify-content-center my-3">
               <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
-            </div>
-
-            <div id="loading" class="loading">
-              <div class="loading-animation"></div>
             </div>
 
             <div id="loading" class="loading">
