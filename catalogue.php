@@ -138,7 +138,7 @@
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
-       <div id="filtersBrand" style="display: none;">
+       <div id="filtersBrand">
         <!-- --------- (filtersBrand.php) ----------- -->
        </div>
 
