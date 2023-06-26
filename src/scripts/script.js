@@ -81,46 +81,6 @@ function confirmDeleteCar() {
 
 /*---------------------- Filtres vehicules ---------------------*/
 
-document.getElementById("rechercher").addEventListener("click", function () {
-  var marque = document.getElementById("marque").value;
-  var modele = document.getElementById("modele").value;
-  var annee = document.getElementById("annee").value;
-  var carburant = document.getElementById("carburant").value;
-  var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
-  var kilometres = document.getElementById("kilometres").value;
-  var prix = document.getElementById("prix").value;
-  var tri = document.getElementById("tri").value;
-
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      document.getElementById("resultat").innerHTML = xhr.responseText;
-    }
-  };
-
-  var data =
-    "marque=" +
-    encodeURIComponent(marque) +
-    "&modele=" +
-    encodeURIComponent(modele) +
-    "&annee=" +
-    encodeURIComponent(annee) +
-    "&carburant=" +
-    encodeURIComponent(carburant) +
-    "&boite_de_vitesse=" +
-    encodeURIComponent(boite_de_vitesse) +
-    "&kilometres=" +
-    encodeURIComponent(kilometres) +
-    "&prix=" +
-    encodeURIComponent(prix) +
-    "&tri=" +
-    encodeURIComponent(tri);
-
-  xhr.open("POST", "recherche.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(data);
-});
-
 /*---------------- ANIMATION TEMPS DE CHARGEMENT ---------------------*/
 function showLoading() {
   document.getElementById("loading").style.display = "block";
@@ -132,21 +92,44 @@ function hideLoading() {
 function performSearch() {
   showLoading(); // Affiche l'animation de chargement
 
-  // Effectuer la requête AJAX vers recherche.php
-  // Utilisez une bibliothèque AJAX comme XMLHttpRequest ou fetch
+  document.getElementById("rechercher").addEventListener("click", function () {
+    var marque = document.getElementById("marque").value;
+    var modele = document.getElementById("modele").value;
+    var annee = document.getElementById("annee").value;
+    var carburant = document.getElementById("carburant").value;
+    var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
+    var kilometres = document.getElementById("kilometres").value;
+    var prix = document.getElementById("prix").value;
+    var tri = document.getElementById("tri").value;
 
-  // Exemple avec XMLHttpRequest :
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // La requête a réussi, mettre à jour le contenu de la page
-      var response = xhr.responseText;
-      document.getElementById("resultat").innerHTML = response;
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        document.getElementById("resultat").innerHTML = xhr.responseText;
+        hideLoading(); // Masque l'animation de chargement
+      }
+    };
 
-      hideLoading(); // Masque l'animation de chargement
-    }
-  };
+    var data =
+      "marque=" +
+      encodeURIComponent(marque) +
+      "&modele=" +
+      encodeURIComponent(modele) +
+      "&annee=" +
+      encodeURIComponent(annee) +
+      "&carburant=" +
+      encodeURIComponent(carburant) +
+      "&boite_de_vitesse=" +
+      encodeURIComponent(boite_de_vitesse) +
+      "&kilometres=" +
+      encodeURIComponent(kilometres) +
+      "&prix=" +
+      encodeURIComponent(prix) +
+      "&tri=" +
+      encodeURIComponent(tri);
 
-  xhr.open("GET", "recherche.php", true);
-  xhr.send();
+    xhr.open("POST", "recherche.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+  });
 }

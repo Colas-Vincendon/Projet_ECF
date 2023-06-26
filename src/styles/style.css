@@ -252,7 +252,6 @@ nav {
 
 .loading {
   display: none;
-  /* Styles supplémentaires pour positionner et styliser l'animation de chargement */
 }
 
 .loading-animation {
@@ -260,7 +259,7 @@ nav {
   height: 40px;
   border-radius: 50%;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #0f0b47;
+  border-top: 4px solid #c50000;
   animation: spin 1s linear infinite;
   margin: 0 auto;
 }
