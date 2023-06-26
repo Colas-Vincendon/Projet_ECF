@@ -120,3 +120,33 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
 });
+
+/*---------------- ANIMATION TEMPS DE CHARGEMENT ---------------------*/
+function showLoading() {
+  document.getElementById("loading").style.display = "block";
+}
+
+function hideLoading() {
+  document.getElementById("loading").style.display = "none";
+}
+function performSearch() {
+  showLoading(); // Affiche l'animation de chargement
+
+  // Effectuer la requête AJAX vers recherche.php
+  // Utilisez une bibliothèque AJAX comme XMLHttpRequest ou fetch
+
+  // Exemple avec XMLHttpRequest :
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // La requête a réussi, mettre à jour le contenu de la page
+      var response = xhr.responseText;
+      document.getElementById("resultat").innerHTML = response;
+
+      hideLoading(); // Masque l'animation de chargement
+    }
+  };
+
+  xhr.open("GET", "recherche.php", true);
+  xhr.send();
+}
