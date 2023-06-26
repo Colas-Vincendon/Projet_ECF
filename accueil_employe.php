@@ -17,10 +17,11 @@ if (!isset($_COOKIE['connexion_time'])) {
 
   if ($currentTime <= $expirationTime) {
       // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
+      exit;
+    } else {
+      // Le cookie est expiré, procédez à l'authentification
       header('Location: connexion.php');
       exit;
-  } else {
-      // Le cookie est expiré, procédez à l'authentification
   }
 }
 
