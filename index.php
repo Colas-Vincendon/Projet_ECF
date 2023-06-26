@@ -289,6 +289,7 @@
   <script src="src/scripts/script.js"></script>
   <script src="src/scripts/scroll.js"></script>
   <script src="src/scripts/schedules.js"></script>
+  <script src="src/scripts/reviews.js"></script>
 </body>
 
 </html>

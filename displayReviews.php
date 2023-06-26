@@ -1,7 +1,5 @@
 <div id="reviews">
-
     <?php
-
     require_once 'databaseConnexion.php';
 
     // Récupérer les avis approuvés de la table "avis"
@@ -31,9 +29,7 @@
     } else {
         echo "Aucun avis approuvé pour le moment.";
     }
-
     // Fermer la connexion à la base de données
     $conn = null;
-
     ?>
 </div>
