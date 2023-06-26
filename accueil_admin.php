@@ -7,22 +7,22 @@ if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
     exit();
 }
 
-if (!isset($_COOKIE['connexion_time'])) {
-    // Le cookie n'existe pas, procédez à l'authentification
-} else {
-    // Le cookie existe, vérifiez s'il est expiré
-    $currentTime = time();
-    $cookieTime = $_COOKIE['connexion_time'];
-    $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
+// if (!isset($_COOKIE['connexion_time'])) {
+//     // Le cookie n'existe pas, procédez à l'authentification
+// } else {
+//     // Le cookie existe, vérifiez s'il est expiré
+//     $currentTime = time();
+//     $cookieTime = $_COOKIE['connexion_time'];
+//     $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
 
-    if ($currentTime >= $expirationTime) {
-        // Le cookie est expiré, procédez à l'authentification
-        header('Location: connexion.php');
-        exit;
-    }
-}
+//     if ($currentTime >= $expirationTime) {
+//         // Le cookie est expiré, procédez à l'authentification
+//         header('Location: connexion.php');
+//         exit;
+//     }
+// }
 
-setcookie('connexion_time', time(), time() + 30);
+// setcookie('connexion_time', time(), time() + 30);
 
 if (isset($_POST['logout'])) {
     // Déconnexion : Supprimer les informations de session et le cookie
