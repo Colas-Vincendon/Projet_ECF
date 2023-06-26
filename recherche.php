@@ -99,19 +99,16 @@ try {
         }
     }
 
-    // Compter le nombre total de résultats
-    $stmtCount = $conn->prepare($sql);
-    $stmtCount->execute($params);
-    $totalResults = $stmtCount->rowCount();
-
-    // Pagination
-    $resultsPerPage = 12;
-    $totalPages = ceil($totalResults / $resultsPerPage);
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-    $offset = ($currentPage - 1) * $resultsPerPage;
-
-    // Ajouter la limitation et l'offset à la requête SQL
-    $sql .= " LIMIT $offset, $resultsPerPage";
+    // Construire la requête SQL en fonction du tri sélectionné
+    if ($tri === "kilometres_asc") {
+        $sql .= " ORDER BY kilometres ASC";
+    } elseif ($tri === "kilometres_desc") {
+        $sql .= " ORDER BY kilometres DESC";
+    } elseif ($tri === "prix_asc") {
+        $sql .= " ORDER BY prix ASC";
+    } elseif ($tri === "prix_desc") {
+        $sql .= " ORDER BY prix DESC";
+    }
 
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
@@ -153,28 +150,9 @@ try {
         echo "<p>Aucun résultat trouvé.</p>";
     }
 
-    // Affichage de la pagination
-    echo "<div class='d-flex justify-content-center'>";
-
-    if ($totalPages > 1) {
-        if ($currentPage > 1) {
-            echo "<a href='recherche.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
-        }
-        for ($i = 1; $i <= $totalPages; $i++) {
-            if ($i == $currentPage) {
-                echo "<span class='current-page'>" . $i . "</span>";
-            } else {
-                echo "<a href='recherche.php?page=" . $i . "'>" . $i . "</a>";
-            }
-        }
-        if ($currentPage < $totalPages) {
-            echo "<a href='recherche.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
-        }
-    }
-    echo "</div>";
-
+    // Fermeture de la connexion à la base de données
+    $conn = null;
 } catch (PDOException $e) {
-    echo "Échec de la connexion à la base de données : " . $e->getMessage();
+    die("Échec de la connexion à la base de données : " . $e->getMessage());
 }
-$conn = null;
 ?>
