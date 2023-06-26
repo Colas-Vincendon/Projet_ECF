@@ -15,10 +15,7 @@ if (!isset($_COOKIE['connexion_time'])) {
     $cookieTime = $_COOKIE['connexion_time'];
     $expirationTime = $cookieTime + 30; // 30 secondes d'expiration
 
-    if ($currentTime <= $expirationTime) {
-        // Le cookie n'est pas expiré, redirigez ou effectuez les actions nécessaires
-        exit;
-    } else {
+    if ($currentTime >= $expirationTime) {
         // Le cookie est expiré, procédez à l'authentification
         header('Location: connexion.php');
         exit;
