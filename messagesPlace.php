@@ -175,7 +175,7 @@
                                     ?>
                                     <div class='container my-2 connect'>
                                         <div class='row'>
-                                            <div class='col-12 col-md-5 connect'>";
+                                            <div class='col-12 col-md-5 connect'>
                                                 <?php
                                                 echo "<h6><strong>Date : </strong>$formatted_date</h6>";
                                                 echo "<h6><strong>Sujet : </strong>$sujet</h6>";
@@ -184,7 +184,7 @@
                                                 echo "<h6><strong>Telephone :</strong> $telephone</h6>
                                                 </div>";
                                                 ?>
-                                                <div class='col-12 col-md-5 connect d-flex align-items-center'>";
+                                                <div class='col-12 col-md-5 connect d-flex align-items-center'>
                                                     <?php
                                                     echo "<p class='my-auto'>$message</p>";
                                                     echo "<form action='supprimer_message.php' method='POST'>";
@@ -198,7 +198,7 @@
                                                     </form>
 
                                                 </div>
-                                            </div>";
+                                            </div>
                                             <?php
                                 }
                             } else {
