@@ -365,39 +365,9 @@ if (isset($_POST['logout'])) {
                 </div>
               </div>
               <div class="col-6 col-md-3">
-                <div class="d-flex justify-content-center text-center my-3">
-                  <p class="horairesFooter">
-                    NOS HORAIRES <br />
-                    <?php
-                    try {
-                      // Connexion à la base de données en utilisant PDO
-                      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                      // Récupérer les horaires à partir de la base de données
-                      $stmt = $conn->query("SELECT * FROM horaires");
-                      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                      if ($stmt->rowCount() > 0) {
-                        $lundiVendredi = $row['lundi_vendredi'];
-                        $samedi = $row['samedi'];
-                      } else {
-                        $lundiVendredi = "9h-12h / 14h-19h";
-                        $samedi = "9h à 12h";
-                      }
-                    } catch (PDOException $e) {
-                      die("Échec de la connexion à la base de données : " . $e->getMessage());
-                    }
-
-                    // Fermer la connexion à la base de données
-                    $conn = null;
-                    ?>
-
-                    Lundi au vendredi:
-                    <?php echo $lundiVendredi; ?> <br />
-                    le samedi de
-                    <?php echo $samedi; ?>
-
-                  </p>
+                <!-------- chargement des horaires du footer ------->
+                <div id="footerSchedules">
+                 
                 </div>
               </div>
               <div class="col-6 col-md-3">
@@ -439,6 +409,7 @@ if (isset($_POST['logout'])) {
     crossorigin="anonymous"></script>
   <script src="./src/scripts/script.js"></script>
   <script src="src/scripts/scroll.js"></script>
+  <script src="src/scripts/schedules.js"></script>
 </body>
 
 </html>
