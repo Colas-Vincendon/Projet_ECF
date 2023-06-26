@@ -81,55 +81,42 @@ function confirmDeleteCar() {
 
 /*---------------------- Filtres vehicules ---------------------*/
 
-/*---------------- ANIMATION TEMPS DE CHARGEMENT ---------------------*/
-function showLoading() {
-  document.getElementById("loading").style.display = "block";
-}
+document.getElementById("rechercher").addEventListener("click", function () {
+  var marque = document.getElementById("marque").value;
+  var modele = document.getElementById("modele").value;
+  var annee = document.getElementById("annee").value;
+  var carburant = document.getElementById("carburant").value;
+  var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
+  var kilometres = document.getElementById("kilometres").value;
+  var prix = document.getElementById("prix").value;
+  var tri = document.getElementById("tri").value;
 
-function hideLoading() {
-  document.getElementById("loading").style.display = "none";
-}
-function performSearch() {
-  showLoading(); // Affiche l'animation de chargement
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      document.getElementById("resultat").innerHTML = xhr.responseText;
+    }
+  };
 
-  document.getElementById("rechercher").addEventListener("click", function () {
-    var marque = document.getElementById("marque").value;
-    var modele = document.getElementById("modele").value;
-    var annee = document.getElementById("annee").value;
-    var carburant = document.getElementById("carburant").value;
-    var boite_de_vitesse = document.getElementById("boite_de_vitesse").value;
-    var kilometres = document.getElementById("kilometres").value;
-    var prix = document.getElementById("prix").value;
-    var tri = document.getElementById("tri").value;
+  var data =
+    "marque=" +
+    encodeURIComponent(marque) +
+    "&modele=" +
+    encodeURIComponent(modele) +
+    "&annee=" +
+    encodeURIComponent(annee) +
+    "&carburant=" +
+    encodeURIComponent(carburant) +
+    "&boite_de_vitesse=" +
+    encodeURIComponent(boite_de_vitesse) +
+    "&kilometres=" +
+    encodeURIComponent(kilometres) +
+    "&prix=" +
+    encodeURIComponent(prix) +
+    "&tri=" +
+    encodeURIComponent(tri);
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        document.getElementById("resultat").innerHTML = xhr.responseText;
-        hideLoading(); // Masque l'animation de chargement
-      }
-    };
-
-    var data =
-      "marque=" +
-      encodeURIComponent(marque) +
-      "&modele=" +
-      encodeURIComponent(modele) +
-      "&annee=" +
-      encodeURIComponent(annee) +
-      "&carburant=" +
-      encodeURIComponent(carburant) +
-      "&boite_de_vitesse=" +
-      encodeURIComponent(boite_de_vitesse) +
-      "&kilometres=" +
-      encodeURIComponent(kilometres) +
-      "&prix=" +
-      encodeURIComponent(prix) +
-      "&tri=" +
-      encodeURIComponent(tri);
-
-    xhr.open("POST", "recherche.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(data);
-  });
-}
+  xhr.open("POST", "recherche.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(data);
+});

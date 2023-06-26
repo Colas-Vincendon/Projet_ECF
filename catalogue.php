@@ -282,7 +282,7 @@
             </div>
 
             <div class="row justify-content-center my-3">
-              <button id="rechercher" onclick="performSearch()" class="btn btn-danger">Rechercher</button>
+              <button id="rechercher" class="btn btn-danger">Rechercher</button>
             </div>
 
             <div class="row justify-content-center my-3">
