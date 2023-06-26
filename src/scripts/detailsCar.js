@@ -2,5 +2,5 @@
 
 $(document).ready(function () {
   // Charger le contenu
-  $("#detailsCar").load("displayDetailsCar.php.php #details");
+  $("#detailsCar").load("displayDetailsCar.php #details");
 });
