@@ -134,8 +134,7 @@
         <!-- ------------------------------ END NAVBAR ------------------------------- -->
         <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
         <div>
-          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
-                src="./src/medias/upArrow.png" alt=""></a></button>
+          <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
         </div>
         <!-- ------------------------------ END HEADER ------------------------------- -->
         <!-- ----------- connexion à la base de données filtres par marque ------------------ -->
@@ -185,7 +184,7 @@
             <div class="row my-3">
               <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="marque" name="marque" style="width: 200px;" class="mx-auto">
-                  <option value="">Marque</option>
+                <option value="">Marque</option>
                   <?php echo $options; ?>
                 </select>
               </div>
@@ -193,7 +192,7 @@
               <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="modele" style="width: 200px;" class="mx-auto">
                   <option value="">Modèle</option>
-
+                  
                 </select>
               </div>
 
@@ -269,7 +268,7 @@
                   <option value="Automatique">Automatique</option>
                 </select>
               </div>
-
+              
               <div class="col-12 col-md-6 col-lg-3 d-flex flex-column my-1">
                 <select id="tri" style="width: 200px;" class="mx-auto">
                   <option value="">Trier par</option>
@@ -284,15 +283,11 @@
             <div class="row justify-content-center my-3">
               <button id="rechercher" class="btn btn-danger">Rechercher</button>
             </div>
-
+            
             <div class="row justify-content-center my-3">
               <button id="reinitialiserLesFiltres" class="btn btn-outline-danger">Réinitialiser les filtres</button>
             </div>
-
-            <div id="loading" class="loading">
-              <div class="loading-animation"></div>
-            </div>
-
+            
             <div id="resultat"></div>
             </p>
           </div>
@@ -328,7 +323,7 @@
               <div class="col-6 col-md-3">
                 <!-------- chargement des horaires du footer ------->
                 <div id="footerSchedules">
-
+                 
                 </div>
               </div>
               <div class="col-6 col-md-3">
