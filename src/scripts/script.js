@@ -9,6 +9,13 @@ $("li.dropdown").hover(
   }
 );
 
+/*------------- affichage des modèles selon la marque du véhicule dans les filtres ---------------------*/
+
+$(document).ready(function () {
+  // Charger le contenu
+  $("#filtersModels").load("filtersBrandModels.php #filters");
+});
+
 /*----------------------filtres les modèles de la marque sélectionnéeé ----------*/
 
 document.getElementById("marque").addEventListener("change", function () {
@@ -41,14 +48,6 @@ document.getElementById("marque").addEventListener("change", function () {
     );
     xhr.send();
   }
-});
-
-/*-------------------- simulation d'un click pour lancer la recherche-----------*/
-
-window.addEventListener("DOMContentLoaded", function () {
-  // Simuler un clic sur le bouton "Rechercher"
-  var boutonRechercher = document.getElementById("rechercher");
-  boutonRechercher.click();
 });
 
 /*------------------- réglages du carousel ----------------------*/
@@ -119,4 +118,12 @@ document.getElementById("rechercher").addEventListener("click", function () {
   xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
+});
+
+/*-------------------- simulation d'un click pour lancer la recherche-----------*/
+
+window.addEventListener("DOMContentLoaded", function () {
+  // Simuler un clic sur le bouton "Rechercher"
+  var boutonRechercher = document.getElementById("rechercher");
+  boutonRechercher.click();
 });
