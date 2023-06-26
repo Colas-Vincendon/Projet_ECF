@@ -291,7 +291,6 @@
 
             <div id="loading" class="loading">
               <div class="loading-animation"></div>
-              <span>CHARGEMENT DES VEHICULES</span>
             </div>
 
             <div id="resultat"></div>
