@@ -255,9 +255,9 @@
                                     © VINCENT PARROT AUTOMOBILES 2023. Tous droits réservés. -
                                     <a class="no-underline text-grey" href="connexion.php">Administration du site</a>
                                     -
-                                    <a class="no-underline text-grey" href="mentions-legales.php">Mentions légales</a>
+                                    <a class="no-underline text-grey" href="mentions-legales.html">Mentions légales</a>
                                     -
-                                    <a class="no-underline text-grey" href="politic.php">Politique de
+                                    <a class="no-underline text-grey" href="politic.html">Politique de
                                         confidentialité</a>
                                 </p>
                             </div>
