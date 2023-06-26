@@ -1,4 +1,4 @@
-<div class="services">
+<div id="services">
 <div class="row">
 
                         <?php
