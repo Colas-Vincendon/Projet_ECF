@@ -194,8 +194,8 @@
                                                     <div
                                                         class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
                                                         <button class='btn btn-danger my-4' type='submit'>Supprimer</button>
-                                                    </div>";
-                                                    </form>";
+                                                    </div>
+                                                    </form>
 
                                                 </div>
                                             </div>";
