@@ -100,7 +100,7 @@
                       data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                     <ul id="services" class="dropdown-menu">
                       <li>
-                        <a class="nav-link no-underline text-li-services" href="allServices.php">TOUS NOS SERVICES</a>
+                        <a class="nav-link no-underline text-li-services" href="allServices.html">TOUS NOS SERVICES</a>
                       </li>
                       <li class="divider"></li>
                       <li>

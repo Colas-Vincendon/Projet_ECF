@@ -142,7 +142,7 @@ if (isset($_POST['logout'])) {
                                         <ul id="services" class="dropdown-menu">
                                             <li>
                                                 <a class="nav-link no-underline text-li-services"
-                                                    href="allServices.php">TOUS NOS SERVICES</a>
+                                                    href="allServices.html">TOUS NOS SERVICES</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
