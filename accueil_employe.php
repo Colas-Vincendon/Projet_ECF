@@ -235,7 +235,7 @@ if (isset($_POST['logout'])) {
         <div class="container text-center connect my-2">
           <h1 class="text-grey my-4">Supprimer un véhicule</h1>
           <div class="mx-auto my-3 justify-content-center align-items-center d-flex  ">
-            <p class="text-center btn btn-success my-3"><a class="no-underline text-white" href="vehicleList.php">Liste
+            <p class="text-center btn btn-success my-3"><a class="no-underline text-white" href="vehicleList.html">Liste
                 des véhicules</a></p><br>
           </div>
         </div>
