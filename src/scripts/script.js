@@ -98,7 +98,6 @@ document.getElementById("rechercher").addEventListener("click", function () {
     }
   };
 
-  var page = $(this).attr("id");
   var data =
     "marque=" +
     encodeURIComponent(marque) +
@@ -115,9 +114,7 @@ document.getElementById("rechercher").addEventListener("click", function () {
     "&prix=" +
     encodeURIComponent(prix) +
     "&tri=" +
-    encodeURIComponent(tri) +
-    "&page=" +
-    page;
+    encodeURIComponent(tri);
 
   xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
