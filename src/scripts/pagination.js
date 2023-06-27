@@ -6,7 +6,17 @@ function getPaginationResults(page) {
   $.ajax({
     url: "recherche.php",
     type: "POST",
-    data: { page: page }, // Envoyer le numéro de la page en paramètre
+    data: {
+      page: page,
+      marque: marque,
+      modele: modele,
+      annee: annee,
+      carburant: carburant,
+      boite_de_vitesse: boite_de_vitesse,
+      kilometres: kilometres,
+      prix: prix,
+      tri: tri,
+    }, // Envoyer le numéro de la page en paramètre
     success: function (response) {
       // Mettre à jour les résultats de la pagination
       $("#vehicules").html(response);
