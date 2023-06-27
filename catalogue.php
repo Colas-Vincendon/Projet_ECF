@@ -295,10 +295,6 @@
             <!-- ------------ affichage des véhicules ------------- -->
             <div id="vehicules">
               </div>
-              <div id="resultat">
-
-            </div>
-
             </p>
           </div>
         </div>
