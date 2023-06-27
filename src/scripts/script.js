@@ -94,7 +94,7 @@ document.getElementById("rechercher").addEventListener("click", function () {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      document.getElementById("resultat").innerHTML = xhr.responseText;
+      document.getElementById("vehicules").innerHTML = xhr.responseText;
     }
   };
 
