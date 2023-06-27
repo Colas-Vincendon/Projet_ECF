@@ -169,7 +169,7 @@ try {
             if ($i == $currentPage) {
                 $active_class = "active";
             }
-            echo `<li class='page-item ".$active_class."' id="'. $i .'"><span class='page-link'>'.$i.'</span></li>`;
+            echo "<li class='page-item ".$active_class."' id='". $i ."'><span class='page-link'>".$i."</span></li>";
         }
 
         if ($currentPage < $totalPages) {
