@@ -1,5 +1,15 @@
 // Fonction pour effectuer une requête AJAX et mettre à jour les résultats de la pagination
-function getPaginationResults(page) {
+function getPaginationResults(
+  page,
+  marque,
+  modele,
+  annee,
+  carburant,
+  boite_de_vitesse,
+  kilometres,
+  prix,
+  tri
+) {
   // Afficher l'animation de chargement ici si vous le souhaitez
 
   // Effectuer la requête AJAX
