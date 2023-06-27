@@ -94,10 +94,11 @@ document.getElementById("rechercher").addEventListener("click", function () {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
+      alert("step1");
       document.getElementById("vehicules").innerHTML = xhr.responseText;
     }
   };
-
+  alert("step2");
   var data =
     "marque=" +
     encodeURIComponent(marque) +
