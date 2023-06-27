@@ -91,34 +91,64 @@ document.getElementById("rechercher").addEventListener("click", function () {
   var prix = document.getElementById("prix").value;
   var tri = document.getElementById("tri").value;
 
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      document.getElementById("vehicules").innerHTML = xhr.responseText;
-    }
-  };
+  var xhrPromise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          resolve(xhr.responseText);
+        } else {
+          reject(xhr.statusText);
+        }
+      }
+    };
 
-  var data =
-    "marque=" +
-    encodeURIComponent(marque) +
-    "&modele=" +
-    encodeURIComponent(modele) +
-    "&annee=" +
-    encodeURIComponent(annee) +
-    "&carburant=" +
-    encodeURIComponent(carburant) +
-    "&boite_de_vitesse=" +
-    encodeURIComponent(boite_de_vitesse) +
-    "&kilometres=" +
-    encodeURIComponent(kilometres) +
-    "&prix=" +
-    encodeURIComponent(prix) +
-    "&tri=" +
-    encodeURIComponent(tri);
+    xhr.open("POST", "recherche.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+  });
 
-  xhr.open("POST", "recherche.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  xhrPromise
+    .then(function (response) {
+      document.getElementById("vehicules").innerHTML = response;
+
+      var data =
+        "marque=" +
+        encodeURIComponent(marque) +
+        "&modele=" +
+        encodeURIComponent(modele) +
+        "&annee=" +
+        encodeURIComponent(annee) +
+        "&carburant=" +
+        encodeURIComponent(carburant) +
+        "&boite_de_vitesse=" +
+        encodeURIComponent(boite_de_vitesse) +
+        "&kilometres=" +
+        encodeURIComponent(kilometres) +
+        "&prix=" +
+        encodeURIComponent(prix) +
+        "&tri=" +
+        encodeURIComponent(tri);
+
+      // Continuer avec le traitement de la partie 'data'
+      return new Promise(function (resolve, reject) {
+        // Faire quelque chose avec 'data' (par exemple, effectuer une autre requête)
+        // puis appeler resolve() ou reject() en fonction du résultat.
+        // Ici, nous utilisons setTimeout pour simuler une opération asynchrone.
+
+        setTimeout(function () {
+          resolve(data);
+        }, 1000);
+      });
+    })
+    .then(function (data) {
+      // Ici, nous avons accès à la variable 'data' provenant de la promesse précédente.
+      // Vous pouvez continuer à traiter 'data' selon vos besoins.
+      console.log(data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 // ------- ANIMATION TEMPS DE CHARGEMENT DES VEHICULES ----------
@@ -150,3 +180,5 @@ function performSearch() {
     },
   });
 }
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>;
