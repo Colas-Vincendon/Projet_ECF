@@ -99,6 +99,16 @@ try {
         }
     }
 
+    if ($tri === "kilometres_asc") {
+        $sql .= " ORDER BY kilometres ASC";
+    } elseif ($tri === "kilometres_desc") {
+        $sql .= " ORDER BY kilometres DESC";
+    } elseif ($tri === "prix_asc") {
+        $sql .= " ORDER BY prix ASC";
+    } elseif ($tri === "prix_desc") {
+        $sql .= " ORDER BY prix DESC";
+    }
+
     // Compter le nombre total de résultats
     $stmtCount = $conn->prepare($sql);
     $stmtCount->execute($params);
@@ -136,7 +146,7 @@ try {
                 }
                 echo "</div>";
             }
-            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] .' ' . $row["modele"] . "</b></p>";
+            echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
             echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
@@ -158,15 +168,25 @@ try {
 
     if ($totalPages > 1) {
         // Pagination
-    $resultsPerPage = 12;
-    $totalPages = ceil($totalResults / $resultsPerPage);
-    $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
-    $offset = ($currentPage - 1) * $resultsPerPage;
+        $resultsPerPage = 12;
+        $totalPages = ceil($totalResults / $resultsPerPage);
+        $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
+        $offset = ($currentPage - 1) * $resultsPerPage;
+        // filtres
+        $marque = isset($_POST['marque']) ? $_POST['marque'] : '';
+        $modele = isset($_POST['modele']) ? $_POST['modele'] : '';
+        $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
+        $carburant = isset($_POST['carburant']) ? $_POST['carburant'] : '';
+        $boite_de_vitesse = isset($_POST['boite_de_vitesse']) ? $_POST['boite_de_vitesse'] : '';
+        $kilometres = isset($_POST['kilometres']) ? $_POST['kilometres'] : '';
+        $prix = isset($_POST['prix']) ? $_POST['prix'] : '';
+        $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
 
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
-            echo "<li class='page-item' id='1'><span class='page-link'>⟨⟨</span></li>";?>
-            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>⟨</span></li><?php
+            echo "<li class='page-item' id='1'><span class='page-link'>⟨⟨</span></li>"; ?>
+            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>⟨</span></li>
+            <?php
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
@@ -174,12 +194,13 @@ try {
             if ($i == $currentPage) {
                 $active_class = "active";
             }
-            echo "<li class='page-item ".$active_class."' id='". $i ."'><span class='page-link'>".$i."</span></li>";
+            echo "<li class='page-item " . $active_class . "' id='" . $i . "'><span class='page-link'>" . $i . "</span></li>";
         }
 
         if ($currentPage < $totalPages) { ?>
             <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>⟩</span></li>
-            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>⟩⟩</span></li><?php
+            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>⟩⟩</span></li>
+            <?php
         }
     }
     echo "</ul>";
