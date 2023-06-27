@@ -105,7 +105,7 @@ try {
     $totalResults = $stmtCount->rowCount();
 
     // Pagination
-    $resultsPerPage = 20;
+    $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
@@ -152,6 +152,12 @@ try {
     echo "<ul class='pagination'>";
 
     if ($totalPages > 1) {
+        // Pagination
+    $resultsPerPage = 12;
+    $totalPages = ceil($totalResults / $resultsPerPage);
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($currentPage - 1) * $resultsPerPage;
+    
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
             echo "<li class='page-item' id='1'><span class='page-link'>First page</span></li>";
