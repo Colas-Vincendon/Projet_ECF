@@ -15,7 +15,7 @@ function getPaginationResults(page) {
       boite_de_vitesse: boite_de_vitesse,
       kilometres: kilometres,
       prix: prix,
-      tri: tri,
+      tri: tri;
     }, // Envoyer le numéro de la page en paramètre
     success: function (response) {
       // Mettre à jour les résultats de la pagination
