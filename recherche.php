@@ -161,7 +161,7 @@ try {
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
             echo "<li class='page-item' id='1'><span class='page-link'>First page</span></li>";
-            echo `<li class='page-item' id="'.$previous.'"><span class='page-link'><i class='fa fa-arrow-left'></i></span></li>`;
+            echo `<li class='page-item' id="'.$previous.'"><span class='page-link'>&laquo; Précédent</span></li>`;
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
@@ -173,8 +173,7 @@ try {
         }
 
         if ($currentPage < $totalPages) {
-            $currentPage++;
-            echo `<li class='page-item' id="'. $currentPage .'"><span class='page-link'><i class='fa fa-arrow-right'></i></span></li>`;
+            echo `<li class='page-item' id="'. ($currentPage + 1) .'"><span class='page-link'>Suivant &raquo;</span></li>`;
             echo `<li class='page-item' id="'. $totalPages .'"><span class='page-link'>Last page</span></li>`;
         }
     }
