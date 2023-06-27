@@ -158,6 +158,10 @@ try {
 
     if ($totalPages > 1) {
         // Pagination
+        $stmtCount = $conn->prepare($sql);
+        $stmtCount->execute($params);
+        $totalResults = $stmtCount->rowCount();
+
     $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
