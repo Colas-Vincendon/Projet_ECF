@@ -148,8 +148,8 @@ try {
     }
 
     // Affichage de la pagination
-    echo "<div class='pagination'>";
-    echo "<ul>";
+    echo "<div>";
+    echo "<ul class='pagination'>";
 
     if ($totalPages > 1) {
         // Pagination

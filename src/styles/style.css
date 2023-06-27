@@ -274,6 +274,15 @@ nav {
   }
 }
 
+/*---------------- PAGINATION -------------------*/
+
+.page-link {
+  cursor: pointer;
+}
+.pagination {
+  justify-content: center;
+}
+
 /*------------------BUTTONS CAROUSEL ---------------------*/
 
 #previous,
