@@ -165,7 +165,7 @@ try {
 
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
-            echo "<li class='page-item' id='1'><span class='page-link'><p style='transform: scale(1.5);';>«</p></span></li>";
+            echo "<li class='page-item' id='1'><span class='page-link'>«</span></li>";
             echo `<li class='page-item' id="'.$previous.'"><span class='page-link'>Précédent</span></li>`;
         }
 
