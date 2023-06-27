@@ -112,7 +112,7 @@ try {
 
     // Ajouter la limitation et l'offset à la requête SQL
     $sql .= " LIMIT $offset, $resultsPerPage";
-    
+
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
 
@@ -149,23 +149,29 @@ try {
 
     // Affichage de la pagination
     echo "<div class='pagination'>";
+    echo "<ul class='pagination'>";
 
     if ($totalPages > 1) {
         if ($currentPage > 1) {
-            echo "<a class='pagination' href='recherche.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
+            $previous = $currentPage - 1;
+            echo "<li class='page-item' id='1'><span class='page-link'>First page</span></li>";
+            echo `<li class='page-item' id="'.$previous.'"><span class='page-link'><i class='fa fa-arrow-left'></i></span></li>`;
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
+            $active_class = "";
             if ($i == $currentPage) {
-                echo "<span class='current-page'>" . $i . "</span>";
-            } else {
-                echo "<a class='pagination' href='recherche.php?page=" . $i . "'>" . $i . "</a>";
+                $active_class = "active";
             }
+            echo `<li class='page-item ".$active_class."' id="'. $i .'"><span class='page-link'>'.$i.'</span></li>`;
         }
+
         if ($currentPage < $totalPages) {
-            echo "<a class='pagination' href='recherche.php?page=" . ($currentPage + 1) . "'>Suivant &raquo;</a>";
+            echo `<li class='page-item' id="'. ($currentPage + 1) .'"><span class='page-link'><i class='fa fa-arrow-right'></i></span></li>`;
+            echo `<li class='page-item' id="'. $totalPages .'"><span class='page-link'>Last page</span></li>`;
         }
     }
+    echo "</ul>";
     echo "</div>";
 
 } catch (PDOException $e) {

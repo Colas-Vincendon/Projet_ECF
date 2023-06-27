@@ -5,7 +5,7 @@ function getPaginationResults(page) {
   // Effectuer la requête AJAX
   $.ajax({
     url: "recherche.php",
-    type: "GET",
+    type: "POST",
     data: { page: page }, // Envoyer le numéro de la page en paramètre
     success: function (response) {
       // Mettre à jour les résultats de la pagination
@@ -21,11 +21,11 @@ function getPaginationResults(page) {
 }
 
 // Ajouter un écouteur d'événement sur les liens de pagination
-$(document).on("click", ".pagination a", function (e) {
+$(document).on("click", ".page-item", function (e) {
   e.preventDefault(); // Empêcher le comportement par défaut des liens
 
   // Récupérer le numéro de la page à partir de l'attribut href du lien
-  var page = $(this).attr("href");
+  var page = $(this).attr("id");
 
   // Appeler la fonction pour effectuer la requête AJAX et mettre à jour les résultats de la pagination
   getPaginationResults(page);
