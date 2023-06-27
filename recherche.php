@@ -165,8 +165,8 @@ try {
 
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
-            echo "<li class='page-item' id='1'><span class='page-link'>«</span></li>";?>
-            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>‹</span></li><?php
+            echo "<li class='page-item' id='1'><span class='page-link'>⟨⟨</span></li>";?>
+            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>⟨</span></li><?php
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
@@ -178,8 +178,8 @@ try {
         }
 
         if ($currentPage < $totalPages) { ?>
-            <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>›</span></li>
-            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>»</span></li><?php
+            <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>⟩</span></li>
+            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>⟩⟩</span></li><?php
         }
     }
     echo "</ul>";
