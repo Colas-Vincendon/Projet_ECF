@@ -107,7 +107,7 @@ try {
     // Pagination
     $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
 
     // Ajouter la limitation et l'offset à la requête SQL
@@ -149,15 +149,15 @@ try {
 
     // Affichage de la pagination
     echo "<div class='pagination'>";
-    echo "<ul class='pagination'>";
+    echo "<ul>";
 
     if ($totalPages > 1) {
         // Pagination
     $resultsPerPage = 12;
     $totalPages = ceil($totalResults / $resultsPerPage);
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
-    
+
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
             echo "<li class='page-item' id='1'><span class='page-link'>First page</span></li>";
