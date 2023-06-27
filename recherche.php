@@ -171,15 +171,6 @@ try {
     $totalPages = ceil($totalResults / $resultsPerPage);
     $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
-    // filtres
-    $marque = isset($_POST['marque']) ? $_POST['marque'] : '';
-    $modele = isset($_POST['modele']) ? $_POST['modele'] : '';
-    $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
-    $carburant = isset($_POST['carburant']) ? $_POST['carburant'] : '';
-    $boite_de_vitesse = isset($_POST['boite_de_vitesse']) ? $_POST['boite_de_vitesse'] : '';
-    $kilometres = isset($_POST['kilometres']) ? $_POST['kilometres'] : '';
-    $prix = isset($_POST['prix']) ? $_POST['prix'] : '';
-    $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
     
     if ($totalPages > 1) {
 
