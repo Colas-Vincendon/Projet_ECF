@@ -179,7 +179,7 @@ try {
 
         if ($currentPage < $totalPages) { ?>
             <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>Suivant</span></li>
-            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>Last page</span></li><?php
+            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>»</span></li><?php
         }
     }
     echo "</ul>";
