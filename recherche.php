@@ -145,7 +145,7 @@ try {
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-secondary m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
-            echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div>";
+            echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div></a></div>";
 
         }
     } else {
