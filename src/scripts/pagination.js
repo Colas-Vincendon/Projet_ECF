@@ -1,52 +1,60 @@
-// Fonction pour effectuer une requête AJAX et mettre à jour les résultats de la pagination
-function getPaginationResults(
-  page,
-  marque,
-  modele,
-  annee,
-  carburant,
-  boite_de_vitesse,
-  kilometres,
-  prix,
-  tri
-) {
-  // Afficher l'animation de chargement ici si vous le souhaitez
+function getPaginationResults(page) {
+  // ...
+
+  // Récupérer les valeurs des filtres de recherche
+  var marque = document.getElementById("marque").value;
+  var modele = document.getElementById("modele").value;
+  var annee = document.getElementById("annee").value;
+  var carburant = document.getElementById("carburant").value;
+  var boiteDeVitesse = document.getElementById("boite_de_vitesse").value;
+  var kilometres = document.getElementById("kilometres").value;
+  var prix = document.getElementById("prix").value;
+  var tri = document.getElementById("tri").value;
+
+  // Construction de l'URL avec les valeurs des filtres de recherche
+  var url = "recherche.php?page=" + page;
+
+  if (marque !== "") {
+    url += "&marque=" + encodeURIComponent(marque);
+  }
+
+  if (modele !== "") {
+    url += "&modele=" + encodeURIComponent(modele);
+  }
+
+  if (annee !== "") {
+    url += "&annee=" + encodeURIComponent(annee);
+  }
+
+  if (carburant !== "") {
+    url += "&carburant=" + encodeURIComponent(carburant);
+  }
+
+  if (boiteDeVitesse !== "") {
+    url += "&boite_de_vitesse=" + encodeURIComponent(boiteDeVitesse);
+  }
+
+  if (kilometres !== "") {
+    url += "&kilometres=" + encodeURIComponent(kilometres);
+  }
+
+  if (prix !== "") {
+    url += "&prix=" + encodeURIComponent(prix);
+  }
+
+  if (tri !== "") {
+    url += "&tri=" + encodeURIComponent(tri);
+  }
 
   // Effectuer la requête AJAX
   $.ajax({
-    url: "recherche.php",
+    url: url,
     type: "POST",
-    data: {
-      page: page,
-      marque: marque,
-      modele: modele,
-      annee: annee,
-      carburant: carburant,
-      boite_de_vitesse: boite_de_vitesse,
-      kilometres: kilometres,
-      prix: prix,
-      tri: tri,
-    }, // Envoyer le numéro de la page en paramètre
     success: function (response) {
-      // Mettre à jour les résultats de la pagination
-      $("#vehicules").html(response);
-
-      // Masquer l'animation de chargement ici si vous l'avez affichée
+      // ...
     },
     error: function () {
-      // Gérer les erreurs de la requête
-      // Masquer l'animation de chargement ici si vous l'avez affichée
+      // ...
     },
   });
 }
-
-// Ajouter un écouteur d'événement sur les liens de pagination
-$(document).on("click", ".page-item", function (e) {
-  e.preventDefault(); // Empêcher le comportement par défaut des liens
-
-  // Récupérer le numéro de la page à partir de l'attribut href du lien
-  var page = $(this).attr("id");
-
-  // Appeler la fonction pour effectuer la requête AJAX et mettre à jour les résultats de la pagination
-  getPaginationResults(page);
-});
