@@ -94,28 +94,27 @@ document.getElementById("rechercher").addEventListener("click", function () {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      alert("step1");
-      alert("step2");
-      var data =
-        "marque=" +
-        encodeURIComponent(marque) +
-        "&modele=" +
-        encodeURIComponent(modele) +
-        "&annee=" +
-        encodeURIComponent(annee) +
-        "&carburant=" +
-        encodeURIComponent(carburant) +
-        "&boite_de_vitesse=" +
-        encodeURIComponent(boite_de_vitesse) +
-        "&kilometres=" +
-        encodeURIComponent(kilometres) +
-        "&prix=" +
-        encodeURIComponent(prix) +
-        "&tri=" +
-        encodeURIComponent(tri);
       document.getElementById("vehicules").innerHTML = xhr.responseText;
     }
   };
+
+  var data =
+    "marque=" +
+    encodeURIComponent(marque) +
+    "&modele=" +
+    encodeURIComponent(modele) +
+    "&annee=" +
+    encodeURIComponent(annee) +
+    "&carburant=" +
+    encodeURIComponent(carburant) +
+    "&boite_de_vitesse=" +
+    encodeURIComponent(boite_de_vitesse) +
+    "&kilometres=" +
+    encodeURIComponent(kilometres) +
+    "&prix=" +
+    encodeURIComponent(prix) +
+    "&tri=" +
+    encodeURIComponent(tri);
 
   xhr.open("POST", "recherche.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
