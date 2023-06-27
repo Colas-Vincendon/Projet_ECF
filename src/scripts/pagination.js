@@ -48,5 +48,15 @@ $(document).on("click", ".page-item", function (e) {
   var page = $(this).attr("id");
 
   // Appeler la fonction pour effectuer la requête AJAX et mettre à jour les résultats de la pagination
-  getPaginationResults(page);
+  getPaginationResults(
+    page,
+    marque,
+    modele,
+    annee,
+    carburant,
+    boite_de_vitesse,
+    kilometres,
+    prix,
+    tri
+  );
 });
