@@ -99,7 +99,7 @@ try {
         }
     }
 
-    if ($tri === "kilometres_asc") {
+if ($tri === "kilometres_asc") {
         $sql .= " ORDER BY kilometres ASC";
     } elseif ($tri === "kilometres_desc") {
         $sql .= " ORDER BY kilometres DESC";
@@ -166,51 +166,21 @@ try {
     echo "<div>";
     echo "<ul class='pagination'>";
 
-    // Pagination
-    $resultsPerPage = 12;
-    $totalPages = ceil($totalResults / $resultsPerPage);
-    $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
-    $offset = ($currentPage - 1) * $resultsPerPage;
-    
     if ($totalPages > 1) {
-
-        // Récupérer les valeurs des filtres de recherche
-    $marque = isset($_POST['marque']) ? $_POST['marque'] : '';
-    $modele = isset($_POST['modele']) ? $_POST['modele'] : '';
-    $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
-    $carburant = isset($_POST['carburant']) ? $_POST['carburant'] : '';
-    $boite_de_vitesse = isset($_POST['boite_de_vitesse']) ? $_POST['boite_de_vitesse'] : '';
-    $kilometres = isset($_POST['kilometres']) ? $_POST['kilometres'] : '';
-    $prix = isset($_POST['prix']) ? $_POST['prix'] : '';
-    $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
-
-    // Construction de l'URL avec les valeurs des filtres de recherche
-    $url = "recherche.php?page=";
-    
-    if (!empty($marque)) {
-        $url .= "&marque=" . urlencode($marque);
-    }
-    if (!empty($modele)) {
-        $url .= "&modele=" . urlencode($modele);
-    }
-    if (!empty($annee)) {
-        $url .= "&annee=" . urlencode($annee);
-    }
-    if (!empty($carburant)) {
-        $url .= "&carburant=" . urlencode($carburant);
-    }
-    if (!empty($boite_de_vitesse)) {
-        $url .= "&boite_de_vitesse=" . urlencode($boite_de_vitesse);
-    }
-    if (!empty($kilometres)) {
-        $url .= "&kilometres=" . urlencode($kilometres);
-    }
-    if (!empty($prix)) {
-        $url .= "&prix=" . urlencode($prix);
-    }
-    if (!empty($tri)) {
-        $url .= "&tri=" . urlencode($tri);
-    }
+        // Pagination
+        $resultsPerPage = 12;
+        $totalPages = ceil($totalResults / $resultsPerPage);
+        $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
+        $offset = ($currentPage - 1) * $resultsPerPage;
+        // filtres
+        $marque = isset($_POST['marque']) ? $_POST['marque'] : '';
+        $modele = isset($_POST['modele']) ? $_POST['modele'] : '';
+        $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
+        $carburant = isset($_POST['carburant']) ? $_POST['carburant'] : '';
+        $boite_de_vitesse = isset($_POST['boite_de_vitesse']) ? $_POST['boite_de_vitesse'] : '';
+        $kilometres = isset($_POST['kilometres']) ? $_POST['kilometres'] : '';
+        $prix = isset($_POST['prix']) ? $_POST['prix'] : '';
+        $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
 
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
