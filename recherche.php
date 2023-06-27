@@ -111,9 +111,7 @@ try {
     $offset = ($currentPage - 1) * $resultsPerPage;
 
     // Ajouter la limitation et l'offset à la requête SQL
-    $sql .= " LIMIT :offset, :resultsPerPage";
-    $params['offset'] = $offset;
-    $params['resultsPerPage'] = $resultsPerPage;
+    $sql .= " LIMIT $offset, $resultsPerPage";
 
     // Préparation de la requête SQL
     $stmt = $conn->prepare($sql);
@@ -151,7 +149,7 @@ try {
 
     // Affichage de la pagination
     echo "<div class='pagination'>";
-    
+
     if ($totalPages > 1) {
         if ($currentPage > 1) {
             echo "<a href='recherche.php?page=" . ($currentPage - 1) . "'>&laquo; Précédent</a>";
