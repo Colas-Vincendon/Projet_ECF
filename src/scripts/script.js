@@ -116,7 +116,7 @@ document.getElementById("rechercher").addEventListener("click", function () {
     "&tri=" +
     encodeURIComponent(tri);
 
-  xhr.open("POST", "recherche.php", true);
+  xhr.open("POST", "catalogue.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send(data);
 });
@@ -137,7 +137,7 @@ function performSearch() {
   // Avec jQuery :
 
   $.ajax({
-    url: "recherche.php",
+    url: "catalogue.php",
     type: "POST",
     success: function (response) {
       hideLoading(); // Masque l'animation de chargement
