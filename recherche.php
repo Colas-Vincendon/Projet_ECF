@@ -163,10 +163,10 @@ try {
     $currentPage = isset($_POST['page']) ? $_POST['page'] : 1;
     $offset = ($currentPage - 1) * $resultsPerPage;
 
-        if ($currentPage > 2) {
+        if ($currentPage > 1) {
             $previous = $currentPage - 1;
             echo "<li class='page-item' id='1'><span class='page-link'>«</span></li>";?>
-            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>Précédent</span></li>`;<?php
+            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>Précédent</span></li><?php
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
@@ -177,9 +177,9 @@ try {
             echo "<li class='page-item ".$active_class."' id='". $i ."'><span class='page-link'>".$i."</span></li>";
         }
 
-        if ($currentPage < $totalPages) {
-            echo `<li class='page-item' id="'. ($currentPage + 1) .'"><span class='page-link'>Suivant</span></li>`;
-            echo `<li class='page-item' id="'. $totalPages .'"><span class='page-link'>Last page</span></li>`;
+        if ($currentPage < $totalPages) { ?>
+            <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>Suivant</span></li>`;
+            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>Last page</span></li><?php
         }
     }
     echo "</ul>";
