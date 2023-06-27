@@ -165,8 +165,8 @@ try {
 
         if ($currentPage > 2) {
             $previous = $currentPage - 1;
-            echo "<li class='page-item' id='1'><span class='page-link'>«</span></li>";
-            echo `<li class='page-item' id="'.$previous.'"><span class='page-link'>Précédent</span></li>`;
+            echo "<li class='page-item' id='1'><span class='page-link'>«</span></li>";?>
+            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>Précédent</span></li>`;<?php
         }
 
         for ($i = 1; $i <= $totalPages; $i++) {
