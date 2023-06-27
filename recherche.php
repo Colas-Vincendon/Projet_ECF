@@ -173,7 +173,8 @@ try {
         }
 
         if ($currentPage < $totalPages) {
-            echo `<li class='page-item' id="'. ($currentPage + 1) .'"><span class='page-link'><i class='fa fa-arrow-right'></i></span></li>`;
+            $currentPage++;
+            echo `<li class='page-item' id="'. $currentPage .'"><span class='page-link'><i class='fa fa-arrow-right'></i></span></li>`;
             echo `<li class='page-item' id="'. $totalPages .'"><span class='page-link'>Last page</span></li>`;
         }
     }
