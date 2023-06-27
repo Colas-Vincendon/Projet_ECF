@@ -15,7 +15,7 @@ function getPaginationResults(
   // Effectuer la requête AJAX
   $.ajax({
     url: "recherche.php",
-    type: "POST",
+    type: "GET",
     data: {
       page: page,
       marque: marque,
