@@ -378,11 +378,8 @@ ul.paginationCustom li.active {
   transition: filter 0.3s;
 }
 
-#img-car:hover {
-  filter: brightness(55%);
-}
 #text-car:hover {
-  filter: brightness(75%);
+  filter: brightness(90%);
 }
 
 /*------------------ cashback.php ---------------------*/
