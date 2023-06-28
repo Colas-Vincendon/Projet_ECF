@@ -284,12 +284,14 @@ nav {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   font-size: 1rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  background-color: #af1b1b;
+  border: 1px solid #1b60a5;
 }
 ul.paginationCustom {
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  background-color: #4e0909;
+  border: 1px solid #1b60a5;
 }
 
 /*------------------BUTTONS CAROUSEL ---------------------*/
