@@ -192,7 +192,7 @@ if ($tri === "kilometres_asc") {
         for ($i = 1; $i <= $totalPages; $i++) {
             $active_class = "";
             if ($i == $currentPage) {
-                $active_class = "active";
+                $active_class = "activeCustom";
             }
             echo "<li class='page-item " . $active_class . "' id='" . $i . "'><span style='color: red' class='page-link'>" . $i . "</span></li>";
         }
