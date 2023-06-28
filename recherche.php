@@ -132,7 +132,7 @@ if ($tri === "kilometres_asc") {
     // Affichage des résultats
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div style=' border-radius: 20px 20px 20px 20px' class='container-fluid p-0 shadow containerCars'><a class='no-underline text-black' href='detailed_car.php?id=" . $row["id"] . "'>";
+            echo "<div id='text-car' style=' border-radius: 20px 20px 20px 20px' class='container-fluid p-0 shadow containerCars'><a class='no-underline text-black' href='detailed_car.php?id=" . $row["id"] . "'>";
             // Récupération et décodage des images de la voiture
             $carId = $row["id"];
             $sqlImages = "SELECT image_base64 FROM images WHERE car_id = '$carId' LIMIT 1";

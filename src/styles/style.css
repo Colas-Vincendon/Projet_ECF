@@ -381,6 +381,9 @@ ul.paginationCustom li.active {
 #img-car:hover {
   filter: brightness(55%);
 }
+#text-car:hover {
+  filter: brightness(55%);
+}
 
 /*------------------ cashback.php ---------------------*/
 
