@@ -28,6 +28,10 @@ h2 {
   text-decoration: none;
 }
 
+.text-dark-blue {
+  color: #2f333e;
+}
+
 .text-grey {
   color: #929292;
 }

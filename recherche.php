@@ -147,13 +147,13 @@ if ($tri === "kilometres_asc") {
                 echo "</div>";
             }
             echo "<div style=' border-radius: 0 0 20px 20px' class='detailsCar border-0 text-start py-2 px-4 fs-6'><p class='text-center text-black fs-5'><b> " . $row["marque"] . ' ' . $row["modele"] . "</b></p>";
-            echo "<p class='text-secondary m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
+            echo "<p class='text-dark-blue m-0'>KM : <b> " . $row["kilometres"] . ' km' . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
-            echo "<p class='text-secondary m-0'>Année : <b> " . $row["annee"] . "</b></p>";
+            echo "<p class='text-dark-blue m-0'>Année : <b> " . $row["annee"] . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
-            echo "<p class='text-secondary m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
+            echo "<p class='text-dark-blue m-0'>Carburant : <b> " . $row["carburant"] . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
-            echo "<p class='text-secondary m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
+            echo "<p class='text-dark-blue m-0'>Boîte de vitesse : <b> " . $row["boite_de_vitesse"] . "</b></p>";
             echo "<div class='my-2' style='border: 1px solid lightgrey'>   </div>";
             echo "<p class='text-black text-center fs-5 m-0'><b> " . $row["prix"] . ' €' . "</b></p></div></a></div>";
 
