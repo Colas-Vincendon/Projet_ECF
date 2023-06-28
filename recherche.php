@@ -194,7 +194,7 @@ if ($tri === "kilometres_asc") {
             if ($i == $currentPage) {
                 $active_class = "active";
             }
-            echo "<li class='page-item " . $active_class . "' id='" . $i . "'><span class='page-link'>" . $i . "</span></li>";
+            echo "<li class='page-item' id='" . $i . "'><span class='page-link" . $active_class . "'>" . $i . "</span></li>";
         }
 
         if ($currentPage < $totalPages) { ?>
