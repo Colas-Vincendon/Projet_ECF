@@ -282,6 +282,9 @@ nav {
 .pagination {
   justify-content: center;
 }
+.active {
+  background-color: #ff5f5f;
+}
 
 /*------------------BUTTONS CAROUSEL ---------------------*/
 

@@ -184,8 +184,8 @@ if ($tri === "kilometres_asc") {
 
         if ($currentPage > 1) {
             $previous = $currentPage - 1;
-            echo "<li class='page-item' id='1'><span class='page-link'>⟨⟨</span></li>"; ?>
-            <li class='page-item' id="<?php echo $previous ?> "><span class='page-link'>⟨</span></li>
+            echo "<li class='page-item' id='1'><span style='color: red' class='page-link'>⟨⟨</span></li>"; ?>
+            <li class='page-item' id="<?php echo $previous ?> "><span style='color: red' class='page-link'>⟨</span></li>
             <?php
         }
 
@@ -194,12 +194,12 @@ if ($tri === "kilometres_asc") {
             if ($i == $currentPage) {
                 $active_class = "active";
             }
-            echo "<li class='page-item " . $active_class . "' id='" . $i . "'><span class='page-link'>" . $i . "</span></li>";
+            echo "<li class='page-item " . $active_class . "' id='" . $i . "'><span style='color: red' class='page-link'>" . $i . "</span></li>";
         }
 
         if ($currentPage < $totalPages) { ?>
-            <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span class='page-link'>⟩</span></li>
-            <li class='page-item' id="<?php echo $totalPages ?>"><span class='page-link'>⟩⟩</span></li>
+            <li class='page-item' id="<?php echo ($currentPage + 1) ?>"><span style='color: red' class='page-link'>⟩</span></li>
+            <li class='page-item' id="<?php echo $totalPages ?>"><span style='color: red' class='page-link'>⟩⟩</span></li>
             <?php
         }
     }
