@@ -603,11 +603,11 @@ ul.paginationCustom li.active {
   }
   @media screen and (max-width: 340px) {
     ul.paginationCustom li {
-      padding-left: 0.6rem;
-      padding-right: 0.6rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
       padding-top: 0.4rem;
       padding-bottom: 0.4rem;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 }
