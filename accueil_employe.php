@@ -261,6 +261,7 @@ if (isset($_POST['logout'])) {
               $commentaire = $row['commentaire'];
               $note = $row['note'];
               ?>
+                <hr>
               <div>
                 <p><strong>Nom:</strong>
                   <?php echo $nom; ?>
@@ -287,7 +288,6 @@ if (isset($_POST['logout'])) {
                   </div>
                 </div>
               </div>
-              <hr>
               <?php
             }
           } else {
