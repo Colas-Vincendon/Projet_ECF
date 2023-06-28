@@ -284,6 +284,7 @@ nav {
 }
 .active {
   background-color: #ff5f5f;
+  color: #f1f1f1;
 }
 
 /*------------------BUTTONS CAROUSEL ---------------------*/
