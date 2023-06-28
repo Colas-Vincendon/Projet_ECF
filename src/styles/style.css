@@ -290,7 +290,10 @@ nav {
 ul.paginationCustom {
   text-decoration: none;
   display: inline-flex;
-  background-color: #4e0909;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 1rem;
+  background-color: #e4e4e4;
   border: 1px solid #1b60a5;
 }
 
