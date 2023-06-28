@@ -296,6 +296,15 @@ ul.paginationCustom {
   background-color: #e4e4e4;
   border: 1px solid #1b60a5;
 }
+ul.paginationCustom li {
+  text-decoration: none;
+  display: inline-flex;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 1rem;
+  background-color: #e4e4e4;
+  border: 1px solid #1b60a5;
+}
 
 /*------------------BUTTONS CAROUSEL ---------------------*/
 
