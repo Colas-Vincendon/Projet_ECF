@@ -31,7 +31,8 @@ function getPaginationResults(
       // Mettre à jour les résultats de la pagination
       $("#vehicules").html(response);
 
-      // Masquer l'animation de chargement ici si vous l'avez affichée
+      // Remonter à l'élément #vehicules
+      $("html, body").scrollTop($("#vehicules").offset().top);
     },
     error: function () {
       // Gérer les erreurs de la requête
