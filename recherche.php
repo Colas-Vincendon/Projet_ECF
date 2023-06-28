@@ -163,7 +163,7 @@ if ($tri === "kilometres_asc") {
     }
 
     // Affichage de la pagination
-    echo "<div>";
+    echo "<div class='container-fluid mx-0'>";
     echo "<ul class='paginationCustom px-0 mt-3'>";
 
     if ($totalPages > 1) {
