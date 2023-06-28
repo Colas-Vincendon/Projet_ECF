@@ -281,10 +281,6 @@ nav {
 }
 .pagination {
   justify-content: center;
-  color: red;
-}
-.page-linkactive {
-  background-color: red;
 }
 
 /*------------------BUTTONS CAROUSEL ---------------------*/
