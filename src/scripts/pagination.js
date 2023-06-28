@@ -47,6 +47,26 @@ $(document).on("click", ".page-item", function (e) {
   // Récupérer le numéro de la page à partir de l'attribut href du lien
   var page = $(this).attr("id");
 
+  // Récupérer les valeurs des filtres
+  var marque = $("#marque").val();
+  var modele = $("#modele").val();
+  var annee = $("#annee").val();
+  var carburant = $("#carburant").val();
+  var boite_de_vitesse = $("#boite_de_vitesse").val();
+  var kilometres = $("#kilometres").val();
+  var prix = $("#prix").val();
+  var tri = $("#tri").val();
+
   // Appeler la fonction pour effectuer la requête AJAX et mettre à jour les résultats de la pagination
-  getPaginationResults(page);
+  getPaginationResults(
+    page,
+    marque,
+    modele,
+    annee,
+    carburant,
+    boite_de_vitesse,
+    kilometres,
+    prix,
+    tri
+  );
 });
