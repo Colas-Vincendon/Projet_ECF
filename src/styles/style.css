@@ -601,6 +601,15 @@ ul.paginationCustom li.active {
   .panelCustomHeightBosch {
     height: 80px;
   }
+  @media screen and (max-width: 340px) {
+    ul.paginationCustom li {
+      padding-left: 0.6rem;
+      padding-right: 0.6rem;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+  }
 }
 @media screen and (max-width: 335px) {
   .trait2 {
