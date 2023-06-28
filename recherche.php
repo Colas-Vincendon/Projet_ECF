@@ -164,7 +164,7 @@ if ($tri === "kilometres_asc") {
 
     // Affichage de la pagination
     echo "<div>";
-    echo "<ul class='pagination'>";
+    echo "<ul class='pagination mt-3'>";
 
     if ($totalPages > 1) {
         // Pagination
