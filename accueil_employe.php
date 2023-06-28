@@ -261,6 +261,7 @@ if (isset($_POST['logout'])) {
               $commentaire = utf8_decode($row['commentaire']);
               $note = $row['note'];
               ?>
+              
                 <hr>
               <div>
                 <p><strong>Nom:</strong>
