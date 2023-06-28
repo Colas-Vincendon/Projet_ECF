@@ -257,8 +257,8 @@ if (isset($_POST['logout'])) {
           if ($stmt->rowCount() > 0) {
             foreach ($rows as $row) {
               $avisId = $row['id'];
-              $nom = $row['nom'];
-              $commentaire = $row['commentaire'];
+              $nom = utf8_decode($row['nom']);
+              $commentaire = utf8_decode($row['commentaire']);
               $note = $row['note'];
               ?>
                 <hr>
