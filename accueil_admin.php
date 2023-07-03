@@ -198,40 +198,33 @@ if (isset($_POST['logout'])) {
 
 
                         <?php
-                        $servername = "eu-cdbr-west-03.cleardb.net";
-                        $username = "b3b93f93ef4872";
-                        $password = "21163a70";
-                        $dbname = "heroku_a9b8c2ad4d5e1ab";
+                        require_once 'databaseConnexion.php';
+                        //SINGLETON
+                        $database = Database::getInstance();
+                        $conn = $database->getConnection();
 
-                        try {
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        // Sélectionner tous les employés sauf l'admin
+                        $sql = "SELECT * FROM employes WHERE email != 'Vparrot@gmail.com'";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
 
-                            // Sélectionner tous les employés sauf l'admin
-                            $sql = "SELECT * FROM employes WHERE email != 'Vparrot@gmail.com'";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
-
-                            // Afficher les employés
-                            if ($stmt->rowCount() > 0) {
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    // Afficher les détails de l'employé
+                        // Afficher les employés
+                        if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                // Afficher les détails de l'employé
                         
-                                    echo "<div class='col-12 col-md- col-xl-4 connect'>";
-                                    echo "<p><b>Email : </b></br>" . $row['email'] . "</p>";
-                                    echo "<form action='delete_employe.php' method='POST'>";
-                                    echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
-                                    echo "<input class='btn btn-danger mb-3' type='submit' onclick='return confirmDeleteEmploye()'  value='Supprimer' />";
-                                    echo "</form></div>";
-                                }
-                            } else {
-                                echo "Aucun employé trouvé.";
+                                echo "<div class='col-12 col-md- col-xl-4 connect'>";
+                                echo "<p><b>Email : </b></br>" . $row['email'] . "</p>";
+                                echo "<form action='delete_employe.php' method='POST'>";
+                                echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "' />";
+                                echo "<input class='btn btn-danger mb-3' type='submit' onclick='return confirmDeleteEmploye()'  value='Supprimer' />";
+                                echo "</form></div>";
                             }
-                            // Fermeture de la connexion à la base de données
-                            $conn = null;
-                        } catch (PDOException $e) {
-                            die("Échec de la connexion à la base de données : " . $e->getMessage());
+                        } else {
+                            echo "Aucun employé trouvé.";
                         }
+                        // Fermeture de la connexion à la base de données
+                        $conn = null;
 
                         ?>
 
@@ -347,7 +340,8 @@ if (isset($_POST['logout'])) {
                     <h1 class="ml-0 text-grey my-3"><b></b>Documents création application</b></h1><br>
                     <br>
                     <form method="post">
-                        <button class="btn btn-success my-3 mx-3" type="submit" name="documents"><a class="no-underline text-white" href="./documents.php">Consulter</a></button>
+                        <button class="btn btn-success my-3 mx-3" type="submit" name="documents"><a
+                                class="no-underline text-white" href="./documents.php">Consulter</a></button>
                     </form>
                 </div>
                 <!-- --------------------------------- FOOTER --------------------------- -->
@@ -381,9 +375,9 @@ if (isset($_POST['logout'])) {
                             </div>
                             <div class="col-6 col-md-3">
                                 <!-------- chargement des horaires du footer ------->
-                <div id="footerSchedules">
-                 
-                 </div>
+                                <div id="footerSchedules">
+
+                                </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="d-flex justify-content-center">
