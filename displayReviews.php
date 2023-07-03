@@ -1,6 +1,9 @@
 <div id="reviews">
     <?php
     require_once 'databaseConnexion.php';
+    //SINGLETON
+    $database = Database::getInstance();
+    $conn = $database->getConnection();
 
     // Récupérer les avis approuvés de la table "avis"
     $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = :approuve");
