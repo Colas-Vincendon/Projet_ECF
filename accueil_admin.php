@@ -269,71 +269,64 @@ if (isset($_POST['logout'])) {
                     <div class="row">
 
                         <?php
+                        require_once 'databaseConnexion.php';
+                        //SINGLETON
+                        $database = Database::getInstance();
+                        $conn = $database->getConnection();
 
-                        try {
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                            // Récupérer les services et leurs images associées depuis la base de données
-                            $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
+                        // Récupérer les services et leurs images associées depuis la base de données
+                        $sql = "SELECT s.id, s.titre, s.paragraphe, i.image_base64
                          FROM services s
                          LEFT JOIN imageService i ON s.id = i.service_id";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
-                            $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+                        $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                            if (!empty($services)) {
-                                foreach ($services as $service) {
-                                    $serviceId = $service['id'];
-                                    $titre = $service['titre'];
-                                    $paragraphe = $service['paragraphe'];
-                                    $imageBase64 = $service['image_base64'];
+                        if (!empty($services)) {
+                            foreach ($services as $service) {
+                                $serviceId = $service['id'];
+                                $titre = $service['titre'];
+                                $paragraphe = $service['paragraphe'];
+                                $imageBase64 = $service['image_base64'];
 
-                                    // Afficher les informations du service
-                                    echo "<div class='col-12 col-md-6 col-xl-4 col-xxl-3 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
-                                    if (!empty($imageBase64)) {
-                                        echo "<div class='container-fluid p-0'><img style='width: 100%; height: 200px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
-                                    }
-                                    echo "<h3>$titre</h3>";
-                                    echo "<p>$paragraphe</p>";
-                                    echo "<form action='supprimer_service.php' method='POST'>";
-                                    echo "<input type='hidden' name='service_id' value='$serviceId'>";
-                                    echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
-                                    echo "</form>";
-                                    echo "</div></div>";
+                                // Afficher les informations du service
+                                echo "<div class='col-12 col-md-6 col-xl-4 col-xxl-3 connect'><div class='container-fluid containerAllServices my-3 p-0'>";
+                                if (!empty($imageBase64)) {
+                                    echo "<div class='container-fluid p-0'><img style='width: 100%; height: 200px;' class='img-fluid cover' src='data:image;base64,$imageBase64' alt='image du service'></div>";
                                 }
-                            } else {
-                                echo "Aucun service existant.";
+                                echo "<h3>$titre</h3>";
+                                echo "<p>$paragraphe</p>";
+                                echo "<form action='supprimer_service.php' method='POST'>";
+                                echo "<input type='hidden' name='service_id' value='$serviceId'>";
+                                echo "<button class='btn btn-danger my-1' type='submit' onclick='return confirmDelete()'>Supprimer</button>";
+                                echo "</form>";
+                                echo "</div></div>";
                             }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="container text-center connect my-2">
-                        <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
-                        <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
-                            <div>
-                                <label class="my-2" for='titre'>Titre :</label></br>
-                                <input type='text' id='titre' name='titre' required>
-                            </div>
-                            <div class='my-3'>
-                                <label class="my-2" for='paragraphe'>Paragraphe :</label></br>
-                                <textarea style="width: 50vw; height: 20vh; resize: none" id='paragraphe' name='paragraphe'
-                                    required></textarea>
-                            </div>
-                            <div class='my-3'>
-                                <label class="my-2" for='image'>Image :</label></br>
-                                <input class="btn btn-primary" type='file' id='image' name='image' required>
-                            </div>
-                            <button class="btn btn-success my-5" type='submit'>Ajouter</button>
-                        </form>
-
-                        <?php
-                        $conn = null;
-                        } catch (PDOException $e) {
-                            die("Échec de la connexion à la base de données : " . $e->getMessage());
+                        } else {
+                            echo "Aucun service existant.";
                         }
+                        $conn = null;
                         ?>
-
+                    </div>
+                </div>
+                <div class="container text-center connect my-2">
+                    <h1 class='ml-0 text-grey my-3'>Ajouter un nouveau service</h1>
+                    <form action='ajouter_service.php' method='POST' enctype='multipart/form-data'>
+                        <div>
+                            <label class="my-2" for='titre'>Titre :</label></br>
+                            <input type='text' id='titre' name='titre' required>
+                        </div>
+                        <div class='my-3'>
+                            <label class="my-2" for='paragraphe'>Paragraphe :</label></br>
+                            <textarea style="width: 50vw; height: 20vh; resize: none" id='paragraphe' name='paragraphe'
+                                required></textarea>
+                        </div>
+                        <div class='my-3'>
+                            <label class="my-2" for='image'>Image :</label></br>
+                            <input class="btn btn-primary" type='file' id='image' name='image' required>
+                        </div>
+                        <button class="btn btn-success my-5" type='submit'>Ajouter</button>
+                    </form>
                 </div>
                 <div class="container d-flex align-items-center justify-content-center connect my-2">
 
