@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message_id'])) {
 
     $conn = null;
     // Rediriger vers la page messagePlace.php ou une autre page de confirmation
-    header("Location: messagesPlace.php");
+    header("Location: messagesPlace.html");
     exit();
 
 }
