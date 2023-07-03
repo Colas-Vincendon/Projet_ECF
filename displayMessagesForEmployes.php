@@ -1,3 +1,4 @@
+<script src="src/scripts/script.js"></script>
 <div id="messagesEmployes">
     <?php
 
@@ -58,4 +59,3 @@
     $conn = null;
     ?>
     </div>
-    <script src="src/scripts/script.js"></script>
