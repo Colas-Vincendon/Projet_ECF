@@ -78,6 +78,9 @@ function confirmDeleteEmploye() {
 function confirmDeleteCar() {
   return confirm("Voulez-vous vraiment supprimer ce véhicule ?");
 }
+function confirmDeleteMessage() {
+  return confirm("Voulez-vous vraiment supprimer ce message ?");
+}
 
 /*---------------------- Filtres vehicules ---------------------*/
 
