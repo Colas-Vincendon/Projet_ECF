@@ -1,3 +1,4 @@
+<script src="src/scripts/script.js"></script>
 <div id="messagesEmployes">
     <?php
 
@@ -20,7 +21,7 @@
             $sujet = $row['sujet'];
             $message = $row['message'];
             $date_creation = $row['date_creation'];
-            
+
             $formatted_date = date("d/m/Y H:i:s", strtotime($date_creation));
             ?>
             <div class='container my-2 connect'>
@@ -33,7 +34,7 @@
                         echo "<h6><strong>Email :</strong> $email</h6>";
                         echo "<h6><strong>Telephone :</strong> $telephone</h6>
                                                 </div>";
-                                                ?>
+                        ?>
                         <div class='col-12 col-md-5 connect d-flex align-items-center'>
                             <?php
                             echo "<p class='my-auto'>$message</p>";
@@ -43,10 +44,10 @@
                         <div class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
                             <form action='supprimer_message.php' method='POST'>
                                 <input type='hidden' name='message_id' value='<?php echo $messageId; ?>'>
-                                <input class='btn btn-danger my-4' type='submit' onclick='return confirmDeleteMessage()' value="Supprimer"></input>
+                                <button class='btn btn-danger my-4' type='submit'>Supprimer</button>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
                 <?php
@@ -58,8 +59,3 @@
     $conn = null;
     ?>
     </div>
-    <script>
-        function confirmDeleteMessage() {
-  return confirm("Voulez-vous vraiment supprimer ce message ?");
-}
-    </script>
