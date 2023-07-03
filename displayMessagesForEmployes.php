@@ -26,9 +26,6 @@
     <link rel="stylesheet" href="./src/styles/style.css" />
   </head>
   <body>
-
-
-
   <div id="messagesEmployes">
     <?php
 
@@ -89,9 +86,6 @@
     $conn = null;
     ?>
     </div>
-    <script src="src/scripts/script.js"></script>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
