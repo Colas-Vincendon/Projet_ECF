@@ -147,6 +147,9 @@
                     <div class="row my-5">
                         <?php
                         require_once 'databaseConnexion.php';
+                        //SINGLETON
+                        $database = Database::getInstance();
+                        $conn = $database->getConnection();
 
                             // Sélectionner tous les véhicules
                             $sql = "SELECT * FROM cars";
