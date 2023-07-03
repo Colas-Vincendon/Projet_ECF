@@ -5,6 +5,9 @@
             <?php
 
             require_once 'databaseConnexion.php';
+            //SINGLETON
+            $database = Database::getInstance();
+            $conn = $database->getConnection();
 
             // Récupérer les horaires à partir de la base de données
             $stmt = $conn->query("SELECT * FROM horaires");

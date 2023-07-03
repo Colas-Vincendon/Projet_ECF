@@ -26,31 +26,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoimsg'])) {
         exit;
     }
 
-    $servername = "eu-cdbr-west-03.cleardb.net";
-    $username = "b3b93f93ef4872";
-    $password = "21163a70";
-    $dbname = "heroku_a9b8c2ad4d5e1ab";
+    require_once 'databaseConnexion.php';
+    //SINGLETON
+    $database = Database::getInstance();
+    $conn = $database->getConnection();
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $stmt = $conn->prepare("INSERT INTO messages (prenom, nom, email, telephone, sujet, message) VALUES (:prenom, :nom, :email, :telephone, :sujet, :message)");
-        $stmt->bindParam(':prenom', $prenom);
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':telephone', $telephone);
-        $stmt->bindParam(':sujet', $sujet);
-        $stmt->bindParam(':message', $message);
-        $stmt->execute();
+    $stmt = $conn->prepare("INSERT INTO messages (prenom, nom, email, telephone, sujet, message) VALUES (:prenom, :nom, :email, :telephone, :sujet, :message)");
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':telephone', $telephone);
+    $stmt->bindParam(':sujet', $sujet);
+    $stmt->bindParam(':message', $message);
+    $stmt->execute();
 
 
-        $conn = null;
-        header("Location: messageSent.html");
-        exit();
-    } catch (PDOException $e) {
-        echo "Échec de la connexion à la base de données : " . $e->getMessage();
-    }
+    $conn = null;
+    header("Location: messageSent.html");
+    exit();
 }
 
 ?>

@@ -2,6 +2,9 @@
     <?php
 
     require_once 'databaseConnexion.php';
+    //SINGLETON
+    $database = Database::getInstance();
+    $conn = $database->getConnection();
 
     // Récupérer tous les messages de la table "messages"
     $sql = "SELECT * FROM messages";
@@ -53,4 +56,4 @@
 
     $conn = null;
     ?>
-</div>
+        </div>

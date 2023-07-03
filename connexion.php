@@ -159,39 +159,30 @@ session_start();
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                // Connexion à la base de données
-                $servername = "eu-cdbr-west-03.cleardb.net";
-                $usernameDB = "b3b93f93ef4872";
-                $passwordDB = "21163a70";
-                $dbname = "heroku_a9b8c2ad4d5e1ab";
+                require_once 'databaseConnexion.php';
+                //SINGLETON
+                $database = Database::getInstance();
+                $conn = $database->getConnection();
 
-                try {
-                    // Connexion à la base de données en utilisant PDO
-                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $usernameDB, $passwordDB);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // Requête pour récupérer le hash du mot de passe enregistré
+                $stmt = $conn->prepare("SELECT password, isAdmin FROM employes WHERE email = :email");
+                $stmt->bindParam(':email', $email);
+                $stmt->execute();
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    // Requête pour récupérer le hash du mot de passe enregistré
-                    $stmt = $conn->prepare("SELECT password, isAdmin FROM employes WHERE email = :email");
-                    $stmt->bindParam(':email', $email);
-                    $stmt->execute();
-                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($row && password_verify($password, $row['password'])) {
+                    // Mot de passe correct, définir les informations de session
+                    $_SESSION['email'] = $email;
+                    $_SESSION['isAdmin'] = $row['isAdmin'];
 
-                    if ($row && password_verify($password, $row['password'])) {
-                        // Mot de passe correct, définir les informations de session
-                        $_SESSION['email'] = $email;
-                        $_SESSION['isAdmin'] = $row['isAdmin'];
+                    // Définition de la page de redirection
+                    $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
 
-                        // Définition de la page de redirection
-                        $redirectPage = ($row['isAdmin'] == 1) ? 'accueil_admin.php' : 'accueil_employe.php';
-
-                        // Redirection vers la page appropriée
-                        echo '<script>window.location.href = "' . $redirectPage . '";</script>';
-                        exit();
-                    } else {
-                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-                    }
-                } catch (PDOException $e) {
-                    echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+                    // Redirection vers la page appropriée
+                    echo '<script>window.location.href = "' . $redirectPage . '";</script>';
+                    exit();
+                } else {
+                    $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
                 }
 
                 $conn = null;
@@ -258,9 +249,9 @@ session_start();
                             </div>
                             <div class="col-6 col-md-3">
                                 <!-------- chargement des horaires du footer ------->
-                <div id="footerSchedules">
-                 
-                 </div>
+                                <div id="footerSchedules">
+
+                                </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="d-flex justify-content-center">
