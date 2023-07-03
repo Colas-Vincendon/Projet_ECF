@@ -58,3 +58,4 @@
     $conn = null;
     ?>
     </div>
+    <script src="src/scripts/script.js"></script>
