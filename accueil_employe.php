@@ -242,17 +242,19 @@ if (isset($_POST['logout'])) {
         <div class="container text-center connect my-2">
           <h1 class="text-grey my-4">Valider les témoignages clients</h1>
           <?php
-          // Connexion à la base de données
           require_once 'databaseConnexion.php';
+          //SINGLETON
+          $database = Database::getInstance();
+          $conn = $database->getConnection();
 
-            // Récupérer tous les nouveaux avis non approuvés de la table "avis"
-            $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = 0");
-            $stmt->execute();
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          // Récupérer tous les nouveaux avis non approuvés de la table "avis"
+          $stmt = $conn->prepare("SELECT * FROM avis WHERE approuve = 0");
+          $stmt->execute();
+          $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
           ?>
 
           <h2>Nouveaux Avis</h2>
-          
+
           <?php
           if ($stmt->rowCount() > 0) {
             foreach ($rows as $row) {
@@ -261,8 +263,8 @@ if (isset($_POST['logout'])) {
               $commentaire = utf8_decode($row['commentaire']);
               $note = $row['note'];
               ?>
-              
-                <hr>
+
+              <hr>
               <div>
                 <p><strong>Nom:</strong>
                   <?php echo $nom; ?>
@@ -356,7 +358,7 @@ if (isset($_POST['logout'])) {
               <div class="col-6 col-md-3">
                 <!-------- chargement des horaires du footer ------->
                 <div id="footerSchedules">
-                 
+
                 </div>
               </div>
               <div class="col-6 col-md-3">
