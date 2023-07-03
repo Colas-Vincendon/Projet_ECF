@@ -1,13 +1,14 @@
 <?php
 
-require_once 'databaseConnexion.php';
-//SINGLETON
-$database = Database::getInstance();
-$conn = $database->getConnection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['message_id'])) {
     $messageId = $_POST['message_id'];
-
+    
+    require_once 'databaseConnexion.php';
+    //SINGLETON
+    $database = Database::getInstance();
+    $conn = $database->getConnection();
+    
     // Supprimer le message correspondant à l'ID spécifié
     $sql = "DELETE FROM messages WHERE id = :messageId";
     $stmt = $conn->prepare($sql);

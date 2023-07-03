@@ -37,18 +37,19 @@
                         <div class='col-12 col-md-5 connect d-flex align-items-center'>
                             <?php
                             echo "<p class='my-auto'>$message</p>";
-                            echo "<form action='supprimer_message.php' method='POST'>";
-                            echo "<input type='hidden' name='message_id' value='$messageId'>
-                                                </div>";
                             ?>
-                            <div class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
-                                <button class='btn btn-danger my-4' type='submit'>Supprimer</button>
-                            </div>
-                            </form>
-
+                            <form action='supprimer_message.php' method='POST'>
+                                <input type='hidden' name='message_id' value='$messageId'>
                         </div>
+
+                        <div class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
+                            <button class='btn btn-danger my-4' type='submit'>Supprimer</button>
+                        </div>
+                        </form>
+
                     </div>
-                    <?php
+                </div>
+                <?php
         }
     } else {
         echo "<div class='col-12 text-center my-5'>Aucun message trouvé.</div>";
@@ -56,4 +57,4 @@
 
     $conn = null;
     ?>
-        </div>
+    </div>
