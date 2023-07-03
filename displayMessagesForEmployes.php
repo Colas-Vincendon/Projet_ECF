@@ -44,7 +44,7 @@
                         <div class='col-12 col-md-2 connect justify-content-center d-flex align-items-center'>
                             <form action='supprimer_message.php' method='POST'>
                                 <input type='hidden' name='message_id' value='<?php echo $messageId; ?>'>
-                                <input class='btn btn-danger my-4' type='submit' onclick='return confirmDeleteMessage()'>Supprimer</input>
+                                <input class='btn btn-danger my-4' type='submit' onclick='return confirmDeleteMessage()' value="Supprimer"></input>
                             </form>
                         </div>
 
