@@ -184,7 +184,9 @@ session_start();
                         echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                         exit();
                     } else {
-                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                        echo '<div class="my-3">';
+                        echo $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
+                        echo '</div>';
                     }
                 }
 
