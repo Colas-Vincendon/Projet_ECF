@@ -184,9 +184,7 @@ session_start();
                         echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                         exit();
                     } else {
-                        echo '<div class="my-3">';
-                        echo $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
-                        echo '</div>';
+                        $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
                     }
                 }
 
@@ -216,7 +214,7 @@ session_start();
                             </div>
                         </div>
                         <?php if (isset($errorMessage)): ?>
-                            <div>
+                            <div class="my-3">
                                 <?php echo $errorMessage; ?>
                             </div>
                         <?php endif; ?>
