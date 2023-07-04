@@ -31,14 +31,19 @@ if (!empty($images['name'][0])) {
         $tmpName = $images['tmp_name'][$i];
         $imageFile = $images['name'][$i];
 
-        // Conversion de l'image en base64
-        $base64Image = base64_encode(file_get_contents($tmpName));
+        // Vérification du type MIME de l'image
+        $allowedFormats = ['image/jpeg', 'image/png']; // Formats d'images autorisés
+        $fileFormat = mime_content_type($tmpName);
+
+        if (in_array($fileFormat, $allowedFormats)) {
+            // Conversion de l'image en base64
+            $base64Image = base64_encode(file_get_contents($tmpName));
 
         // Insertion de l'image en base64 dans la table "images" en utilisant une requête préparée
         $stmt = $conn->prepare("INSERT INTO images (car_id, image_base64) VALUES (?, ?)");
         $stmt->execute([$vehiculeId, $base64Image]);
     }
-}
+}}
 
 // Fermeture de la connexion à la base de données
 $conn = null;
