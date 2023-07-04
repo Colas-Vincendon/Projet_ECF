@@ -13,8 +13,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projet ECF: Garage Parrot</title>
     <meta type="description" content="Entretien de votre véhicule et vente de véhicules d'occasion" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="./src/styles/style.css" />
@@ -63,8 +62,7 @@ session_start();
                                             </td>
                                             <td>
                                                 <a href="#">
-                                                    <img class="facebook" src="./src/medias/facebook.png"
-                                                        alt="logo facebook" />
+                                                    <img class="facebook" src="./src/medias/facebook.png" alt="logo facebook" />
                                                 </a>
                                             </td>
                                         </tr>
@@ -78,17 +76,14 @@ session_start();
 
                 <div class="row header">
                     <header class="marginHeader paddingHeader">
-                        <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg"
-                                alt="Page d'accueil" /></a>
+                        <a href="index.php"><img class="img-fluid" src="./src/medias/banderole header.jpg" alt="Page d'accueil" /></a>
                     </header>
                 </div>
                 <!-- --------------------------------- START NAVBAR ------------------------------ -->
                 <div class="row">
                     <nav class="container navbar navbar-expand-lg navbar-dark col-sm-11 my-3">
                         <div class="container d-flex justify-content-start">
-                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-                                data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
-                                aria-label="Toggle navigation">
+                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarText">
@@ -104,30 +99,24 @@ session_start();
                                     </li>
                                     <!-- -------------- NAV DROPDOWN SERVICES ----------------- -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle pointer" class="navbar-toggler"
-                                            data-bs-toggle="collapse" data-bs-target="#services"
-                                            aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
+                                        <a class="nav-link dropdown-toggle pointer" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#services" aria-label="Toggle navigation">NOS SERVICES<b class="caret"></b></a>
                                         <ul id="services" class="dropdown-menu">
                                             <li>
-                                                <a class="nav-link no-underline text-li-services"
-                                                    href="allServices.html">TOUS NOS SERVICES</a>
+                                                <a class="nav-link no-underline text-li-services" href="allServices.html">TOUS NOS SERVICES</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a class="nav-link no-underline text-li-services"
-                                                    href="boschService.html">ATELIER BOSCH CAR
+                                                <a class="nav-link no-underline text-li-services" href="boschService.html">ATELIER BOSCH CAR
                                                     SERVICE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a class="nav-link no-underline text-li-services"
-                                                    href="carRegistration.html">SERVICE CARTE
+                                                <a class="nav-link no-underline text-li-services" href="carRegistration.html">SERVICE CARTE
                                                     GRISE</a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a class="nav-link no-underline text-li-services"
-                                                    href="infoConsumer.html">INFORMATIONS
+                                                <a class="nav-link no-underline text-li-services" href="infoConsumer.html">INFORMATIONS
                                                     CONSOMMATEUR</a>
                                             </li>
                                         </ul>
@@ -147,14 +136,12 @@ session_start();
                 <!-- ------------------------------ END NAVBAR ------------------------------- -->
                 <!-- --------------------------- BUTTON BACK-TO-THE-TOP -------------------------- -->
                 <div>
-                    <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow"
-                                src="./src/medias/upArrow.png" alt=""></a></button>
+                    <button id="backToTheTop"><a class="no-underline text-white" href="#"><img id="upArrow" src="./src/medias/upArrow.png" alt=""></a></button>
                 </div>
                 <!-- ------------------------------ END HEADER ------------------------------- -->
                 <!-- ------------------------------ DEBUT MAIN ------------------------------- -->
 
                 <?php
-
                 // Récupérer les valeurs des champs
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -182,6 +169,7 @@ session_start();
                     echo '<script>window.location.href = "' . $redirectPage . '";</script>';
                     exit();
                 } else {
+                    // Mot de passe incorrect, afficher le message d'erreur
                     $errorMessage = 'Adresse e-mail ou mot de passe incorrect.';
                 }
 
@@ -210,7 +198,7 @@ session_start();
                                     connecter</button>
                             </div>
                         </div>
-                        <?php if (isset($errorMessage)): ?>
+                        <?php if (isset($errorMessage)) : ?>
                             <div>
                                 <?php echo $errorMessage; ?>
                             </div>
@@ -241,8 +229,7 @@ session_start();
                                 <div class="row">
                                     <div class="d-flex justify-content-center">
                                         <a href="#">
-                                            <img class="facebook my-1" src="./src/medias/facebook.png"
-                                                alt="logo facebook" />
+                                            <img class="facebook my-1" src="./src/medias/facebook.png" alt="logo facebook" />
                                         </a>
                                     </div>
                                 </div>
@@ -255,8 +242,7 @@ session_start();
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="d-flex justify-content-center">
-                                    <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png"
-                                        alt="logo proxi auto cash" />
+                                    <img class="logo-proxi-cash my-3" src="./src/medias/badge_Proxi_Auto.png" alt="logo proxi auto cash" />
                                 </div>
                             </div>
                         </div>
@@ -287,12 +273,8 @@ session_start();
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="./src/scripts/script.js"></script>
     <script src="src/scripts/scroll.js"></script>
     <script src="src/scripts/schedules.js"></script>
