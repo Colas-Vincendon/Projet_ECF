@@ -192,7 +192,7 @@ session_start();
                 ?>
 
 
-                <div class="container text-center connect">
+                <div class="container text-center connect mb-3">
                     <p class="text-red-bold my-4">Identification</p>
                     <form method="POST">
                         <div class="row justify-content-center my-4">
