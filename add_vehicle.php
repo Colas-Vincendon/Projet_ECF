@@ -32,7 +32,7 @@ if (!empty($images['name'][0])) {
         $imageFile = $images['name'][$i];
 
         // Vérification du type MIME de l'image
-        $allowedFormats = ['image/jpg', 'image/png']; // Formats d'images autorisés
+        $allowedFormats = ['image/jpeg', 'image/png']; // Formats d'images autorisés
         $fileFormat = mime_content_type($tmpName);
 
         if (in_array($fileFormat, $allowedFormats)) {
